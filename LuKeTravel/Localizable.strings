@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  iPenYou
+
+  Created by trgoofi on 14-7-22.
+  Copyright (c) 2014年 vbuy. All rights reserved.
+*/
+
+"tabbar-caipu" = "学做菜";
+"tabbar-surpise" = "商城";
+"tabbar-quan" = "生活圈";
+"tabbar-me" = "我的";
+"masterPieces-title" = "今日佳作";

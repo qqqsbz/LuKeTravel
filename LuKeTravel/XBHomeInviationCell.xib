@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="XBHomeInviationCell" id="gMT-UG-guA" customClass="XBHomeInviationCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="230"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gMT-UG-guA" id="aOe-qL-TVl">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="229"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="j2g-y6-cgM" userLabel="cover">
+                        <rect key="frame" x="10" y="30" width="300" height="199"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvI-92-Ty3" userLabel="close">
+                        <rect key="frame" x="273" y="55" width="22" height="22"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <state key="normal" image="closeW"/>
+                        <connections>
+                            <action selector="closeAction:" destination="gMT-UG-guA" eventType="touchUpInside" id="bUT-8D-c3V"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKT-gk-Ye0" userLabel="title">
+                        <rect key="frame" x="136" y="77" width="49" height="22"/>
+                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iR-kA-OPE" userLabel="subTitle">
+                        <rect key="frame" x="137" y="104" width="47" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5at-I1-MLW" userLabel="inviation">
+                        <rect key="frame" x="71" y="140" width="178" height="45"/>
+                        <color key="backgroundColor" red="0.95294117647058818" green="0.33725490196078434" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="178" id="WRe-pN-cRe"/>
+                            <constraint firstAttribute="height" constant="45" id="uXd-qy-mGJ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <state key="normal" title="立即兑换">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="inviationAction:" destination="gMT-UG-guA" eventType="touchUpInside" id="643-bN-dqL"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="j2g-y6-cgM" firstAttribute="leading" secondItem="aOe-qL-TVl" secondAttribute="leading" constant="10" id="09X-A5-adC"/>
+                    <constraint firstItem="5at-I1-MLW" firstAttribute="centerX" secondItem="aOe-qL-TVl" secondAttribute="centerX" id="7HH-3J-pEW"/>
+                    <constraint firstItem="JvI-92-Ty3" firstAttribute="top" secondItem="j2g-y6-cgM" secondAttribute="top" constant="25" id="90P-rJ-qVz"/>
+                    <constraint firstAttribute="trailing" secondItem="j2g-y6-cgM" secondAttribute="trailing" constant="10" id="HjL-ob-DtG"/>
+                    <constraint firstItem="j2g-y6-cgM" firstAttribute="top" secondItem="aOe-qL-TVl" secondAttribute="top" constant="30" id="Idh-bA-w9S"/>
+                    <constraint firstItem="j2g-y6-cgM" firstAttribute="trailing" secondItem="JvI-92-Ty3" secondAttribute="trailing" constant="15" id="TOu-Wp-R6J"/>
+                    <constraint firstItem="5at-I1-MLW" firstAttribute="top" secondItem="6iR-kA-OPE" secondAttribute="bottom" constant="15" id="oUZ-7U-sM0"/>
+                    <constraint firstItem="6iR-kA-OPE" firstAttribute="centerX" secondItem="aOe-qL-TVl" secondAttribute="centerX" id="qf1-7C-jhx"/>
+                    <constraint firstItem="6iR-kA-OPE" firstAttribute="bottom" secondItem="aOe-qL-TVl" secondAttribute="centerY" constant="10" id="raV-nA-FTa"/>
+                    <constraint firstItem="DKT-gk-Ye0" firstAttribute="centerX" secondItem="aOe-qL-TVl" secondAttribute="centerX" id="rdx-Yc-of8"/>
+                    <constraint firstAttribute="bottom" secondItem="j2g-y6-cgM" secondAttribute="bottom" id="s3F-Gm-rPv"/>
+                    <constraint firstItem="6iR-kA-OPE" firstAttribute="top" secondItem="DKT-gk-Ye0" secondAttribute="bottom" constant="5" id="zFS-XZ-pzO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="coverImageView" destination="j2g-y6-cgM" id="IeT-d2-BVf"/>
+                <outlet property="inviationButton" destination="5at-I1-MLW" id="MRQ-ge-gfq"/>
+                <outlet property="subTitleLabel" destination="6iR-kA-OPE" id="VCQ-eR-hts"/>
+                <outlet property="titleLabel" destination="DKT-gk-Ye0" id="IIy-wu-fw1"/>
+            </connections>
+            <point key="canvasLocation" x="338" y="31"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="banner1.jpg" width="800" height="800"/>
+        <image name="closeW" width="22" height="22"/>
+    </resources>
+</document>
