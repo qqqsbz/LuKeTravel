@@ -6,41 +6,72 @@
 //  Copyright © 2016年 coder. All rights reserved.
 //
 #define kSpace 10.f
-#define kStatusHeight CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)
-#define kTabbarHeight CGRectGetHeight(self.tabBarController.tabBar.frame)
+#define kStatusHeight   CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)
+#define kTabbarHeight   CGRectGetHeight(self.tabBarController.tabBar.frame)
+#define kResetTabviewContentSize self.tableView.contentSize.height - CGRectGetHeight(self.navigationController.navigationBar.frame)
+
 #import "XBHomeViewController.h"
 #import "XBHome.h"
 #import "XBGroup.h"
 #import "XBGroupItem.h"
 #import "XBInviation.h"
-#import "XBHomeActivityCell.h"
+#import "XBLoadingView.h"
+#import "XBActivityCell.h"
 #import "XBHomeInviationCell.h"
+#import "XBHomeDestinationCell.h"
+#import "XBActivityViewController.h"
+#import "XBDesinationViewController.h"
 #import "XBStretchableTableHeaderView.h"
-@interface XBHomeViewController () <UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,XBHomeInviationCellDelegate>
+@interface XBHomeViewController () <UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,XBHomeInviationCellDelegate,XBActivityCellDelegate,XBHomeDestinationCellDelegate>
 @property (strong, nonatomic) UITableView   *tableView;
 @property (strong, nonatomic) UIImageView   *bannerImageView;
 @property (strong, nonatomic) XBHome        *home;
 @property (strong, nonatomic) UIView        *statusView;
 @property (strong, nonatomic) UIButton      *searchButton;
-@property (strong, nonatomic) UILabel       *moreLabel;
-@property (strong, nonatomic) UIImageView   *moreImageView;
+@property (strong, nonatomic) UILabel       *logoLabel;
+@property (strong, nonatomic) UIImageView   *logoImageView;
 @property (strong, nonatomic) XBStretchableTableHeaderView  *stretchHeaderView;
 @end
 
-static NSString *activityReuseIdentifier = @"XBHomeActivityCell";
+static NSString *activityReuseIdentifier = @"XBActivityCell";
 static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
+static NSString *destinationReuseIdentifier = @"XBHomeDestinationCell";
 @implementation XBHomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setNavigationBarTranslucent];
 
     [self buildView];
     
     [self reloadData];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = YES;
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    self.navigationController.navigationBarHidden = NO;
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 - (void)reloadData
 {
+    
+    [XBLoadingView showInView:self.tabBarController.view];
+    
     [[XBHttpClient shareInstance] getHomeWithLongitude:[XBUserDefaultsUtil currentLongitude] latitude:[XBUserDefaultsUtil currentLatitude] success:^(XBHome *home) {
         
         self.home = home;
@@ -57,20 +88,33 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
         
         [self.tableView reloadData];
         
+        self.tableView.contentSize = CGSizeMake(CGRectGetWidth(self.tableView.frame),kResetTabviewContentSize);
+        
+        [XBLoadingView hide];
+        
     } failure:^(NSError *error) {
+        
         DDLogDebug(@"error:%@",error);
+        
+        [XBLoadingView hide];
+        
+        [self showFail:@"加载失败!"];
+        
     }];
 }
 
 - (void)buildView
 {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - kTabbarHeight)];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -20, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - kTabbarHeight + 20)];
     self.tableView.dataSource = self;
     self.tableView.delegate   = self;
+    self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"#F2F4F5"];
     self.tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeActivityCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:activityReuseIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBActivityCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:activityReuseIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeInviationCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:inviationReuseIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeDestinationCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:destinationReuseIdentifier];
     [self.view addSubview:self.tableView];
     
     
@@ -93,8 +137,17 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     [self.searchButton addTarget:self action:@selector(searchAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.searchButton];
     
-    self.moreImageView = [UIImageView new];
-    self.moreImageView.image = [UIImage imageNamed:@"Klook_More"];
+    self.logoLabel = [UILabel new];
+    self.logoLabel.hidden = YES;
+    self.logoLabel.font   = [UIFont systemFontOfSize:14.f];
+    self.logoLabel.text   = NSLocalizedString(@"logo-title", @"logo-title");
+    self.logoLabel.textColor = [UIColor colorWithHexString:@"#C0C2C2"];
+    [self.tableView insertSubview:self.logoLabel atIndex:0];
+    
+    self.logoImageView = [UIImageView new];
+    self.logoImageView.image  = [UIImage imageNamed:@"Klook_More"];
+    self.logoImageView.hidden = YES;
+    [self.tableView insertSubview:self.logoImageView atIndex:1];
     
     [self addConstraint];
 
@@ -112,6 +165,16 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     [self.searchButton makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.view).offset(-kSpace);
         make.top.equalTo(self.view).offset(kSpace * 3);
+    }];
+    
+    [self.logoImageView makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.bottom.equalTo(self.view).offset(- (kSpace + kTabbarHeight));
+    }];
+    
+    [self.logoLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.logoImageView);
+        make.bottom.equalTo(self.logoImageView.top).offset(-kSpace);
     }];
     
 }
@@ -144,18 +207,23 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row < self.home.groups.count) {
-        XBHomeActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:activityReuseIdentifier forIndexPath:indexPath];
         XBGroup *group = self.home.groups[indexPath.row];
-        cell.titleLabel.text = group.className;
         if (![group.type isEqualToString:@"4"]) {
+            XBActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:activityReuseIdentifier forIndexPath:indexPath];
+            cell.titleLabel.text = group.className;
             cell.activities = group.items;
             cell.subTitleLabel.text = @"";
+            cell.delegate = self;
+            return cell;
         } else {
+            XBHomeDestinationCell *cell = [tableView dequeueReusableCellWithIdentifier:destinationReuseIdentifier forIndexPath:indexPath];
             XBGroupItem *item = [group.items firstObject];
-            cell.destination = group.items;
+            cell.destinations = group.items;
+            cell.titleLabel.text = group.className;
             cell.subTitleLabel.text = item.name;
+            cell.delegate = self;
+            return cell;
         }
-        return cell;
     }
     
     XBHomeInviationCell *cell = [tableView dequeueReusableCellWithIdentifier:inviationReuseIdentifier forIndexPath:indexPath];
@@ -177,6 +245,12 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     }
     height *= [Application isPlus] ? 1.2 : 1;
     return height;
+}
+
+#pragma mark -- Table view data delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
 }
 
 #pragma mark -- UIScrollViewDelegate
@@ -202,6 +276,11 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
         }
     }
     
+    //显示底部logo
+    BOOL isShowLogo = (scrollView.contentOffset.y + CGRectGetHeight(scrollView.frame)) > (scrollView.contentSize.height + kSpace);
+    self.logoImageView.hidden = !isShowLogo;
+    self.logoLabel.hidden  = !isShowLogo;
+    
 }
 
 #pragma mark -- XBHomeInviationCellDelegate
@@ -217,10 +296,44 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     
 }
 
+#pragma mark -- XBHomeActivityCellDelegate
+- (void)activityCell:(XBActivityCell *)activityCell didSelectedActivityWithGroupItem:(XBGroupItem *)groupItem
+{
+    XBActivityViewController *activityVC = [[XBActivityViewController alloc] init];
+    activityVC.groupItem = groupItem;
+    activityVC.hidesBottomBarWhenPushed  = YES;
+    [self.navigationController pushViewController:activityVC animated:YES];
+}
+
+#pragma mark -- XBHomeDestinationCellDelegate
+- (void)destinationCell:(XBHomeDestinationCell *)destinationCell didSelectedDestinationWithGroupItem:(XBGroupItem *)groupItem
+{
+    XBDesinationViewController *desinationVC = [[XBDesinationViewController alloc] init];
+    desinationVC.groupItem = groupItem;
+    desinationVC.hidesBottomBarWhenPushed  = YES;
+    desinationVC.view.backgroundColor = [UIColor whiteColor];
+    [self.navigationController pushViewController:desinationVC animated:YES];
+}
+
 #pragma mark -- public method
 - (void)searchAction:(UIButton *)sender
 {
     
+}
+
+- (void)setNavigationBarTranslucent
+{
+    self.navigationController.navigationBar.translucent = YES;
+    UIColor *color = [UIColor clearColor];
+    CGRect rect = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), 64.f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setClipsToBounds:YES];
 }
 
 @end

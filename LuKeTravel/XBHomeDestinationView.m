@@ -9,8 +9,6 @@
 #import "XBHomeDestinationView.h"
 #import "XBGroupItem.h"
 @interface XBHomeDestinationView()
-@property (strong, nonatomic) UIImageView   *coverImageView;
-@property (strong, nonatomic) UILabel       *titleLabel;
 @end
 @implementation XBHomeDestinationView
 

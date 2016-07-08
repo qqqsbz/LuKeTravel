@@ -9,6 +9,10 @@
 #import "XBHomeActivityView.h"
 #import "XBGroupItem.h"
 @interface XBHomeActivityView()
+@property (strong, nonatomic) UIImageView   *instantCoverImageView;
+@property (strong, nonatomic) UILabel       *instantTitleLabel;
+@property (strong, nonatomic) UILabel       *instantSubTitleLabel;
+
 @property (strong, nonatomic) UIImageView   *coverImageView;
 @property (strong, nonatomic) UIImageView   *favoriteImageView;
 @property (strong, nonatomic) UIView        *pirceView;
@@ -43,7 +47,8 @@
 - (void)initialization
 {
     self.coverImageView = [UIImageView new];
-    self.coverImageView.image = [UIImage imageNamed:@"banner1.jpg"];
+    self.coverImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.coverImageView.clipsToBounds = YES;
     [self addSubview:self.coverImageView];
     
     self.favoriteImageView = [UIImageView new];
@@ -97,11 +102,40 @@
     self.participantsLabel.font = [UIFont systemFontOfSize:12.f];
     self.participantsLabel.textColor = self.addressLabel.textColor;
     [self addSubview:self.participantsLabel];
+    
+    self.instantCoverImageView = [UIImageView new];
+    self.instantCoverImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.instantCoverImageView.clipsToBounds = YES;
+    [self addSubview:self.instantCoverImageView];
+    
+    self.instantTitleLabel = [UILabel new];
+    self.instantTitleLabel.textColor = [UIColor whiteColor];
+    self.instantTitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:30.f];
+    [self addSubview:self.instantTitleLabel];
+    
+    self.instantSubTitleLabel = [UILabel new];
+    self.instantSubTitleLabel.textColor = [UIColor whiteColor];
+    self.instantSubTitleLabel.font = [UIFont systemFontOfSize:16.f];
+    [self addSubview:self.instantSubTitleLabel];
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    
+    [self.instantCoverImageView makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self).insets(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+    
+    [self.instantTitleLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.centerY);
+        make.centerX.equalTo(self);
+    }];
+    
+    [self.instantSubTitleLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.instantTitleLabel.bottom).offset(kSpace);
+        make.centerX.equalTo(self);
+    }];
     
     CGFloat coverHeight = CGRectGetHeight(self.frame) * 0.62;
     
@@ -180,21 +214,93 @@
 {
     _groupItem = groupItem;
     
-    self.titleLabel.text    = groupItem.name;
-    self.subTitleLabel.text = groupItem.subName;
-    self.addressLabel.text  = groupItem.cityName;
-    self.participantsLabel.text = groupItem.participants;
-    self.marketPriceLabel.text  = [NSString stringWithFormat:@"￥%@",groupItem.marketPrice];
-    self.sellingPriceLabel.text = [NSString stringWithFormat:@"￥ %@",groupItem.sellingPrice];
-    self.favoriteImageView.image = [UIImage imageNamed:groupItem.favorite ? @"activityWishSelected" : @"activityWishNormal"];
-    [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:groupItem.imageUrl]];
-
-    NSMutableAttributedString *markAttributedString = [[NSMutableAttributedString alloc] initWithString:self.marketPriceLabel.text];
-    [markAttributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica-Bold" size:22.f] range:NSMakeRange(1, self.marketPriceLabel.text.length - 1)];
-    self.marketPriceLabel.attributedText = markAttributedString;
+    [self checkIsInstant];
     
-    NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc] initWithString:self.sellingPriceLabel.text attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
-    self.sellingPriceLabel.attributedText = attribtStr;
+    if (groupItem.hotState.length > 0) {
+        
+        self.titleLabel.text    = groupItem.name;
+        self.subTitleLabel.text = groupItem.subName;
+        self.addressLabel.text  = groupItem.cityName;
+        self.participantsLabel.text = groupItem.participants;
+        self.marketPriceLabel.text  = [NSString stringWithFormat:@"￥%@",groupItem.marketPrice];
+        self.sellingPriceLabel.text = [NSString stringWithFormat:@"￥ %@",groupItem.sellingPrice];
+        self.favoriteImageView.image = [UIImage imageNamed:groupItem.favorite ? @"activityWishSelected" : @"activityWishNormal"];
+        [self loadImageFromCacheWithImageView:self.coverImageView];
+        
+        NSMutableAttributedString *markAttributedString = [[NSMutableAttributedString alloc] initWithString:self.marketPriceLabel.text];
+        [markAttributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica-Bold" size:22.f] range:NSMakeRange(1, self.marketPriceLabel.text.length - 1)];
+        self.marketPriceLabel.attributedText = markAttributedString;
+        
+        NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc] initWithString:self.sellingPriceLabel.text attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
+        self.sellingPriceLabel.attributedText = attribtStr;
+        
+    } else {
+        
+        self.instantTitleLabel.text = groupItem.name;
+        
+        self.instantSubTitleLabel.text = groupItem.subName;
+        
+        [self loadImageFromCacheWithImageView:self.instantCoverImageView];
+        
+    }
+    
+}
+
+- (void)loadImageFromCacheWithImageView:(UIImageView *)imageView
+{
+    //查看是否有缓存
+    BOOL isCache  = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:self.groupItem.imageUrl] ||[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.groupItem.imageUrl];
+    
+    //没有缓存则 下载图片并进行缓存
+    if (!isCache) {
+        
+        [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.groupItem.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            
+            [[SDImageCache sharedImageCache] storeImage:image forKey:imageURL.absoluteString];
+            
+        }];
+        
+    } else {
+        
+        //优先从内存中读取缓存 如果内存中没有缓存则读取磁盘
+        UIImage *cacheImage;
+        if ([[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:self.groupItem.imageUrl]) {
+            
+            cacheImage = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:self.groupItem.imageUrl];
+            
+        } else {
+            
+            cacheImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.groupItem.imageUrl];
+            
+        }
+        
+        imageView.image = cacheImage;
+        
+    }
+}
+
+- (void)checkIsInstant
+{
+    BOOL isInstant = self.groupItem.hotState.length > 0;
+    
+    self.instantCoverImageView.hidden = isInstant;
+    self.instantSubTitleLabel.hidden  = isInstant;
+    self.instantTitleLabel.hidden     = isInstant;
+    
+    self.titleLabel.hidden = !isInstant;
+    self.subTitleLabel.hidden = !isInstant;
+    self.addressLabel.hidden = !isInstant;
+    self.participantsLabel.hidden = !isInstant;
+    self.marketPriceLabel.hidden = !isInstant;
+    self.sellingPriceLabel.hidden = !isInstant;
+    self.favoriteImageView.hidden = !isInstant;
+    self.coverImageView.hidden = !isInstant;
+    self.pirceView.hidden = !isInstant;
+    self.instantImageView.hidden = !isInstant;
+    self.addressLabel.hidden = !isInstant;
+    self.addressImageView.hidden = !isInstant;
+    self.participantsLabel.hidden = !isInstant;
+    self.participantsImageView.hidden = !isInstant;
 }
 
 @end

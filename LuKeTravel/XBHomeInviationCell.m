@@ -8,6 +8,7 @@
 
 #import "XBHomeInviationCell.h"
 #import "XBInviation.h"
+#import <SDImageCache.h>
 @interface XBHomeInviationCell()
 @property (strong, nonatomic) CAShapeLayer  *shapeLayer;
 @end
@@ -45,8 +46,36 @@
     _inviation = inviation;
     
     self.titleLabel.text = inviation.name;
+    
     self.subTitleLabel.text = inviation.subName;
-    [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:inviation.imageUrl]];
+    
+    //查看是否有缓存
+    BOOL isCache = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:inviation.imageUrl] || [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:inviation.imageUrl];
+    
+    if (!isCache) {
+        
+        [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:inviation.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+            [[SDImageCache sharedImageCache] storeImage:image forKey:imageURL.absoluteString];
+            
+        }];
+        
+    } else {
+        //优先从内存中读取缓存 如果内存中没有缓存则读取磁盘
+        UIImage *cacheImage;
+        if ([[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:inviation.imageUrl]) {
+            
+            cacheImage = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:inviation.imageUrl];
+            
+        } else {
+            
+            cacheImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:inviation.imageUrl];
+            
+        }
+        
+        self.coverImageView.image = cacheImage;
+    }
+
 }
 
 - (IBAction)closeAction:(UIButton *)sender {

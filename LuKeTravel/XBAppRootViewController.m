@@ -19,7 +19,9 @@
     
     [self buildTabBarItemImage];
     
-    [self updateLocation];
+    if (![XBUserDefaultsUtil currentLongitude]) {
+        [self updateLocation];
+    }
 }
 
 
@@ -74,7 +76,7 @@
     [XBUserDefaultsUtil updateCurrentLatitude:currLocation.coordinate.latitude];
     [XBUserDefaultsUtil updateCurrentLongitude:currLocation.coordinate.longitude];
     [manager stopUpdatingLocation];
-    
+    DDLogDebug(@"location success!!");
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error

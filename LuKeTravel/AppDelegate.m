@@ -10,6 +10,7 @@
 #import <DDTTYLogger.h>
 #import <AFNetworkActivityIndicatorManager.h>
 #import <AFNetworkReachabilityManager.h>
+#import <SDImageCache.h>
 @interface AppDelegate ()
 
 @end

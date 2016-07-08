@@ -7,10 +7,8 @@
 
 
 @interface XBStretchableTableHeaderView()
-{
-    CGRect initialFrame;
-    CGFloat defaultViewHeight;
-}
+@property (assign, nonatomic) CGRect   initialFrame;
+@property (assign, nonatomic) CGFloat  defaultViewHeight;
 @property (strong, nonatomic) UIView   *contentView;
 @end
 
@@ -25,10 +23,10 @@
     _tableView = tableView;
     _view      = view;
     
-    initialFrame       = _view.frame;
-    defaultViewHeight  = initialFrame.size.height;
+    _initialFrame       = _view.frame;
+    _defaultViewHeight  = _initialFrame.size.height;
     
-    UIView *emptyTableHeaderView = [[UIView alloc] initWithFrame:initialFrame];
+    UIView *emptyTableHeaderView = [[UIView alloc] initWithFrame:_initialFrame];
     
     self.contentView = [[UIView alloc] initWithFrame:view.bounds];
     
@@ -80,11 +78,11 @@
     {
         CGFloat offsetY = (scrollView.contentOffset.y + scrollView.contentInset.top) * -1;
        
-        initialFrame.origin.y = - offsetY * 1;
+        _initialFrame.origin.y = - offsetY * 1;
         
-        initialFrame.size.height = defaultViewHeight + offsetY;
+        _initialFrame.size.height = _defaultViewHeight + offsetY;
         
-        _view.frame = initialFrame;
+        _view.frame = _initialFrame;
     }
 
 }
@@ -92,8 +90,8 @@
 
 - (void)resizeView
 {
-    initialFrame.size.width = _tableView.frame.size.width;
-    _view.frame = initialFrame;
+    _initialFrame.size.width = _tableView.frame.size.width;
+    _view.frame = _initialFrame;
 }
 
 

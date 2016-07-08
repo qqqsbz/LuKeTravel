@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSString  *participants;
 @property (strong, nonatomic) NSString  *marketPrice;
 @property (strong, nonatomic) NSString  *sellingPrice;
+@property (strong, nonatomic) NSString  *hotState;
 @property (assign, nonatomic) BOOL      favorite;
 @property (assign, nonatomic) BOOL      instant;
 @property (assign, nonatomic) BOOL      video;

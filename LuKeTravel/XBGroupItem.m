@@ -26,7 +26,8 @@
              @"cityName":@"city_name",
              @"modelId":@"id",
              @"marketPrice":@"market_price",
-             @"sellingPrice":@"selling_price"
+             @"sellingPrice":@"selling_price",
+             @"hotState":@"hot_state"
              };
 }
 @end

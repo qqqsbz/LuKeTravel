@@ -10,4 +10,6 @@
 #import "XBGroupItem.h"
 @interface XBHomeDestinationView : UIView
 @property (strong, nonatomic) XBGroupItem   *destination;
+@property (strong, nonatomic) UIImageView   *coverImageView;
+@property (strong, nonatomic) UILabel       *titleLabel;
 @end

@@ -2,116 +2,73 @@
 //  XBHomeActivityCell.m
 //  LuKeTravel
 //
-//  Created by coder on 16/7/6.
+//  Created by coder on 16/7/8.
 //  Copyright © 2016年 coder. All rights reserved.
 //
-#define kSpace 10.f
+#define kMinimumLineSpacing 10.f
 #import "XBHomeActivityCell.h"
 #import "XBGroupItem.h"
-#import "XBHomeActivityView.h"
-#import "XBHomeDestinationView.h"
-@interface XBHomeActivityCell() <UIScrollViewDelegate>
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-
+#import "XBHomeActivityContentCell.h"
+@interface XBHomeActivityCell() <UICollectionViewDelegate,UICollectionViewDataSource>
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @end
+static NSString *const reuseIdentifier = @"XBHomeActivityContentCell";
+static NSString *const headerIdentifier = @"XBActivityHeaderView";
+static NSString *const footerIdentifier = @"XBActivityFooterView";
 @implementation XBHomeActivityCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.scrollView.showsVerticalScrollIndicator = NO;
-    self.scrollView.showsHorizontalScrollIndicator = NO;
-    self.scrollView.pagingEnabled = YES;
-    self.scrollView.delegate = self;
-    self.scrollView.bounces = NO;       //不允许在边缘拉伸
-    self.scrollView.clipsToBounds = NO; //显示未在显示区域的子view
-    self.scrollView.backgroundColor = [UIColor clearColor];
+    self.collectionView.dataSource = self;
+    self.collectionView.delegate   = self;
+    self.collectionView.pagingEnabled = YES;
+    self.collectionView.clipsToBounds = NO;
+    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeActivityContentCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"XBHomeActivityContentCell"];
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, -0.5, 0, -0.5);
 }
 
-- (void)setActivities:(NSArray<XBGroupItem *> *)activities
+- (void)setGroupItems:(NSArray<XBGroupItem *> *)groupItems
 {
-    _activities = activities;
-    
-    NSInteger count = activities.count;
-    
-    [self.scrollView layoutIfNeeded];
-    
-    CGFloat width = CGRectGetWidth(self.scrollView.frame) - kSpace ;
-    
-    CGFloat height = CGRectGetHeight(self.scrollView.frame) - kSpace;
-    
-    CGFloat x = 0;
-    
-    for (NSInteger i = 0; i < count; i ++) {
-
-        x = i == 0 ? 0 : width * i + kSpace * i;
-        
-       [self buildActivityWithRect:CGRectMake(x, kSpace, width, height) atIndex:i];
-        
-    }
-    
-    self.scrollView.contentSize = CGSizeMake(CGRectGetMaxX([self.scrollView.subviews lastObject].frame) - kSpace, height);
+    _groupItems = groupItems;
+    [self.collectionView reloadData];
 }
 
-- (void)setDestination:(NSArray<XBGroupItem *> *)destination
+#pragma mark -- UICollectionViewDataSource
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    _destination = destination;
-    
-    NSInteger count = destination.count;
-    
-    [self.scrollView layoutIfNeeded];
-    
-    CGFloat width = CGRectGetWidth(self.scrollView.frame) - kSpace ;
-    
-    CGFloat height = CGRectGetHeight(self.scrollView.frame) - kSpace;
-    
-    CGFloat x = 0;
-    
-    for (NSInteger i = 0; i < count; i ++) {
-        
-        x = i == 0 ? 0 : width * i + kSpace * i;
-        
-        [self buildDestinationWithRect:CGRectMake(x, kSpace, width, height) atIndex:i];
-    }
-    
-    self.scrollView.contentSize = CGSizeMake(CGRectGetMaxX([self.scrollView.subviews lastObject].frame) - kSpace, height);
-
+    return 1;
 }
 
-- (void)buildActivityWithRect:(CGRect)frame atIndex:(NSInteger)index
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    XBHomeActivityView *activityView = [[XBHomeActivityView alloc] initWithFrame:frame];
-    
-    activityView.backgroundColor = [UIColor whiteColor];
-    
-    activityView.tag = index;
-    
-    activityView.groupItem = self.activities[index];
-    
-    activityView.layer.masksToBounds = YES;
-    
-    activityView.layer.cornerRadius  = 7.f;
-    
-    [self.scrollView addSubview:activityView];
+    return self.groupItems.count;
 }
 
-- (void)buildDestinationWithRect:(CGRect)frame atIndex:(NSInteger)index
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    XBHomeDestinationView *destinationView = [[XBHomeDestinationView alloc] initWithFrame:frame];
-    
-    destinationView.backgroundColor = [UIColor whiteColor];
-    
-    destinationView.tag = index;
-    
-    destinationView.destination = self.destination[index];
-    
-    [self.scrollView addSubview:destinationView];
+    XBHomeActivityContentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    cell.layer.masksToBounds = YES;
+    cell.layer.cornerRadius  = 7.f;
+    cell.groupItem = self.groupItems[indexPath.row];
+    return cell;
 }
 
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.collectionView.frame) - kMinimumLineSpacing - 0.2, CGRectGetHeight(self.collectionView.frame));
+    flowLayout.minimumLineSpacing = kMinimumLineSpacing;
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
 }
 
 @end
