@@ -1,11 +1,12 @@
 //
-//  XBHomeHeaderViewx.h
+//  XBHomeHeaderView.h
 //  LuKeTravel
 //
-//  Created by coder on 16/7/8.
+//  Created by coder on 16/7/11.
 //  Copyright © 2016年 coder. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 
 @interface XBHomeHeaderView : UIView
 @property (strong, nonatomic) UILabel  *leftLabel;

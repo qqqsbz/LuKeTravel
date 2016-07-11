@@ -5,7 +5,7 @@
 //  Created by coder on 16/7/7.
 //  Copyright © 2016年 coder. All rights reserved.
 //
-
+#define kHeaderHeight 50.f
 #import "XBDesinationViewController.h"
 #import "XBCity.h"
 #import "XBGroup.h"
@@ -14,6 +14,7 @@
 #import "XBLoadingView.h"
 #import "XBHomeActivityCell.h"
 #import "XBHomeHeaderView.h"
+#import "XBDesinationFooterView.h"
 #import "XBStretchableCityHeaderView.h"
 @interface XBDesinationViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) UITableView   *tableView;
@@ -111,7 +112,7 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 
 - (void)buildView
 {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0 , CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
@@ -128,6 +129,26 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     
     self.stretchHeaderView = [XBStretchableCityHeaderView new];
     [self.stretchHeaderView stretchHeaderForTableView:self.tableView withView:self.coverImageView];
+    
+    XBDesinationFooterView *footerView = [[XBDesinationFooterView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 100) didSelectedBlock:^{
+        DDLogDebug(@"view all");
+    }];
+    self.tableView.tableFooterView = footerView;
+    
+//    self.navigationItem.hidesBackButton = YES;
+    
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(-1000, 25, 30, 35);
+    [backBtn setImage:[UIImage imageNamed:@"Back_Arrow"] forState:UIControlStateNormal];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back_Arrow"] style:UIBarButtonItemStyleDone target:self action:@selector(backAction)];
+    self.navigationItem.backBarButtonItem = backItem;
+}
+
+- (void)backAction
+{
+
 }
 
 #pragma mark -- UITableViewDataSource
@@ -139,7 +160,6 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
     NSString *key  = [self.groupDic allKeys][section];
     NSArray *datas = [self.groupDic objectForKey:key];
     return datas.count;
@@ -162,7 +182,7 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section
 {
-    return 50.f;
+    return kHeaderHeight;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -181,6 +201,19 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 {
     [self.stretchHeaderView scrollViewDidScroll:scrollView];
     
+    //section header 不悬浮
+//    CGFloat sectionHeaderHeight = kHeaderHeight;
+//    
+//    if (scrollView.contentOffset.y <= sectionHeaderHeight&&scrollView.contentOffset.y >= 0) {
+//        
+//        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+//        
+//    } else if (scrollView.contentOffset.y >= sectionHeaderHeight) {
+//        
+//        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
+//        
+//    }
+// 
 }
 
 #pragma mark -- private method

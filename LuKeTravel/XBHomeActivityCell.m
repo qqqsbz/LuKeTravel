@@ -56,6 +56,13 @@ static NSString *const footerIdentifier = @"XBActivityFooterView";
     return cell;
 }
 
+#pragma mark -- UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self.delegate respondsToSelector:@selector(activityCell:didSelectedWithGroupItem:)]) {
+        [self.delegate activityCell:self didSelectedWithGroupItem:self.groupItems[indexPath.row]];
+    }
+}
 
 - (void)layoutSubviews
 {

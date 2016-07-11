@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
+	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>需要您的位置以便获取您所在位置</string>
 	<key>NSAppTransportSecurity</key>

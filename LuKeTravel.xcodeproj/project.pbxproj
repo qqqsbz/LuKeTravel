@@ -45,14 +45,8 @@
 		DC8A7B261D2BA4770032BC48 /* XBStretchableTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B251D2BA4770032BC48 /* XBStretchableTableHeaderView.m */; };
 		DC8A7B291D2BB0980032BC48 /* banner3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7B271D2BB0980032BC48 /* banner3.jpg */; };
 		DC8A7B2A1D2BB0980032BC48 /* banner2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7B281D2BB0980032BC48 /* banner2.jpg */; };
-		DC8A7B311D2CA11A0032BC48 /* XBActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B301D2CA11A0032BC48 /* XBActivityCell.m */; };
-		DC8A7B331D2CA1240032BC48 /* XBActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7B321D2CA1240032BC48 /* XBActivityCell.xib */; };
-		DC8A7B361D2CA5100032BC48 /* XBHomeActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B351D2CA5100032BC48 /* XBHomeActivityView.m */; };
-		DC8A7B391D2CD04A0032BC48 /* XBHomeDestinationView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B381D2CD04A0032BC48 /* XBHomeDestinationView.m */; };
 		DC8A7B3C1D2CD6450032BC48 /* XBHomeInviationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B3B1D2CD6450032BC48 /* XBHomeInviationCell.m */; };
 		DC8A7B3E1D2CD65E0032BC48 /* XBHomeInviationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7B3D1D2CD65E0032BC48 /* XBHomeInviationCell.xib */; };
-		DC8A7B421D2D012C0032BC48 /* XBHomeDestinationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7B411D2D012C0032BC48 /* XBHomeDestinationCell.xib */; };
-		DC8A7B451D2D02420032BC48 /* XBHomeDestinationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B441D2D02420032BC48 /* XBHomeDestinationCell.m */; };
 		DC8A7B481D2DF2F60032BC48 /* XBLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B471D2DF2F60032BC48 /* XBLoadingView.m */; };
 		DC8A7B4B1D2E2A4C0032BC48 /* XBActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B4A1D2E2A4C0032BC48 /* XBActivityViewController.m */; };
 		DC8A7B4E1D2E2EB40032BC48 /* XBBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B4D1D2E2EB40032BC48 /* XBBannerView.m */; };
@@ -71,8 +65,8 @@
 		DC8A7B731D2F52950032BC48 /* XBHomeActivityContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7B721D2F52950032BC48 /* XBHomeActivityContentCell.xib */; };
 		DC8A7B761D2F52C40032BC48 /* XBHomeActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B751D2F52C40032BC48 /* XBHomeActivityCell.m */; };
 		DC8A7B791D2F53920032BC48 /* XBHomeActivityContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B781D2F53920032BC48 /* XBHomeActivityContentCell.m */; };
-		DC8A7B8C1D2F9E930032BC48 /* XBHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B8B1D2F9E930032BC48 /* XBHomeHeaderView.m */; };
-		DC8A7B8F1D2FA3B90032BC48 /* StretchyHeaderCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B8E1D2FA3B90032BC48 /* StretchyHeaderCollectionViewLayout.m */; };
+		DC8A7BBA1D3347020032BC48 /* XBHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BB91D3347020032BC48 /* XBHomeHeaderView.m */; };
+		DC8A7BC31D3378900032BC48 /* XBDesinationFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BC21D3378900032BC48 /* XBDesinationFooterView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,19 +140,9 @@
 		DC8A7B251D2BA4770032BC48 /* XBStretchableTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBStretchableTableHeaderView.m; sourceTree = "<group>"; };
 		DC8A7B271D2BB0980032BC48 /* banner3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner3.jpg; sourceTree = "<group>"; };
 		DC8A7B281D2BB0980032BC48 /* banner2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner2.jpg; sourceTree = "<group>"; };
-		DC8A7B2F1D2CA11A0032BC48 /* XBActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityCell.h; sourceTree = "<group>"; };
-		DC8A7B301D2CA11A0032BC48 /* XBActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityCell.m; sourceTree = "<group>"; };
-		DC8A7B321D2CA1240032BC48 /* XBActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBActivityCell.xib; sourceTree = "<group>"; };
-		DC8A7B341D2CA5100032BC48 /* XBHomeActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeActivityView.h; sourceTree = "<group>"; };
-		DC8A7B351D2CA5100032BC48 /* XBHomeActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeActivityView.m; sourceTree = "<group>"; };
-		DC8A7B371D2CD04A0032BC48 /* XBHomeDestinationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeDestinationView.h; sourceTree = "<group>"; };
-		DC8A7B381D2CD04A0032BC48 /* XBHomeDestinationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeDestinationView.m; sourceTree = "<group>"; };
 		DC8A7B3A1D2CD6450032BC48 /* XBHomeInviationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeInviationCell.h; sourceTree = "<group>"; };
 		DC8A7B3B1D2CD6450032BC48 /* XBHomeInviationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeInviationCell.m; sourceTree = "<group>"; };
 		DC8A7B3D1D2CD65E0032BC48 /* XBHomeInviationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBHomeInviationCell.xib; sourceTree = "<group>"; };
-		DC8A7B411D2D012C0032BC48 /* XBHomeDestinationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBHomeDestinationCell.xib; sourceTree = "<group>"; };
-		DC8A7B431D2D02420032BC48 /* XBHomeDestinationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeDestinationCell.h; sourceTree = "<group>"; };
-		DC8A7B441D2D02420032BC48 /* XBHomeDestinationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeDestinationCell.m; sourceTree = "<group>"; };
 		DC8A7B461D2DF2F60032BC48 /* XBLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBLoadingView.h; sourceTree = "<group>"; };
 		DC8A7B471D2DF2F60032BC48 /* XBLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBLoadingView.m; sourceTree = "<group>"; };
 		DC8A7B491D2E2A4C0032BC48 /* XBActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityViewController.h; sourceTree = "<group>"; };
@@ -192,10 +176,10 @@
 		DC8A7B751D2F52C40032BC48 /* XBHomeActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeActivityCell.m; sourceTree = "<group>"; };
 		DC8A7B771D2F53920032BC48 /* XBHomeActivityContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeActivityContentCell.h; sourceTree = "<group>"; };
 		DC8A7B781D2F53920032BC48 /* XBHomeActivityContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeActivityContentCell.m; sourceTree = "<group>"; };
-		DC8A7B8A1D2F9E8A0032BC48 /* XBHomeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeHeaderView.h; sourceTree = "<group>"; };
-		DC8A7B8B1D2F9E930032BC48 /* XBHomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeHeaderView.m; sourceTree = "<group>"; };
-		DC8A7B8D1D2FA3B90032BC48 /* StretchyHeaderCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StretchyHeaderCollectionViewLayout.h; sourceTree = "<group>"; };
-		DC8A7B8E1D2FA3B90032BC48 /* StretchyHeaderCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StretchyHeaderCollectionViewLayout.m; sourceTree = "<group>"; };
+		DC8A7BB81D3347020032BC48 /* XBHomeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeHeaderView.h; sourceTree = "<group>"; };
+		DC8A7BB91D3347020032BC48 /* XBHomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeHeaderView.m; sourceTree = "<group>"; };
+		DC8A7BC11D3378900032BC48 /* XBDesinationFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDesinationFooterView.h; sourceTree = "<group>"; };
+		DC8A7BC21D3378900032BC48 /* XBDesinationFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDesinationFooterView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,24 +332,12 @@
 		DC8A7AEF1D2B618B0032BC48 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				DC8A7B8D1D2FA3B90032BC48 /* StretchyHeaderCollectionViewLayout.h */,
-				DC8A7B8E1D2FA3B90032BC48 /* StretchyHeaderCollectionViewLayout.m */,
 				DC8A7B7F1D2F97FD0032BC48 /* city */,
 				DC8A7AF31D2B623B0032BC48 /* XBHomeViewController.h */,
 				DC8A7AF41D2B623B0032BC48 /* XBHomeViewController.m */,
-				DC8A7B2F1D2CA11A0032BC48 /* XBActivityCell.h */,
-				DC8A7B301D2CA11A0032BC48 /* XBActivityCell.m */,
-				DC8A7B321D2CA1240032BC48 /* XBActivityCell.xib */,
-				DC8A7B341D2CA5100032BC48 /* XBHomeActivityView.h */,
-				DC8A7B351D2CA5100032BC48 /* XBHomeActivityView.m */,
-				DC8A7B371D2CD04A0032BC48 /* XBHomeDestinationView.h */,
-				DC8A7B381D2CD04A0032BC48 /* XBHomeDestinationView.m */,
 				DC8A7B3A1D2CD6450032BC48 /* XBHomeInviationCell.h */,
 				DC8A7B3B1D2CD6450032BC48 /* XBHomeInviationCell.m */,
 				DC8A7B3D1D2CD65E0032BC48 /* XBHomeInviationCell.xib */,
-				DC8A7B411D2D012C0032BC48 /* XBHomeDestinationCell.xib */,
-				DC8A7B431D2D02420032BC48 /* XBHomeDestinationCell.h */,
-				DC8A7B441D2D02420032BC48 /* XBHomeDestinationCell.m */,
 				DC8A7B491D2E2A4C0032BC48 /* XBActivityViewController.h */,
 				DC8A7B4A1D2E2A4C0032BC48 /* XBActivityViewController.m */,
 			);
@@ -464,8 +436,6 @@
 		DC8A7B7F1D2F97FD0032BC48 /* city */ = {
 			isa = PBXGroup;
 			children = (
-				DC8A7B8A1D2F9E8A0032BC48 /* XBHomeHeaderView.h */,
-				DC8A7B8B1D2F9E930032BC48 /* XBHomeHeaderView.m */,
 				DC8A7B5B1D2E474F0032BC48 /* XBDesinationViewController.h */,
 				DC8A7B5C1D2E474F0032BC48 /* XBDesinationViewController.m */,
 				DC8A7B681D2E550F0032BC48 /* XBLevelOneCell.xib */,
@@ -479,6 +449,10 @@
 				DC8A7B721D2F52950032BC48 /* XBHomeActivityContentCell.xib */,
 				DC8A7B771D2F53920032BC48 /* XBHomeActivityContentCell.h */,
 				DC8A7B781D2F53920032BC48 /* XBHomeActivityContentCell.m */,
+				DC8A7BB81D3347020032BC48 /* XBHomeHeaderView.h */,
+				DC8A7BB91D3347020032BC48 /* XBHomeHeaderView.m */,
+				DC8A7BC11D3378900032BC48 /* XBDesinationFooterView.h */,
+				DC8A7BC21D3378900032BC48 /* XBDesinationFooterView.m */,
 			);
 			name = city;
 			sourceTree = "<group>";
@@ -548,14 +522,12 @@
 				DC8A7B2A1D2BB0980032BC48 /* banner2.jpg in Resources */,
 				DC8A7A7B1D2B57730032BC48 /* LaunchScreen.storyboard in Resources */,
 				DC8A7A781D2B57730032BC48 /* Assets.xcassets in Resources */,
-				DC8A7B421D2D012C0032BC48 /* XBHomeDestinationCell.xib in Resources */,
 				DC8A7AA51D2B582C0032BC48 /* Podfile in Resources */,
 				DC8A7B731D2F52950032BC48 /* XBHomeActivityContentCell.xib in Resources */,
 				DC8A7B691D2E550F0032BC48 /* XBLevelOneCell.xib in Resources */,
 				DC8A7B3E1D2CD65E0032BC48 /* XBHomeInviationCell.xib in Resources */,
 				DC8A7A761D2B57730032BC48 /* Main.storyboard in Resources */,
 				DC8A7B231D2B9C9C0032BC48 /* banner1.jpg in Resources */,
-				DC8A7B331D2CA1240032BC48 /* XBActivityCell.xib in Resources */,
 				DC8A7B711D2F520A0032BC48 /* XBHomeActivityCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -620,6 +592,7 @@
 				DC8A7B761D2F52C40032BC48 /* XBHomeActivityCell.m in Sources */,
 				DC8A7A941D2B58100032BC48 /* NSIntegerFormatter.m in Sources */,
 				DC8A7B111D2B914D0032BC48 /* XBReview.m in Sources */,
+				DC8A7BC31D3378900032BC48 /* XBDesinationFooterView.m in Sources */,
 				DC8A7B071D2B8CFD0032BC48 /* XBActivity.m in Sources */,
 				DC8A7B261D2BA4770032BC48 /* XBStretchableTableHeaderView.m in Sources */,
 				DC8A7B181D2B93CE0032BC48 /* XBSearchHot.m in Sources */,
@@ -629,7 +602,6 @@
 				DC8A7B1B1D2B94440032BC48 /* XBSearch.m in Sources */,
 				DC8A7AFD1D2B83BE0032BC48 /* XBInviation.m in Sources */,
 				DC8A7B561D2E42FD0032BC48 /* XBXMLParserUtils.m in Sources */,
-				DC8A7B311D2CA11A0032BC48 /* XBActivityCell.m in Sources */,
 				DC8A7B671D2E4CC70032BC48 /* XBStretchableCityHeaderView.m in Sources */,
 				DC8A7A911D2B58100032BC48 /* UIViewController+HUD.m in Sources */,
 				DC8A7B4E1D2E2EB40032BC48 /* XBBannerView.m in Sources */,
@@ -638,9 +610,7 @@
 				DC8A7B001D2B84770032BC48 /* XBGroup.m in Sources */,
 				DC8A7B3C1D2CD6450032BC48 /* XBHomeInviationCell.m in Sources */,
 				DC8A7B611D2E48740032BC48 /* XBCity.m in Sources */,
-				DC8A7B8F1D2FA3B90032BC48 /* StretchyHeaderCollectionViewLayout.m in Sources */,
 				DC8A7B5A1D2E43640032BC48 /* RegexKitLite.m in Sources */,
-				DC8A7B451D2D02420032BC48 /* XBHomeDestinationCell.m in Sources */,
 				DC8A7B5D1D2E474F0032BC48 /* XBDesinationViewController.m in Sources */,
 				DC8A7B6F1D2F366B0032BC48 /* XBWeather.m in Sources */,
 				DC8A7AF51D2B623B0032BC48 /* XBHomeViewController.m in Sources */,
@@ -648,9 +618,8 @@
 				DC8A7B511D2E395C0032BC48 /* XBStretchableScrollHeaderView.m in Sources */,
 				DC8A7B141D2B91A30032BC48 /* XBComment.m in Sources */,
 				DC8A7AFA1D2B83110032BC48 /* XBHome.m in Sources */,
-				DC8A7B391D2CD04A0032BC48 /* XBHomeDestinationView.m in Sources */,
+				DC8A7BBA1D3347020032BC48 /* XBHomeHeaderView.m in Sources */,
 				DC8A7A961D2B58100032BC48 /* UIImage+Util.m in Sources */,
-				DC8A7B361D2CA5100032BC48 /* XBHomeActivityView.m in Sources */,
 				DC8A7A9D1D2B58160032BC48 /* XBUserDefaultsUtil.m in Sources */,
 				DC8A7A951D2B58100032BC48 /* UIColor+Util.m in Sources */,
 				DC8A7A931D2B58100032BC48 /* NSString+Util.m in Sources */,
@@ -660,7 +629,6 @@
 				DC8A7B0A1D2B8DBB0032BC48 /* XBPackage.m in Sources */,
 				DC8A7A9C1D2B58160032BC48 /* XBHttpClient.m in Sources */,
 				DC8A7AA21D2B58210032BC48 /* XBApplication.m in Sources */,
-				DC8A7B8C1D2F9E930032BC48 /* XBHomeHeaderView.m in Sources */,
 				DC8A7B481D2DF2F60032BC48 /* XBLoadingView.m in Sources */,
 				DC8A7B641D2E48AE0032BC48 /* XBLevelOne.m in Sources */,
 				DC8A7AA31D2B58210032BC48 /* XBConstants.m in Sources */,

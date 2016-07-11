@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -117,13 +116,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="300" height="265"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpu-Rg-lst" userLabel="title">
-                        <rect key="frame" x="112" y="99" width="76" height="34"/>
+                        <rect key="frame" x="112" y="116" width="76" height="34"/>
                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="28"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuT-8V-z6F">
-                        <rect key="frame" x="132" y="138" width="36" height="17"/>
+                        <rect key="frame" x="132" y="155" width="36" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -147,7 +146,7 @@
                 <constraint firstAttribute="trailing" secondItem="JEP-JP-awC" secondAttribute="trailing" id="ijP-8F-Cjy"/>
                 <constraint firstItem="JEP-JP-awC" firstAttribute="leading" secondItem="pBf-uU-Mxb" secondAttribute="leading" id="lEv-HK-tZU"/>
                 <constraint firstItem="slO-sV-oxd" firstAttribute="top" secondItem="pBf-uU-Mxb" secondAttribute="top" id="oxg-KS-05f"/>
-                <constraint firstItem="hpu-Rg-lst" firstAttribute="bottom" secondItem="pBf-uU-Mxb" secondAttribute="centerY" id="pSw-0N-fuW"/>
+                <constraint firstItem="hpu-Rg-lst" firstAttribute="centerY" secondItem="pBf-uU-Mxb" secondAttribute="centerY" id="pSw-0N-fuW"/>
                 <constraint firstItem="hpu-Rg-lst" firstAttribute="centerX" secondItem="pBf-uU-Mxb" secondAttribute="centerX" id="u4O-63-Vbo"/>
                 <constraint firstItem="slO-sV-oxd" firstAttribute="trailing" secondItem="DhU-9d-2ka" secondAttribute="trailing" constant="15" id="w1b-rU-RBi"/>
                 <constraint firstItem="iVF-T8-qXx" firstAttribute="leading" secondItem="pBf-uU-Mxb" secondAttribute="leading" id="wrm-5R-2FI"/>

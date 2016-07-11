@@ -2,11 +2,10 @@
 //  XBHomeHeaderView.m
 //  LuKeTravel
 //
-//  Created by coder on 16/7/5.
+//  Created by coder on 16/7/11.
 //  Copyright © 2016年 coder. All rights reserved.
 //
 
-#define kSpace 10.f
 #import "XBHomeHeaderView.h"
 
 @implementation XBHomeHeaderView
@@ -30,17 +29,14 @@
 - (void)initialization
 {
     self.leftLabel = [UILabel new];
-    self.leftLabel.text = @"附近";
-    self.leftLabel.textColor = [UIColor colorWithHexString:@"#292929"];
-    self.leftLabel.font = [UIFont systemFontOfSize:18.f];
+    self.leftLabel.font = [UIFont systemFontOfSize:20.f];
+    self.leftLabel.textColor = [UIColor colorWithHexString:@"#3E3D3D"];
     [self addSubview:self.leftLabel];
     
     self.rightLabel = [UILabel new];
-    self.rightLabel.text = @"澳门";
-    self.rightLabel.textColor = [UIColor colorWithHexString:@"#ADAEAD"];
     self.rightLabel.font = [UIFont systemFontOfSize:14.f];
+    self.rightLabel.textColor = [UIColor colorWithHexString:@"#BDBDBD"];
     [self addSubview:self.rightLabel];
-
 }
 
 - (void)layoutSubviews
@@ -48,13 +44,13 @@
     [super layoutSubviews];
     
     [self.leftLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(kSpace);
-        make.bottom.equalTo(self).offset(0);
+        make.left.equalTo(self).offset(10);
+        make.bottom.equalTo(self).offset(-5);
     }];
     
     [self.rightLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self).offset(-kSpace * 2);
-        make.bottom.equalTo(self.leftLabel);
+        make.right.equalTo(self).offset(-20);
+        make.bottom.equalTo(self);
     }];
 }
 

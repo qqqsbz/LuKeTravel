@@ -6,6 +6,7 @@
 //  Copyright © 2016年 coder. All rights reserved.
 //
 #define kSpace 10.f
+#define kHeaderHeight 50.f
 #define kStatusHeight   CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)
 #define kTabbarHeight   CGRectGetHeight(self.tabBarController.tabBar.frame)
 #define kResetTabviewContentSize self.tableView.contentSize.height - CGRectGetHeight(self.navigationController.navigationBar.frame)
@@ -16,13 +17,13 @@
 #import "XBGroupItem.h"
 #import "XBInviation.h"
 #import "XBLoadingView.h"
-#import "XBActivityCell.h"
+#import "XBHomeHeaderView.h"
+#import "XBHomeActivityCell.h"
 #import "XBHomeInviationCell.h"
-#import "XBHomeDestinationCell.h"
 #import "XBActivityViewController.h"
 #import "XBDesinationViewController.h"
 #import "XBStretchableTableHeaderView.h"
-@interface XBHomeViewController () <UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,XBHomeInviationCellDelegate,XBActivityCellDelegate,XBHomeDestinationCellDelegate>
+@interface XBHomeViewController () <UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,XBHomeInviationCellDelegate,XBHomeActivityCellDelegate>
 @property (strong, nonatomic) UITableView   *tableView;
 @property (strong, nonatomic) UIImageView   *bannerImageView;
 @property (strong, nonatomic) XBHome        *home;
@@ -33,9 +34,8 @@
 @property (strong, nonatomic) XBStretchableTableHeaderView  *stretchHeaderView;
 @end
 
-static NSString *activityReuseIdentifier = @"XBActivityCell";
+static NSString *activityReuseIdentifier = @"XBHomeActivityCell";
 static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
-static NSString *destinationReuseIdentifier = @"XBHomeDestinationCell";
 @implementation XBHomeViewController
 
 - (void)viewDidLoad {
@@ -112,9 +112,9 @@ static NSString *destinationReuseIdentifier = @"XBHomeDestinationCell";
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"#F2F4F5"];
     self.tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBActivityCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:activityReuseIdentifier];
+//    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBActivityCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:activityReuseIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeActivityCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:activityReuseIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeInviationCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:inviationReuseIdentifier];
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeDestinationCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:destinationReuseIdentifier];
     [self.view addSubview:self.tableView];
     
     
@@ -192,38 +192,25 @@ static NSString *destinationReuseIdentifier = @"XBHomeDestinationCell";
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    NSInteger count = self.home.groups.count + (self.home.inviation ? 1 : 0);
+    return count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    NSInteger count = self.home.groups.count;
-    
-    count += self.home.inviation ? 1 : 0;
-    
-    return count;
+    if (section < self.home.groups.count) {
+        return 1;
+    }
+    return self.home.inviation ? 1 : 0;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row < self.home.groups.count) {
-        XBGroup *group = self.home.groups[indexPath.row];
-        if (![group.type isEqualToString:@"4"]) {
-            XBActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:activityReuseIdentifier forIndexPath:indexPath];
-            cell.titleLabel.text = group.className;
-            cell.activities = group.items;
-            cell.subTitleLabel.text = @"";
-            cell.delegate = self;
-            return cell;
-        } else {
-            XBHomeDestinationCell *cell = [tableView dequeueReusableCellWithIdentifier:destinationReuseIdentifier forIndexPath:indexPath];
-            XBGroupItem *item = [group.items firstObject];
-            cell.destinations = group.items;
-            cell.titleLabel.text = group.className;
-            cell.subTitleLabel.text = item.name;
-            cell.delegate = self;
-            return cell;
-        }
+    if (indexPath.section < self.home.groups.count) {
+        XBGroup *group = self.home.groups[indexPath.section];
+        XBHomeActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:activityReuseIdentifier forIndexPath:indexPath];
+        cell.groupItems = group.items;
+        cell.delegate = self;
+        return cell;
     }
     
     XBHomeInviationCell *cell = [tableView dequeueReusableCellWithIdentifier:inviationReuseIdentifier forIndexPath:indexPath];
@@ -235,22 +222,69 @@ static NSString *destinationReuseIdentifier = @"XBHomeDestinationCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat height = 230.f;
-    if (indexPath.row < self.home.groups.count) {
-        XBGroup *group = self.home.groups[indexPath.row];
+    if (indexPath.section < self.home.groups.count) {
+        XBGroup *group = self.home.groups[indexPath.section];
         if (![group.type isEqualToString:@"4"]) {
-            height = 290.f;
+            height = 275.f;
         } else {
-            height = 245.f;
+            height = 210.f;
         }
     }
     height *= [Application isPlus] ? 1.2 : 1;
     return height;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return section < self.home.groups.count ? kHeaderHeight : 0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    
+    XBGroup *group = self.home.groups[section];
+    XBHomeHeaderView *headerView = [[XBHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 50.f)];
+    headerView.leftLabel.text = group.className;
+    headerView.rightLabel.text = group.displayText;
+    return headerView;
+}
+
 #pragma mark -- Table view data delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+
+#pragma mark -- XBHomeActivityCellDelegate
+- (void)activityCell:(XBHomeActivityCell *)activityCell didSelectedWithGroupItem:(XBGroupItem *)groupItem
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:activityCell];
+    XBGroup *group = self.home.groups[indexPath.section];
+    
+    if ([group.type isEqualToString:@"4"]) {
+        
+        XBDesinationViewController *desinationVC = [[XBDesinationViewController alloc] init];
+        
+        desinationVC.groupItem = groupItem;
+        
+        desinationVC.hidesBottomBarWhenPushed  = YES;
+        
+        desinationVC.view.backgroundColor = [UIColor whiteColor];
+    
+        [self.navigationController pushViewController:desinationVC animated:YES];
+    
+    } else {
+        
+        XBActivityViewController *activityVC = [[XBActivityViewController alloc] init];
+        
+        activityVC.groupItem = groupItem;
+        
+        activityVC.hidesBottomBarWhenPushed  = YES;
+        
+        [self.navigationController pushViewController:activityVC animated:YES];
+        
+    }
+
 }
 
 #pragma mark -- UIScrollViewDelegate
@@ -281,38 +315,39 @@ static NSString *destinationReuseIdentifier = @"XBHomeDestinationCell";
     self.logoImageView.hidden = !isShowLogo;
     self.logoLabel.hidden  = !isShowLogo;
     
+    
+//    //section header 不悬浮
+//    CGFloat sectionHeaderHeight = kHeaderHeight;
+//    
+//    if (scrollView.contentOffset.y <= sectionHeaderHeight&&scrollView.contentOffset.y >= 0) {
+//        
+//        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+//        
+//    } else if (scrollView.contentOffset.y >= sectionHeaderHeight) {
+//        
+//        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
+//        
+//    }
+    
 }
 
 #pragma mark -- XBHomeInviationCellDelegate
 - (void)inviationCellDidSelectedClose
 {
     self.home.inviation = nil;
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0];
-    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
+    [self.tableView beginUpdates];
+    [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:self.home.groups.count] withRowAnimation:UITableViewRowAnimationBottom];
+    [self.tableView endUpdates];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    });
+    
 }
 
 - (void)inviationCellDidSelectedGo
 {
     
-}
-
-#pragma mark -- XBHomeActivityCellDelegate
-- (void)activityCell:(XBActivityCell *)activityCell didSelectedActivityWithGroupItem:(XBGroupItem *)groupItem
-{
-    XBActivityViewController *activityVC = [[XBActivityViewController alloc] init];
-    activityVC.groupItem = groupItem;
-    activityVC.hidesBottomBarWhenPushed  = YES;
-    [self.navigationController pushViewController:activityVC animated:YES];
-}
-
-#pragma mark -- XBHomeDestinationCellDelegate
-- (void)destinationCell:(XBHomeDestinationCell *)destinationCell didSelectedDestinationWithGroupItem:(XBGroupItem *)groupItem
-{
-    XBDesinationViewController *desinationVC = [[XBDesinationViewController alloc] init];
-    desinationVC.groupItem = groupItem;
-    desinationVC.hidesBottomBarWhenPushed  = YES;
-    desinationVC.view.backgroundColor = [UIColor whiteColor];
-    [self.navigationController pushViewController:desinationVC animated:YES];
 }
 
 #pragma mark -- public method
