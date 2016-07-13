@@ -16,12 +16,11 @@
 #import "XBGroup.h"
 #import "XBGroupItem.h"
 #import "XBInviation.h"
-#import "XBLoadingView.h"
 #import "XBHomeHeaderView.h"
 #import "XBHomeActivityCell.h"
 #import "XBHomeInviationCell.h"
 #import "XBActivityViewController.h"
-#import "XBDesinationViewController.h"
+#import "XBCityViewController.h"
 #import "XBStretchableTableHeaderView.h"
 @interface XBHomeViewController () <UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,XBHomeInviationCellDelegate,XBHomeActivityCellDelegate>
 @property (strong, nonatomic) UITableView   *tableView;
@@ -63,8 +62,6 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     [super viewWillDisappear:animated];
     
     self.navigationController.navigationBarHidden = NO;
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 - (void)reloadData
@@ -263,7 +260,7 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     
     if ([group.type isEqualToString:@"4"]) {
         
-        XBDesinationViewController *desinationVC = [[XBDesinationViewController alloc] init];
+        XBCityViewController *desinationVC = [[XBCityViewController alloc] init];
         
         desinationVC.groupItem = groupItem;
         

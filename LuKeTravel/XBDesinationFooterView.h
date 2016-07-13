@@ -10,6 +10,6 @@
 
 @interface XBDesinationFooterView : UIView
 
-- (instancetype)initWithFrame:(CGRect)frame didSelectedBlock:(dispatch_block_t)block;
+- (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title didSelectedBlock:(dispatch_block_t)block;
 
 @end

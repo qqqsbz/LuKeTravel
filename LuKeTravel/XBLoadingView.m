@@ -33,7 +33,7 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
 + (void)showInView:(UIView *)view
 {
     UIView *maskView = [[UIView alloc] initWithFrame:view.bounds];
-    maskView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.55f];
+    maskView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.35f];
     [view addSubview:maskView];
     [XBLoadingView setHUD:maskView];
     

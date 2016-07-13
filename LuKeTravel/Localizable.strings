@@ -6,4 +6,13 @@
   Copyright (c) 2014年 vbuy. All rights reserved.
 */
 "logo-title" = "前往目的地，探索无限!";
-"desination-viewAll" = "查看所有活动";
+"desination-viewall" = "查看所有活动";
+"search-placeholder" = "搜索活动";
+"search-cancle" = "取消";
+
+
+"destination-title" = "目的地";
+"destination-titlehot" = "热门";
+"destination-titleall" = "全部";
+"destination-foottitle" = "探索更多目的地";
+"destination-all-foot" = "更多目的地敬请期待";

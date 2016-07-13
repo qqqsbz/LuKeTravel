@@ -72,7 +72,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="qkD-OL-bqJ" kind="relationship" relationship="rootViewController" id="PMs-Fq-SAy"/>
+                        <segue destination="N83-fk-5V2" kind="relationship" relationship="rootViewController" id="5a5-dT-mMN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZS-nW-2jy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -80,23 +80,23 @@
             <point key="canvasLocation" x="216.53333333333333" y="-522.55999999999995"/>
         </scene>
         <!--目的地-->
-        <scene sceneID="avd-gR-HEe">
+        <scene sceneID="Klf-m5-dm1">
             <objects>
-                <viewController id="qkD-OL-bqJ" sceneMemberID="viewController">
+                <viewController id="N83-fk-5V2" customClass="XBDestinationViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ifr-Mo-jOE"/>
-                        <viewControllerLayoutGuide type="bottom" id="LhA-p4-LAt"/>
+                        <viewControllerLayoutGuide type="top" id="PAX-Vl-w7F"/>
+                        <viewControllerLayoutGuide type="bottom" id="3Zd-J5-TYv"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ZTa-KI-xZW">
+                    <view key="view" contentMode="scaleToFill" id="ezc-CE-FR5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="目的地" id="W1E-n9-HIC"/>
+                    <navigationItem key="navigationItem" title="目的地" id="XnH-aq-lFd"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fKl-2A-XPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xk8-p1-lHQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="743" y="-523"/>
+            <point key="canvasLocation" x="714" y="-546"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="aZy-VU-xdu">

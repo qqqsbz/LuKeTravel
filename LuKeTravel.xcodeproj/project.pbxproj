@@ -54,7 +54,7 @@
 		DC8A7B561D2E42FD0032BC48 /* XBXMLParserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B531D2E42FD0032BC48 /* XBXMLParserUtils.m */; };
 		DC8A7B571D2E42FD0032BC48 /* XBXMLParserContent.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B551D2E42FD0032BC48 /* XBXMLParserContent.m */; };
 		DC8A7B5A1D2E43640032BC48 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B591D2E43640032BC48 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		DC8A7B5D1D2E474F0032BC48 /* XBDesinationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B5C1D2E474F0032BC48 /* XBDesinationViewController.m */; };
+		DC8A7B5D1D2E474F0032BC48 /* XBCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B5C1D2E474F0032BC48 /* XBCityViewController.m */; };
 		DC8A7B611D2E48740032BC48 /* XBCity.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B601D2E48740032BC48 /* XBCity.m */; };
 		DC8A7B641D2E48AE0032BC48 /* XBLevelOne.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B631D2E48AE0032BC48 /* XBLevelOne.m */; };
 		DC8A7B671D2E4CC70032BC48 /* XBStretchableCityHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B661D2E4CC70032BC48 /* XBStretchableCityHeaderView.m */; };
@@ -67,6 +67,21 @@
 		DC8A7B791D2F53920032BC48 /* XBHomeActivityContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B781D2F53920032BC48 /* XBHomeActivityContentCell.m */; };
 		DC8A7BBA1D3347020032BC48 /* XBHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BB91D3347020032BC48 /* XBHomeHeaderView.m */; };
 		DC8A7BC31D3378900032BC48 /* XBDesinationFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BC21D3378900032BC48 /* XBDesinationFooterView.m */; };
+		DC8A7BC61D347BF90032BC48 /* XBSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BC51D347BF90032BC48 /* XBSearchView.m */; };
+		DC8A7BCA1D348B180032BC48 /* XBDestinationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BC91D348B180032BC48 /* XBDestinationViewController.m */; };
+		DC8A7BCD1D348BBF0032BC48 /* XBTSTView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BCC1D348BBF0032BC48 /* XBTSTView.m */; };
+		DC8A7BCF1D3495BF0032BC48 /* XBDestinationHotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7BCE1D3495BF0032BC48 /* XBDestinationHotCell.xib */; };
+		DC8A7BD21D3496300032BC48 /* XBDestinationHotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BD11D3496300032BC48 /* XBDestinationHotCell.m */; };
+		DC8A7BD61D3497CF0032BC48 /* XBDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BD51D3497CF0032BC48 /* XBDestination.m */; };
+		DC8A7BD91D3497E30032BC48 /* XBHotDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BD81D3497E30032BC48 /* XBHotDestination.m */; };
+		DC8A7BDC1D3498B90032BC48 /* XBDestinationCities.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BDB1D3498B90032BC48 /* XBDestinationCities.m */; };
+		DC8A7BDF1D3498DD0032BC48 /* XBDestinationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BDE1D3498DD0032BC48 /* XBDestinationItem.m */; };
+		DC8A7BE11D34CC5E0032BC48 /* XBDestinationAllCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7BE01D34CC5E0032BC48 /* XBDestinationAllCell.xib */; };
+		DC8A7BE41D34CDBB0032BC48 /* XBDestinationAllCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BE31D34CDBB0032BC48 /* XBDestinationAllCell.m */; };
+		DC8A7BE71D34DC0F0032BC48 /* XBDestinationAllHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BE61D34DC0F0032BC48 /* XBDestinationAllHeaderView.m */; };
+		DC8A7BEA1D34E05E0032BC48 /* XBDestinationAllLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BE91D34E05E0032BC48 /* XBDestinationAllLayout.m */; };
+		DC8A7BED1D34E8AA0032BC48 /* XBDestinationAllFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BEC1D34E8AA0032BC48 /* XBDestinationAllFooterView.m */; };
+		DC8A7BF01D34F5D20032BC48 /* XBCityPushTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BEF1D34F5D20032BC48 /* XBCityPushTransition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,8 +172,8 @@
 		DC8A7B551D2E42FD0032BC48 /* XBXMLParserContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBXMLParserContent.m; sourceTree = "<group>"; };
 		DC8A7B581D2E43640032BC48 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		DC8A7B591D2E43640032BC48 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
-		DC8A7B5B1D2E474F0032BC48 /* XBDesinationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDesinationViewController.h; sourceTree = "<group>"; };
-		DC8A7B5C1D2E474F0032BC48 /* XBDesinationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDesinationViewController.m; sourceTree = "<group>"; };
+		DC8A7B5B1D2E474F0032BC48 /* XBCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBCityViewController.h; sourceTree = "<group>"; };
+		DC8A7B5C1D2E474F0032BC48 /* XBCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBCityViewController.m; sourceTree = "<group>"; };
 		DC8A7B5F1D2E48740032BC48 /* XBCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBCity.h; sourceTree = "<group>"; };
 		DC8A7B601D2E48740032BC48 /* XBCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBCity.m; sourceTree = "<group>"; };
 		DC8A7B621D2E48AE0032BC48 /* XBLevelOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBLevelOne.h; sourceTree = "<group>"; };
@@ -180,6 +195,34 @@
 		DC8A7BB91D3347020032BC48 /* XBHomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeHeaderView.m; sourceTree = "<group>"; };
 		DC8A7BC11D3378900032BC48 /* XBDesinationFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDesinationFooterView.h; sourceTree = "<group>"; };
 		DC8A7BC21D3378900032BC48 /* XBDesinationFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDesinationFooterView.m; sourceTree = "<group>"; };
+		DC8A7BC41D347BF90032BC48 /* XBSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSearchView.h; sourceTree = "<group>"; };
+		DC8A7BC51D347BF90032BC48 /* XBSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSearchView.m; sourceTree = "<group>"; };
+		DC8A7BC81D348B180032BC48 /* XBDestinationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDestinationViewController.h; sourceTree = "<group>"; };
+		DC8A7BC91D348B180032BC48 /* XBDestinationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDestinationViewController.m; sourceTree = "<group>"; };
+		DC8A7BCB1D348BBF0032BC48 /* XBTSTView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTSTView.h; sourceTree = "<group>"; };
+		DC8A7BCC1D348BBF0032BC48 /* XBTSTView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBTSTView.m; sourceTree = "<group>"; };
+		DC8A7BCE1D3495BF0032BC48 /* XBDestinationHotCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBDestinationHotCell.xib; sourceTree = "<group>"; };
+		DC8A7BD01D3496300032BC48 /* XBDestinationHotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDestinationHotCell.h; sourceTree = "<group>"; };
+		DC8A7BD11D3496300032BC48 /* XBDestinationHotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDestinationHotCell.m; sourceTree = "<group>"; };
+		DC8A7BD41D3497CF0032BC48 /* XBDestination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDestination.h; sourceTree = "<group>"; };
+		DC8A7BD51D3497CF0032BC48 /* XBDestination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDestination.m; sourceTree = "<group>"; };
+		DC8A7BD71D3497E30032BC48 /* XBHotDestination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHotDestination.h; sourceTree = "<group>"; };
+		DC8A7BD81D3497E30032BC48 /* XBHotDestination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHotDestination.m; sourceTree = "<group>"; };
+		DC8A7BDA1D3498B90032BC48 /* XBDestinationCities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDestinationCities.h; sourceTree = "<group>"; };
+		DC8A7BDB1D3498B90032BC48 /* XBDestinationCities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDestinationCities.m; sourceTree = "<group>"; };
+		DC8A7BDD1D3498DD0032BC48 /* XBDestinationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDestinationItem.h; sourceTree = "<group>"; };
+		DC8A7BDE1D3498DD0032BC48 /* XBDestinationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDestinationItem.m; sourceTree = "<group>"; };
+		DC8A7BE01D34CC5E0032BC48 /* XBDestinationAllCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBDestinationAllCell.xib; sourceTree = "<group>"; };
+		DC8A7BE21D34CDBB0032BC48 /* XBDestinationAllCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDestinationAllCell.h; sourceTree = "<group>"; };
+		DC8A7BE31D34CDBB0032BC48 /* XBDestinationAllCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDestinationAllCell.m; sourceTree = "<group>"; };
+		DC8A7BE51D34DC0F0032BC48 /* XBDestinationAllHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDestinationAllHeaderView.h; sourceTree = "<group>"; };
+		DC8A7BE61D34DC0F0032BC48 /* XBDestinationAllHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDestinationAllHeaderView.m; sourceTree = "<group>"; };
+		DC8A7BE81D34E05E0032BC48 /* XBDestinationAllLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDestinationAllLayout.h; sourceTree = "<group>"; };
+		DC8A7BE91D34E05E0032BC48 /* XBDestinationAllLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDestinationAllLayout.m; sourceTree = "<group>"; };
+		DC8A7BEB1D34E8AA0032BC48 /* XBDestinationAllFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDestinationAllFooterView.h; sourceTree = "<group>"; };
+		DC8A7BEC1D34E8AA0032BC48 /* XBDestinationAllFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDestinationAllFooterView.m; sourceTree = "<group>"; };
+		DC8A7BEE1D34F5D10032BC48 /* XBCityPushTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBCityPushTransition.h; sourceTree = "<group>"; };
+		DC8A7BEF1D34F5D20032BC48 /* XBCityPushTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBCityPushTransition.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +282,7 @@
 				DC8A7A791D2B57730032BC48 /* LaunchScreen.storyboard */,
 				DC8A7AEA1D2B5F9C0032BC48 /* Localizable.strings */,
 				DC8A7AEF1D2B618B0032BC48 /* Home */,
+				DC8A7BC71D348B060032BC48 /* Destination */,
 				DC8A7B2E1D2CA0810032BC48 /* Facility */,
 				DC8A7AA61D2B58F40032BC48 /* Model */,
 				DC8A7A9B1D2B58160032BC48 /* Utils */,
@@ -319,6 +363,7 @@
 		DC8A7AA61D2B58F40032BC48 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DC8A7BD31D3497A40032BC48 /* Destination */,
 				DC8A7B5E1D2E48660032BC48 /* City */,
 				DC8A7B151D2B93BE0032BC48 /* Search */,
 				DC8A7B0E1D2B91300032BC48 /* Review */,
@@ -408,6 +453,8 @@
 		DC8A7B2E1D2CA0810032BC48 /* Facility */ = {
 			isa = PBXGroup;
 			children = (
+				DC8A7BCB1D348BBF0032BC48 /* XBTSTView.h */,
+				DC8A7BCC1D348BBF0032BC48 /* XBTSTView.m */,
 				DC8A7B241D2BA4770032BC48 /* XBStretchableTableHeaderView.h */,
 				DC8A7B251D2BA4770032BC48 /* XBStretchableTableHeaderView.m */,
 				DC8A7B461D2DF2F60032BC48 /* XBLoadingView.h */,
@@ -416,6 +463,8 @@
 				DC8A7B4D1D2E2EB40032BC48 /* XBBannerView.m */,
 				DC8A7B4F1D2E395C0032BC48 /* XBStretchableScrollHeaderView.h */,
 				DC8A7B501D2E395C0032BC48 /* XBStretchableScrollHeaderView.m */,
+				DC8A7BC41D347BF90032BC48 /* XBSearchView.h */,
+				DC8A7BC51D347BF90032BC48 /* XBSearchView.m */,
 			);
 			name = Facility;
 			sourceTree = "<group>";
@@ -436,8 +485,8 @@
 		DC8A7B7F1D2F97FD0032BC48 /* city */ = {
 			isa = PBXGroup;
 			children = (
-				DC8A7B5B1D2E474F0032BC48 /* XBDesinationViewController.h */,
-				DC8A7B5C1D2E474F0032BC48 /* XBDesinationViewController.m */,
+				DC8A7B5B1D2E474F0032BC48 /* XBCityViewController.h */,
+				DC8A7B5C1D2E474F0032BC48 /* XBCityViewController.m */,
 				DC8A7B681D2E550F0032BC48 /* XBLevelOneCell.xib */,
 				DC8A7B6A1D2E56640032BC48 /* XBLevelOneCell.h */,
 				DC8A7B6B1D2E56640032BC48 /* XBLevelOneCell.m */,
@@ -455,6 +504,44 @@
 				DC8A7BC21D3378900032BC48 /* XBDesinationFooterView.m */,
 			);
 			name = city;
+			sourceTree = "<group>";
+		};
+		DC8A7BC71D348B060032BC48 /* Destination */ = {
+			isa = PBXGroup;
+			children = (
+				DC8A7BEE1D34F5D10032BC48 /* XBCityPushTransition.h */,
+				DC8A7BEF1D34F5D20032BC48 /* XBCityPushTransition.m */,
+				DC8A7BC81D348B180032BC48 /* XBDestinationViewController.h */,
+				DC8A7BC91D348B180032BC48 /* XBDestinationViewController.m */,
+				DC8A7BCE1D3495BF0032BC48 /* XBDestinationHotCell.xib */,
+				DC8A7BD01D3496300032BC48 /* XBDestinationHotCell.h */,
+				DC8A7BD11D3496300032BC48 /* XBDestinationHotCell.m */,
+				DC8A7BE01D34CC5E0032BC48 /* XBDestinationAllCell.xib */,
+				DC8A7BE21D34CDBB0032BC48 /* XBDestinationAllCell.h */,
+				DC8A7BE31D34CDBB0032BC48 /* XBDestinationAllCell.m */,
+				DC8A7BE51D34DC0F0032BC48 /* XBDestinationAllHeaderView.h */,
+				DC8A7BE61D34DC0F0032BC48 /* XBDestinationAllHeaderView.m */,
+				DC8A7BEB1D34E8AA0032BC48 /* XBDestinationAllFooterView.h */,
+				DC8A7BEC1D34E8AA0032BC48 /* XBDestinationAllFooterView.m */,
+				DC8A7BE81D34E05E0032BC48 /* XBDestinationAllLayout.h */,
+				DC8A7BE91D34E05E0032BC48 /* XBDestinationAllLayout.m */,
+			);
+			name = Destination;
+			sourceTree = "<group>";
+		};
+		DC8A7BD31D3497A40032BC48 /* Destination */ = {
+			isa = PBXGroup;
+			children = (
+				DC8A7BD41D3497CF0032BC48 /* XBDestination.h */,
+				DC8A7BD51D3497CF0032BC48 /* XBDestination.m */,
+				DC8A7BD71D3497E30032BC48 /* XBHotDestination.h */,
+				DC8A7BD81D3497E30032BC48 /* XBHotDestination.m */,
+				DC8A7BDA1D3498B90032BC48 /* XBDestinationCities.h */,
+				DC8A7BDB1D3498B90032BC48 /* XBDestinationCities.m */,
+				DC8A7BDD1D3498DD0032BC48 /* XBDestinationItem.h */,
+				DC8A7BDE1D3498DD0032BC48 /* XBDestinationItem.m */,
+			);
+			name = Destination;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -525,8 +612,10 @@
 				DC8A7AA51D2B582C0032BC48 /* Podfile in Resources */,
 				DC8A7B731D2F52950032BC48 /* XBHomeActivityContentCell.xib in Resources */,
 				DC8A7B691D2E550F0032BC48 /* XBLevelOneCell.xib in Resources */,
+				DC8A7BE11D34CC5E0032BC48 /* XBDestinationAllCell.xib in Resources */,
 				DC8A7B3E1D2CD65E0032BC48 /* XBHomeInviationCell.xib in Resources */,
 				DC8A7A761D2B57730032BC48 /* Main.storyboard in Resources */,
+				DC8A7BCF1D3495BF0032BC48 /* XBDestinationHotCell.xib in Resources */,
 				DC8A7B231D2B9C9C0032BC48 /* banner1.jpg in Resources */,
 				DC8A7B711D2F520A0032BC48 /* XBHomeActivityCell.xib in Resources */,
 			);
@@ -587,18 +676,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC8A7BED1D34E8AA0032BC48 /* XBDestinationAllFooterView.m in Sources */,
+				DC8A7BD91D3497E30032BC48 /* XBHotDestination.m in Sources */,
 				DC8A7AAB1D2B59D30032BC48 /* XBModel.m in Sources */,
 				DC8A7B791D2F53920032BC48 /* XBHomeActivityContentCell.m in Sources */,
+				DC8A7BF01D34F5D20032BC48 /* XBCityPushTransition.m in Sources */,
 				DC8A7B761D2F52C40032BC48 /* XBHomeActivityCell.m in Sources */,
 				DC8A7A941D2B58100032BC48 /* NSIntegerFormatter.m in Sources */,
 				DC8A7B111D2B914D0032BC48 /* XBReview.m in Sources */,
 				DC8A7BC31D3378900032BC48 /* XBDesinationFooterView.m in Sources */,
+				DC8A7BDC1D3498B90032BC48 /* XBDestinationCities.m in Sources */,
 				DC8A7B071D2B8CFD0032BC48 /* XBActivity.m in Sources */,
 				DC8A7B261D2BA4770032BC48 /* XBStretchableTableHeaderView.m in Sources */,
 				DC8A7B181D2B93CE0032BC48 /* XBSearchHot.m in Sources */,
 				DC8A7A921D2B58100032BC48 /* UIView+XBFrame.m in Sources */,
 				DC8A7B0D1D2B8E510032BC48 /* XBNotify.m in Sources */,
 				DC8A7B6C1D2E56640032BC48 /* XBLevelOneCell.m in Sources */,
+				DC8A7BC61D347BF90032BC48 /* XBSearchView.m in Sources */,
+				DC8A7BE41D34CDBB0032BC48 /* XBDestinationAllCell.m in Sources */,
 				DC8A7B1B1D2B94440032BC48 /* XBSearch.m in Sources */,
 				DC8A7AFD1D2B83BE0032BC48 /* XBInviation.m in Sources */,
 				DC8A7B561D2E42FD0032BC48 /* XBXMLParserUtils.m in Sources */,
@@ -607,11 +702,14 @@
 				DC8A7B4E1D2E2EB40032BC48 /* XBBannerView.m in Sources */,
 				DC8A7B4B1D2E2A4C0032BC48 /* XBActivityViewController.m in Sources */,
 				DC8A7B571D2E42FD0032BC48 /* XBXMLParserContent.m in Sources */,
+				DC8A7BE71D34DC0F0032BC48 /* XBDestinationAllHeaderView.m in Sources */,
 				DC8A7B001D2B84770032BC48 /* XBGroup.m in Sources */,
+				DC8A7BD61D3497CF0032BC48 /* XBDestination.m in Sources */,
 				DC8A7B3C1D2CD6450032BC48 /* XBHomeInviationCell.m in Sources */,
+				DC8A7BCD1D348BBF0032BC48 /* XBTSTView.m in Sources */,
 				DC8A7B611D2E48740032BC48 /* XBCity.m in Sources */,
 				DC8A7B5A1D2E43640032BC48 /* RegexKitLite.m in Sources */,
-				DC8A7B5D1D2E474F0032BC48 /* XBDesinationViewController.m in Sources */,
+				DC8A7B5D1D2E474F0032BC48 /* XBCityViewController.m in Sources */,
 				DC8A7B6F1D2F366B0032BC48 /* XBWeather.m in Sources */,
 				DC8A7AF51D2B623B0032BC48 /* XBHomeViewController.m in Sources */,
 				DC8A7AEE1D2B60BD0032BC48 /* XBAppRootViewController.m in Sources */,
@@ -621,18 +719,22 @@
 				DC8A7BBA1D3347020032BC48 /* XBHomeHeaderView.m in Sources */,
 				DC8A7A961D2B58100032BC48 /* UIImage+Util.m in Sources */,
 				DC8A7A9D1D2B58160032BC48 /* XBUserDefaultsUtil.m in Sources */,
+				DC8A7BCA1D348B180032BC48 /* XBDestinationViewController.m in Sources */,
 				DC8A7A951D2B58100032BC48 /* UIColor+Util.m in Sources */,
 				DC8A7A931D2B58100032BC48 /* NSString+Util.m in Sources */,
 				DC8A7A701D2B57730032BC48 /* AppDelegate.m in Sources */,
+				DC8A7BEA1D34E05E0032BC48 /* XBDestinationAllLayout.m in Sources */,
 				DC8A7B031D2B86960032BC48 /* XBGroupItem.m in Sources */,
 				DC8A7A6D1D2B57730032BC48 /* main.m in Sources */,
 				DC8A7B0A1D2B8DBB0032BC48 /* XBPackage.m in Sources */,
 				DC8A7A9C1D2B58160032BC48 /* XBHttpClient.m in Sources */,
 				DC8A7AA21D2B58210032BC48 /* XBApplication.m in Sources */,
 				DC8A7B481D2DF2F60032BC48 /* XBLoadingView.m in Sources */,
+				DC8A7BD21D3496300032BC48 /* XBDestinationHotCell.m in Sources */,
 				DC8A7B641D2E48AE0032BC48 /* XBLevelOne.m in Sources */,
 				DC8A7AA31D2B58210032BC48 /* XBConstants.m in Sources */,
 				DC8A7B211D2B948E0032BC48 /* XBSearchItem.m in Sources */,
+				DC8A7BDF1D3498DD0032BC48 /* XBDestinationItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

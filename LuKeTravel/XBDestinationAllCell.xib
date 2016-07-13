@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="XBDestinationAllCell" id="nV4-Fb-46a" customClass="XBDestinationAllCell">
+            <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="香港" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehC-Vu-dVh" userLabel="title">
+                        <rect key="frame" x="15" y="11" width="30" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0UV-a1-kH6" userLabel="separator">
+                        <rect key="frame" x="69" y="14" width="1" height="12"/>
+                        <color key="backgroundColor" red="0.81568627450980391" green="0.81568627450980391" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="CpW-ND-AAq"/>
+                            <constraint firstAttribute="width" constant="1" id="E8X-Nk-Cdc"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="0UV-a1-kH6" secondAttribute="trailing" id="7SC-H1-9r6"/>
+                <constraint firstItem="ehC-Vu-dVh" firstAttribute="centerY" secondItem="nV4-Fb-46a" secondAttribute="centerY" id="GDh-QU-JS1"/>
+                <constraint firstItem="ehC-Vu-dVh" firstAttribute="leading" secondItem="nV4-Fb-46a" secondAttribute="leading" constant="15" id="Ppc-h5-Nsl"/>
+                <constraint firstItem="0UV-a1-kH6" firstAttribute="centerY" secondItem="nV4-Fb-46a" secondAttribute="centerY" id="mPt-hf-X5t"/>
+            </constraints>
+            <connections>
+                <outlet property="separatorView" destination="0UV-a1-kH6" id="549-ks-FSf"/>
+                <outlet property="titleLabel" destination="ehC-Vu-dVh" id="TzD-9o-IRC"/>
+            </connections>
+            <point key="canvasLocation" x="301" y="113"/>
+        </collectionViewCell>
+    </objects>
+</document>

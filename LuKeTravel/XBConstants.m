@@ -10,6 +10,8 @@
 
 NSString *const kErrorDomain = @"ERROR_DOMAIN";
 
+NSString *const kDefaultColorHex = @"#F3562B";
+
 //NSString *const kChangeBackgroundColorNotification = @"CHANGE_BACKGROUND_COLOR_NOTIFICATION";
 //
 //NSString *const kLoginOutSuccessNotification = @"LOGIN_SUCCESS_NOTIFICATION";

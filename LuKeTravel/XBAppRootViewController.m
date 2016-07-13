@@ -51,7 +51,7 @@
         imageSel = [imageSel imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         UINavigationController *navigationController = self.childViewControllers[i];
         
-        navigationController.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil image:image selectedImage:imageSel];
+        navigationController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"" image:image selectedImage:imageSel];
     }
 }
 

@@ -10,6 +10,9 @@
 
 extern NSString *const kErrorDomain;
 
+extern NSString *const kDefaultColorHex;
+
+
 //extern NSString *const kChangeBackgroundColorNotification;
 //
 //extern NSString *const kLoginOutSuccessNotification;

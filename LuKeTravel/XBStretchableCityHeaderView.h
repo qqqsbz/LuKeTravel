@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSString      *title;
 @property (strong, nonatomic) UILabel       *temperatureLabel;
 @property (strong, nonatomic) UIImageView   *temperatureImageView;
+@property (strong, nonatomic) UITableView   *levelOneTableView;
 @property (strong, nonatomic) NSArray<XBLevelOne *>  *levelOnes;
 
 /**
@@ -26,5 +27,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView;
 
 - (void)resizeView;
+
+- (void)startAnimation;
 
 @end

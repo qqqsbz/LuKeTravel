@@ -17,7 +17,6 @@
 @property (assign, nonatomic) CGRect   initialFrame;
 @property (assign, nonatomic) CGFloat  defaultViewHeight;
 @property (strong, nonatomic) UIView   *contentView;
-@property (strong, nonatomic) UITableView   *levelOneTableView;
 @end
 static NSString *const reuseIdentifier = @"XBLevelOneCell";
 @implementation XBStretchableCityHeaderView
@@ -84,7 +83,7 @@ static NSString *const reuseIdentifier = @"XBLevelOneCell";
         make.left.equalTo(self.contentView).offset(kSpace);
         make.right.equalTo(self.contentView).offset(-kSpace);
         make.bottom.equalTo(self.contentView);
-        make.height.mas_equalTo(CGRectGetHeight(self.contentView.frame) - CGRectGetHeight(_view.frame) + kTopSapce);
+        make.top.equalTo(self.view.bottom).offset(-kTopSapce);
     }];
     
     [self.temperatureImageView makeConstraints:^(MASConstraintMaker *make) {
@@ -104,7 +103,7 @@ static NSString *const reuseIdentifier = @"XBLevelOneCell";
     f.size.width = _tableView.frame.size.width;
     _view.frame  = f;
     
-    if(scrollView.contentOffset.y < scrollView.contentInset.top)
+    if(scrollView.contentOffset.y < 0)
     {
         CGFloat offsetY = (scrollView.contentOffset.y + scrollView.contentInset.top) * -1;
         
@@ -164,6 +163,24 @@ static NSString *const reuseIdentifier = @"XBLevelOneCell";
     label.font = [UIFont systemFontOfSize:30.f];
     [view addSubview:label];
     return view;
+}
+
+
+- (void)startAnimation
+{
+    [self.levelOneTableView layoutIfNeeded];
+    
+    CGRect levelOneRect = self.levelOneTableView.frame;
+    
+    self.levelOneTableView.xb_y += kTopSapce;
+    
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        self.levelOneTableView.frame = levelOneRect;
+        
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 @end

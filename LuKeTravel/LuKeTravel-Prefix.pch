@@ -20,6 +20,7 @@
 #import "XBHttpClient.h"
 #import "XBUserDefaultsUtil.h"
 #import "UIView+XBFrame.h"
+#import "XBLoadingView.h"
 #import "NSIntegerFormatter.h"
 #import "UIViewController+HUD.h"
 #import "DDLog.h"
