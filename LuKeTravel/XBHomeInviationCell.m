@@ -36,6 +36,8 @@
 {
     [super layoutSubviews];
     
+    [self.coverImageView layoutIfNeeded];
+    
     self.shapeLayer.path = [UIBezierPath bezierPathWithRect:self.coverImageView.bounds].CGPath;
     
     [self.coverImageView.layer addSublayer:self.shapeLayer];

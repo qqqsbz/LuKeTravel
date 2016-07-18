@@ -21,10 +21,14 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    return @{@"marketPrice":@"market_price",
+    return @{@"modelId":@"id",
+             @"marketPrice":@"market_price",
              @"sellingPrice":@"selling_price",
              @"hotState":@"hot_state",
-             @"participantsFormat":@"participants_format"
+             @"participantsFormat":@"participants_format",
+             @"cityName":@"city_name",
+             @"subName":@"subname",
+             @"imageUrl":@"image_url"
              };
 }
 @end

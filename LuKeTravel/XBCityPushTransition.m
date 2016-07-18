@@ -96,6 +96,8 @@
     XBDestinationHotCell *cell = [toVC.hotTableView cellForRowAtIndexPath:toVC.currentIndexPath];
     
     UIImageView *tempView = [[UIImageView alloc] initWithFrame:cell.coverImageView.frame];
+    tempView.contentMode  = UIViewContentModeScaleAspectFill;
+    tempView.clipsToBounds = YES;
     tempView.xb_y  = fromVC.coverImageView.xb_y;
     tempView.xb_x  = fromVC.coverImageView.xb_x;
     tempView.image = cell.coverImageView.image;
@@ -103,13 +105,7 @@
     [containerView addSubview:toVC.view];
     [containerView addSubview:tempView];
 
-    [UIView animateWithDuration:.55f delay:0 usingSpringWithDamping:1.f initialSpringVelocity:18. options:UIViewAnimationOptionCurveEaseIn animations:^{
-        
-//        CGRect cellFrame = [cell.coverImageView convertRect:cell.coverImageView.bounds toView:containerView];
-//        
-//        CGRect tempFame = tempView.frame;
-//        tempFame.origin.x = cellFrame.origin.x;
-//        tempFame.origin.y = cellFrame.origin.y;
+    [UIView animateWithDuration:.55f delay:0 usingSpringWithDamping:1.f initialSpringVelocity:20 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
         tempView.frame = [cell.coverImageView convertRect:cell.coverImageView.bounds toView:containerView];
         
@@ -122,11 +118,13 @@
         dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 0.25 * NSEC_PER_SEC);
         
         dispatch_after(time, dispatch_get_main_queue(), ^{
+            
             cell.hidden = NO;
             
             [tempView removeFromSuperview];
             
             [cell.coverImageView.layer addSublayer:cell.shapeLayer];
+       
         });
         
     }];

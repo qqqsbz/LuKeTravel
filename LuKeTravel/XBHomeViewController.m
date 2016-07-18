@@ -21,7 +21,9 @@
 #import "XBHomeInviationCell.h"
 #import "XBActivityViewController.h"
 #import "XBCityViewController.h"
+#import "XBHomeSearchViewController.h"
 #import "XBStretchableTableHeaderView.h"
+#import "XBMoreActivityViewController.h"
 @interface XBHomeViewController () <UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,XBHomeInviationCellDelegate,XBHomeActivityCellDelegate>
 @property (strong, nonatomic) UITableView   *tableView;
 @property (strong, nonatomic) UIImageView   *bannerImageView;
@@ -44,7 +46,7 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 
     [self buildView];
     
-    [self reloadData];
+//    [self reloadData];
     
 }
 
@@ -227,7 +229,7 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
             height = 210.f;
         }
     }
-    height *= [Application isPlus] ? 1.2 : 1;
+    height *= [XBApplication isPlus] ? 1.2 : 1;
     return height;
 }
 
@@ -350,7 +352,15 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 #pragma mark -- public method
 - (void)searchAction:(UIButton *)sender
 {
+//    XBHomeSearchViewController *searchVC = [[XBHomeSearchViewController alloc] init];
+//    searchVC.hidesBottomBarWhenPushed = YES;
+//    searchVC.view.backgroundColor = [UIColor colorWithHexString:@"#F2F2F2"];
+//    [self.navigationController pushViewController:searchVC animated:YES];
     
+    XBMoreActivityViewController *vc = [[XBMoreActivityViewController alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.view.backgroundColor = [UIColor whiteColor];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)setNavigationBarTranslucent

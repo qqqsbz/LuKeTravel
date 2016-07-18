@@ -31,6 +31,9 @@ static NSString *const footerIdentifier = @"XBActivityFooterView";
 - (void)setGroupItems:(NSArray<XBGroupItem *> *)groupItems
 {
     _groupItems = groupItems;
+    
+    [self.collectionView layoutIfNeeded];
+    
     [self.collectionView reloadData];
 }
 

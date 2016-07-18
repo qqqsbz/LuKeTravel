@@ -10,7 +10,7 @@
 @class XBLevelOne;
 @interface XBStretchableCityHeaderView : NSObject
 @property (strong, nonatomic) UITableView   *tableView;
-@property (strong, nonatomic) UIView        *view;
+@property (strong, nonatomic) UIView        *coverView;
 @property (strong, nonatomic) NSString      *title;
 @property (strong, nonatomic) UILabel       *temperatureLabel;
 @property (strong, nonatomic) UIImageView   *temperatureImageView;
@@ -28,6 +28,8 @@
 
 - (void)resizeView;
 
-- (void)startAnimation;
+- (void)startLevelOneAnimationWithComplete:(dispatch_block_t)block;
+
+- (void)startWeatherAnimationWithComplete:(dispatch_block_t)block;
 
 @end

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB5D2AF3D682081A57B21851 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D95E95B864608E4C431C809 /* libPods.a */; };
+		DC1332DF1D3C6ACE005F4B3A /* XBPlainFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1332DE1D3C6ACE005F4B3A /* XBPlainFlowLayout.m */; };
 		DC8A7A6D1D2B57730032BC48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7A6C1D2B57730032BC48 /* main.m */; };
 		DC8A7A701D2B57730032BC48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7A6F1D2B57730032BC48 /* AppDelegate.m */; };
 		DC8A7A761D2B57730032BC48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7A741D2B57730032BC48 /* Main.storyboard */; };
@@ -82,12 +83,36 @@
 		DC8A7BEA1D34E05E0032BC48 /* XBDestinationAllLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BE91D34E05E0032BC48 /* XBDestinationAllLayout.m */; };
 		DC8A7BED1D34E8AA0032BC48 /* XBDestinationAllFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BEC1D34E8AA0032BC48 /* XBDestinationAllFooterView.m */; };
 		DC8A7BF01D34F5D20032BC48 /* XBCityPushTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BEF1D34F5D20032BC48 /* XBCityPushTransition.m */; };
+		DC8A7BF41D362DAA0032BC48 /* XBHomeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BF31D362DAA0032BC48 /* XBHomeSearchViewController.m */; };
+		DC8A7BF61D363A590032BC48 /* XBHomeSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7BF51D363A590032BC48 /* XBHomeSearchCell.xib */; };
+		DC8A7BF91D363AA60032BC48 /* XBHomeSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BF81D363AA60032BC48 /* XBHomeSearchCell.m */; };
+		DC8A7BFC1D363ED00032BC48 /* XBHomeSearchFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BFB1D363ED00032BC48 /* XBHomeSearchFlowLayout.m */; };
+		DC8A7BFF1D371CCE0032BC48 /* XBSearchHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BFE1D371CCE0032BC48 /* XBSearchHeaderView.m */; };
+		DC8A7C031D3723450032BC48 /* LuKeTravel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7C011D3723450032BC48 /* LuKeTravel.xcdatamodeld */; };
+		DC8A7C061D37236C0032BC48 /* XBDBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7C051D37236C0032BC48 /* XBDBUtil.m */; };
+		DC8A7C081D3775A90032BC48 /* XBHomeSearchActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7C071D3775A90032BC48 /* XBHomeSearchActivityCell.xib */; };
+		DC8A7C0B1D37763C0032BC48 /* XBHomeSearchActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7C0A1D37763C0032BC48 /* XBHomeSearchActivityCell.m */; };
+		DC8A7C0D1D3776AE0032BC48 /* XBHomeSearchCityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7C0C1D3776AE0032BC48 /* XBHomeSearchCityCell.xib */; };
+		DC8A7C101D37779E0032BC48 /* XBHomeSearchCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7C0F1D37779E0032BC48 /* XBHomeSearchCityCell.m */; };
+		DC8A7C131D377CED0032BC48 /* XBSearchHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7C121D377CED0032BC48 /* XBSearchHistory.m */; };
+		DC8A7C151D3780BA0032BC48 /* XBHomeSearchHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7C141D3780BA0032BC48 /* XBHomeSearchHistoryCell.xib */; };
+		DC8A7C181D3780E90032BC48 /* XBHomeSearchHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7C171D3780E90032BC48 /* XBHomeSearchHistoryCell.m */; };
+		DC8A7C1B1D3788B70032BC48 /* XBHomeSearchHistoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7C1A1D3788B70032BC48 /* XBHomeSearchHistoryHeaderView.m */; };
+		DC8A7C1D1D38789D0032BC48 /* XBHomeSearchActivityClickCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7C1C1D38789D0032BC48 /* XBHomeSearchActivityClickCell.xib */; };
+		DC8A7C201D387D7C0032BC48 /* XBHomeSearchActivityClickCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7C1F1D387D7C0032BC48 /* XBHomeSearchActivityClickCell.m */; };
+		DC8A7C291D38C3490032BC48 /* XBCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7C281D38C3490032BC48 /* XBCalendarView.m */; };
+		DC8A7C2B1D38C41E0032BC48 /* XBCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7C2A1D38C41D0032BC48 /* XBCalendarCell.xib */; };
+		DC8A7C2E1D38C4E70032BC48 /* XBCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7C2D1D38C4E70032BC48 /* XBCalendarCell.m */; };
+		DC8A7C311D38C68C0032BC48 /* XBMoreActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7C301D38C68C0032BC48 /* XBMoreActivityViewController.m */; };
+		DC8A7C351D38EA810032BC48 /* XBDate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7C341D38EA810032BC48 /* XBDate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		37C54C8C4F188F6849E40750 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9D95E95B864608E4C431C809 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC21827E9A9FE60E33F37637 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		DC1332DD1D3C6ACE005F4B3A /* XBPlainFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPlainFlowLayout.h; sourceTree = "<group>"; };
+		DC1332DE1D3C6ACE005F4B3A /* XBPlainFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBPlainFlowLayout.m; sourceTree = "<group>"; };
 		DC8A7A681D2B57730032BC48 /* LuKeTravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuKeTravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8A7A6C1D2B57730032BC48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DC8A7A6E1D2B57730032BC48 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -223,6 +248,43 @@
 		DC8A7BEC1D34E8AA0032BC48 /* XBDestinationAllFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDestinationAllFooterView.m; sourceTree = "<group>"; };
 		DC8A7BEE1D34F5D10032BC48 /* XBCityPushTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBCityPushTransition.h; sourceTree = "<group>"; };
 		DC8A7BEF1D34F5D20032BC48 /* XBCityPushTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBCityPushTransition.m; sourceTree = "<group>"; };
+		DC8A7BF21D362DAA0032BC48 /* XBHomeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeSearchViewController.h; sourceTree = "<group>"; };
+		DC8A7BF31D362DAA0032BC48 /* XBHomeSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeSearchViewController.m; sourceTree = "<group>"; };
+		DC8A7BF51D363A590032BC48 /* XBHomeSearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBHomeSearchCell.xib; sourceTree = "<group>"; };
+		DC8A7BF71D363AA60032BC48 /* XBHomeSearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeSearchCell.h; sourceTree = "<group>"; };
+		DC8A7BF81D363AA60032BC48 /* XBHomeSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeSearchCell.m; sourceTree = "<group>"; };
+		DC8A7BFA1D363ED00032BC48 /* XBHomeSearchFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeSearchFlowLayout.h; sourceTree = "<group>"; };
+		DC8A7BFB1D363ED00032BC48 /* XBHomeSearchFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeSearchFlowLayout.m; sourceTree = "<group>"; };
+		DC8A7BFD1D371CCE0032BC48 /* XBSearchHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSearchHeaderView.h; sourceTree = "<group>"; };
+		DC8A7BFE1D371CCE0032BC48 /* XBSearchHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSearchHeaderView.m; sourceTree = "<group>"; };
+		DC8A7C021D3723450032BC48 /* LuKeTravel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LuKeTravel.xcdatamodel; sourceTree = "<group>"; };
+		DC8A7C041D37236C0032BC48 /* XBDBUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDBUtil.h; sourceTree = "<group>"; };
+		DC8A7C051D37236C0032BC48 /* XBDBUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDBUtil.m; sourceTree = "<group>"; };
+		DC8A7C071D3775A90032BC48 /* XBHomeSearchActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBHomeSearchActivityCell.xib; sourceTree = "<group>"; };
+		DC8A7C091D37763C0032BC48 /* XBHomeSearchActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeSearchActivityCell.h; sourceTree = "<group>"; };
+		DC8A7C0A1D37763C0032BC48 /* XBHomeSearchActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeSearchActivityCell.m; sourceTree = "<group>"; };
+		DC8A7C0C1D3776AE0032BC48 /* XBHomeSearchCityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBHomeSearchCityCell.xib; sourceTree = "<group>"; };
+		DC8A7C0E1D37779E0032BC48 /* XBHomeSearchCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeSearchCityCell.h; sourceTree = "<group>"; };
+		DC8A7C0F1D37779E0032BC48 /* XBHomeSearchCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeSearchCityCell.m; sourceTree = "<group>"; };
+		DC8A7C111D377CED0032BC48 /* XBSearchHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSearchHistory.h; sourceTree = "<group>"; };
+		DC8A7C121D377CED0032BC48 /* XBSearchHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSearchHistory.m; sourceTree = "<group>"; };
+		DC8A7C141D3780BA0032BC48 /* XBHomeSearchHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBHomeSearchHistoryCell.xib; sourceTree = "<group>"; };
+		DC8A7C161D3780E90032BC48 /* XBHomeSearchHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeSearchHistoryCell.h; sourceTree = "<group>"; };
+		DC8A7C171D3780E90032BC48 /* XBHomeSearchHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeSearchHistoryCell.m; sourceTree = "<group>"; };
+		DC8A7C191D3788B70032BC48 /* XBHomeSearchHistoryHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeSearchHistoryHeaderView.h; sourceTree = "<group>"; };
+		DC8A7C1A1D3788B70032BC48 /* XBHomeSearchHistoryHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeSearchHistoryHeaderView.m; sourceTree = "<group>"; };
+		DC8A7C1C1D38789D0032BC48 /* XBHomeSearchActivityClickCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBHomeSearchActivityClickCell.xib; sourceTree = "<group>"; };
+		DC8A7C1E1D387D7C0032BC48 /* XBHomeSearchActivityClickCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeSearchActivityClickCell.h; sourceTree = "<group>"; };
+		DC8A7C1F1D387D7C0032BC48 /* XBHomeSearchActivityClickCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeSearchActivityClickCell.m; sourceTree = "<group>"; };
+		DC8A7C271D38C3490032BC48 /* XBCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBCalendarView.h; sourceTree = "<group>"; };
+		DC8A7C281D38C3490032BC48 /* XBCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBCalendarView.m; sourceTree = "<group>"; };
+		DC8A7C2A1D38C41D0032BC48 /* XBCalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBCalendarCell.xib; sourceTree = "<group>"; };
+		DC8A7C2C1D38C4E70032BC48 /* XBCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBCalendarCell.h; sourceTree = "<group>"; };
+		DC8A7C2D1D38C4E70032BC48 /* XBCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBCalendarCell.m; sourceTree = "<group>"; };
+		DC8A7C2F1D38C68C0032BC48 /* XBMoreActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBMoreActivityViewController.h; sourceTree = "<group>"; };
+		DC8A7C301D38C68C0032BC48 /* XBMoreActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBMoreActivityViewController.m; sourceTree = "<group>"; };
+		DC8A7C331D38EA810032BC48 /* XBDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDate.h; sourceTree = "<group>"; };
+		DC8A7C341D38EA810032BC48 /* XBDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +343,7 @@
 				DC8A7A741D2B57730032BC48 /* Main.storyboard */,
 				DC8A7A791D2B57730032BC48 /* LaunchScreen.storyboard */,
 				DC8A7AEA1D2B5F9C0032BC48 /* Localizable.strings */,
+				DC8A7C001D3723270032BC48 /* CoreData */,
 				DC8A7AEF1D2B618B0032BC48 /* Home */,
 				DC8A7BC71D348B060032BC48 /* Destination */,
 				DC8A7B2E1D2CA0810032BC48 /* Facility */,
@@ -363,6 +426,7 @@
 		DC8A7AA61D2B58F40032BC48 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DC8A7C321D38EA6B0032BC48 /* MoreActivity */,
 				DC8A7BD31D3497A40032BC48 /* Destination */,
 				DC8A7B5E1D2E48660032BC48 /* City */,
 				DC8A7B151D2B93BE0032BC48 /* Search */,
@@ -377,14 +441,10 @@
 		DC8A7AEF1D2B618B0032BC48 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				DC8A7C261D38C2E30032BC48 /* activities */,
+				DC8A7C251D38C2D90032BC48 /* home */,
+				DC8A7BF11D362BC90032BC48 /* search */,
 				DC8A7B7F1D2F97FD0032BC48 /* city */,
-				DC8A7AF31D2B623B0032BC48 /* XBHomeViewController.h */,
-				DC8A7AF41D2B623B0032BC48 /* XBHomeViewController.m */,
-				DC8A7B3A1D2CD6450032BC48 /* XBHomeInviationCell.h */,
-				DC8A7B3B1D2CD6450032BC48 /* XBHomeInviationCell.m */,
-				DC8A7B3D1D2CD65E0032BC48 /* XBHomeInviationCell.xib */,
-				DC8A7B491D2E2A4C0032BC48 /* XBActivityViewController.h */,
-				DC8A7B4A1D2E2A4C0032BC48 /* XBActivityViewController.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -446,6 +506,8 @@
 				DC8A7B1A1D2B94440032BC48 /* XBSearch.m */,
 				DC8A7B1F1D2B948E0032BC48 /* XBSearchItem.h */,
 				DC8A7B201D2B948E0032BC48 /* XBSearchItem.m */,
+				DC8A7C111D377CED0032BC48 /* XBSearchHistory.h */,
+				DC8A7C121D377CED0032BC48 /* XBSearchHistory.m */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -453,6 +515,8 @@
 		DC8A7B2E1D2CA0810032BC48 /* Facility */ = {
 			isa = PBXGroup;
 			children = (
+				DC1332DD1D3C6ACE005F4B3A /* XBPlainFlowLayout.h */,
+				DC1332DE1D3C6ACE005F4B3A /* XBPlainFlowLayout.m */,
 				DC8A7BCB1D348BBF0032BC48 /* XBTSTView.h */,
 				DC8A7BCC1D348BBF0032BC48 /* XBTSTView.m */,
 				DC8A7B241D2BA4770032BC48 /* XBStretchableTableHeaderView.h */,
@@ -544,6 +608,83 @@
 			name = Destination;
 			sourceTree = "<group>";
 		};
+		DC8A7BF11D362BC90032BC48 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				DC8A7BF21D362DAA0032BC48 /* XBHomeSearchViewController.h */,
+				DC8A7BF31D362DAA0032BC48 /* XBHomeSearchViewController.m */,
+				DC8A7BF51D363A590032BC48 /* XBHomeSearchCell.xib */,
+				DC8A7BF71D363AA60032BC48 /* XBHomeSearchCell.h */,
+				DC8A7BF81D363AA60032BC48 /* XBHomeSearchCell.m */,
+				DC8A7BFA1D363ED00032BC48 /* XBHomeSearchFlowLayout.h */,
+				DC8A7BFB1D363ED00032BC48 /* XBHomeSearchFlowLayout.m */,
+				DC8A7BFD1D371CCE0032BC48 /* XBSearchHeaderView.h */,
+				DC8A7BFE1D371CCE0032BC48 /* XBSearchHeaderView.m */,
+				DC8A7C071D3775A90032BC48 /* XBHomeSearchActivityCell.xib */,
+				DC8A7C091D37763C0032BC48 /* XBHomeSearchActivityCell.h */,
+				DC8A7C0A1D37763C0032BC48 /* XBHomeSearchActivityCell.m */,
+				DC8A7C0C1D3776AE0032BC48 /* XBHomeSearchCityCell.xib */,
+				DC8A7C0E1D37779E0032BC48 /* XBHomeSearchCityCell.h */,
+				DC8A7C0F1D37779E0032BC48 /* XBHomeSearchCityCell.m */,
+				DC8A7C141D3780BA0032BC48 /* XBHomeSearchHistoryCell.xib */,
+				DC8A7C161D3780E90032BC48 /* XBHomeSearchHistoryCell.h */,
+				DC8A7C171D3780E90032BC48 /* XBHomeSearchHistoryCell.m */,
+				DC8A7C191D3788B70032BC48 /* XBHomeSearchHistoryHeaderView.h */,
+				DC8A7C1A1D3788B70032BC48 /* XBHomeSearchHistoryHeaderView.m */,
+				DC8A7C1C1D38789D0032BC48 /* XBHomeSearchActivityClickCell.xib */,
+				DC8A7C1E1D387D7C0032BC48 /* XBHomeSearchActivityClickCell.h */,
+				DC8A7C1F1D387D7C0032BC48 /* XBHomeSearchActivityClickCell.m */,
+			);
+			name = search;
+			sourceTree = "<group>";
+		};
+		DC8A7C001D3723270032BC48 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				DC8A7C011D3723450032BC48 /* LuKeTravel.xcdatamodeld */,
+				DC8A7C041D37236C0032BC48 /* XBDBUtil.h */,
+				DC8A7C051D37236C0032BC48 /* XBDBUtil.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		DC8A7C251D38C2D90032BC48 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				DC8A7AF31D2B623B0032BC48 /* XBHomeViewController.h */,
+				DC8A7AF41D2B623B0032BC48 /* XBHomeViewController.m */,
+				DC8A7B3A1D2CD6450032BC48 /* XBHomeInviationCell.h */,
+				DC8A7B3B1D2CD6450032BC48 /* XBHomeInviationCell.m */,
+				DC8A7B3D1D2CD65E0032BC48 /* XBHomeInviationCell.xib */,
+				DC8A7B491D2E2A4C0032BC48 /* XBActivityViewController.h */,
+				DC8A7B4A1D2E2A4C0032BC48 /* XBActivityViewController.m */,
+			);
+			name = home;
+			sourceTree = "<group>";
+		};
+		DC8A7C261D38C2E30032BC48 /* activities */ = {
+			isa = PBXGroup;
+			children = (
+				DC8A7C271D38C3490032BC48 /* XBCalendarView.h */,
+				DC8A7C281D38C3490032BC48 /* XBCalendarView.m */,
+				DC8A7C2A1D38C41D0032BC48 /* XBCalendarCell.xib */,
+				DC8A7C2C1D38C4E70032BC48 /* XBCalendarCell.h */,
+				DC8A7C2D1D38C4E70032BC48 /* XBCalendarCell.m */,
+				DC8A7C2F1D38C68C0032BC48 /* XBMoreActivityViewController.h */,
+				DC8A7C301D38C68C0032BC48 /* XBMoreActivityViewController.m */,
+			);
+			name = activities;
+			sourceTree = "<group>";
+		};
+		DC8A7C321D38EA6B0032BC48 /* MoreActivity */ = {
+			isa = PBXGroup;
+			children = (
+				DC8A7C331D38EA810032BC48 /* XBDate.h */,
+				DC8A7C341D38EA810032BC48 /* XBDate.m */,
+			);
+			name = MoreActivity;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -607,15 +748,21 @@
 				DC8A7AEB1D2B5F9C0032BC48 /* Localizable.strings in Resources */,
 				DC8A7B291D2BB0980032BC48 /* banner3.jpg in Resources */,
 				DC8A7B2A1D2BB0980032BC48 /* banner2.jpg in Resources */,
+				DC8A7C2B1D38C41E0032BC48 /* XBCalendarCell.xib in Resources */,
+				DC8A7C151D3780BA0032BC48 /* XBHomeSearchHistoryCell.xib in Resources */,
+				DC8A7C081D3775A90032BC48 /* XBHomeSearchActivityCell.xib in Resources */,
 				DC8A7A7B1D2B57730032BC48 /* LaunchScreen.storyboard in Resources */,
 				DC8A7A781D2B57730032BC48 /* Assets.xcassets in Resources */,
 				DC8A7AA51D2B582C0032BC48 /* Podfile in Resources */,
 				DC8A7B731D2F52950032BC48 /* XBHomeActivityContentCell.xib in Resources */,
 				DC8A7B691D2E550F0032BC48 /* XBLevelOneCell.xib in Resources */,
 				DC8A7BE11D34CC5E0032BC48 /* XBDestinationAllCell.xib in Resources */,
+				DC8A7C0D1D3776AE0032BC48 /* XBHomeSearchCityCell.xib in Resources */,
 				DC8A7B3E1D2CD65E0032BC48 /* XBHomeInviationCell.xib in Resources */,
+				DC8A7C1D1D38789D0032BC48 /* XBHomeSearchActivityClickCell.xib in Resources */,
 				DC8A7A761D2B57730032BC48 /* Main.storyboard in Resources */,
 				DC8A7BCF1D3495BF0032BC48 /* XBDestinationHotCell.xib in Resources */,
+				DC8A7BF61D363A590032BC48 /* XBHomeSearchCell.xib in Resources */,
 				DC8A7B231D2B9C9C0032BC48 /* banner1.jpg in Resources */,
 				DC8A7B711D2F520A0032BC48 /* XBHomeActivityCell.xib in Resources */,
 			);
@@ -676,20 +823,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC8A7C101D37779E0032BC48 /* XBHomeSearchCityCell.m in Sources */,
 				DC8A7BED1D34E8AA0032BC48 /* XBDestinationAllFooterView.m in Sources */,
 				DC8A7BD91D3497E30032BC48 /* XBHotDestination.m in Sources */,
 				DC8A7AAB1D2B59D30032BC48 /* XBModel.m in Sources */,
 				DC8A7B791D2F53920032BC48 /* XBHomeActivityContentCell.m in Sources */,
 				DC8A7BF01D34F5D20032BC48 /* XBCityPushTransition.m in Sources */,
+				DC8A7C0B1D37763C0032BC48 /* XBHomeSearchActivityCell.m in Sources */,
 				DC8A7B761D2F52C40032BC48 /* XBHomeActivityCell.m in Sources */,
+				DC1332DF1D3C6ACE005F4B3A /* XBPlainFlowLayout.m in Sources */,
+				DC8A7C311D38C68C0032BC48 /* XBMoreActivityViewController.m in Sources */,
 				DC8A7A941D2B58100032BC48 /* NSIntegerFormatter.m in Sources */,
 				DC8A7B111D2B914D0032BC48 /* XBReview.m in Sources */,
 				DC8A7BC31D3378900032BC48 /* XBDesinationFooterView.m in Sources */,
 				DC8A7BDC1D3498B90032BC48 /* XBDestinationCities.m in Sources */,
+				DC8A7C061D37236C0032BC48 /* XBDBUtil.m in Sources */,
+				DC8A7C201D387D7C0032BC48 /* XBHomeSearchActivityClickCell.m in Sources */,
 				DC8A7B071D2B8CFD0032BC48 /* XBActivity.m in Sources */,
 				DC8A7B261D2BA4770032BC48 /* XBStretchableTableHeaderView.m in Sources */,
 				DC8A7B181D2B93CE0032BC48 /* XBSearchHot.m in Sources */,
 				DC8A7A921D2B58100032BC48 /* UIView+XBFrame.m in Sources */,
+				DC8A7C031D3723450032BC48 /* LuKeTravel.xcdatamodeld in Sources */,
+				DC8A7C351D38EA810032BC48 /* XBDate.m in Sources */,
 				DC8A7B0D1D2B8E510032BC48 /* XBNotify.m in Sources */,
 				DC8A7B6C1D2E56640032BC48 /* XBLevelOneCell.m in Sources */,
 				DC8A7BC61D347BF90032BC48 /* XBSearchView.m in Sources */,
@@ -699,19 +854,24 @@
 				DC8A7B561D2E42FD0032BC48 /* XBXMLParserUtils.m in Sources */,
 				DC8A7B671D2E4CC70032BC48 /* XBStretchableCityHeaderView.m in Sources */,
 				DC8A7A911D2B58100032BC48 /* UIViewController+HUD.m in Sources */,
+				DC8A7C1B1D3788B70032BC48 /* XBHomeSearchHistoryHeaderView.m in Sources */,
 				DC8A7B4E1D2E2EB40032BC48 /* XBBannerView.m in Sources */,
+				DC8A7BFF1D371CCE0032BC48 /* XBSearchHeaderView.m in Sources */,
 				DC8A7B4B1D2E2A4C0032BC48 /* XBActivityViewController.m in Sources */,
+				DC8A7C131D377CED0032BC48 /* XBSearchHistory.m in Sources */,
 				DC8A7B571D2E42FD0032BC48 /* XBXMLParserContent.m in Sources */,
 				DC8A7BE71D34DC0F0032BC48 /* XBDestinationAllHeaderView.m in Sources */,
 				DC8A7B001D2B84770032BC48 /* XBGroup.m in Sources */,
 				DC8A7BD61D3497CF0032BC48 /* XBDestination.m in Sources */,
 				DC8A7B3C1D2CD6450032BC48 /* XBHomeInviationCell.m in Sources */,
 				DC8A7BCD1D348BBF0032BC48 /* XBTSTView.m in Sources */,
+				DC8A7C2E1D38C4E70032BC48 /* XBCalendarCell.m in Sources */,
 				DC8A7B611D2E48740032BC48 /* XBCity.m in Sources */,
 				DC8A7B5A1D2E43640032BC48 /* RegexKitLite.m in Sources */,
 				DC8A7B5D1D2E474F0032BC48 /* XBCityViewController.m in Sources */,
 				DC8A7B6F1D2F366B0032BC48 /* XBWeather.m in Sources */,
 				DC8A7AF51D2B623B0032BC48 /* XBHomeViewController.m in Sources */,
+				DC8A7BFC1D363ED00032BC48 /* XBHomeSearchFlowLayout.m in Sources */,
 				DC8A7AEE1D2B60BD0032BC48 /* XBAppRootViewController.m in Sources */,
 				DC8A7B511D2E395C0032BC48 /* XBStretchableScrollHeaderView.m in Sources */,
 				DC8A7B141D2B91A30032BC48 /* XBComment.m in Sources */,
@@ -719,11 +879,13 @@
 				DC8A7BBA1D3347020032BC48 /* XBHomeHeaderView.m in Sources */,
 				DC8A7A961D2B58100032BC48 /* UIImage+Util.m in Sources */,
 				DC8A7A9D1D2B58160032BC48 /* XBUserDefaultsUtil.m in Sources */,
+				DC8A7BF41D362DAA0032BC48 /* XBHomeSearchViewController.m in Sources */,
 				DC8A7BCA1D348B180032BC48 /* XBDestinationViewController.m in Sources */,
 				DC8A7A951D2B58100032BC48 /* UIColor+Util.m in Sources */,
 				DC8A7A931D2B58100032BC48 /* NSString+Util.m in Sources */,
 				DC8A7A701D2B57730032BC48 /* AppDelegate.m in Sources */,
 				DC8A7BEA1D34E05E0032BC48 /* XBDestinationAllLayout.m in Sources */,
+				DC8A7BF91D363AA60032BC48 /* XBHomeSearchCell.m in Sources */,
 				DC8A7B031D2B86960032BC48 /* XBGroupItem.m in Sources */,
 				DC8A7A6D1D2B57730032BC48 /* main.m in Sources */,
 				DC8A7B0A1D2B8DBB0032BC48 /* XBPackage.m in Sources */,
@@ -731,10 +893,12 @@
 				DC8A7AA21D2B58210032BC48 /* XBApplication.m in Sources */,
 				DC8A7B481D2DF2F60032BC48 /* XBLoadingView.m in Sources */,
 				DC8A7BD21D3496300032BC48 /* XBDestinationHotCell.m in Sources */,
+				DC8A7C291D38C3490032BC48 /* XBCalendarView.m in Sources */,
 				DC8A7B641D2E48AE0032BC48 /* XBLevelOne.m in Sources */,
 				DC8A7AA31D2B58210032BC48 /* XBConstants.m in Sources */,
 				DC8A7B211D2B948E0032BC48 /* XBSearchItem.m in Sources */,
 				DC8A7BDF1D3498DD0032BC48 /* XBDestinationItem.m in Sources */,
+				DC8A7C181D3780E90032BC48 /* XBHomeSearchHistoryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -942,6 +1106,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DC8A7C011D3723450032BC48 /* LuKeTravel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DC8A7C021D3723450032BC48 /* LuKeTravel.xcdatamodel */,
+			);
+			currentVersion = DC8A7C021D3723450032BC48 /* LuKeTravel.xcdatamodel */;
+			path = LuKeTravel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DC8A7A601D2B57730032BC48 /* Project object */;
 }

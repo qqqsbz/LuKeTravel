@@ -8,7 +8,8 @@
 
 #import "XBModel.h"
 @class XBSearchItem;
-@interface XBSearch : XBModel
+@interface XBSearch : XBModel <MTLManagedObjectSerializing>
 @property (strong, nonatomic) NSString  *name;
+@property (assign, nonatomic) NSInteger type;
 @property (strong, nonatomic) NSArray<XBSearchItem *>  *values;
 @end

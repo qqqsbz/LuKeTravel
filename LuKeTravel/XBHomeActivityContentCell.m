@@ -147,6 +147,8 @@
 {
     [super layoutSubviews];
     
+    [self.instantCoverImageView layoutIfNeeded];
+    
     self.shapeLayer.path = [UIBezierPath bezierPathWithRect:self.instantCoverImageView.bounds].CGPath;
     
     [self.instantCoverImageView.layer addSublayer:self.shapeLayer];

@@ -21,8 +21,8 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    return @{@"cityCount":@"city_count"
-             };
+    return @{
+            };
 }
 
 + (NSDictionary *)relationshipModelClassesByPropertyKey
@@ -35,5 +35,27 @@
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[XBSearch class]];
 }
+
+- (void)setItems:(NSArray<XBSearch *> *)items
+{
+    _items = items;
+    
+    if ([items isKindOfClass:[NSSet class]]) {
+        
+        NSMutableArray *temp = [NSMutableArray arrayWithCapacity:items.count];
+       
+        NSSet *lists = (NSSet *)items;
+        
+        [lists enumerateObjectsUsingBlock:^(id  _Nonnull obj, BOOL * _Nonnull stop) {
+        
+            [temp addObject:obj];
+        
+        }];
+        
+        _items = temp;
+    }
+    
+}
+
 
 @end

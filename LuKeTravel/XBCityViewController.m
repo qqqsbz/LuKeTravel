@@ -19,6 +19,7 @@
 #import "XBHomeActivityCell.h"
 #import "XBCityPushTransition.h"
 #import "XBDesinationFooterView.h"
+#import "XBMoreActivityViewController.h"
 #import "XBStretchableCityHeaderView.h"
 @interface XBCityViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) UITableView   *tableView;
@@ -28,6 +29,7 @@
 @property (strong, nonatomic) UIButton      *backButton;
 @property (strong, nonatomic) UIButton      *searchButton;
 @property (strong, nonatomic) XBSearchView  *searchView;
+@property (strong, nonatomic) NSMutableArray                *sectionHeaderViews;
 @property (strong, nonatomic) NSMutableDictionary           *groupDic;
 @property (strong, nonatomic) XBDesinationFooterView        *footerView;
 @property (strong, nonatomic) XBStretchableCityHeaderView   *stretchHeaderView;
@@ -71,15 +73,17 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
         
         self.stretchHeaderView.levelOnes = self.city.levelOnes;
         
-        [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.city.imageUrl]];
-        
         [self soreGroups];
         
         [self loadWeather];
         
         self.tableView.tableFooterView = self.footerView;
         
-        [self.stretchHeaderView startAnimation];
+        [self startStretchableHeaderAnimation];
+        
+        if (!self.coverImageView.image) {
+            [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.city.imageUrl]];
+        }
         
     } failure:^(NSError *error) {
     
@@ -99,7 +103,42 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
         
         self.stretchHeaderView.temperatureImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"weather%@",weather.type]];;
         
+        [self.stretchHeaderView startWeatherAnimationWithComplete:^{
+            
+        }];
+        
     } failure:^(NSError *error) {
+        
+    }];
+}
+
+- (void)startStretchableHeaderAnimation
+{
+    NSArray *visibleCells = [self.tableView visibleCells];
+    
+    for (UITableViewCell *cell in visibleCells) {
+        cell.alpha = 0.f;
+    }
+    
+    for (XBHomeHeaderView *headerView in self.sectionHeaderViews) {
+        headerView.alpha = 0;
+    }
+    
+    [self.stretchHeaderView startLevelOneAnimationWithComplete:^{
+        
+        [UIView animateWithDuration:0.4 delay:0.25 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            
+            for (UITableViewCell *cell in visibleCells) {
+                cell.alpha = 1.f;
+            }
+            
+            for (XBHomeHeaderView *headerView in self.sectionHeaderViews) {
+                headerView.alpha = 1.f;
+            }
+            
+        } completion:^(BOOL finished) {
+            
+        }];
         
     }];
 }
@@ -140,7 +179,6 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.showsHorizontalScrollIndicator = NO;
-//    self.tableView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0);
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"#DCDFE0"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeActivityCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuseIdentifier];
@@ -155,7 +193,17 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     self.stretchHeaderView.levelOneTableView.hidden = YES;
     
     self.footerView = [[XBDesinationFooterView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 100) title:NSLocalizedString(@"desination-viewall", @"desination-viewall") didSelectedBlock:^{
-        DDLogDebug(@"view all");
+        
+        XBMoreActivityViewController *moreActivityVC = [[XBMoreActivityViewController alloc] init];
+        
+        moreActivityVC.view.backgroundColor = [UIColor whiteColor];
+        
+        moreActivityVC.navigationController.delegate = nil;
+     
+        moreActivityVC.cityId = [self.groupItem.modelId integerValue];
+    
+        [self.navigationController pushViewController:moreActivityVC animated:YES];
+    
     }];
     
     self.navigationItem.hidesBackButton = YES;
@@ -269,6 +317,7 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     XBHomeHeaderView *headerView = [[XBHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 50.f)];
     headerView.leftLabel.text = group.className;
     headerView.rightLabel.text = group.displayText;
+    [self.sectionHeaderViews addObject:headerView];
     return headerView;
 }
 
@@ -320,6 +369,14 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
         _groupDic = [NSMutableDictionary dictionary];
     }
     return _groupDic;
+}
+
+- (NSMutableArray *)sectionHeaderViews
+{
+    if (!_sectionHeaderViews) {
+        _sectionHeaderViews = [NSMutableArray array];
+    }
+    return _sectionHeaderViews;
 }
 
 - (void)didReceiveMemoryWarning {

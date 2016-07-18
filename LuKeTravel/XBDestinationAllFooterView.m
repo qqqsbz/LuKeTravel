@@ -9,6 +9,14 @@
 #import "XBDestinationAllFooterView.h"
 
 @implementation XBDestinationAllFooterView
+- (instancetype)init
+{
+    if (self = [super init]) {
+        [self initialization];
+    }
+    return self;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {

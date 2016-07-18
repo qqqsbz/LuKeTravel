@@ -160,6 +160,7 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
         self.hotTableView.tag = 0;
         self.hotTableView.dataSource = self;
         self.hotTableView.delegate   = self;
+        self.hotTableView.backgroundColor = [UIColor clearColor];
         self.hotTableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
         [self.hotTableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBDestinationHotCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:destinationCityReuseIdentifier];
         return self.hotTableView;
@@ -198,7 +199,7 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
 #pragma mark -- UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 175;
+    return 175 * ([XBApplication isPlus] ? 1.2 : 1);
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -214,7 +215,6 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
     [cell.shapeLayer removeFromSuperlayer];
     
     XBCityViewController *cityVC = [[XBCityViewController alloc] init];
-//    cityVC.hidesBottomBarWhenPushed = YES;
     cityVC.groupItem = groupItem;
     cityVC.type = XBCityViewControllerTypeHot;
     self.navigationController.delegate = cityVC;

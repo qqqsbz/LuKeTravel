@@ -29,4 +29,22 @@
 {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[XBSearchItem class]];
 }
+
+- (void)setValues:(NSArray<XBSearchItem *> *)values
+{
+    _values = values;
+    
+    if ([values isKindOfClass:[NSSet class]]) {
+        
+        NSMutableArray *temp = [NSMutableArray arrayWithCapacity:values.count];
+        NSSet *lists = (NSSet *)values;
+        [lists enumerateObjectsUsingBlock:^(id  _Nonnull obj, BOOL * _Nonnull stop) {
+            [temp addObject:obj];
+        }];
+        _values = temp;
+    }
+    
+}
+
+
 @end

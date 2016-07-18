@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="XBHomeSearchCityCell" id="DzK-05-Lwv" customClass="XBHomeSearchCityCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DzK-05-Lwv" id="Bey-LH-ijW">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_location" translatesAutoresizingMaskIntoConstraints="NO" id="bTO-11-kB2">
+                        <rect key="frame" x="20" y="15" width="10" height="14"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wS1-jB-K3a" userLabel="title">
+                        <rect key="frame" x="55" y="12" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IcK-5Z-FWc" userLabel="separatorView">
+                        <rect key="frame" x="15" y="43" width="305" height="1"/>
+                        <color key="backgroundColor" red="0.79215686269999996" green="0.79215686269999996" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Trk-fZ-7We"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="IcK-5Z-FWc" firstAttribute="leading" secondItem="Bey-LH-ijW" secondAttribute="leading" constant="15" id="1fP-8W-obw"/>
+                    <constraint firstItem="bTO-11-kB2" firstAttribute="leading" secondItem="Bey-LH-ijW" secondAttribute="leading" constant="20" id="AOh-Z5-BG1"/>
+                    <constraint firstItem="wS1-jB-K3a" firstAttribute="centerY" secondItem="Bey-LH-ijW" secondAttribute="centerY" id="Jlm-xU-Nyt"/>
+                    <constraint firstItem="wS1-jB-K3a" firstAttribute="leading" secondItem="bTO-11-kB2" secondAttribute="trailing" constant="25" id="PCn-kc-UGo"/>
+                    <constraint firstAttribute="bottom" secondItem="IcK-5Z-FWc" secondAttribute="bottom" id="imh-fl-u2h"/>
+                    <constraint firstAttribute="trailing" secondItem="IcK-5Z-FWc" secondAttribute="trailing" id="tNX-wq-XKL"/>
+                    <constraint firstItem="bTO-11-kB2" firstAttribute="centerY" secondItem="Bey-LH-ijW" secondAttribute="centerY" id="tSN-P4-oGg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="titleLabel" destination="wS1-jB-K3a" id="G7N-5i-DpO"/>
+            </connections>
+            <point key="canvasLocation" x="196" y="-4"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_location" width="10" height="14"/>
+    </resources>
+</document>

@@ -10,12 +10,14 @@
 #define kCancleW  90.f
 #define kSearchH  64.f
 #import "XBSearchView.h"
-@interface XBSearchView()
+#import "UIImage+Util.h"
+@interface XBSearchView() <UISearchBarDelegate>
 @property (strong, nonatomic) UIVisualEffectView    *effectView;
 @property (strong, nonatomic) UIVisualEffectView    *searchEffectView;
 @property (strong, nonatomic) UIView                *searchView;
-@property (strong, nonatomic) UITextField           *textField;
+@property (strong, nonatomic) UISearchBar           *searchBar;
 @property (strong, nonatomic) UIButton              *cancleButton;
+@property (strong, nonatomic) UIView                *separatorView;
 @end
 @implementation XBSearchView
 - (instancetype)init
@@ -52,27 +54,30 @@
     UIImageView *leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kSpace, 0, kSpace, 18)];
     leftImageView.image = [UIImage imageNamed:@"search"];
     
-    self.textField = [UITextField new];
-    self.textField.borderStyle = UITextBorderStyleNone;
-    self.textField.textColor   = [UIColor colorWithHexString:@"#161616"];
-    self.textField.tintColor   = [UIColor colorWithHexString:kDefaultColorHex];
-    self.textField.font        = [UIFont systemFontOfSize:13.5f];
-    self.textField.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.3];
-    self.textField.layer.masksToBounds = YES;
-    self.textField.layer.cornerRadius  = 5.f;
-    self.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"search-placeholder", @"search-placeholder") attributes:@{NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#96969A"]}];
-    self.textField.leftViewMode = UITextFieldViewModeAlways;
-    self.textField.leftView     = leftImageView;
-    self.textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self addSubview:self.textField];
+    self.searchBar = [UISearchBar new];
+    self.searchBar.delegate = self;
+    self.searchBar.layer.masksToBounds = YES;
+    self.searchBar.layer.cornerRadius  = 5.f;
+    self.searchBar.placeholder = NSLocalizedString(@"search-placeholder", @"search-placeholder");
+    self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.searchBar.autocorrectionType     = UITextAutocorrectionTypeNo;
+    self.searchBar.tintColor = [UIColor colorWithHexString:kDefaultColorHex];
+    self.searchBar.backgroundColor = [UIColor colorWithHexString:@"#F5F5F5"];
+    [[[self.searchBar.subviews firstObject] subviews] lastObject].backgroundColor = [UIColor clearColor];
+    [self addSubview:self.searchBar];
     
     self.cancleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.cancleButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [self.cancleButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.f]];
+    [self.cancleButton.titleLabel setFont:[UIFont systemFontOfSize:16.f]];
     [self.cancleButton setTitle:NSLocalizedString(@"search-cancle", @"search-cancle") forState:UIControlStateNormal];
     [self.cancleButton setTitleColor:[UIColor colorWithHexString:kDefaultColorHex] forState:UIControlStateNormal];
+    [self.cancleButton addTarget:self action:@selector(cancleAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.cancleButton];
     
+    
+    self.separatorView = [UIView new];
+    self.separatorView.backgroundColor = [UIColor colorWithHexString:@"#D1D1D1"];
+    [self addSubview:self.separatorView];
 }
 - (void)layoutSubviews
 {
@@ -90,12 +95,12 @@
     }];
     
     [self.cancleButton makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.searchView).offset(kTopSpace);
+        make.top.equalTo(self.searchView).offset(kTopSpace * 0.9);
         make.right.equalTo(self.searchView).offset(-kSpace);
-        make.bottom.equalTo(self.searchView).offset(-kSpace * 0.5);
+        make.bottom.equalTo(self.searchView).offset(-kSpace * 0.8);
     }];
     
-    [self.textField makeConstraints:^(MASConstraintMaker *make) {
+    [self.searchBar makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.searchView).offset(kSpace);
         make.right.equalTo(self.cancleButton.left).offset(-kSpace);
         make.top.equalTo(self.cancleButton);
@@ -109,9 +114,71 @@
         make.bottom.equalTo(self);
     }];
     
+    [self.separatorView makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self);
+        make.bottom.equalTo(self);
+        make.right.equalTo(self);
+        make.height.mas_equalTo(1.f);
+    }];
     
     
+}
+
+#pragma mark -- UISearchBarDelegate
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if ([self.delegate respondsToSelector:@selector(searchViewTextDidChange:)]) {
+        [self.delegate searchViewTextDidChange:searchText];
+    }
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    if ([self.delegate respondsToSelector:@selector(searchViewDidSelectedCancle)]) {
+        [self.delegate searchViewSearchButtonClicked:searchBar.text];
+    }
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    if ([self.delegate respondsToSelector:@selector(searchViewDidBeginEditing)]) {
+        [self.delegate searchViewDidBeginEditing];
+    }
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    if ([self.delegate respondsToSelector:@selector(searchViewDidEndEditing)]) {
+        [self.delegate searchViewDidEndEditing];
+    }
+}
+
+- (void)cancleAction
+{
+    if ([self.delegate respondsToSelector:@selector(searchViewDidSelectedCancle)]) {
+        [self.delegate searchViewDidSelectedCancle];
+    }
+}
+
+- (void)setBecomFirstreSpondent:(BOOL)becomFirstreSpondent
+{
+    _becomFirstreSpondent = becomFirstreSpondent;
     
+    if (becomFirstreSpondent) {
+        [self.searchBar becomeFirstResponder];
+    } else {
+        [self.searchBar resignFirstResponder];
+    }
+}
+
+- (void)setSearchText:(NSString *)searchText
+{
+    self.searchBar.text = searchText;
+}
+
+- (NSString *)searchText
+{
+    return self.searchBar.text;
 }
 
 @end

@@ -10,4 +10,5 @@
 
 @interface XBDestinationAllHeaderView : UICollectionReusableView
 @property (strong, nonatomic) UILabel  *titleLabel;
+
 @end

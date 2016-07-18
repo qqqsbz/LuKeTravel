@@ -10,7 +10,7 @@
 
 static NSManagedObjectContext *_context = nil;
 
-@implementation Application
+@implementation XBApplication
 
 + (NSString *)shortVersion
 {
@@ -44,7 +44,7 @@ static NSManagedObjectContext *_context = nil;
 
 + (BOOL)isPlus
 {
-    return [[Application resolution] isEqualToString:@"1242x2208"];
+    return [[XBApplication resolution] isEqualToString:@"1242x2208"];
 }
 
 + (NSURL *)directoryOfDocument
@@ -64,8 +64,8 @@ static NSManagedObjectContext *_context = nil;
         
         //NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Article" withExtension:@"momd"];
         //NSURL *storeURL = [[self directoryOfDocument] URLByAppendingPathComponent:@"Article.sqlite"];
-        NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"App" withExtension:@"momd"];
-        NSURL *storeURL = [[self directoryOfDocument] URLByAppendingPathComponent:@"App.sqlite"];
+        NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"LuKeTravel" withExtension:@"momd"];
+        NSURL *storeURL = [[self directoryOfDocument] URLByAppendingPathComponent:@"LuKeTravel.sqlite"];
         
         NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
         NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];

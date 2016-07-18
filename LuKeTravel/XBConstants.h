@@ -12,6 +12,10 @@ extern NSString *const kErrorDomain;
 
 extern NSString *const kDefaultColorHex;
 
+extern NSString *const kTypeOfActivity;
+
+extern NSString *const kTypeOfCity;
+
 
 //extern NSString *const kChangeBackgroundColorNotification;
 //

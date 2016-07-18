@@ -23,15 +23,18 @@ static NSString *const reuseIdentifier = @"XBLevelOneCell";
 - (void)stretchHeaderForTableView:(UITableView *)tableView withView:(UIView *)view
 {
     _tableView = tableView;
-    _view      = view;
+    _coverView = view;
     
-    _initialFrame       = _view.frame;
+    _initialFrame       = _coverView.frame;
     _defaultViewHeight  = _initialFrame.size.height;
     
     self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 470)];
     
     self.temperatureImageView = [UIImageView new];
+    self.temperatureImageView.alpha = 0;
+    
     self.temperatureLabel = [UILabel new];
+    self.temperatureLabel.alpha = 0.f;
     self.temperatureLabel.font = [UIFont systemFontOfSize:16.5f];
     self.temperatureLabel.textColor = [UIColor colorWithWhite:1 alpha:0.85f];
 
@@ -46,7 +49,7 @@ static NSString *const reuseIdentifier = @"XBLevelOneCell";
     [self.contentView addSubview:self.levelOneTableView];
     
     
-    [_tableView addSubview:_view];
+    [_tableView addSubview:_coverView];
 
     [self.contentView addSubview:self.temperatureLabel];
     
@@ -64,17 +67,17 @@ static NSString *const reuseIdentifier = @"XBLevelOneCell";
     _levelOnes = levelOnes;
     [self.levelOneTableView reloadData];
     
-    if (_levelOnes.count < 5) {
-        
-        NSInteger distance =  5 - levelOnes.count;
-        
-        CGFloat tableHeight = CGRectGetHeight(self.levelOneTableView.frame) - distance * kRowHeight;
-        [self.levelOneTableView updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(tableHeight);
-        }];
-        
-        self.contentView.xb_height -= distance * kRowHeight;
-    }
+//    if (_levelOnes.count < 5) {
+//        
+//        NSInteger distance =  5 - levelOnes.count;
+//        
+//        CGFloat tableHeight = CGRectGetHeight(self.levelOneTableView.frame) - distance * kRowHeight;
+//        [self.levelOneTableView updateConstraints:^(MASConstraintMaker *make) {
+//            make.height.mas_equalTo(tableHeight);
+//        }];
+//        
+//        self.contentView.xb_height -= distance * kRowHeight;
+//    }
 }
 
 - (void)addConstraint
@@ -83,12 +86,12 @@ static NSString *const reuseIdentifier = @"XBLevelOneCell";
         make.left.equalTo(self.contentView).offset(kSpace);
         make.right.equalTo(self.contentView).offset(-kSpace);
         make.bottom.equalTo(self.contentView);
-        make.top.equalTo(self.view.bottom).offset(-kTopSapce);
+        make.top.equalTo(self.contentView).offset(CGRectGetMaxY(self.coverView.frame) - kTopSapce);
     }];
     
     [self.temperatureImageView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.levelOneTableView.left).offset(kSpace);
-        make.bottom.equalTo(self.levelOneTableView.top).offset(-kSpace * 0.7);
+        make.bottom.equalTo(self.levelOneTableView.top).offset(-kSpace * 1.1);
     }];
     
     [self.temperatureLabel makeConstraints:^(MASConstraintMaker *make) {
@@ -99,9 +102,9 @@ static NSString *const reuseIdentifier = @"XBLevelOneCell";
 
 - (void)scrollViewDidScroll:(UIScrollView*)scrollView
 {
-    CGRect f     = _view.frame;
+    CGRect f     = _coverView.frame;
     f.size.width = _tableView.frame.size.width;
-    _view.frame  = f;
+    _coverView.frame  = f;
     
     if(scrollView.contentOffset.y < 0)
     {
@@ -111,7 +114,7 @@ static NSString *const reuseIdentifier = @"XBLevelOneCell";
         
         _initialFrame.size.height = _defaultViewHeight + offsetY;
         
-        _view.frame = _initialFrame;
+        _coverView.frame = _initialFrame;
     }
     
 }
@@ -120,7 +123,7 @@ static NSString *const reuseIdentifier = @"XBLevelOneCell";
 - (void)resizeView
 {
     _initialFrame.size.width = _tableView.frame.size.width;
-    _view.frame = _initialFrame;
+    _coverView.frame = _initialFrame;
 }
 
 #pragma mark -- UITableViewDataSource
@@ -166,7 +169,7 @@ static NSString *const reuseIdentifier = @"XBLevelOneCell";
 }
 
 
-- (void)startAnimation
+- (void)startLevelOneAnimationWithComplete:(dispatch_block_t)block
 {
     [self.levelOneTableView layoutIfNeeded];
     
@@ -174,13 +177,47 @@ static NSString *const reuseIdentifier = @"XBLevelOneCell";
     
     self.levelOneTableView.xb_y += kTopSapce;
     
-    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:0.65 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
         self.levelOneTableView.frame = levelOneRect;
         
     } completion:^(BOOL finished) {
         
+        if (finished) {
+            if (block) {
+                block();
+            }
+        }
+        
     }];
+}
+
+- (void)startWeatherAnimationWithComplete:(dispatch_block_t)block
+{
+    
+    [self.temperatureImageView layoutIfNeeded];
+    
+    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        
+        self.temperatureLabel.alpha = 1;
+        
+        self.temperatureImageView.alpha = 1;
+        
+        self.temperatureImageView.xb_y += kTopSapce;
+        
+        self.temperatureLabel.xb_y += kTopSapce;
+        
+        
+    } completion:^(BOOL finished) {
+        
+        if (finished) {
+            if (block) {
+                block();
+            }
+        }
+        
+    }];
+    
 }
 
 @end

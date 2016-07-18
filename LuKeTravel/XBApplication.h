@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Application : NSObject
+@interface XBApplication : NSObject
 
 + (NSString *)shortVersion;
 
