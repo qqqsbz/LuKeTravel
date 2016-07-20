@@ -24,6 +24,7 @@
     self.weekColor = self.weekLabel.textColor;
     
     self.dayColor  = self.dayLabel.textColor;
+
 }
 
 - (void)setItemSelected:(BOOL)itemSelected

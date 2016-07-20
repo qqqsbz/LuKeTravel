@@ -7,7 +7,9 @@
 //
 
 #import "XBModel.h"
-
+@class XBLevelOne;
 @interface XBMoreActivityName : XBModel
-
+@property (strong, nonatomic) NSString  *type;
+@property (strong, nonatomic) NSString  *selected;
+@property (strong, nonatomic) NSArray<XBLevelOne *>  *items;
 @end

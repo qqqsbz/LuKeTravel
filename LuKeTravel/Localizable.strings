@@ -19,3 +19,7 @@
 
 "search-history-title" = "搜索历史";
 "search-history-clear" = "清除";
+
+"moreactivity-all" = "所有活动";
+"moreactivity-footerall" = "所有活动";
+"moreactivity-nodata" = "今日没有你想玩的活动?\n试试探索其他日期吧!";

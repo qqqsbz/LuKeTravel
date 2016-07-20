@@ -14,8 +14,4 @@
     return NSStringFromClass(self);
 }
 
-+ (NSDictionary *)managedObjectKeysByPropertyKey
-{
-    return @{};
-}
 @end

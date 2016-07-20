@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+@class XBCalendarView;
+@protocol XBCalendarViewDelegate <NSObject>
+
+@optional
+- (void)calendarView:(XBCalendarView *)calendarView didSelectedWithDateString:(NSString *)dateString;
+
+@end
 
 @interface XBCalendarView : UIView
-- (void)loadData;
+
+@property (weak, nonatomic) id<XBCalendarViewDelegate> delegate;
+
+- (void)reloadData;
+
 @end

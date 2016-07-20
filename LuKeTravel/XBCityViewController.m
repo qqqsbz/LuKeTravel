@@ -194,13 +194,11 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     
     self.footerView = [[XBDesinationFooterView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 100) title:NSLocalizedString(@"desination-viewall", @"desination-viewall") didSelectedBlock:^{
         
-        XBMoreActivityViewController *moreActivityVC = [[XBMoreActivityViewController alloc] init];
+        XBMoreActivityViewController *moreActivityVC = [[XBMoreActivityViewController alloc] initWithCityId:[self.groupItem.modelId integerValue]];
         
         moreActivityVC.view.backgroundColor = [UIColor whiteColor];
         
         moreActivityVC.navigationController.delegate = nil;
-     
-        moreActivityVC.cityId = [self.groupItem.modelId integerValue];
     
         [self.navigationController pushViewController:moreActivityVC animated:YES];
     

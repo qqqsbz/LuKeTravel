@@ -8,6 +8,7 @@
 
 #import "XBHomeSearchActivityClickCell.h"
 #import "XBSearchItem.h"
+#import "XBGroupItem.h"
 @implementation XBHomeSearchActivityClickCell
 
 - (void)awakeFromNib {
@@ -25,22 +26,42 @@
 
 }
 
-- (void)setGroupItem:(XBSearchItem *)groupItem
+- (void)setSearchItem:(XBSearchItem *)searchItem
 {
-    _groupItem = groupItem;
+    _searchItem = searchItem;
     
-    self.instantImageView.hidden = !groupItem.instant;
-    self.titleLabel.text    = groupItem.name;
-    self.subTitleLabel.text = groupItem.subName;
-    self.addressLabel.text  = groupItem.cityName;
-    self.participantsLabel.text = [NSIntegerFormatter formatToNSString:groupItem.participants];
-    self.sellingPriceLabel.text  = [NSString stringWithFormat:@"￥%@",[NSIntegerFormatter formatToNSString:groupItem.marketPrice]];
-    self.marketPriceLabel.text = [NSString stringWithFormat:@"￥%@",[NSIntegerFormatter formatToNSString:groupItem.sellingPrice]];
-    self.favoriteImageView.image = [UIImage imageNamed:groupItem.favorite ? @"activityWishSelected" : @"activityWishNormal"];
-    [self loadImageFromCacheWithImageView:self.coverImageView];
+    self.instantImageView.hidden = !searchItem.instant;
+    self.titleLabel.text    = searchItem.name;
+    self.subTitleLabel.text = searchItem.subName;
+    self.addressLabel.text  = searchItem.cityName;
+    self.participantsLabel.text = searchItem.participantsFormat;
+    self.sellingPriceLabel.text  = [NSString stringWithFormat:@"￥%@",[NSIntegerFormatter formatToNSString:searchItem.marketPrice]];
+    self.marketPriceLabel.text = [NSString stringWithFormat:@"￥%@",[NSIntegerFormatter formatToNSString:searchItem.sellingPrice]];
+    self.favoriteImageView.image = [UIImage imageNamed:searchItem.favorite ? @"activityWishSelected" : @"activityWishNormal"];
+    [self loadImageFromCacheWithImageView:self.coverImageView imageUrl:searchItem.imageUrl];
+    
+    BOOL cityEmpty = searchItem.cityName.length <= 0;
+    
+    self.participantsLabel.hidden = cityEmpty;
+    
+    self.participantsImageView.hidden = cityEmpty;
+    
+    if (cityEmpty) {
+        
+        self.addressLabel.text = searchItem.participantsFormat;
+        
+        self.addressImageView.image = [UIImage imageNamed:[searchItem.hotState isEqualToString:@"new"] ? @"activityNew" : @"activityBooked"];
+        
+    } else {
+        
+        self.addressLabel.text = searchItem.cityName;
+        
+        self.addressImageView.image = [UIImage imageNamed:@"activityMap"];
+        
+    }
     
     NSMutableAttributedString *markAttributedString = [[NSMutableAttributedString alloc] initWithString:self.marketPriceLabel.text];
-    [markAttributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica-Bold" size:22.f] range:NSMakeRange(1, self.marketPriceLabel.text.length - 1)];
+    [markAttributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica-Bold" size:20.f] range:NSMakeRange(1, self.marketPriceLabel.text.length - 1)];
     self.marketPriceLabel.attributedText = markAttributedString;
     
     NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc] initWithString:self.sellingPriceLabel.text attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
@@ -48,15 +69,15 @@
 
 }
 
-- (void)loadImageFromCacheWithImageView:(UIImageView *)imageView
+- (void)loadImageFromCacheWithImageView:(UIImageView *)imageView imageUrl:(NSString *)imageUrl
 {
     //查看是否有缓存
-    BOOL isCache  = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:self.groupItem.imageUrl] ||[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.groupItem.imageUrl];
+    BOOL isCache  = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:imageUrl] ||[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:imageUrl];
     
     //没有缓存则 下载图片并进行缓存
     if (!isCache) {
         
-        [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.groupItem.imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder_image"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder_image"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
             [[SDImageCache sharedImageCache] storeImage:image forKey:imageURL.absoluteString];
             
@@ -66,13 +87,13 @@
         
         //优先从内存中读取缓存 如果内存中没有缓存则读取磁盘
         UIImage *cacheImage;
-        if ([[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:self.groupItem.imageUrl]) {
+        if ([[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:imageUrl]) {
             
-            cacheImage = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:self.groupItem.imageUrl];
+            cacheImage = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:imageUrl];
             
         } else {
             
-            cacheImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.groupItem.imageUrl];
+            cacheImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:imageUrl];
             
         }
         

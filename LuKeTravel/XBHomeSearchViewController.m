@@ -201,7 +201,7 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
         [self.view bringSubviewToFront:self.tableView];
         
         //如果是点击搜索则显示加载更多
-        self.tableFooterView.hidden = !isClicked || self.searchItems.count <= 0;
+        self.tableFooterView.hidden = !isClicked || searchs.count <= 0;
         
         //页数+1
         self.page += isClicked ? 1 : 0;
@@ -417,7 +417,7 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
             
             XBHomeSearchActivityClickCell *activityCell = [tableView dequeueReusableCellWithIdentifier:homeSearchActivityClickReuseIdentifier forIndexPath:indexPath];
             
-            activityCell.groupItem = item;
+            activityCell.searchItem = item;
             
             return activityCell;
             

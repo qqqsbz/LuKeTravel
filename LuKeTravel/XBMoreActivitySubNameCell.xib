@@ -1,15 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-        </view>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="XBMoreActivitySubNameCell" id="hWE-1N-XP8" customClass="XBMoreActivitySubNameCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hWE-1N-XP8" id="So7-fg-hEJ">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最受欢迎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNI-YI-2EP" userLabel="title">
+                        <rect key="frame" x="20" y="16" width="60" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.58039215686274503" green="0.58039215686274503" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCb-H1-0oc" userLabel="checkMark">
+                        <rect key="frame" x="278" y="14" width="22" height="22"/>
+                        <state key="normal" image="selected"/>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ep-uy-6Ka" userLabel="separator">
+                        <rect key="frame" x="20" y="48" width="300" height="1"/>
+                        <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="r3b-GQ-uKb"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ZNI-YI-2EP" firstAttribute="leading" secondItem="So7-fg-hEJ" secondAttribute="leading" constant="20" id="58Y-qV-tYg"/>
+                    <constraint firstAttribute="trailing" secondItem="bCb-H1-0oc" secondAttribute="trailing" constant="20" id="IPY-UD-Cqi"/>
+                    <constraint firstAttribute="bottom" secondItem="2ep-uy-6Ka" secondAttribute="bottom" id="Jki-eS-1ej"/>
+                    <constraint firstAttribute="trailing" secondItem="2ep-uy-6Ka" secondAttribute="trailing" id="Lfy-EV-KaU"/>
+                    <constraint firstItem="ZNI-YI-2EP" firstAttribute="centerY" secondItem="So7-fg-hEJ" secondAttribute="centerY" id="bQd-uY-Ttu"/>
+                    <constraint firstItem="2ep-uy-6Ka" firstAttribute="leading" secondItem="ZNI-YI-2EP" secondAttribute="leading" id="gng-fa-H7N"/>
+                    <constraint firstItem="bCb-H1-0oc" firstAttribute="centerY" secondItem="So7-fg-hEJ" secondAttribute="centerY" id="rXk-LN-BQl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bottomSeparatorConstraint" destination="r3b-GQ-uKb" id="04h-SC-OfK"/>
+                <outlet property="checkMarkButton" destination="bCb-H1-0oc" id="rVp-Tp-oUr"/>
+                <outlet property="titleLabel" destination="ZNI-YI-2EP" id="Sjl-4D-QcX"/>
+            </connections>
+            <point key="canvasLocation" x="337" y="236"/>
+        </tableViewCell>
     </objects>
+    <resources>
+        <image name="selected" width="22" height="22"/>
+    </resources>
 </document>

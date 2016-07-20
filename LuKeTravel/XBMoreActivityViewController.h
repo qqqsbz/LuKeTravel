@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface XBMoreActivityViewController : UIViewController
-@property (assign, nonatomic) NSInteger  cityId;
+- (instancetype)initWithCityId:(NSInteger)cityId;
 @end

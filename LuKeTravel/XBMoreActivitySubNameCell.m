@@ -7,18 +7,26 @@
 //
 
 #import "XBMoreActivitySubNameCell.h"
-
+#import "XBMoreActivitySort.h"
 @implementation XBMoreActivitySubNameCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    self.bottomSeparatorConstraint.constant = 0.5f;
+}
+
+- (void)setSort:(XBMoreActivitySort *)sort
+{
+    _sort = sort;
+    
+    self.titleLabel.text = sort.name;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
 }
 
 @end

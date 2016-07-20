@@ -23,6 +23,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView   *participantsImageView;
 @property (strong, nonatomic) IBOutlet UILabel       *participantsLabel;
 
-@property (strong, nonatomic) XBSearchItem  *groupItem;
+@property (strong, nonatomic) XBSearchItem  *searchItem;
 
 @end

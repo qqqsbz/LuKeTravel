@@ -7,7 +7,32 @@
 //
 
 #import "XBMoreActivityName.h"
-
+#import "XBLevelOne.h"
 @implementation XBMoreActivityName
++ (NSString *)managedObjectEntityName
+{
+    return NSStringFromClass(self);
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    return @{};
+}
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    return @{};
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey
+{
+    return @{@"items":[XBLevelOne class]
+             };
+}
+
++ (NSValueTransformer *)itemsJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[XBLevelOne class]];
+}
 
 @end

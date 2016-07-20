@@ -6,7 +6,33 @@
 //  Copyright © 2016年 coder. All rights reserved.
 //
 
-#import "XBLevelOneSubName.h"
+#import "XBMoreActivitySubName.h"
+#import "XBMoreActivitySubNameItem.h"
+@implementation XBMoreActivitySubName
++ (NSString *)managedObjectEntityName
+{
+    return NSStringFromClass(self);
+}
 
-@implementation XBLevelOneSubName
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    return @{};
+}
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    return @{};
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey
+{
+    return @{@"items":[XBMoreActivitySubNameItem class]
+             };
+}
+
++ (NSValueTransformer *)itemsJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[XBMoreActivitySubNameItem class]];
+}
+
 @end

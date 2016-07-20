@@ -8,6 +8,6 @@
 
 #import "XBModel.h"
 
-@interface XBLevelOneSubNameItem : XBModel
+@interface XBMoreActivitySubNameItem : XBModel
 @property (strong, nonatomic) NSString  *name;
 @end

@@ -7,7 +7,8 @@
 //
 
 #import "XBModel.h"
-@class XBLevelOneSubNameItem;
-@interface XBLevelOneSubName : XBModel
+@class XBMoreActivitySubNameItem;
+@interface XBMoreActivitySubName : XBModel
 @property (assign, nonatomic) NSInteger  selected;
+@property (strong, nonatomic) NSArray<XBMoreActivitySubNameItem *>  *items;
 @end

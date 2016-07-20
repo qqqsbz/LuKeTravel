@@ -6,9 +6,9 @@
 //  Copyright © 2016年 coder. All rights reserved.
 //
 
-#import "XBLevelOneSubNameItem.h"
+#import "XBMoreActivitySubNameItem.h"
 
-@implementation XBLevelOneSubNameItem
+@implementation XBMoreActivitySubNameItem
 + (NSString *)managedObjectEntityName
 {
     return NSStringFromClass(self);

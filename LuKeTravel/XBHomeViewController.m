@@ -46,7 +46,7 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 
     [self buildView];
     
-//    [self reloadData];
+    [self reloadData];
     
 }
 
@@ -352,15 +352,19 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 #pragma mark -- public method
 - (void)searchAction:(UIButton *)sender
 {
-//    XBHomeSearchViewController *searchVC = [[XBHomeSearchViewController alloc] init];
-//    searchVC.hidesBottomBarWhenPushed = YES;
-//    searchVC.view.backgroundColor = [UIColor colorWithHexString:@"#F2F2F2"];
-//    [self.navigationController pushViewController:searchVC animated:YES];
+    XBHomeSearchViewController *searchVC = [[XBHomeSearchViewController alloc] init];
     
-    XBMoreActivityViewController *vc = [[XBMoreActivityViewController alloc] init];
-    vc.hidesBottomBarWhenPushed = YES;
-    vc.view.backgroundColor = [UIColor whiteColor];
-    [self.navigationController pushViewController:vc animated:YES];
+    searchVC.hidesBottomBarWhenPushed = YES;
+    
+    searchVC.view.backgroundColor = [UIColor colorWithHexString:@"#F2F2F2"];
+    
+    [self.navigationController pushViewController:searchVC animated:YES];
+    
+//    XBMoreActivityViewController *vc = [[XBMoreActivityViewController alloc] init];
+//    vc.cityId = 2;
+//    vc.hidesBottomBarWhenPushed = YES;
+//    vc.view.backgroundColor = [UIColor whiteColor];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)setNavigationBarTranslucent

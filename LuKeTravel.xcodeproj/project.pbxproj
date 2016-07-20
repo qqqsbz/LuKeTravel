@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		AB5D2AF3D682081A57B21851 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D95E95B864608E4C431C809 /* libPods.a */; };
 		DC1332DF1D3C6ACE005F4B3A /* XBPlainFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1332DE1D3C6ACE005F4B3A /* XBPlainFlowLayout.m */; };
+		DC1332E21D3CB401005F4B3A /* XBNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1332E11D3CB401005F4B3A /* XBNavigationBar.m */; };
+		DC1332E51D3CC455005F4B3A /* XBMoreActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1332E41D3CC455005F4B3A /* XBMoreActivity.m */; };
+		DC1332E81D3CC4B0005F4B3A /* XBMoreActivityName.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1332E71D3CC4B0005F4B3A /* XBMoreActivityName.m */; };
+		DC1332EB1D3CC525005F4B3A /* XBMoreActivitySubName.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1332EA1D3CC525005F4B3A /* XBMoreActivitySubName.m */; };
+		DC1332EE1D3CC554005F4B3A /* XBMoreActivitySubNameItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1332ED1D3CC554005F4B3A /* XBMoreActivitySubNameItem.m */; };
+		DC1332F01D3CD3B1005F4B3A /* XBMoreActivitySubNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC1332EF1D3CD3B1005F4B3A /* XBMoreActivitySubNameCell.xib */; };
+		DC1332F31D3CD4B3005F4B3A /* XBMoreActivitySubNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1332F21D3CD4B3005F4B3A /* XBMoreActivitySubNameCell.m */; };
+		DC1332F61D3DB9DD005F4B3A /* XBMoreActivitySort.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1332F51D3DB9DD005F4B3A /* XBMoreActivitySort.m */; };
+		DC1332F91D3E0FA8005F4B3A /* XBSubNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1332F81D3E0FA8005F4B3A /* XBSubNameView.m */; };
+		DC1333001D3F5190005F4B3A /* XBNoActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1332FF1D3F5190005F4B3A /* XBNoActivityView.m */; };
 		DC8A7A6D1D2B57730032BC48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7A6C1D2B57730032BC48 /* main.m */; };
 		DC8A7A701D2B57730032BC48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7A6F1D2B57730032BC48 /* AppDelegate.m */; };
 		DC8A7A761D2B57730032BC48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7A741D2B57730032BC48 /* Main.storyboard */; };
@@ -113,6 +123,25 @@
 		AC21827E9A9FE60E33F37637 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DC1332DD1D3C6ACE005F4B3A /* XBPlainFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPlainFlowLayout.h; sourceTree = "<group>"; };
 		DC1332DE1D3C6ACE005F4B3A /* XBPlainFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBPlainFlowLayout.m; sourceTree = "<group>"; };
+		DC1332E01D3CB401005F4B3A /* XBNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBNavigationBar.h; sourceTree = "<group>"; };
+		DC1332E11D3CB401005F4B3A /* XBNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBNavigationBar.m; sourceTree = "<group>"; };
+		DC1332E31D3CC455005F4B3A /* XBMoreActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBMoreActivity.h; sourceTree = "<group>"; };
+		DC1332E41D3CC455005F4B3A /* XBMoreActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBMoreActivity.m; sourceTree = "<group>"; };
+		DC1332E61D3CC4B0005F4B3A /* XBMoreActivityName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBMoreActivityName.h; sourceTree = "<group>"; };
+		DC1332E71D3CC4B0005F4B3A /* XBMoreActivityName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBMoreActivityName.m; sourceTree = "<group>"; };
+		DC1332E91D3CC525005F4B3A /* XBMoreActivitySubName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBMoreActivitySubName.h; sourceTree = "<group>"; };
+		DC1332EA1D3CC525005F4B3A /* XBMoreActivitySubName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBMoreActivitySubName.m; sourceTree = "<group>"; };
+		DC1332EC1D3CC554005F4B3A /* XBMoreActivitySubNameItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBMoreActivitySubNameItem.h; sourceTree = "<group>"; };
+		DC1332ED1D3CC554005F4B3A /* XBMoreActivitySubNameItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBMoreActivitySubNameItem.m; sourceTree = "<group>"; };
+		DC1332EF1D3CD3B1005F4B3A /* XBMoreActivitySubNameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBMoreActivitySubNameCell.xib; sourceTree = "<group>"; };
+		DC1332F11D3CD4B3005F4B3A /* XBMoreActivitySubNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBMoreActivitySubNameCell.h; sourceTree = "<group>"; };
+		DC1332F21D3CD4B3005F4B3A /* XBMoreActivitySubNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBMoreActivitySubNameCell.m; sourceTree = "<group>"; };
+		DC1332F41D3DB9DD005F4B3A /* XBMoreActivitySort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBMoreActivitySort.h; sourceTree = "<group>"; };
+		DC1332F51D3DB9DD005F4B3A /* XBMoreActivitySort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBMoreActivitySort.m; sourceTree = "<group>"; };
+		DC1332F71D3E0FA8005F4B3A /* XBSubNameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSubNameView.h; sourceTree = "<group>"; };
+		DC1332F81D3E0FA8005F4B3A /* XBSubNameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSubNameView.m; sourceTree = "<group>"; };
+		DC1332FE1D3F5190005F4B3A /* XBNoActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBNoActivityView.h; sourceTree = "<group>"; };
+		DC1332FF1D3F5190005F4B3A /* XBNoActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBNoActivityView.m; sourceTree = "<group>"; };
 		DC8A7A681D2B57730032BC48 /* LuKeTravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuKeTravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8A7A6C1D2B57730032BC48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DC8A7A6E1D2B57730032BC48 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -672,6 +701,15 @@
 				DC8A7C2D1D38C4E70032BC48 /* XBCalendarCell.m */,
 				DC8A7C2F1D38C68C0032BC48 /* XBMoreActivityViewController.h */,
 				DC8A7C301D38C68C0032BC48 /* XBMoreActivityViewController.m */,
+				DC1332E01D3CB401005F4B3A /* XBNavigationBar.h */,
+				DC1332E11D3CB401005F4B3A /* XBNavigationBar.m */,
+				DC1332EF1D3CD3B1005F4B3A /* XBMoreActivitySubNameCell.xib */,
+				DC1332F11D3CD4B3005F4B3A /* XBMoreActivitySubNameCell.h */,
+				DC1332F21D3CD4B3005F4B3A /* XBMoreActivitySubNameCell.m */,
+				DC1332F71D3E0FA8005F4B3A /* XBSubNameView.h */,
+				DC1332F81D3E0FA8005F4B3A /* XBSubNameView.m */,
+				DC1332FE1D3F5190005F4B3A /* XBNoActivityView.h */,
+				DC1332FF1D3F5190005F4B3A /* XBNoActivityView.m */,
 			);
 			name = activities;
 			sourceTree = "<group>";
@@ -681,6 +719,16 @@
 			children = (
 				DC8A7C331D38EA810032BC48 /* XBDate.h */,
 				DC8A7C341D38EA810032BC48 /* XBDate.m */,
+				DC1332E31D3CC455005F4B3A /* XBMoreActivity.h */,
+				DC1332E41D3CC455005F4B3A /* XBMoreActivity.m */,
+				DC1332E61D3CC4B0005F4B3A /* XBMoreActivityName.h */,
+				DC1332E71D3CC4B0005F4B3A /* XBMoreActivityName.m */,
+				DC1332E91D3CC525005F4B3A /* XBMoreActivitySubName.h */,
+				DC1332EA1D3CC525005F4B3A /* XBMoreActivitySubName.m */,
+				DC1332EC1D3CC554005F4B3A /* XBMoreActivitySubNameItem.h */,
+				DC1332ED1D3CC554005F4B3A /* XBMoreActivitySubNameItem.m */,
+				DC1332F41D3DB9DD005F4B3A /* XBMoreActivitySort.h */,
+				DC1332F51D3DB9DD005F4B3A /* XBMoreActivitySort.m */,
 			);
 			name = MoreActivity;
 			sourceTree = "<group>";
@@ -758,6 +806,7 @@
 				DC8A7B691D2E550F0032BC48 /* XBLevelOneCell.xib in Resources */,
 				DC8A7BE11D34CC5E0032BC48 /* XBDestinationAllCell.xib in Resources */,
 				DC8A7C0D1D3776AE0032BC48 /* XBHomeSearchCityCell.xib in Resources */,
+				DC1332F01D3CD3B1005F4B3A /* XBMoreActivitySubNameCell.xib in Resources */,
 				DC8A7B3E1D2CD65E0032BC48 /* XBHomeInviationCell.xib in Resources */,
 				DC8A7C1D1D38789D0032BC48 /* XBHomeSearchActivityClickCell.xib in Resources */,
 				DC8A7A761D2B57730032BC48 /* Main.storyboard in Resources */,
@@ -825,6 +874,7 @@
 			files = (
 				DC8A7C101D37779E0032BC48 /* XBHomeSearchCityCell.m in Sources */,
 				DC8A7BED1D34E8AA0032BC48 /* XBDestinationAllFooterView.m in Sources */,
+				DC1332F91D3E0FA8005F4B3A /* XBSubNameView.m in Sources */,
 				DC8A7BD91D3497E30032BC48 /* XBHotDestination.m in Sources */,
 				DC8A7AAB1D2B59D30032BC48 /* XBModel.m in Sources */,
 				DC8A7B791D2F53920032BC48 /* XBHomeActivityContentCell.m in Sources */,
@@ -834,7 +884,10 @@
 				DC1332DF1D3C6ACE005F4B3A /* XBPlainFlowLayout.m in Sources */,
 				DC8A7C311D38C68C0032BC48 /* XBMoreActivityViewController.m in Sources */,
 				DC8A7A941D2B58100032BC48 /* NSIntegerFormatter.m in Sources */,
+				DC1333001D3F5190005F4B3A /* XBNoActivityView.m in Sources */,
+				DC1332F31D3CD4B3005F4B3A /* XBMoreActivitySubNameCell.m in Sources */,
 				DC8A7B111D2B914D0032BC48 /* XBReview.m in Sources */,
+				DC1332E21D3CB401005F4B3A /* XBNavigationBar.m in Sources */,
 				DC8A7BC31D3378900032BC48 /* XBDesinationFooterView.m in Sources */,
 				DC8A7BDC1D3498B90032BC48 /* XBDestinationCities.m in Sources */,
 				DC8A7C061D37236C0032BC48 /* XBDBUtil.m in Sources */,
@@ -865,7 +918,10 @@
 				DC8A7BD61D3497CF0032BC48 /* XBDestination.m in Sources */,
 				DC8A7B3C1D2CD6450032BC48 /* XBHomeInviationCell.m in Sources */,
 				DC8A7BCD1D348BBF0032BC48 /* XBTSTView.m in Sources */,
+				DC1332E51D3CC455005F4B3A /* XBMoreActivity.m in Sources */,
 				DC8A7C2E1D38C4E70032BC48 /* XBCalendarCell.m in Sources */,
+				DC1332EB1D3CC525005F4B3A /* XBMoreActivitySubName.m in Sources */,
+				DC1332F61D3DB9DD005F4B3A /* XBMoreActivitySort.m in Sources */,
 				DC8A7B611D2E48740032BC48 /* XBCity.m in Sources */,
 				DC8A7B5A1D2E43640032BC48 /* RegexKitLite.m in Sources */,
 				DC8A7B5D1D2E474F0032BC48 /* XBCityViewController.m in Sources */,
@@ -879,6 +935,7 @@
 				DC8A7BBA1D3347020032BC48 /* XBHomeHeaderView.m in Sources */,
 				DC8A7A961D2B58100032BC48 /* UIImage+Util.m in Sources */,
 				DC8A7A9D1D2B58160032BC48 /* XBUserDefaultsUtil.m in Sources */,
+				DC1332EE1D3CC554005F4B3A /* XBMoreActivitySubNameItem.m in Sources */,
 				DC8A7BF41D362DAA0032BC48 /* XBHomeSearchViewController.m in Sources */,
 				DC8A7BCA1D348B180032BC48 /* XBDestinationViewController.m in Sources */,
 				DC8A7A951D2B58100032BC48 /* UIColor+Util.m in Sources */,
@@ -893,6 +950,7 @@
 				DC8A7AA21D2B58210032BC48 /* XBApplication.m in Sources */,
 				DC8A7B481D2DF2F60032BC48 /* XBLoadingView.m in Sources */,
 				DC8A7BD21D3496300032BC48 /* XBDestinationHotCell.m in Sources */,
+				DC1332E81D3CC4B0005F4B3A /* XBMoreActivityName.m in Sources */,
 				DC8A7C291D38C3490032BC48 /* XBCalendarView.m in Sources */,
 				DC8A7B641D2E48AE0032BC48 /* XBLevelOne.m in Sources */,
 				DC8A7AA31D2B58210032BC48 /* XBConstants.m in Sources */,

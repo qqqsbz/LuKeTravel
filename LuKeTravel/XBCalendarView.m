@@ -24,6 +24,7 @@
 static NSString *const reuseIdentifier = @"XBCalendarCell";
 static NSString *const headerReuseIdentifier = @"XBHeader";
 @implementation XBCalendarView
+
 - (instancetype)init
 {
     if (self = [super init]) {
@@ -76,7 +77,7 @@ static NSString *const headerReuseIdentifier = @"XBHeader";
         make.left.equalTo(self);
         make.bottom.equalTo(self);
         make.right.equalTo(self);
-        make.height.mas_equalTo(1.f);
+        make.height.mas_equalTo(0.7);
     }];
     
     [self.collectionView layoutIfNeeded];
@@ -85,10 +86,9 @@ static NSString *const headerReuseIdentifier = @"XBHeader";
 
 }
 
-- (void)loadData
+- (void)reloadData
 {
-    
-    self.datas = [NSMutableArray arrayWithCapacity:kMontnCount];
+    self.datas = [NSMutableArray arrayWithCapacity:kMontnCount + 1];
     
     NSDate *date = [NSDate date];
     
@@ -103,8 +103,6 @@ static NSString *const headerReuseIdentifier = @"XBHeader";
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    
-    toDayComponents.day = 4;
     
     //默认获取五个月份
     for (NSInteger i = 0; i <= kMontnCount;  i ++) {
@@ -126,13 +124,17 @@ static NSString *const headerReuseIdentifier = @"XBHeader";
             
             if (i == kMontnCount) {
                 
+                NSInteger headDays = cmp.month % 2 == 0 ? kAheadDays : (kAheadDays - 1);
+                
                 if (toDayComponents.day - kAheadDays > 0) {
-                    if (j > (toDayComponents.day - kAheadDays)) {
+                    if (j > (toDayComponents.day - headDays)) {
                         break;
                     }
                 } else {
                     
                     if (j > dateCount + (toDayComponents.day - kAheadDays)) {
+                        break;
+                    } else if (j > toDayComponents.day - headDays) {
                         break;
                     }
                     
@@ -147,7 +149,7 @@ static NSString *const headerReuseIdentifier = @"XBHeader";
                 
                 [dateFormatter setDateFormat:@"yyyy-MM-dd"];
                 
-                dateString = [NSString stringWithFormat:@"%@-%@-%@",[NSIntegerFormatter formatToNSString:cmp.year],[NSIntegerFormatter formatToNSString:cmp.month],[NSIntegerFormatter formatToNSString:cmp.day]];
+                dateString = [NSString stringWithFormat:@"%@-%@-%@",[NSIntegerFormatter formatToNSString:cmp.year],[NSIntegerFormatter formatToNSString:cmp.month fix:YES],[NSIntegerFormatter formatToNSString:cmp.day fix:YES]];
                 
                 forMatterDate = [dateFormatter dateFromString:dateString];
                 
@@ -190,8 +192,18 @@ static NSString *const headerReuseIdentifier = @"XBHeader";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     XBCalendarCell *cell = (XBCalendarCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    
     cell.itemSelected = YES;
+    
     self.selectedIndexPath = indexPath;
+    
+    NSArray *dates = self.datas[indexPath.section];
+
+    XBDate *date   = dates[indexPath.row];
+
+    if ([self.delegate respondsToSelector:@selector(calendarView:didSelectedWithDateString:)]) {
+        [self.delegate calendarView:self didSelectedWithDateString:date.date];
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
