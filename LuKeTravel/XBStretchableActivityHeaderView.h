@@ -8,16 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XBStretchableScrollHeaderView : UIView
-@property (strong, nonatomic) UIScrollView *scrollView;
-@property (strong, nonatomic) UIView       *view;
+@interface XBStretchableActivityHeaderView : UIView
+@property (strong, nonatomic) UITableView  *tableView;
+@property (strong, nonatomic) UIView       *headerView;
 
 
 /**
  * subview:内容部分
  * view   :拉伸的背景图片
  */
-- (void)stretchHeaderForScrollView:(UIScrollView *)scrollView
+- (void)stretchHeaderForTableView:(UITableView *)tableView
                          withView:(UIView *)view;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView;

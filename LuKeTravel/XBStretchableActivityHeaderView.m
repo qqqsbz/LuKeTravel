@@ -14,30 +14,30 @@
 @end
 @implementation XBStretchableScrollHeaderView
 
-- (void)stretchHeaderForScrollView:(UIScrollView *)scrollView withView:(UIView *)view
+- (void)stretchHeaderForTableView:(UITableView *)tableView withView:(UIView *)view
 {
-    _scrollView = scrollView;
+    _tableView = tableView;
     
-    _view      = view;
+    _headerView = view;
     
-    _initialFrame       = _view.frame;
+    _headerView.contentMode = UIViewContentModeScaleAspectFill;
+    
+    _initialFrame       = _headerView.frame;
     
     _defaultViewHeight  = _initialFrame.size.height;
     
-    self.contentView = [[UIView alloc] initWithFrame:view.bounds];
+    [_tableView addSubview:_headerView];
     
-    [_scrollView addSubview:_view];
-    
-    [_scrollView addSubview:self.contentView];
+    _tableView.tableHeaderView = self.contentView;
     
 }
 
 
 - (void)scrollViewDidScroll:(UIScrollView*)scrollView
 {
-    CGRect f     = _view.frame;
-    f.size.width = _scrollView.frame.size.width;
-    _view.frame  = f;
+    CGRect f     = _headerView.frame;
+    f.size.width = _tableView.frame.size.width;
+    _headerView.frame  = f;
     
     if(scrollView.contentOffset.y < 0)
     {
@@ -47,15 +47,19 @@
         
         _initialFrame.size.height = _defaultViewHeight + offsetY;
         
-        _view.frame = _initialFrame;
+        
+        _headerView.frame = _initialFrame;
+        
+        
     }
+    
 }
 
 
 - (void)resizeView
 {
-    _initialFrame.size.width = _scrollView.frame.size.width;
-    _view.frame = _initialFrame;
+    _initialFrame.size.width = _tableView.frame.size.width;
+    _headerView.frame = _initialFrame;
 }
 
 
