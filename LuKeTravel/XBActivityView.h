@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+@class XBActivity;
+@class XBActivityView;
+
+@protocol XBActivityViewDelegate <NSObject>
+
+@optional
+- (void)activityView:(XBActivityView *)activityView didSelectLinkWithURL:(NSURL *)url;
+
+@end
 
 @interface XBActivityView : UIView
+
+@property (strong, nonatomic) XBActivity  *activity;
+
+@property (weak, nonatomic) id<XBActivityViewDelegate> delegate;
 
 @end

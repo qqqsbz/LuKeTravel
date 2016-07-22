@@ -9,5 +9,8 @@
 #import "XBModel.h"
 
 @interface XBShareActivity : XBModel
-
+@property (strong, nonatomic) NSString  *image;
+@property (strong, nonatomic) NSString  *subTitle;
+@property (strong, nonatomic) NSString  *title;
+@property (strong, nonatomic) NSString  *url;
 @end

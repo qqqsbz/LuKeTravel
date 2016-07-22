@@ -8,19 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const kErrorDomain;
+extern NSString *const kErrorDomain;                    //NSError Domain
 
-extern NSString *const kDefaultColorHex;
+extern NSString *const kDefaultColorHex;                //默认主色调颜色
 
-extern NSString *const kTypeOfActivity;
+extern NSString *const kTypeOfActivity;                 //结果为"活动"
 
-extern NSString *const kTypeOfCity;
+extern NSString *const kTypeOfCity;                     //结果为"城市"
 
+extern NSString *const kParserTitleSingleTag;           //判断是否为标题 如:*
 
-//extern NSString *const kChangeBackgroundColorNotification;
-//
-//extern NSString *const kLoginOutSuccessNotification;
-//
-//extern NSString *const kApiInvite;//招聘编辑
-//
-//extern NSString *const kURLRegex;//网址正则
+extern NSString *const kParserTitleMultipleTag;         //判断是否为标题 如:**
+
+extern NSString *const kWebSiteRegex;                   //网址正则表达式
+
+//@"\\bhttps?://[a-zA-Z0-9\\-.]+(?::(\\d+))?(?:(?:/[a-zA-Z0-9\\-._?,'+\\&%$=~*!():@\\\\]*)+)?"

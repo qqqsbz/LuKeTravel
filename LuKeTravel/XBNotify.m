@@ -19,4 +19,9 @@
     return @{};
 }
 
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    return @{@"recommendedNumber":@"recommended_number"};
+}
 @end

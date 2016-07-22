@@ -23,3 +23,16 @@
 "moreactivity-all" = "所有活动";
 "moreactivity-footerall" = "所有活动";
 "moreactivity-nodata" = "今日没有你想玩的活动?\n试试探索其他日期吧!";
+
+"activity-detail-readmore" = "阅读更多";
+"activity-detail-recommend" = "体验师推荐";
+"activity-detail-direction" = "活动详情";
+"activity-detail-use" = "如何使用";
+"activity-detail-notice" = "退改须知";
+"activity-notify-duration" = "时长";
+"activity-notify-cancellation" = "退订";
+"activity-notify-confirmation" = "确认";
+"activity-notify-transportation" = "交通";
+"activity-notify-recommendedNumber" = "人数";
+"activity-notify-language" = "语言";
+"activity-detail-reviewcount" = "活动评价(%@)";

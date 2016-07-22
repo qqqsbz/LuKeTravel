@@ -7,7 +7,6 @@
 //
 
 #import "XBPackage.h"
-#import "XBNotify.h"
 @implementation XBPackage
 + (NSString *)managedObjectEntityName
 {
@@ -23,20 +22,11 @@
 {
     return @{@"marketPrice":@"market_price",
              @"sellPrice":@"sell_price",
-             @"subName":@"subname"
+             @"subName":@"subname",
+             @"modelId":@"id"
              };
 }
 
-+ (NSDictionary *)relationshipModelClassesByPropertyKey
-{
-    return @{@"notify":[XBNotify class]
-             };
-}
-
-+ (NSValueTransformer *)notifyJSONTransformer
-{
-    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[XBNotify class]];
-}
 
 
 @end

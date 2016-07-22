@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface XBNotifyView : UIView
-
+@property (strong, nonatomic) UIImageView   *imageView;
+@property (strong, nonatomic) UILabel       *titleLabel;
+@property (strong, nonatomic) UILabel       *subTitleLabel;
 @end

@@ -9,5 +9,19 @@
 #import "XBShareActivity.h"
 
 @implementation XBShareActivity
++ (NSString *)managedObjectEntityName
+{
+    return NSStringFromClass(self);
+}
 
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    return @{};
+}
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    return @{@"subTitle":@"sub_title"
+             };
+}
 @end

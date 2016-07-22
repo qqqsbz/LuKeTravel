@@ -6,13 +6,13 @@
 //  Copyright © 2016年 coder. All rights reserved.
 //
 
-#import "XBStretchableScrollHeaderView.h"
-@interface XBStretchableScrollHeaderView()
+#import "XBStretchableActivityHeaderView.h"
+@interface XBStretchableActivityHeaderView()
 @property (assign, nonatomic) CGRect   initialFrame;
 @property (assign, nonatomic) CGFloat  defaultViewHeight;
 @property (strong, nonatomic) UIView   *contentView;
 @end
-@implementation XBStretchableScrollHeaderView
+@implementation XBStretchableActivityHeaderView
 
 - (void)stretchHeaderForTableView:(UITableView *)tableView withView:(UIView *)view
 {

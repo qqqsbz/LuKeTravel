@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+@class XBParserContentItem;
+@class XBActivityItemView;
+
+@protocol XBActivityItemViewDelegate <NSObject>
+
+@optional
+- (void)activityItemView:(XBActivityItemView *)activityItemView didSelectLinkWithURL:(NSURL *)url;
+
+@end
 
 @interface XBActivityItemView : UIView
+
+@property (strong, nonatomic) XBParserContentItem  *parserContentItem;
+
+@property (weak, nonatomic) id<XBActivityItemViewDelegate> delegate;
 
 @end

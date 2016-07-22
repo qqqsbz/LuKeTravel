@@ -357,6 +357,11 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
 {
+    NSString *tagetString = NSStringFromClass([XBMoreActivityViewController class]);
+    if ([NSStringFromClass([fromVC class]) isEqualToString:tagetString] || [NSStringFromClass([toVC class]) isEqualToString:tagetString]) {
+        return nil;
+    }
+    
     return [XBCityPushTransition transitionWithTransitionType:operation == UINavigationControllerOperationPush ? XBCityPushTransitionTypePush : XBCityPushTransitionTypePop];
 }
 

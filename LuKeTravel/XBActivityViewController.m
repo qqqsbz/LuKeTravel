@@ -5,19 +5,23 @@
 //  Created by coder on 16/7/7.
 //  Copyright © 2016年 coder. All rights reserved.
 //
+#define kBannerHeight CGRectGetHeight(self.view.frame) * 0.457
 
 #import "XBActivityViewController.h"
 #import "XBGroupItem.h"
-#import "XBBannerView.h"
 #import "XBActivity.h"
-#import "XBStretchableScrollHeaderView.h"
-@interface XBActivityViewController () <UIScrollViewDelegate>
-@property (strong, nonatomic) UIScrollView  *scrollView;
-@property (strong, nonatomic) XBBannerView  *bannerView;
+#import "SDCycleScrollView.h"
+#import "XBActivityView.h"
+#import "XBStretchableActivityHeaderView.h"
+@interface XBActivityViewController () <UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,XBActivityViewDelegate>
+@property (strong, nonatomic) UITableView   *tableView;
 @property (strong, nonatomic) XBActivity    *activity;
-@property (strong, nonatomic) XBStretchableScrollHeaderView  *stretchHeaderView;
+@property (strong, nonatomic) XBActivityView     *activityView;
+@property (strong, nonatomic) SDCycleScrollView  *bannerView;
+@property (strong, nonatomic) XBStretchableActivityHeaderView  *stretchHeaderView;
 @end
 
+static NSString *const reuseIdentifier = @"cell";
 @implementation XBActivityViewController
 
 - (void)viewDidLoad {
@@ -39,7 +43,11 @@
         
         self.activity = activity;
         
-        self.bannerView.imageUrls = activity.images;
+        self.activityView.activity = activity;
+        
+        self.bannerView.imageURLStringsGroup = activity.images;
+        
+        [self.tableView reloadData];
     
     } failure:^(NSError *error) {
     
@@ -52,19 +60,62 @@
 - (void)builView
 {
     self.view.backgroundColor = [UIColor whiteColor];
+
+    self.activityView = [[XBActivityView alloc] initWithFrame:CGRectMake(0, kBannerHeight, CGRectGetWidth(self.view.bounds), 2300)];
+    self.activityView.delegate = self;
     
-    self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    self.scrollView.delegate = self;
-    self.scrollView.showsVerticalScrollIndicator = NO;
-    self.scrollView.showsHorizontalScrollIndicator = NO;
-    [self.view addSubview:self.scrollView];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.showsHorizontalScrollIndicator = NO;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:self.tableView];
+
+
+    // 网络加载 --- 创建带标题的图片轮播器
+    self.bannerView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 260) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder_image"]];
+    self.bannerView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
+    self.bannerView.currentPageDotColor = [UIColor whiteColor]; // 自定义分页控件小圆标
     
-    self.bannerView = [[XBBannerView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.scrollView.frame), 260.f)];
+    self.stretchHeaderView = [[XBStretchableActivityHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), kBannerHeight)];
+    [self.stretchHeaderView stretchHeaderForTableView:self.tableView withView:self.bannerView];
+}
+
+#pragma mark -- UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     
-    self.stretchHeaderView = [[XBStretchableScrollHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.scrollView.frame), 260)];
-    [self.stretchHeaderView stretchHeaderForScrollView:self.scrollView withView:self.bannerView];
+    if (!cell) {
+        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        [cell.contentView addSubview:self.activityView];
+        
+    }
     
-    self.scrollView.contentSize = CGSizeMake(320, 700);
+    return cell;
+    
+}
+
+#pragma mark -- UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGRectGetHeight(self.activityView.frame);
+}
+
+#pragma mark -- XBActivityViewDelegate
+- (void)activityView:(XBActivityView *)activityView didSelectLinkWithURL:(NSURL *)url
+{
+    DDLogDebug(@"url:%@",url);
 }
 
 #pragma mark -- UIScrollViewDelegate

@@ -9,5 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface XBRange : NSObject
+@property (assign, nonatomic) NSInteger  location;
+@property (assign, nonatomic) NSInteger  length;
+
++ (instancetype)rangeMakeLocation:(NSInteger)location length:(NSInteger)length;
+
+- (instancetype)initRangeMakeLocation:(NSInteger)location length:(NSInteger)length;
 
 @end

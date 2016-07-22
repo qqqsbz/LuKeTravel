@@ -71,7 +71,7 @@
         
         imageView.tag = i;
         
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
+//        imageView.contentMode = UIViewContentModeScaleAspectFill;
         
         imageView.clipsToBounds = YES;
         
@@ -88,13 +88,15 @@
     
     [firstImageView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.scrollView);
-        make.height.equalTo(self.scrollView);
-        make.width.equalTo(self.scrollView);
+        make.width.mas_equalTo(CGRectGetWidth(self.frame));
+        make.top.equalTo(self.scrollView);
+        make.bottom.equalTo(self.scrollView);
     }];
     
     [lastImageView makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.scrollView);
-        make.height.equalTo(self.scrollView);
+        make.top.equalTo(self.scrollView);
+        make.bottom.equalTo(self.scrollView);
         make.width.equalTo(firstImageView);
     }];
     
@@ -106,8 +108,9 @@
         
         [currentImageView makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(previousImageView.right);
-            make.height.equalTo(previousImageView);
             make.width.equalTo(previousImageView);
+            make.top.equalTo(self.scrollView);
+            make.bottom.equalTo(self.scrollView);
         }];
         
     }
