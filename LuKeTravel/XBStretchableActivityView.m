@@ -1,13 +1,14 @@
 //
-//  XBActivityView.m
+//  XBStretchableScrollHeaderView.m
 //  LuKeTravel
 //
-//  Created by coder on 16/7/21.
+//  Created by coder on 16/7/7.
 //  Copyright © 2016年 coder. All rights reserved.
 //
 #define kSpace 10.f
 #define kLineSpacing 7.f
 
+#import "XBStretchableActivityView.h"
 #import "XBActivityView.h"
 #import "XBActivity.h"
 #import "XBNotify.h"
@@ -18,7 +19,12 @@
 #import "XBNotifyView.h"
 #import "UIImage+Util.h"
 #import <MapKit/MapKit.h>
-@interface XBActivityView() <XBActivityItemViewDelegate>
+@interface XBStretchableActivityView() <XBActivityItemViewDelegate>
+@property (assign, nonatomic) CGRect   initialFrame;
+@property (assign, nonatomic) CGFloat  defaultViewHeight;
+
+
+@property (strong, nonatomic) UIView        *contentView;
 @property (strong, nonatomic) UILabel       *titleLabel;
 @property (strong, nonatomic) UILabel       *subTitleLabel;
 @property (strong, nonatomic) UILabel       *sellLabel;
@@ -64,25 +70,61 @@
 @property (strong, nonatomic) XBActivityItemView  *detailItemView;
 
 @property (strong, nonatomic) NSMutableArray *starImageViews;
+@property (strong, nonatomic) NSArray        *directions;
+@property (strong, nonatomic) NSArray        *details;
+
 @end
+@implementation XBStretchableActivityView
 
-@implementation XBActivityView
-
-- (instancetype)init
+- (void)stretchHeaderForScrollView:(UIScrollView *)scrollView withView:(UIView *)view
 {
-    if (self = [super init]) {
-        [self initialization];
-    }
-    return self;
+    _scrollView = scrollView;
+    
+    _headerView = view;
+    
+    _headerView.contentMode = UIViewContentModeScaleAspectFill;
+    
+    _initialFrame       = _headerView.frame;
+    
+    _defaultViewHeight  = _initialFrame.size.height;
+    
+    [_scrollView addSubview:_headerView];
+    
+    [self initialization];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
+
+- (void)scrollViewDidScroll:(UIScrollView*)scrollView
 {
-    if (self = [super initWithFrame:frame]) {
-        [self initialization];
+    CGRect f     = _headerView.frame;
+    
+    f.size.width = _scrollView.frame.size.width;
+    
+    _headerView.frame  = f;
+    
+    if(scrollView.contentOffset.y < 0)
+    {
+        CGFloat offsetY = (scrollView.contentOffset.y + scrollView.contentInset.top) * -1;
+        
+        _initialFrame.origin.y = - offsetY;
+        
+        _initialFrame.size.height = _defaultViewHeight + offsetY;
+        
+        _headerView.frame = _initialFrame;
+        
     }
-    return self;
+    
 }
+
+
+- (void)resizeView
+{
+    _initialFrame.size.width = _scrollView.frame.size.width;
+    
+    _headerView.frame = _initialFrame;
+}
+
+#pragma mark --
 
 - (void)setActivity:(XBActivity *)activity
 {
@@ -102,15 +144,13 @@
     
     self.descLabel.text = activity.desc;
     
-    self.reviewsLabel.text = [NSString stringWithFormat:NSLocalizedString(@"activity-detail-reviewcount", @"activity-detail-reviewcount"),[NSIntegerFormatter formatToNSString:activity.reviewsCount]];
+    self.reviewsLabel.text = [NSString stringWithFormat:@"%@(%@)",NSLocalizedString(@"activity-detail-reviewcount", @"activity-detail-reviewcount"),[NSIntegerFormatter formatToNSString:activity.reviewsCount]];
     
     self.fastLabel.hidden = !self.activity.isInstant;
     
     self.fastImageView.hidden = !self.activity.isInstant;
     
     self.fastTipLabel.hidden = !self.activity.isInstant;
-    
-    [self addConstraint];
     
     [self addStar];
     
@@ -122,7 +162,15 @@
     
     [self addAttributedString];
     
-    DDLogDebug(@"height:%f",CGRectGetMaxY(self.noticeView.frame));
+    [self.noticeView layoutIfNeeded];
+    
+    if (!self.activity.isInstant) {
+        
+        [self.descLabel updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.fastImageView.bottom).offset(0);
+        }];
+    }
+    
 }
 
 - (void)initialization
@@ -131,77 +179,87 @@
     
     self.backgroundColor = [UIColor colorWithHexString:@"#F6F5F2"];
     
+    self.tagLabel = [UILabel new];
+    self.tagLabel.text = @"Activity #@";
+    self.tagLabel.font = [UIFont systemFontOfSize:14.5f];
+    self.tagLabel.textColor = [UIColor colorWithHexString:@"#AFAEAD"];
+    [self.scrollView addSubview:self.tagLabel];
+    
+    self.contentView = [UIView new];
+    self.contentView.backgroundColor = [UIColor clearColor];
+    [self.scrollView addSubview:self.contentView];
+    
     self.titleLabel = [UILabel new];
     self.titleLabel.numberOfLines = 0;
     self.titleLabel.lineBreakMode = NSLineBreakByCharWrapping;
     self.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
     self.titleLabel.textColor = defaultColor;
-    [self addSubview:self.titleLabel];
+    [self.contentView addSubview:self.titleLabel];
     
     self.subTitleLabel = [UILabel new];
     self.subTitleLabel.font = [UIFont systemFontOfSize:14.f];
     self.subTitleLabel.textColor = [UIColor colorWithHexString:@"#6C6C6B"];
-    [self addSubview:self.subTitleLabel];
+    [self.contentView addSubview:self.subTitleLabel];
     
     
     self.sellLabel = [UILabel new];
     self.sellLabel.textAlignment = NSTextAlignmentRight;
     self.sellLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
     self.sellLabel.textColor = [UIColor colorWithHexString:@"#4C4C4C"];
-    [self addSubview:self.sellLabel];
+    [self.contentView addSubview:self.sellLabel];
     
     self.markLabel = [UILabel new];
     self.markLabel.font = [UIFont systemFontOfSize:13.f];
     self.markLabel.textColor = [UIColor colorWithHexString:@"#666666"];
-    [self addSubview:self.markLabel];
+    [self.contentView addSubview:self.markLabel];
     
     self.addressImageView = [UIImageView new];
     self.addressImageView.image = [UIImage imageNamed:@"activityMap"];
-    [self addSubview:self.addressImageView];
+    [self.contentView addSubview:self.addressImageView];
     
     self.addressLabel = [UILabel new];
     self.addressLabel.font = [UIFont systemFontOfSize:14.5f];
     self.addressLabel.textColor = [UIColor colorWithHexString:@"#AFAEAD"];
-    [self addSubview:self.addressLabel];
+    [self.contentView addSubview:self.addressLabel];
     
     self.instantImageView = [UIImageView new];
     self.instantImageView.image = [UIImage imageNamed:@"activityBooked"];
-    [self addSubview:self.instantImageView];
+    [self.contentView addSubview:self.instantImageView];
     
     self.instantLabel = [UILabel new];
     self.instantLabel.font = [UIFont systemFontOfSize:14.5f];
     self.instantLabel.textColor = [UIColor colorWithHexString:@"#AFAEAD"];
-    [self addSubview:self.instantLabel];
+    [self.contentView addSubview:self.instantLabel];
     
     self.separatorView = [UIView new];
     self.separatorView.backgroundColor = [UIColor colorWithHexString:@"#E0DFDD"];
-    [self addSubview:self.separatorView];
+    [self.contentView addSubview:self.separatorView];
     
     self.fastImageView = [UIImageView new];
     self.fastImageView.image = [UIImage imageNamed:@"activityFast"];
-    [self addSubview:self.fastImageView];
+    [self.contentView addSubview:self.fastImageView];
     
     self.fastLabel = [UILabel new];
     self.fastLabel.text = NSLocalizedString(@"activity-detail-instant", @"activity-detail-instant");
     self.fastLabel.font = [UIFont systemFontOfSize:14.f];
     self.fastLabel.textColor = defaultColor;
-    [self addSubview:self.fastLabel];
+    [self.contentView addSubview:self.fastLabel];
     
     self.fastTipLabel = [UILabel new];
     self.fastTipLabel.font = [UIFont systemFontOfSize:11.5f];
     self.fastTipLabel.textColor = [UIColor colorWithHexString:@"#AFAEAD"];
-    [self addSubview:self.fastTipLabel];
+    [self.contentView addSubview:self.fastTipLabel];
     
     self.descLabel = [UILabel new];
     self.descLabel.numberOfLines = 0;
     self.descLabel.font = [UIFont systemFontOfSize:15.f];
     self.descLabel.textColor = [UIColor colorWithHexString:@"#6C6C6B"];
-    [self addSubview:self.descLabel];
+    [self.contentView addSubview:self.descLabel];
     
     self.detailItemView = [XBActivityItemView new];
     self.detailItemView.delegate = self;
-    [self addSubview:self.detailItemView];
-
+    [self.contentView addSubview:self.detailItemView];
+    
     self.readMoreButton = [UIButton new];
     self.readMoreButton.layer.borderWidth = 1.f;
     self.readMoreButton.layer.borderColor = defaultColor.CGColor;
@@ -211,7 +269,8 @@
     [self.readMoreButton setTitle:NSLocalizedString(@"activity-detail-readmore", @"activity-detail-readmore") forState:UIControlStateNormal];
     [self.readMoreButton setTitleColor:defaultColor forState:UIControlStateNormal];
     [self.readMoreButton setBackgroundColor:[UIColor clearColor]];
-    [self addSubview:self.readMoreButton];
+    [self.readMoreButton addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:self.readMoreButton];
     
     self.recommendButton = [UIButton new];
     self.recommendButton.layer.borderWidth = 1.f;
@@ -222,71 +281,72 @@
     [self.recommendButton setTitle:NSLocalizedString(@"activity-detail-recommend", @"activity-detail-recommend") forState:UIControlStateNormal];
     [self.recommendButton setTitleColor:defaultColor forState:UIControlStateNormal];
     [self.recommendButton setBackgroundColor:[UIColor clearColor]];
-    [self addSubview:self.recommendButton];
+    [self.recommendButton addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:self.recommendButton];
     
     self.durationNotifyView = [XBNotifyView new];
     self.durationNotifyView.titleLabel.text = NSLocalizedString(@"activity-notify-duration", @"activity-notify-duration");
     self.durationNotifyView.imageView.image = [UIImage imageNamed:@"activity_time"];
-    [self addSubview:self.durationNotifyView];
+    [self.contentView addSubview:self.durationNotifyView];
     
     self.languageNotifyView = [XBNotifyView new];
     self.languageNotifyView.titleLabel.text = NSLocalizedString(@"activity-notify-language", @"activity-notify-language");
     self.languageNotifyView.imageView.image = [UIImage imageNamed:@"activity_lang"];
-    [self addSubview:self.languageNotifyView];
+    [self.contentView addSubview:self.languageNotifyView];
     
     self.recommendedNumberNotifyView = [XBNotifyView new];
     self.recommendedNumberNotifyView.titleLabel.text = NSLocalizedString(@"activity-notify-recommendedNumber", @"activity-notify-recommendedNumber");
     self.recommendedNumberNotifyView.imageView.image = [UIImage imageNamed:@"activity_head_count"];
-    [self addSubview:self.recommendedNumberNotifyView];
+    [self.contentView addSubview:self.recommendedNumberNotifyView];
     
     self.transportationNotifyView = [XBNotifyView new];
     self.transportationNotifyView.titleLabel.text = NSLocalizedString(@"activity-notify-transportation", @"activity-notify-transportation");
     self.transportationNotifyView.imageView.image = [UIImage imageNamed:@"activity_pickup"];
-    [self addSubview:self.transportationNotifyView];
+    [self.contentView addSubview:self.transportationNotifyView];
     
     self.confirmationNotifyView = [XBNotifyView new];
     self.confirmationNotifyView.titleLabel.text = NSLocalizedString(@"activity-notify-confirmation", @"activity-notify-confirmation");
     self.confirmationNotifyView.imageView.image = [UIImage imageNamed:@"activity_confirm"];
-    [self addSubview:self.confirmationNotifyView];
+    [self.contentView addSubview:self.confirmationNotifyView];
     
     self.cancellationNotifyView = [XBNotifyView new];
     self.cancellationNotifyView.titleLabel.text = NSLocalizedString(@"activity-notify-cancellation", @"activity-notify-cancellation");
     self.cancellationNotifyView.imageView.image = [UIImage imageNamed:@"activity_refund"];
-    [self addSubview:self.cancellationNotifyView];
+    [self.contentView addSubview:self.cancellationNotifyView];
     
     self.mapView = [[MKMapView alloc] init];
     self.mapView.mapType = MKMapTypeStandard;
     self.mapView.showsUserLocation = NO;
     self.mapView.showsCompass = NO;
     self.mapView.showsPointsOfInterest = YES;
-    [self addSubview:self.mapView];
+    [self.contentView addSubview:self.mapView];
     
     self.reviewsLabel = [UILabel new];
     self.reviewsLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:18.f];
     self.reviewsLabel.textColor = [UIColor blackColor];
-    [self addSubview:self.reviewsLabel];
+    [self.contentView addSubview:self.reviewsLabel];
     
     UIImage *starImage = [[UIImage imageNamed:@"star-template"] imageContentWithColor:defaultColor];
     
     self.starImageView1 = [UIImageView new];
     self.starImageView1.image = starImage;
-    [self addSubview:self.starImageView1];
+    [self.contentView addSubview:self.starImageView1];
     
     self.starImageView2 = [UIImageView new];
     self.starImageView2.image = starImage;
-    [self addSubview:self.starImageView2];
+    [self.contentView addSubview:self.starImageView2];
     
     self.starImageView3 = [UIImageView new];
     self.starImageView3.image = starImage;
-    [self addSubview:self.starImageView3];
+    [self.contentView addSubview:self.starImageView3];
     
     self.starImageView4 = [UIImageView new];
     self.starImageView4.image = starImage;
-    [self addSubview:self.starImageView4];
+    [self.contentView addSubview:self.starImageView4];
     
     self.starImageView5 = [UIImageView new];
     self.starImageView5.image = starImage;
-    [self addSubview:self.starImageView5];
+    [self.contentView addSubview:self.starImageView5];
     
     self.starImageViews = [NSMutableArray arrayWithCapacity:5];
     [self.starImageViews addObject:self.starImageView1];
@@ -304,35 +364,36 @@
     [self.reviewsReadMoreButton setTitle:NSLocalizedString(@"activity-detail-readmore", @"activity-detail-readmore") forState:UIControlStateNormal];
     [self.reviewsReadMoreButton setTitleColor:defaultColor forState:UIControlStateNormal];
     [self.reviewsReadMoreButton setBackgroundColor:[UIColor clearColor]];
-    [self addSubview:self.reviewsReadMoreButton];
+    [self.reviewsReadMoreButton addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:self.reviewsReadMoreButton];
     
     self.reviewsSeparatorView = [UIView new];
     self.reviewsSeparatorView.backgroundColor = [UIColor colorWithHexString:@"#E0DFDD"];
-    [self addSubview:self.reviewsSeparatorView];
-
+    [self.contentView addSubview:self.reviewsSeparatorView];
+    
     self.directionTitleLabel = [UILabel new];
     self.directionTitleLabel.text = NSLocalizedString(@"activity-detail-direction", @"activity-detail-direction");
     self.directionTitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.f];
     self.directionTitleLabel.textColor = [UIColor blackColor];
-    [self addSubview:self.directionTitleLabel];
+    [self.contentView addSubview:self.directionTitleLabel];
     
     self.confirmTitleLabel = [UILabel new];
     self.confirmTitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16.f];
     self.confirmTitleLabel.textColor = defaultColor;
-    [self addSubview:self.confirmTitleLabel];
-
+    [self.contentView addSubview:self.confirmTitleLabel];
+    
     self.confirmSuccessLabel = [XBActivityItemView new];
     self.confirmSuccessLabel.delegate = self;
-    [self addSubview:self.confirmSuccessLabel];
-//
+    [self.contentView addSubview:self.confirmSuccessLabel];
+    
     self.confirmEmailLabel = [XBActivityItemView new];
     self.confirmEmailLabel.delegate = self;
-    [self addSubview:self.confirmEmailLabel];
-
+    [self.contentView addSubview:self.confirmEmailLabel];
+    
     self.packageTitleLabel = [UILabel new];
     self.packageTitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16.f];
     self.packageTitleLabel.textColor = defaultColor;
-    [self addSubview:self.packageTitleLabel];
+    [self.contentView addSubview:self.packageTitleLabel];
     
     self.directionReadMoreButton = [UIButton new];
     self.directionReadMoreButton.layer.borderWidth = 1.f;
@@ -343,52 +404,55 @@
     [self.directionReadMoreButton setTitle:NSLocalizedString(@"activity-detail-readmore", @"activity-detail-readmore") forState:UIControlStateNormal];
     [self.directionReadMoreButton setTitleColor:defaultColor forState:UIControlStateNormal];
     [self.directionReadMoreButton setBackgroundColor:[UIColor clearColor]];
-    [self addSubview:self.directionReadMoreButton];
-
+    [self.directionReadMoreButton addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:self.directionReadMoreButton];
+    
     self.directionSeparatorView = [UIView new];
     self.directionSeparatorView.backgroundColor = [UIColor colorWithHexString:@"#E0DFDD"];
-    [self addSubview:self.directionSeparatorView];
+    [self.contentView addSubview:self.directionSeparatorView];
     
     self.useTitleLabel = [UILabel new];
     self.useTitleLabel.text = NSLocalizedString(@"activity-detail-use", @"activity-detail-use");
     self.useTitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.f];
     self.useTitleLabel.textColor = [UIColor blackColor];
-    [self addSubview:self.useTitleLabel];
+    [self.contentView addSubview:self.useTitleLabel];
     
     self.useView = [UIView new];
     self.useView.backgroundColor = [UIColor clearColor];
-    [self addSubview:self.useView];
+    [self.contentView addSubview:self.useView];
     
     self.noticeTitleLabel = [UILabel new];
     self.noticeTitleLabel.text = NSLocalizedString(@"activity-detail-notice", @"activity-detail-notice");
     self.noticeTitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.f];
     self.noticeTitleLabel.textColor = [UIColor blackColor];
-    [self addSubview:self.noticeTitleLabel];
+    [self.contentView addSubview:self.noticeTitleLabel];
     
     self.noticeView = [UIView new];
     self.noticeView.backgroundColor = [UIColor clearColor];
-    [self addSubview:self.noticeView];
-
-    self.tagLabel = [UILabel new];
-    self.tagLabel.text = @"Activity #@";
-    self.tagLabel.font = [UIFont systemFontOfSize:14.5f];
-    self.tagLabel.textColor = [UIColor colorWithHexString:@"#AFAEAD"];
-    [self addSubview:self.tagLabel];
+    [self.contentView addSubview:self.noticeView];
+    
+    [self addConstraint];
 }
 
 - (void)addConstraint
 {
-//    [super layoutSubviews];
+    [self.contentView makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.scrollView).offset(CGRectGetHeight(self.headerView.frame));
+        make.left.equalTo(self.scrollView);
+        make.width.equalTo(self.scrollView);
+        make.bottom.equalTo(self.scrollView);
+    }];
     
     [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).offset(kSpace * 2.3);
-        make.left.equalTo(self).offset(kSpace);
+        make.top.equalTo(self.contentView).offset(kSpace * 2.3);
+        make.left.equalTo(self.contentView).offset(kSpace);
         make.right.equalTo(self.sellLabel.left).offset(-kSpace);
     }];
     
     [self.sellLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self).offset(-kSpace);
+        make.right.equalTo(self.contentView).offset(-kSpace);
         make.centerY.equalTo(self.titleLabel);
+        make.width.mas_greaterThanOrEqualTo(50.f);
     }];
     
     [self.subTitleLabel makeConstraints:^(MASConstraintMaker *make) {
@@ -396,12 +460,11 @@
         make.top.equalTo(self.titleLabel.bottom).offset(kSpace * 0.4);
         make.right.equalTo(self.titleLabel);
     }];
-
+    
     [self.markLabel makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.subTitleLabel);
         make.right.equalTo(self.sellLabel);
     }];
-    
     
     [self.addressImageView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleLabel);
@@ -448,7 +511,7 @@
     [self.descLabel makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.fastImageView);
         make.top.equalTo(self.fastImageView.bottom).offset(kSpace * 2.3);
-        make.right.equalTo(self).offset(-kSpace * 1.5);
+        make.right.equalTo(self.contentView).offset(-kSpace * 1.5);
     }];
     
     [self.detailItemView makeConstraints:^(MASConstraintMaker *make) {
@@ -460,8 +523,7 @@
     [self.readMoreButton makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.detailItemView);
         make.top.equalTo(self.detailItemView.bottom).offset(kSpace * 3.5);
-//        make.width.mas_greaterThanOrEqualTo(120.f);
-        make.height.mas_greaterThanOrEqualTo(35.f);
+        make.height.mas_lessThanOrEqualTo(50.f);
     }];
     
     [self.recommendButton makeConstraints:^(MASConstraintMaker *make) {
@@ -473,7 +535,7 @@
     }];
     
     [self.languageNotifyView makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self);
+        make.centerX.equalTo(self.contentView);
         make.top.equalTo(self.readMoreButton.bottom).offset(kSpace * 2.5);
     }];
     
@@ -503,19 +565,19 @@
     }];
     
     [self.mapView makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self);
+        make.left.equalTo(self.contentView);
         make.top.equalTo(self.transportationNotifyView.bottom).offset(kSpace * 4);
-        make.right.equalTo(self);
+        make.right.equalTo(self.contentView);
         make.height.mas_equalTo(130.f);
     }];
     
     [self.reviewsLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self);
+        make.centerX.equalTo(self.contentView);
         make.top.equalTo(self.mapView.bottom).offset(kSpace * 4);
     }];
     
     [self.starImageView3 makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self);
+        make.centerX.equalTo(self.contentView);
         make.top.equalTo(self.reviewsLabel.bottom).offset(kSpace * 2.f);
         make.width.mas_equalTo(25.f);
         make.height.mas_equalTo(25.f);
@@ -558,31 +620,31 @@
     
     [self.reviewsSeparatorView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.reviewsReadMoreButton.bottom).offset(kSpace * 3.3);
-        make.left.equalTo(self).offset(kSpace);
-        make.right.equalTo(self).offset(-kSpace);
+        make.left.equalTo(self.contentView).offset(kSpace);
+        make.right.equalTo(self.contentView).offset(-kSpace);
         make.height.mas_equalTo(1.f);
     }];
     
     [self.directionTitleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self);
+        make.centerX.equalTo(self.contentView);
         make.top.equalTo(self.reviewsSeparatorView.bottom).offset(kSpace * 4);
     }];
     
     [self.confirmTitleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(kSpace * 1.4);
+        make.left.equalTo(self.contentView).offset(kSpace * 1.4);
         make.top.equalTo(self.directionTitleLabel.bottom).offset(kSpace * 3);
     }];
     
     [self.confirmSuccessLabel makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.confirmTitleLabel).offset(kSpace * 0.8);
         make.top.equalTo(self.confirmTitleLabel.bottom).offset(kSpace * 0.5);
-        make.right.equalTo(self).offset(-kSpace * 2);
+        make.right.equalTo(self.contentView).offset(-kSpace * 2);
     }];
     
     [self.confirmEmailLabel makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.confirmTitleLabel).offset(kSpace);
         make.top.equalTo(self.confirmSuccessLabel.bottom).offset(kSpace);
-        make.right.equalTo(self).offset(-kSpace * 2);
+        make.right.equalTo(self.contentView).offset(-kSpace * 2);
     }];
     
     [self.packageTitleLabel makeConstraints:^(MASConstraintMaker *make) {
@@ -596,41 +658,43 @@
         make.right.equalTo(self.reviewsReadMoreButton).offset(-kSpace);
         make.height.mas_equalTo(35.f);
     }];
-
+    
     [self.directionSeparatorView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.directionReadMoreButton.bottom).offset(kSpace * 3.3);
-        make.left.equalTo(self).offset(kSpace);
-        make.right.equalTo(self).offset(-kSpace);
+        make.left.equalTo(self.contentView).offset(kSpace);
+        make.right.equalTo(self.contentView).offset(-kSpace);
         make.height.mas_equalTo(1.f);
     }];
     
     [self.useTitleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self);
+        make.centerX.equalTo(self.contentView);
         make.top.equalTo(self.directionSeparatorView.bottom).offset(kSpace * 3.5);
     }];
     
     [self.useView makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self);
+        make.left.equalTo(self.contentView);
         make.top.equalTo(self.useTitleLabel.bottom).offset(kSpace * 3.5);
-        make.right.equalTo(self);
+        make.right.equalTo(self.contentView);
     }];
     
     [self.noticeTitleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self);
+        make.centerX.equalTo(self.contentView);
         make.top.equalTo(self.useView.bottom).offset(kSpace * 3.5);
     }];
     
     [self.noticeView makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self);
+        make.left.equalTo(self.contentView);
         make.top.equalTo(self.noticeTitleLabel.bottom).offset(kSpace * 3.5);
-        make.right.equalTo(self);
+        make.right.equalTo(self.contentView);
+        make.bottom.equalTo(self.contentView).offset(-kSpace * 4);
     }];
-
+    
     [self.tagLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self);
-        make.top.equalTo(self.noticeView.bottom).offset(kSpace * 3);
-        make.bottom.equalTo(self).offset(-kSpace * 2);
+        make.centerX.equalTo(self.scrollView);
+        make.top.equalTo(self.scrollView.bottom).offset(kSpace * 4);
     }];
+    
+    
 }
 
 - (void)parserContent
@@ -647,6 +711,8 @@
                 
                 self.detailItemView.parserContentItem = item;
             }
+            
+            self.details = datas;
         }
         
     }];
@@ -673,6 +739,8 @@
             XBParserContent *package = datas[1];
             
             self.packageTitleLabel.text = package.title;
+            
+            self.directions = datas;
         }
         
     }];
@@ -752,7 +820,7 @@
     [lastView makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.useView);
     }];
-
+    
 }
 
 - (void)addNoticeConstraint
@@ -786,7 +854,7 @@
     [lastView makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.noticeView);
     }];
-
+    
 }
 
 - (void)addStar
@@ -868,9 +936,47 @@
 #pragma mark -- XBActivityItemViewDelegate
 - (void)activityItemView:(XBActivityItemView *)activityItemView didSelectLinkWithURL:(NSURL *)url
 {
-    if ([self.delegate respondsToSelector:@selector(activityItemView:didSelectLinkWithURL:)]) {
-        [self.delegate activityView:self didSelectLinkWithURL:url];
+    if ([self.delegate respondsToSelector:@selector(stretchableActivityView:didSelectLinkWithURL:)]) {
+        [self.delegate stretchableActivityView:self didSelectLinkWithURL:url];
     }
 }
+
+- (void)clickAction:(UIButton *)sender
+{
+    if (sender == self.directionReadMoreButton) {
+        
+        if ([self.delegate respondsToSelector:@selector(stretchableActivityView:didSelectDirectionWithParserContent:)]) {
+            
+            [self.delegate stretchableActivityView:self didSelectDirectionWithParserContent:self.directions];
+            
+        }
+        
+    } else if (sender == self.reviewsReadMoreButton) {
+        
+        if ([self.delegate respondsToSelector:@selector(stretchableActivityView:didSelectReviewWithReviewCount:)]) {
+            
+            [self.delegate stretchableActivityView:self didSelectReviewWithReviewCount:self.activity.reviewsCount];
+            
+        }
+        
+    } else if (sender == self.recommendButton) {
+        
+        if ([self.delegate respondsToSelector:@selector(stretchableActivityView:didSelectRecommendWithText:)]) {
+            
+            [self.delegate stretchableActivityView:self didSelectRecommendWithText:self.activity.recommend];
+            
+        }
+        
+    } else if (sender == self.readMoreButton) {
+        
+        if ([self.delegate respondsToSelector:@selector(stretchableActivityView:didSelectDetailWithParserContent:)]) {
+            
+            [self.delegate stretchableActivityView:self didSelectDetailWithParserContent:self.details];
+            
+        }
+
+    }
+}
+
 
 @end

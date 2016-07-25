@@ -35,4 +35,7 @@
 "activity-notify-transportation" = "交通";
 "activity-notify-recommendedNumber" = "人数";
 "activity-notify-language" = "语言";
-"activity-detail-reviewcount" = "活动评价(%@)";
+"activity-detail-reviewcount" = "活动评价";
+"activity-detail-instant" = "极速";
+"activity-detail-strength" = "活动亮点";
+"activity-detail-particulars" = "活动详情";

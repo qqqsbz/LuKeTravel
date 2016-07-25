@@ -20,4 +20,4 @@ NSString *const kParserTitleSingleTag = @"*";
 
 NSString *const kParserTitleMultipleTag = @"**";
 
-NSString *const kWebSiteRegex = @"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
+NSString *const kWebSiteRegex = @"\\((http|https)://.*\\)";

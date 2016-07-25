@@ -34,6 +34,11 @@
 		DC1333411D40AA80005F4B3A /* XBActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1333401D40AA80005F4B3A /* XBActivityView.m */; };
 		DC1333441D40C186005F4B3A /* XBActivityItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1333431D40C186005F4B3A /* XBActivityItemView.m */; };
 		DC1333471D40CC29005F4B3A /* XBNotifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1333461D40CC29005F4B3A /* XBNotifyView.m */; };
+		DC4DCCFC1D45B99C00DFBA97 /* XBActivityNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCCFB1D45B99C00DFBA97 /* XBActivityNavigationBar.m */; };
+		DC4DCCFF1D45C14900DFBA97 /* XBActivityRecommendMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCCFE1D45C14900DFBA97 /* XBActivityRecommendMaskView.m */; };
+		DC4DCD021D45E16600DFBA97 /* XBActivityStrengthsView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCD011D45E16600DFBA97 /* XBActivityStrengthsView.m */; };
+		DC4DCD081D45EB5700DFBA97 /* XBActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCD071D45EB5700DFBA97 /* XBActivityDetailViewController.m */; };
+		DC4DCD0B1D45FF7900DFBA97 /* XBActivityReviewMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCD0A1D45FF7900DFBA97 /* XBActivityReviewMaskView.m */; };
 		DC8A7A6D1D2B57730032BC48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7A6C1D2B57730032BC48 /* main.m */; };
 		DC8A7A701D2B57730032BC48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7A6F1D2B57730032BC48 /* AppDelegate.m */; };
 		DC8A7A761D2B57730032BC48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7A741D2B57730032BC48 /* Main.storyboard */; };
@@ -76,7 +81,7 @@
 		DC8A7B481D2DF2F60032BC48 /* XBLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B471D2DF2F60032BC48 /* XBLoadingView.m */; };
 		DC8A7B4B1D2E2A4C0032BC48 /* XBActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B4A1D2E2A4C0032BC48 /* XBActivityViewController.m */; };
 		DC8A7B4E1D2E2EB40032BC48 /* XBBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B4D1D2E2EB40032BC48 /* XBBannerView.m */; };
-		DC8A7B511D2E395C0032BC48 /* XBStretchableActivityHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B501D2E395C0032BC48 /* XBStretchableActivityHeaderView.m */; };
+		DC8A7B511D2E395C0032BC48 /* XBStretchableActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B501D2E395C0032BC48 /* XBStretchableActivityView.m */; };
 		DC8A7B5A1D2E43640032BC48 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B591D2E43640032BC48 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DC8A7B5D1D2E474F0032BC48 /* XBCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B5C1D2E474F0032BC48 /* XBCityViewController.m */; };
 		DC8A7B611D2E48740032BC48 /* XBCity.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B601D2E48740032BC48 /* XBCity.m */; };
@@ -185,6 +190,16 @@
 		DC1333431D40C186005F4B3A /* XBActivityItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityItemView.m; sourceTree = "<group>"; };
 		DC1333451D40CC29005F4B3A /* XBNotifyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBNotifyView.h; sourceTree = "<group>"; };
 		DC1333461D40CC29005F4B3A /* XBNotifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBNotifyView.m; sourceTree = "<group>"; };
+		DC4DCCFA1D45B99C00DFBA97 /* XBActivityNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityNavigationBar.h; sourceTree = "<group>"; };
+		DC4DCCFB1D45B99C00DFBA97 /* XBActivityNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityNavigationBar.m; sourceTree = "<group>"; };
+		DC4DCCFD1D45C14900DFBA97 /* XBActivityRecommendMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityRecommendMaskView.h; sourceTree = "<group>"; };
+		DC4DCCFE1D45C14900DFBA97 /* XBActivityRecommendMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityRecommendMaskView.m; sourceTree = "<group>"; };
+		DC4DCD001D45E16600DFBA97 /* XBActivityStrengthsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityStrengthsView.h; sourceTree = "<group>"; };
+		DC4DCD011D45E16600DFBA97 /* XBActivityStrengthsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityStrengthsView.m; sourceTree = "<group>"; };
+		DC4DCD061D45EB5700DFBA97 /* XBActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityDetailViewController.h; sourceTree = "<group>"; };
+		DC4DCD071D45EB5700DFBA97 /* XBActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityDetailViewController.m; sourceTree = "<group>"; };
+		DC4DCD091D45FF7900DFBA97 /* XBActivityReviewMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityReviewMaskView.h; sourceTree = "<group>"; };
+		DC4DCD0A1D45FF7900DFBA97 /* XBActivityReviewMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityReviewMaskView.m; sourceTree = "<group>"; };
 		DC8A7A681D2B57730032BC48 /* LuKeTravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuKeTravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8A7A6C1D2B57730032BC48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DC8A7A6E1D2B57730032BC48 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -261,8 +276,8 @@
 		DC8A7B4A1D2E2A4C0032BC48 /* XBActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityViewController.m; sourceTree = "<group>"; };
 		DC8A7B4C1D2E2EB40032BC48 /* XBBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBBannerView.h; sourceTree = "<group>"; };
 		DC8A7B4D1D2E2EB40032BC48 /* XBBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBBannerView.m; sourceTree = "<group>"; };
-		DC8A7B4F1D2E395C0032BC48 /* XBStretchableActivityHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBStretchableActivityHeaderView.h; sourceTree = "<group>"; };
-		DC8A7B501D2E395C0032BC48 /* XBStretchableActivityHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBStretchableActivityHeaderView.m; sourceTree = "<group>"; };
+		DC8A7B4F1D2E395C0032BC48 /* XBStretchableActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBStretchableActivityView.h; sourceTree = "<group>"; };
+		DC8A7B501D2E395C0032BC48 /* XBStretchableActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBStretchableActivityView.m; sourceTree = "<group>"; };
 		DC8A7B581D2E43640032BC48 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		DC8A7B591D2E43640032BC48 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		DC8A7B5B1D2E474F0032BC48 /* XBCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBCityViewController.h; sourceTree = "<group>"; };
@@ -428,14 +443,24 @@
 			children = (
 				DC8A7B491D2E2A4C0032BC48 /* XBActivityViewController.h */,
 				DC8A7B4A1D2E2A4C0032BC48 /* XBActivityViewController.m */,
-				DC8A7B4F1D2E395C0032BC48 /* XBStretchableActivityHeaderView.h */,
-				DC8A7B501D2E395C0032BC48 /* XBStretchableActivityHeaderView.m */,
+				DC8A7B4F1D2E395C0032BC48 /* XBStretchableActivityView.h */,
+				DC8A7B501D2E395C0032BC48 /* XBStretchableActivityView.m */,
 				DC1333421D40C186005F4B3A /* XBActivityItemView.h */,
 				DC1333431D40C186005F4B3A /* XBActivityItemView.m */,
 				DC1333451D40CC29005F4B3A /* XBNotifyView.h */,
 				DC1333461D40CC29005F4B3A /* XBNotifyView.m */,
 				DC13333F1D40AA80005F4B3A /* XBActivityView.h */,
 				DC1333401D40AA80005F4B3A /* XBActivityView.m */,
+				DC4DCCFA1D45B99C00DFBA97 /* XBActivityNavigationBar.h */,
+				DC4DCCFB1D45B99C00DFBA97 /* XBActivityNavigationBar.m */,
+				DC4DCCFD1D45C14900DFBA97 /* XBActivityRecommendMaskView.h */,
+				DC4DCCFE1D45C14900DFBA97 /* XBActivityRecommendMaskView.m */,
+				DC4DCD001D45E16600DFBA97 /* XBActivityStrengthsView.h */,
+				DC4DCD011D45E16600DFBA97 /* XBActivityStrengthsView.m */,
+				DC4DCD061D45EB5700DFBA97 /* XBActivityDetailViewController.h */,
+				DC4DCD071D45EB5700DFBA97 /* XBActivityDetailViewController.m */,
+				DC4DCD091D45FF7900DFBA97 /* XBActivityReviewMaskView.h */,
+				DC4DCD0A1D45FF7900DFBA97 /* XBActivityReviewMaskView.m */,
 			);
 			name = activity;
 			sourceTree = "<group>";
@@ -981,6 +1006,7 @@
 				DC8A7C0B1D37763C0032BC48 /* XBHomeSearchActivityCell.m in Sources */,
 				DC13332C1D3F6AA0005F4B3A /* TAAnimatedDotView.m in Sources */,
 				DC8A7B761D2F52C40032BC48 /* XBHomeActivityCell.m in Sources */,
+				DC4DCD081D45EB5700DFBA97 /* XBActivityDetailViewController.m in Sources */,
 				DC1332DF1D3C6ACE005F4B3A /* XBPlainFlowLayout.m in Sources */,
 				DC8A7C311D38C68C0032BC48 /* XBMoreActivityViewController.m in Sources */,
 				DC8A7A941D2B58100032BC48 /* NSIntegerFormatter.m in Sources */,
@@ -1003,6 +1029,7 @@
 				DC8A7C351D38EA810032BC48 /* XBDate.m in Sources */,
 				DC8A7B0D1D2B8E510032BC48 /* XBNotify.m in Sources */,
 				DC1333381D407B03005F4B3A /* XBRange.m in Sources */,
+				DC4DCD0B1D45FF7900DFBA97 /* XBActivityReviewMaskView.m in Sources */,
 				DC8A7B6C1D2E56640032BC48 /* XBLevelOneCell.m in Sources */,
 				DC8A7BC61D347BF90032BC48 /* XBSearchView.m in Sources */,
 				DC8A7BE41D34CDBB0032BC48 /* XBDestinationAllCell.m in Sources */,
@@ -1030,6 +1057,7 @@
 				DC13331F1D3F6A88005F4B3A /* SDCollectionViewCell.m in Sources */,
 				DC8A7B5A1D2E43640032BC48 /* RegexKitLite.m in Sources */,
 				DC13332E1D3F6AA0005F4B3A /* TAPageControl.m in Sources */,
+				DC4DCCFF1D45C14900DFBA97 /* XBActivityRecommendMaskView.m in Sources */,
 				DC8A7B5D1D2E474F0032BC48 /* XBCityViewController.m in Sources */,
 				DC8A7B6F1D2F366B0032BC48 /* XBWeather.m in Sources */,
 				DC1333471D40CC29005F4B3A /* XBNotifyView.m in Sources */,
@@ -1037,7 +1065,7 @@
 				DC8A7AF51D2B623B0032BC48 /* XBHomeViewController.m in Sources */,
 				DC8A7BFC1D363ED00032BC48 /* XBHomeSearchFlowLayout.m in Sources */,
 				DC8A7AEE1D2B60BD0032BC48 /* XBAppRootViewController.m in Sources */,
-				DC8A7B511D2E395C0032BC48 /* XBStretchableActivityHeaderView.m in Sources */,
+				DC8A7B511D2E395C0032BC48 /* XBStretchableActivityView.m in Sources */,
 				DC8A7B141D2B91A30032BC48 /* XBComment.m in Sources */,
 				DC8A7AFA1D2B83110032BC48 /* XBHome.m in Sources */,
 				DC8A7BBA1D3347020032BC48 /* XBHomeHeaderView.m in Sources */,
@@ -1046,6 +1074,7 @@
 				DC1332EE1D3CC554005F4B3A /* XBMoreActivitySubNameItem.m in Sources */,
 				DC8A7BF41D362DAA0032BC48 /* XBHomeSearchViewController.m in Sources */,
 				DC8A7BCA1D348B180032BC48 /* XBDestinationViewController.m in Sources */,
+				DC4DCD021D45E16600DFBA97 /* XBActivityStrengthsView.m in Sources */,
 				DC8A7A951D2B58100032BC48 /* UIColor+Util.m in Sources */,
 				DC8A7A931D2B58100032BC48 /* NSString+Util.m in Sources */,
 				DC1333311D406C01005F4B3A /* XBShareActivity.m in Sources */,
@@ -1060,6 +1089,7 @@
 				DC8A7B481D2DF2F60032BC48 /* XBLoadingView.m in Sources */,
 				DC8A7BD21D3496300032BC48 /* XBDestinationHotCell.m in Sources */,
 				DC1332E81D3CC4B0005F4B3A /* XBMoreActivityName.m in Sources */,
+				DC4DCCFC1D45B99C00DFBA97 /* XBActivityNavigationBar.m in Sources */,
 				DC8A7C291D38C3490032BC48 /* XBCalendarView.m in Sources */,
 				DC8A7B641D2E48AE0032BC48 /* XBLevelOne.m in Sources */,
 				DC8A7AA31D2B58210032BC48 /* XBConstants.m in Sources */,
