@@ -11,7 +11,7 @@
 #import "XBGroupItem.h"
 #import "XBActivity.h"
 #import "SDCycleScrollView.h"
-#import "XBActivityView.h"
+#import "XBActivityToolBar.h"
 #import "XBActivityNavigationBar.h"
 #import "XBActivityReviewMaskView.h"
 #import "XBStretchableActivityView.h"
@@ -21,6 +21,7 @@
 @property (strong, nonatomic) UIScrollView   *scrollView;
 @property (strong, nonatomic) XBActivity     *activity;
 @property (strong, nonatomic) SDCycleScrollView  *bannerView;
+@property (strong, nonatomic) XBActivityToolBar  *toolBar;
 @property (strong, nonatomic) XBActivityReviewMaskView    *reviewMaskView;
 @property (strong, nonatomic) XBActivityRecommendMaskView *recommendMaskView;
 @property (strong, nonatomic) XBActivityNavigationBar     *navigationBarView;
@@ -96,7 +97,7 @@ static NSString *const reuseIdentifier = @"cell";
 
     self.bannerView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.scrollView.frame), 260) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder_image"]];
     self.bannerView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
-    self.bannerView.currentPageDotColor = [UIColor whiteColor]; // 自定义分页控件小圆标
+    self.bannerView.currentPageDotColor = [UIColor whiteColor];
     
     self.stretchHeaderView = [[XBStretchableActivityView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.scrollView.frame), kBannerHeight)];
     self.stretchHeaderView.delegate = self;
@@ -105,6 +106,10 @@ static NSString *const reuseIdentifier = @"cell";
     self.navigationBarView = [XBActivityNavigationBar new];
     self.navigationBarView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.navigationBarView];
+    
+    self.toolBar = [XBActivityToolBar new];
+    self.toolBar.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.toolBar];
     
     self.recommendMaskView = [[XBActivityRecommendMaskView alloc] initWithFrame:self.view.bounds];
     self.recommendMaskView.alpha = 0.f;

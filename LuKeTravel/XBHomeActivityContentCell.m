@@ -72,6 +72,7 @@
         self.sellingPriceLabel.attributedText = attribtStr;
         
         self.addressLabel.hidden = groupItem.cityName.length <= 0;
+        
         self.addressImageView.hidden = self.addressLabel.hidden;
         
     } else {
@@ -83,6 +84,8 @@
         [self loadImageFromCacheWithImageView:self.instantCoverImageView];
         
     }
+    
+    self.instantImageView.hidden = !groupItem.instant;
     
 }
 

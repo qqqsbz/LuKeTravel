@@ -9,7 +9,6 @@
 #define kLineSpacing 7.f
 
 #import "XBStretchableActivityView.h"
-#import "XBActivityView.h"
 #import "XBActivity.h"
 #import "XBNotify.h"
 #import "XBParserUtils.h"
@@ -246,6 +245,7 @@
     [self.contentView addSubview:self.fastLabel];
     
     self.fastTipLabel = [UILabel new];
+    self.fastLabel.text    = NSLocalizedString(@"activity-detail-fast", @"activity-detail-fast");
     self.fastTipLabel.font = [UIFont systemFontOfSize:11.5f];
     self.fastTipLabel.textColor = [UIColor colorWithHexString:@"#AFAEAD"];
     [self.contentView addSubview:self.fastTipLabel];
@@ -523,7 +523,7 @@
     [self.readMoreButton makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.detailItemView);
         make.top.equalTo(self.detailItemView.bottom).offset(kSpace * 3.5);
-        make.height.mas_lessThanOrEqualTo(50.f);
+        make.height.mas_equalTo(38.f);
     }];
     
     [self.recommendButton makeConstraints:^(MASConstraintMaker *make) {
