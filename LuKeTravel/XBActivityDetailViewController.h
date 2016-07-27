@@ -6,10 +6,10 @@
 //  Copyright © 2016年 coder. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "XBBasicViewController.h"
 @class XBParserContent;
-@interface XBActivityDetailViewController : UIViewController
+@interface XBActivityDetailViewController : XBBasicViewController
 
-- (instancetype)initWithParserContents:(NSArray<XBParserContent *> *)parserContents;
+- (instancetype)initWithParserContents:(NSArray<XBParserContent *> *)parserContents navigationTitle:(NSString *)title;
 
 @end

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="XBShareCell" id="wxZ-lq-ar6" customClass="XBShareCell">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share_wechat" translatesAutoresizingMaskIntoConstraints="NO" id="d0G-yl-rUF" userLabel="wechat">
+                        <rect key="frame" x="12" y="10" width="56" height="56"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信好友" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Jq-Eq-EV7" userLabel="title">
+                        <rect key="frame" x="16" y="71" width="48" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.65098039215686276" green="0.65098039215686276" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="0Jq-Eq-EV7" firstAttribute="top" secondItem="d0G-yl-rUF" secondAttribute="bottom" constant="5" id="Jrx-OV-WB2"/>
+                <constraint firstItem="0Jq-Eq-EV7" firstAttribute="centerX" secondItem="wxZ-lq-ar6" secondAttribute="centerX" id="d4w-cY-TeT"/>
+                <constraint firstItem="d0G-yl-rUF" firstAttribute="top" secondItem="wxZ-lq-ar6" secondAttribute="top" constant="10" id="gb6-xQ-fuV"/>
+                <constraint firstItem="d0G-yl-rUF" firstAttribute="centerX" secondItem="wxZ-lq-ar6" secondAttribute="centerX" id="vQl-jx-kFV"/>
+            </constraints>
+            <connections>
+                <outlet property="iconImageView" destination="d0G-yl-rUF" id="6gp-VT-gBG"/>
+                <outlet property="nameLabel" destination="0Jq-Eq-EV7" id="IyN-Ki-MQp"/>
+            </connections>
+            <point key="canvasLocation" x="407" y="190"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="share_wechat" width="56" height="56"/>
+    </resources>
+</document>

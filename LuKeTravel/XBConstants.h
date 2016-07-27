@@ -10,6 +10,8 @@
 
 extern NSString *const kErrorDomain;                    //NSError Domain
 
+extern NSString *const kUmengAppkey;                    //友盟分享key
+
 extern NSString *const kDefaultColorHex;                //默认主色调颜色
 
 extern NSString *const kTypeOfActivity;                 //结果为"活动"

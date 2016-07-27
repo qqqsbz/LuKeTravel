@@ -10,6 +10,8 @@
 
 NSString *const kErrorDomain = @"ERROR_DOMAIN";
 
+NSString *const kUmengAppkey = @"57972d37e0f55a88ee0005c6";
+
 NSString *const kDefaultColorHex = @"#FF5729";
 
 NSString *const kTypeOfActivity = @"activity";

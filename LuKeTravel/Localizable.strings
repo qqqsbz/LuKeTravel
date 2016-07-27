@@ -10,6 +10,7 @@
 "search-placeholder" = "搜索活动";
 "search-cancle" = "取消";
 
+"loading" = "正在加载....";
 
 "destination-title" = "目的地";
 "destination-titlehot" = "热门";
@@ -42,3 +43,11 @@
 "activity-detail-fast" = "现在预订可立即获取电子凭证";
 "activity-detail-package-normal" = "选择套餐&预订";
 "activity-detail-package-select" = "立即预订";
+
+"share-activity-title" = "分享活动";
+"share-wechat-session" = "微信好友";
+"share-wechat-timeline" = "朋友圈";
+"share-sina" = "新浪微博";
+"share-email" = "邮件";
+"share-message" = "短信";
+"share-twitter" = "Twitter";

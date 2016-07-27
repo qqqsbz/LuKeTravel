@@ -18,14 +18,17 @@
 @property (strong, nonatomic) UIView          *contentView;
 @property (strong, nonatomic) NSMutableArray  *subViews;
 @property (strong, nonatomic) NSArray<XBParserContent *>  *parserContents;
+
+@property (strong, nonatomic) NSString  *navigationTitle;
 @end
 
 @implementation XBActivityDetailViewController
 
-- (instancetype)initWithParserContents:(NSArray<XBParserContent *> *)parserContents
+- (instancetype)initWithParserContents:(NSArray<XBParserContent *> *)parserContents navigationTitle:(NSString *)title
 {
     if (self = [super init]) {
         _parserContents = parserContents;
+        _navigationTitle = title;
         [self buildView];
     }
     return self;
@@ -34,13 +37,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
+    self.navigationtTitleLabel.text = _navigationTitle;
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    self.navigationRightButton.hidden = YES;
 }
 
 - (void)buildView
@@ -99,7 +98,7 @@
 {
     [self.scrollView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view);
-        make.top.equalTo(self.view);
+        make.top.equalTo(self.view).offset(64.f);
         make.width.equalTo(self.view);
         make.bottom.equalTo(self.view);
     }];
@@ -123,7 +122,7 @@
     
     [firstView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).offset([self convertSpace:firstView]);
-        make.top.equalTo(self.contentView).offset(kSpace);
+        make.top.equalTo(self.contentView);
         make.right.equalTo(self.contentView).offset(-[self convertSpace:firstView]);
     }];
     

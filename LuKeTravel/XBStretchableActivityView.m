@@ -18,7 +18,7 @@
 #import "XBNotifyView.h"
 #import "UIImage+Util.h"
 #import <MapKit/MapKit.h>
-@interface XBStretchableActivityView() <XBActivityItemViewDelegate>
+@interface XBStretchableActivityView() <XBActivityItemViewDelegate,MKMapViewDelegate>
 @property (assign, nonatomic) CGRect   initialFrame;
 @property (assign, nonatomic) CGFloat  defaultViewHeight;
 
@@ -64,6 +64,8 @@
 @property (strong, nonatomic) UILabel       *noticeTitleLabel;
 @property (strong, nonatomic) UIView        *noticeView;
 @property (strong, nonatomic) UILabel       *tagLabel;
+@property (strong, nonatomic) UIButton      *favoriteButton;
+@property (strong, nonatomic) UIButton      *mapLocationButton;
 @property (strong, nonatomic) XBActivityItemView  *confirmSuccessLabel;
 @property (strong, nonatomic) XBActivityItemView  *confirmEmailLabel;
 @property (strong, nonatomic) XBActivityItemView  *detailItemView;
@@ -177,6 +179,11 @@
     UIColor *defaultColor = [UIColor colorWithHexString:kDefaultColorHex];
     
     self.backgroundColor = [UIColor colorWithHexString:@"#F6F5F2"];
+    
+    self.favoriteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.favoriteButton setImage:[UIImage imageNamed:@"heart-o"] forState:UIControlStateNormal];
+    [self.favoriteButton addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.headerView addSubview:self.favoriteButton];
     
     self.tagLabel = [UILabel new];
     self.tagLabel.text = @"Activity #@";
@@ -315,9 +322,10 @@
     [self.contentView addSubview:self.cancellationNotifyView];
     
     self.mapView = [[MKMapView alloc] init];
+    self.mapView.delegate = self;
     self.mapView.mapType = MKMapTypeStandard;
     self.mapView.showsUserLocation = NO;
-    self.mapView.showsCompass = NO;
+    self.mapView.showsCompass = YES;
     self.mapView.showsPointsOfInterest = YES;
     [self.contentView addSubview:self.mapView];
     
@@ -436,6 +444,11 @@
 
 - (void)addConstraint
 {
+    [self.favoriteButton makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.headerView).offset(-kSpace * 1.);
+        make.right.equalTo(self.headerView).offset(-kSpace * 1.5);
+    }];
+    
     [self.contentView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.scrollView).offset(CGRectGetHeight(self.headerView.frame));
         make.left.equalTo(self.scrollView);
@@ -755,6 +768,8 @@
                 
                 XBActivityItemView *itemView = [XBActivityItemView new];
                 
+                itemView.delegate = self;
+                
                 itemView.parserContentItem = item;
                 
                 [self.useView addSubview:itemView];
@@ -775,6 +790,8 @@
             for (XBParserContentItem *item in content.items) {
                 
                 XBActivityItemView *itemView = [XBActivityItemView new];
+                
+                itemView.delegate = self;
                 
                 itemView.parserContentItem = item;
                 
@@ -941,6 +958,29 @@
     }
 }
 
+#pragma mark -- MKMapViewDelegate
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    DDLogDebug(@"点击大头针.....");
+}
+
+- (UIButton *)mapLocationButton
+{
+    if (!_mapLocationButton) {
+        
+        _mapLocationButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        [_mapLocationButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        [_mapLocationButton setTitle:self.activity.name forState:UIControlStateNormal];
+        
+        [_mapLocationButton setBackgroundColor:[UIColor whiteColor]];
+    
+        [self.mapView addSubview:_mapLocationButton];
+    }
+    return _mapLocationButton;
+}
+
 - (void)clickAction:(UIButton *)sender
 {
     if (sender == self.directionReadMoreButton) {
@@ -975,6 +1015,14 @@
             
         }
 
+    } else if (sender == self.favoriteButton) {
+        
+        if ([self.delegate respondsToSelector:@selector(stretchableActivityView:didSelectFavoriteWithActivity:)]) {
+            
+            [self.delegate stretchableActivityView:self didSelectFavoriteWithActivity:self.activity];
+            
+        }
+        
     }
 }
 

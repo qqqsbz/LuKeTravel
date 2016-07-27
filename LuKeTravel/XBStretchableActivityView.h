@@ -13,15 +13,19 @@
 @protocol XBStretchableActivityViewDelegate <NSObject>
 
 @optional
-- (void)stretchableActivityView:(XBStretchableActivityView *)stretchableActivityView didSelectLinkWithURL:(NSURL *)url;
+- (void)stretchableActivityView:(XBStretchableActivityView *)stretchableActivityView
+           didSelectLinkWithURL:(NSURL *)url;
 
 - (void)stretchableActivityView:(XBStretchableActivityView *)stretchableActivityView didSelectRecommendWithText:(NSString *)text;
+
+- (void)stretchableActivityView:(XBStretchableActivityView *)stretchableActivityView didSelectFavoriteWithActivity:(XBActivity *)activity;
 
 - (void)stretchableActivityView:(XBStretchableActivityView *)stretchableActivityView didSelectDirectionWithParserContent:(NSArray<XBParserContent *> *)parserContents;
 
 - (void)stretchableActivityView:(XBStretchableActivityView *)stretchableActivityView didSelectDetailWithParserContent:(NSArray<XBParserContent *> *)parserContents;
 
 - (void)stretchableActivityView:(XBStretchableActivityView *)stretchableActivityView didSelectReviewWithReviewCount:(NSInteger)reviewCount;
+
 @end
 
 @interface XBStretchableActivityView : UIView

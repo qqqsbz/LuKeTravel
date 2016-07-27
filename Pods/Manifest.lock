@@ -25,12 +25,13 @@ PODS:
   - CocoaLumberjack/Core (1.8.1)
   - CocoaLumberjack/Extensions (1.8.1):
     - CocoaLumberjack/Core
+  - FDFullscreenPopGesture (1.1)
   - Mantle (1.5):
     - Mantle/extobjc (= 1.5)
   - Mantle/extobjc (1.5)
   - Masonry (1.0.1)
   - MBProgressHUD (0.9.2)
-  - MJRefresh (3.1.10)
+  - MJRefresh (3.1.12)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
@@ -39,6 +40,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (= 2.5.0)
   - CocoaLumberjack (= 1.8.1)
+  - FDFullscreenPopGesture (= 1.1)
   - Mantle (= 1.5)
   - Masonry
   - MBProgressHUD (~> 0.9.2)
@@ -49,10 +51,11 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 96ac9bf3eda33582701cb1fcc5b896aa1e20311e
   CocoaLumberjack: 944738b29d757439ed513db94d7e5cd74f90b849
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   Mantle: 3bf6db311c8b4a19b6be01f2483fa4590aa166f3
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  MJRefresh: bb72948c985914b0b5cecac573a2c69a8915fb02
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
 
