@@ -13,4 +13,9 @@
 @property (strong, nonatomic) NSString  *subTitle;
 @property (strong, nonatomic) NSString  *title;
 @property (strong, nonatomic) NSString  *url;
+
++ (instancetype)shareActivityWithTitle:(NSString *)title subTitle:(NSString *)subTitle image:(NSString *)image url:(NSString *)url;
+
+- (instancetype)initWithTitle:(NSString *)title subTitle:(NSString *)subTitle image:(NSString *)image url:(NSString *)url;
+
 @end

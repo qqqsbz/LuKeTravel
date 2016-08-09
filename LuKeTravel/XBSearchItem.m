@@ -7,7 +7,7 @@
 //
 
 #import "XBSearchItem.h"
-
+#import "XBWishlist.h"
 @implementation XBSearchItem
 + (NSString *)managedObjectEntityName
 {
@@ -31,4 +31,40 @@
              @"imageUrl":@"image_url"
              };
 }
+
++ (XBSearchItem *)searchItemFromWishlist:(XBWishlist *)wishlist
+{
+    XBSearchItem *searchItem = [[XBSearchItem alloc] init];
+    
+    searchItem.imageUrl = wishlist.thumbUrl;
+    
+    searchItem.name = wishlist.name;
+    
+    searchItem.subName = wishlist.subName;
+    
+    searchItem.cityName = wishlist.destinationName;
+    
+    searchItem.currency = wishlist.currency;
+    
+    searchItem.participants = wishlist.participants;
+    
+    searchItem.marketPrice = wishlist.marketPrice;
+    
+    searchItem.sellingPrice = wishlist.sellPrice;
+    
+    searchItem.instant = wishlist.isInstant;
+    
+    searchItem.video = wishlist.isVideo;
+    
+    searchItem.favorite = wishlist.isFavourite;
+    
+    searchItem.hotState = wishlist.hotState;
+    
+    searchItem.participantsFormat = wishlist.participantsFormat;
+    
+    searchItem.modelId = wishlist.modelId;
+    
+    return searchItem;
+}
+
 @end

@@ -48,28 +48,6 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     [self buildView];
     
     [self reloadData];
-    
-    /*
-//    NSString *content = @"- 玩尽15道飞索、2条架空吊桥、2项绳降，及3道树干样旋转梯，乐趣无穷\n- 在半空中，观赏热带茂盛丛林、窥看河道、沼泽，及远眺到邻近村落景致\n- 2位专业经验历奇教练同行指导，保障活动安全进行，他们更很懂得制造欢乐气氛\n- 支持推进生态保育的旅游项目，表示愿意为自然雨林、地球平衡，背负一点责任的正面旅行者态度\n- 3.5小时的历险之旅还可享用泰国特色缤纷精美午餐哦\n";
-//    
-//    NSArray *results = [content componentsMatchedByRegex:@"- .*"];
-//    
-//    for (NSString *result in results) {
-//        DDLogDebug(@"result:%@",result);
-//    }
-
-    NSString *content = @"**确认详情：**\n\n- 客路会在预订成功后的1个工作日内确认，并将使用凭证发送至您的电子邮箱\n- 如在注明的时限内还没收到邮件，或须查看垃圾邮件箱\n\n**套餐可选：**\n\n*普吉热带雨林飞索 – 3.5小时历险之旅*\n\n- 可选起始时间： 8:00 AM/10:00 AM/1:00 PM/3:00 PM\n- 28平台路线：15次滑索飞跃 (其中包含一条长度达400米、高度超过40米、飞行时间超过45秒、飞行速度超过60公里每小时的超级飞跃索道)、2次天索、2次定点垂降、3次树梯、1次飞板，20分钟丛林徒步\n- 专业的英文向导和技术指导\n- 赠送猴神飞索纪念衬衣\n- 免费热带水果和精美午餐\n- 若需酒店接送，请购买含接送套餐\n\n*普吉热带雨林飞索 - 3小时历险之旅*\n\n- 可选起始时间： 8:00 AM/10:00 AM/1:00 PM/3:00 PM\n- 28平台路线：15次滑索飞跃 (其中包含一条长度达400米、高度超过40米、飞行时间超过45秒、飞行速度超过60公里每小时的超级飞跃索道)、2次天索、2次定点垂降、3次树梯、1次飞板，20分钟丛林徒步\n- 专业的英文向导和技术指导\n- 赠送猴神飞索纪念衬衣\n- 免费热带水果 (不含午餐)\n- 若需酒店接送，请购买含接送套餐\n\n*普吉热带雨林飞索 - 1小时冒险轻体验*\n\n- 可选起始时间： 8:00 AM/3:00 PM\n- 16平台路线：8次滑索飞跃、1次天索、1次定点垂降、2次树梯，20分钟丛林徒步\n- 专业的英文向导和技术指导\n- 赠送猴神飞索纪念衬衣\n- 免费热带水果\n- 若需酒店接送，请购买含接送套餐\n\n- 28平台及16平台路线[可点击查看](http://res.klook.com/image/upload/v1467885180/Map%20photos/MASTERPLAN-MAPS.jpg)\n\n**注意事项：**\n\n- 参加者体重必须为120公斤以下\n- 4岁或以下儿童不适合参与此活动";
-    
-//    NSArray *results = [content componentsMatchedByRegex:@".+"];
-    
-//    [XBParserUtils parserWithContent:content regex:@".+" complete:^(NSArray *datas) {
-//        
-//        for (XBParserContent *parserContent in datas) {
-//            DDLogDebug(@"parserContent:%@",parserContent);
-//        }
-//    }];
-    
-    */
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -91,7 +69,7 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 - (void)reloadData
 {
     
-    [XBLoadingView showInView:self.tabBarController.view];
+    [XBLoadingView showInView:self.navigationController.view];
     
     [[XBHttpClient shareInstance] getHomeWithLongitude:[XBUserDefaultsUtil currentLongitude] latitude:[XBUserDefaultsUtil currentLatitude] success:^(XBHome *home) {
         
@@ -298,7 +276,7 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
         
         XBActivityViewController *activityVC = [[XBActivityViewController alloc] init];
         
-        activityVC.groupItem = groupItem;
+        activityVC.activityId = [groupItem.modelId integerValue];
         
         activityVC.hidesBottomBarWhenPushed  = YES;
         

@@ -28,7 +28,7 @@
 - (void)initialization
 {
     self.titleLabel = [UILabel new];
-    self.titleLabel.text = NSLocalizedString(@"destination-all-foot", @"destination-all-foot");
+    self.titleLabel.text = [XBLanguageControl localizedStringForKey:@"destination-all-more"];
     self.titleLabel.font = [UIFont systemFontOfSize:13.5f];
     self.titleLabel.textColor = [UIColor colorWithHexString:@"#B7B7B7"];
     [self addSubview:self.titleLabel];

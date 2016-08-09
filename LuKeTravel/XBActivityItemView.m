@@ -70,6 +70,10 @@
         
         self.attributedLabel.text = parserContentItem.text;
         
+    } else {
+        
+        self.attributedLabel.hidden = YES;
+        
     }
     
     if (parserContentItem.linkString && parserContentItem.linkString.length > 0) {

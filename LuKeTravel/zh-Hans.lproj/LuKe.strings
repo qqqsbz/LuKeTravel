@@ -1,0 +1,251 @@
+/* 
+  LuKe.strings
+  LuKeTravel
+
+  Created by coder on 16/8/1.
+  Copyright © 2016年 coder. All rights reserved.
+*/
+
+"commom-cancle" = "取消";
+"commom-complete" = "完成";
+"commom-alert-confirm" = "确定";
+"commom-error-phone" = "请输入正确的手机号码";
+
+"loading-fail" = "加载失败";
+
+//目的地
+"destination-title" = "目的地";
+"destination-popular" = "热门";
+"destination-all" = "全部";
+"destination-popular-more" = "探索更多目的地";
+"destination-all-more" = "更多目的地敬请期待";
+
+//活动
+
+"activity-detail-readmore" = "阅读更多";
+"activity-detail-recommend" = "体验师推荐";
+"activity-detail-direction" = "活动详情";
+"activity-detail-use" = "如何使用";
+"activity-detail-notice" = "退改须知";
+"activity-notify-duration" = "时长";
+"activity-notify-cancellation" = "退订";
+"activity-notify-confirmation" = "确认";
+"activity-notify-transportation" = "交通";
+"activity-notify-recommendedNumber" = "人数";
+"activity-notify-language" = "语言";
+"activity-detail-reviewcount" = "活动评价";
+"activity-detail-instant" = "极速";
+"activity-detail-strength" = "活动亮点";
+"activity-detail-particulars" = "活动详情";
+"activity-detail-fast" = "现在预订可立即获取电子凭证";
+"activity-detail-package-normal" = "选择套餐&预订";
+"activity-detail-package-select" = "立即预订";
+"activity-share-title" = "分享活动";
+
+//订单
+"order-title" = "我的订单";
+"order-noorder" = "探索无限，你只差一个预订的步骤";
+"order-login-tip" = "登录后，可以查看订单和离线使用凭证";
+"order-login" = "登录";
+
+//登录/注册
+"login-textfield-username-placeholder" = "邮箱";
+"login-textfield-password-placeholder" = "密码";
+"login-title" = "或用邮箱登录/注册";
+"login-login-register" = "登录/注册";
+"login-login" = "登录";
+"login-register" = "注册";
+"login-wechat" = "使用微信登录";
+"login-tip" = "注册表示您已经阅读并同意客路的《使用条款》";
+"login-alert-message" = "邮箱输入有误哟";
+"login-alert-confirm" = "确认";
+"login-login-account" = "请输入登录密码";
+"login-register-account" = "新用户注册账户";
+"login-forget" = "忘记密码？";
+"login-forget-message" = "请在电脑浏览器上前往www.klook.com重置密码";
+"login-register-password-error" = "密码须为8-20位，至少包含一个字母和数字";
+"register-fail" = "注册失败";
+"login-fail" = "登录失败";
+
+//我的
+"mine-title" = "我的";
+"mine-login" = "登录/注册";
+"mine-message" = "你的旅行从这里开始";
+"mine-credits" = "积分";
+"mine-coupons" = "优惠券";
+"mine-voucher" = "使用凭证";
+"mine-fav" = "愿望清单";
+"mine-refer" = "邀请";
+"mine-refer-detail" = "邀请好友享更多优惠";
+"mine-credit" = "优惠/兑换";
+"mine-exchange" = "更换语言/货币";
+"mine-help" = "帮助";
+"mine-about" = "关于";
+
+//编辑账号
+"user-info-title" = "编辑账号";
+"user-info-loginout" = "退出登录";
+"user-info-avtaor" = "更换头像";
+"user-info-basic" = "出行人基本信息";
+"user-info-appellation" = "称谓";
+"user-info-appellation-placeholder" = "选择称谓";
+"user-info-name" = "名字";
+"user-info-name-placeholder" = "请输入护照名字拼音";
+"user-info-family" = "姓氏";
+"user-info-family-placeholder" = "请输入护照姓氏拼音";
+"user-info-email" = "电子邮件";
+"user-info-email-placeholder" = "name@example.com";
+"user-info-code" = "国家代码";
+"user-info-code-placeholder" = "输入或选择";
+"user-info-phone" = "电话号码";
+"user-info-phone-placeholder" = "号码";
+"user-info-code-verified" = "已验证";
+"user-info-save" = "保存";
+"user-info-logout-success" = "退出成功";
+"user-info-logout-confirm" = "确定";
+"user-info-avator-cancle" = "取消";
+"user-info-avator-album" = "从相册选择";
+"user-info-avator-camera" = "拍照";
+"user-info-uploading" = "上传中...";
+"user-info-upload-success" = "上传成功";
+"user-info-upload-fail" = "上传失败";
+"user-info-unlogin" = "用户未登录";
+"user-info-error-all-field" = "请填写所有信息";
+"user-info-error-save" = "保存失败";
+"user-info-success-save" = "保存成功";
+"user-info-appellation-chose" = "选择称谓";
+"user-info-appellation-mr" = "MR";
+"user-info-appellation-mrs" = "MRS";
+"user-info-appellation-miss" = "MISS";
+
+//验证码
+"verification-code-title" = "输入短信验证码";
+"verification-code-text" = "为了您的支付安全, 需验证手机号码验证码已发送至";
+"verification-code-message" = "(仅首次验证)";
+"verification-code-input" = "输入验证码";
+"verification-code-resend" = "重新发送";
+"verification-code-send" = "验证";
+"verification-code-error-get" = "获取验证码失败";
+"verification-code-error-title" = "验证码错误";
+"verification-code-error-text" = "无法识别您输入的验证码";
+"verification-code-error-try" = "重试";
+
+//使用凭证
+"vouchers-title" = "使用凭证";
+"vouchers-nodata-message" = "带着凭证旅行,\n即使是离线状态, 凭证也会在这里等你";
+
+//愿望清单
+"wishlist-title" = "愿望清单";
+"wishlist-nodata-message" = "这里装载着你闯世界的愿望清单";
+
+//邀请
+"invite-title" = "邀请";
+"invite-content-title" = "邀请好友享更多优惠";
+"invite-content-text" = "通过您的邀请链接注册的朋友，他们将获得%@的优惠; 您的朋友参加完任何活动后，您也将获得%@的优惠!";
+"invite-code-text" = "(你的邀请码)";
+"invite-code-copy" = "拷贝";
+"invite-send" = "马上邀请";
+"invite-share-title" = "邀请朋友";
+
+
+//优惠
+"promotions-title" = "优惠/兑换";
+"promotions-coupons" = "优惠券";
+"promotions-credits" = "积分";
+"promotions-coupons-header-available" = "可用优惠券:";
+"promotions-coupons-header-unavailable" = "已用优惠券:";
+"promotions-coupons-header-exchange" = "兑换";
+"promotions-coupons-header-placeholder" = "可兑换优惠券、朋友邀请码等";
+
+//积分
+"credits-account" = "积分余额：%@ ";
+"credits-credit" = "(可抵现金：%@)";
+
+//更换语言/货币
+"exchange-title" = "更换语言/货币";
+"exchange-picker-language-title" = "更换语言";
+"exchange-picker-currency-title" = "更换货币";
+
+//语言
+"en" = "English";
+"zh-Hans" = "简体中文";
+"zh-Hant" = "繁体中文";
+
+//货币
+"EUR" = "欧元 | €";
+"GBP" = "英镑 | ￡";
+"SGD" = "新币 | S$";
+"IDR" = "印尼盾 | Rps";
+"USD" = "美元 | $";
+"TWD" = "台币 | NT$";
+"THB" = "泰铢 | ฿";
+"AUD" = "澳元 | AUD";
+"PHP" = "菲律宾比索 | ₱";
+"MYR" = "林吉特 | RM";
+"KRW" = "韩元 | ₩";
+"LAK" = "老挝基普 | ₭";
+"CNY" = "人民币 | ￥";
+"HKD" = "港币 | HK$";
+"JPY" = "日元 | ￥";
+"VND" = "越南盾 | ₫";
+
+//国家
+"86" = "中国 (86)";
+"61" = "澳大利亚 (61)";
+"852" = "中国香港特别行政区 (852)";
+"62" = "印度尼西亚 (62)";
+"91" = "印度 (91)";
+"81" = "日本 (81)";
+"82" = "韩国 (82)";
+"853" = "中国澳门特别行政区 (853)";
+"60" = "马来西亚 (60)";
+"63" = "菲律宾 (63)";
+"65" = "新加坡 (65)";
+"66" = "泰国 (66)";
+"886" = "台湾 (886)";
+"1" = "美国 (1)";
+"355" = "阿尔巴尼亚 (355)";
+"213" = "阿尔及利亚 (213)";
+"93" = "阿富汗 (93)";
+"54" = "阿根廷 (54)";
+"971" = "阿拉伯联合酋长国 (971)";
+"297" = "阿鲁巴 (297)";
+
+//帮助
+"help-title" = "帮助";
+
+//关于
+"about-title" = "关于";
+"about-text" = "路客旅行，探索未知的你";
+"about-version" = "版本";
+"about-contact" = "联系我们";
+"about-email" = "support@klook.com";
+"about-phone-churchyard" = "400-869-4088 (境内)";
+"about-phone-overseas" = "(+86) 755-82551180 (境外)";
+"about-appstore" = "在 App Store 上给我们评分";
+"about-feedback" = "意见反馈";
+"about-clause" = "使用条款";
+"about-website" = "访问 Klook.com";
+
+//反馈
+"feedback-title" = "意见反馈";
+"feedback-name" = "姓名";
+"feedback-name-placeholder" = "请输入您的姓名";
+"feedback-email" = "邮箱";
+"feedback-email-placeholder" = "请输入您的邮箱地址";
+"feedback-content" = "意见反馈";
+"feedback-content-placeholder" = "请输入反馈意见";
+"feedback-submit" = "提交";
+"feedback-error-all" = "请填写所有信息";
+"feedback-error-email" = "请正确填写邮箱地址";
+"feedback-fail" = "提交失败";
+"feedback-done" = "路客感谢您的反馈";
+
+//分享
+"share-activity-title" = "分享活动";
+"share-wechat-session" = "微信好友";
+"share-wechat-timeline" = "朋友圈";
+"share-sina" = "新浪微博";
+"share-email" = "邮件";
+"share-message" = "短信";
+"share-twitter" = "Twitter";

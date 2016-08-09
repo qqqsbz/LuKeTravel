@@ -10,9 +10,11 @@
 @class XBShareActivity;
 @interface XBShareView : UIView
 
-- (instancetype)initWithShareActivity:(XBShareActivity *)shareActivity targetViewController:(UIViewController *)targetViewController;
+@property (strong, nonatomic) NSString *title;
 
-- (instancetype)initWithFrame:(CGRect)frame shareActivity:(XBShareActivity *)shareActivity targetViewController:(UIViewController *)targetViewController;
+- (instancetype)initWithShareActivity:(XBShareActivity *)shareActivity targetViewController:(UIViewController *)targetViewController dismissBlock:(dispatch_block_t)dismissBlock;
+
+- (instancetype)initWithFrame:(CGRect)frame shareActivity:(XBShareActivity *)shareActivity targetViewController:(UIViewController *)targetViewController dismissBlock:(dispatch_block_t)dismissBlock;
 
 - (void)toggle;
 

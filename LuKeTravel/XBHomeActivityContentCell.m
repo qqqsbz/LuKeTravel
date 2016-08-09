@@ -59,17 +59,17 @@
         self.subTitleLabel.text = groupItem.subName;
         self.addressLabel.text  = groupItem.cityName;
         self.participantsLabel.text = groupItem.participants;
-        self.marketPriceLabel.text  = [NSString stringWithFormat:@"￥%@",groupItem.marketPrice];
-        self.sellingPriceLabel.text = [NSString stringWithFormat:@"￥ %@",groupItem.sellingPrice];
+        self.marketPriceLabel.text  = [NSString stringWithFormat:@"%@ %@",[XBUserDefaultsUtil currentCurrencySymbol],groupItem.marketPrice];
+        self.sellingPriceLabel.text = [NSString stringWithFormat:@"%@ %@",[XBUserDefaultsUtil currentCurrencySymbol],groupItem.sellingPrice];
         self.favoriteImageView.image = [UIImage imageNamed:groupItem.favorite ? @"activityWishSelected" : @"activityWishNormal"];
         [self loadImageFromCacheWithImageView:self.coverImageView];
         
-        NSMutableAttributedString *markAttributedString = [[NSMutableAttributedString alloc] initWithString:self.marketPriceLabel.text];
-        [markAttributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica-Bold" size:22.f] range:NSMakeRange(1, self.marketPriceLabel.text.length - 1)];
-        self.marketPriceLabel.attributedText = markAttributedString;
+        NSMutableAttributedString *sellAttributedString = [[NSMutableAttributedString alloc] initWithString:self.sellingPriceLabel.text];
+        [sellAttributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica-Bold" size:12.f] range:NSMakeRange(0, 1)];
+        self.sellingPriceLabel.attributedText = sellAttributedString;
         
-        NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc] initWithString:self.sellingPriceLabel.text attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
-        self.sellingPriceLabel.attributedText = attribtStr;
+        NSMutableAttributedString *markAttribtStr = [[NSMutableAttributedString alloc] initWithString:self.marketPriceLabel.text attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
+        self.marketPriceLabel.attributedText = markAttribtStr;
         
         self.addressLabel.hidden = groupItem.cityName.length <= 0;
         

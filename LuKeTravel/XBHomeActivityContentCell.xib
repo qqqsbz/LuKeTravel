@@ -20,7 +20,7 @@
                             <constraint firstAttribute="height" constant="165" id="dym-O2-ajr"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="activityWishNormal" translatesAutoresizingMaskIntoConstraints="NO" id="DhU-9d-2ka">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activityWishNormal" translatesAutoresizingMaskIntoConstraints="NO" id="DhU-9d-2ka">
                         <rect key="frame" x="255" y="20" width="30" height="30"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JEP-JP-awC" userLabel="contentView">
@@ -80,36 +80,36 @@
                         </constraints>
                     </view>
                     <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ucG-jY-wFh" userLabel="pirceView">
-                        <rect key="frame" x="-5" y="100" width="75" height="45"/>
+                        <rect key="frame" x="-5" y="95" width="81" height="50"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dl6-iy-Fc9" userLabel="mark">
-                                <rect key="frame" x="0.0" y="0.0" width="75" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dl6-iy-Fc9" userLabel="sell">
+                                <rect key="frame" x="13" y="3" width="55" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="tmZ-D2-hlG"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="10"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nm2-i3-wzp" userLabel="sell">
-                                <rect key="frame" x="0.0" y="25" width="75" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nm2-i3-wzp" userLabel="mark">
+                                <rect key="frame" x="15" y="23" width="56" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12.5"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.25098039215686274" green="0.2627450980392157" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="nm2-i3-wzp" firstAttribute="top" secondItem="dl6-iy-Fc9" secondAttribute="bottom" id="2kg-Zj-h7w"/>
+                            <constraint firstItem="dl6-iy-Fc9" firstAttribute="bottom" secondItem="nm2-i3-wzp" secondAttribute="top" constant="5" id="2kg-Zj-h7w"/>
                             <constraint firstItem="dl6-iy-Fc9" firstAttribute="centerX" secondItem="ucG-jY-wFh" secondAttribute="centerX" id="5zo-V9-Lq6"/>
-                            <constraint firstAttribute="trailing" secondItem="dl6-iy-Fc9" secondAttribute="trailing" id="6iy-YR-RCl"/>
-                            <constraint firstAttribute="width" constant="75" id="AL5-0i-itY"/>
-                            <constraint firstItem="dl6-iy-Fc9" firstAttribute="leading" secondItem="ucG-jY-wFh" secondAttribute="leading" id="EnC-3F-OWZ"/>
+                            <constraint firstAttribute="trailing" secondItem="dl6-iy-Fc9" secondAttribute="trailing" constant="13" id="6iy-YR-RCl"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="AL5-0i-itY"/>
+                            <constraint firstItem="dl6-iy-Fc9" firstAttribute="leading" secondItem="ucG-jY-wFh" secondAttribute="leading" constant="13" id="EnC-3F-OWZ"/>
                             <constraint firstAttribute="bottom" secondItem="nm2-i3-wzp" secondAttribute="bottom" id="cFO-MU-RQ4"/>
-                            <constraint firstAttribute="height" constant="45" id="dWX-Pk-Mqa"/>
-                            <constraint firstItem="nm2-i3-wzp" firstAttribute="leading" secondItem="ucG-jY-wFh" secondAttribute="leading" id="j83-Uc-J4t"/>
-                            <constraint firstAttribute="trailing" secondItem="nm2-i3-wzp" secondAttribute="trailing" id="xDd-HP-ZsE"/>
-                            <constraint firstItem="dl6-iy-Fc9" firstAttribute="top" secondItem="ucG-jY-wFh" secondAttribute="top" id="zZJ-YD-sEx"/>
+                            <constraint firstAttribute="height" constant="50" id="dWX-Pk-Mqa"/>
+                            <constraint firstItem="nm2-i3-wzp" firstAttribute="leading" secondItem="ucG-jY-wFh" secondAttribute="leading" constant="15" id="j83-Uc-J4t"/>
+                            <constraint firstAttribute="trailing" secondItem="nm2-i3-wzp" secondAttribute="trailing" constant="10" id="xDd-HP-ZsE"/>
+                            <constraint firstItem="dl6-iy-Fc9" firstAttribute="top" secondItem="ucG-jY-wFh" secondAttribute="top" constant="3" id="zZJ-YD-sEx"/>
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iVF-T8-qXx">
@@ -161,11 +161,11 @@
                 <outlet property="instantImageView" destination="eQG-vE-WVG" id="ojb-cX-dY7"/>
                 <outlet property="instantSubTitleLabel" destination="tuT-8V-z6F" id="Sm6-bd-nJ0"/>
                 <outlet property="instantTitleLabel" destination="hpu-Rg-lst" id="uN6-bB-KLZ"/>
-                <outlet property="marketPriceLabel" destination="dl6-iy-Fc9" id="qV5-sw-ie4"/>
+                <outlet property="marketPriceLabel" destination="nm2-i3-wzp" id="PQm-zB-hdv"/>
                 <outlet property="participantsImageView" destination="lXV-NS-gkf" id="bOh-eh-cVY"/>
                 <outlet property="participantsLabel" destination="n6c-p0-PLt" id="ZEf-dZ-eaA"/>
                 <outlet property="pirceView" destination="ucG-jY-wFh" id="EFF-tn-W29"/>
-                <outlet property="sellingPriceLabel" destination="nm2-i3-wzp" id="Z82-Lf-GZE"/>
+                <outlet property="sellingPriceLabel" destination="dl6-iy-Fc9" id="68X-Ln-cHV"/>
                 <outlet property="subTitleLabel" destination="lJO-ov-Yhz" id="aqP-a6-dR1"/>
                 <outlet property="titleLabel" destination="WTG-Rp-kPE" id="X2L-sb-deI"/>
             </connections>

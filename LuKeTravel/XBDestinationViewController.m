@@ -38,12 +38,13 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.title = NSLocalizedString(@"destination-title", @"destination-title");
+    self.title = [XBLanguageControl localizedStringForKey:@"destination-title"];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.titles = @[NSLocalizedString(@"destination-titlehot", @"destination-titlehot"),
-                    NSLocalizedString(@"destination-titleall", @"destination-titleall")
+    self.titles = @[
+                    [XBLanguageControl localizedStringForKey:@"destination-popular"],
+                    [XBLanguageControl localizedStringForKey:@"destination-all"]
                   ];
     
     [self buildView];
@@ -94,8 +95,7 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
     [self.tstView reloadData];
     [self.view addSubview:self.tstView];
     
-    
-    self.desinationFooterView = [[XBDesinationFooterView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tstView.frame), 100) title:NSLocalizedString(@"destination-foottitle", @"destination-foottitle") didSelectedBlock:^{
+    self.desinationFooterView = [[XBDesinationFooterView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tstView.frame), 100) title:[XBLanguageControl localizedStringForKey:@"destination-popular-more"] didSelectedBlock:^{
         [self.tstView showFraternalViewAtIndex:1];
     }];
 }
@@ -297,6 +297,7 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
     XBCityViewController *cityVC = [[XBCityViewController alloc] init];
     cityVC.groupItem = groupItem;
     cityVC.hidesBottomBarWhenPushed = YES;
+    
     [self.navigationController pushViewController:cityVC animated:YES];
 }
 

@@ -35,9 +35,9 @@
     self.subTitleLabel.text = searchItem.subName;
     self.addressLabel.text  = searchItem.cityName;
     self.participantsLabel.text = searchItem.participantsFormat;
-    self.sellingPriceLabel.text  = [NSString stringWithFormat:@"￥%@",[NSIntegerFormatter formatToNSString:searchItem.marketPrice]];
-    self.marketPriceLabel.text = [NSString stringWithFormat:@"￥%@",[NSIntegerFormatter formatToNSString:searchItem.sellingPrice]];
-    self.favoriteImageView.image = [UIImage imageNamed:searchItem.favorite ? @"activityWishSelected" : @"activityWishNormal"];
+    self.sellingPriceLabel.text  = [NSString stringWithFormat:@"%@ %@",[XBUserDefaultsUtil currentCurrencySymbol],[NSIntegerFormatter formatToNSString:searchItem.marketPrice]];
+    self.marketPriceLabel.text = [NSString stringWithFormat:@"%@ %@",[XBUserDefaultsUtil currentCurrencySymbol],[NSIntegerFormatter formatToNSString:searchItem.sellingPrice]];
+    [self.favoriteButton setImage:[UIImage imageNamed:searchItem.favorite ? @"activityWishSelected" : @"activityWishNormal"] forState:UIControlStateNormal];
     [self loadImageFromCacheWithImageView:self.coverImageView imageUrl:searchItem.imageUrl];
     
     BOOL cityEmpty = searchItem.cityName.length <= 0;
@@ -67,6 +67,15 @@
     NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc] initWithString:self.sellingPriceLabel.text attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
     self.sellingPriceLabel.attributedText = attribtStr;
 
+}
+
+- (void)setFavorite:(BOOL)favorite
+{
+    _favorite = favorite;
+    
+    self.searchItem.favorite = favorite;
+    
+    [self.favoriteButton setImage:[UIImage imageNamed:favorite ? @"activityWishSelected" : @"activityWishNormal"] forState:UIControlStateNormal];
 }
 
 - (void)loadImageFromCacheWithImageView:(UIImageView *)imageView imageUrl:(NSString *)imageUrl
@@ -99,6 +108,31 @@
         
         imageView.image = cacheImage;
         
+    }
+}
+
+- (IBAction)favoriteAction:(UIButton *)sender {
+    
+    CASpringAnimation *springAnimation = [CASpringAnimation animationWithKeyPath:@"transform.scale"];
+    
+    springAnimation.damping = 5.f;
+    
+    springAnimation.stiffness = 2000.f;
+    
+    springAnimation.mass = 5;
+    
+    springAnimation.initialVelocity = 10;
+    
+    springAnimation.fromValue = @(1);
+    
+    springAnimation.toValue = @(1.165);
+    
+    springAnimation.duration = 0.7;
+    
+    [self.favoriteButton.layer addAnimation:springAnimation forKey:@"SpringAnimation"];
+    
+    if ([self.delegate respondsToSelector:@selector(searchActivityClickCell:didSelectFavorite:)]) {
+        [self.delegate searchActivityClickCell:self didSelectFavorite:self.searchItem];
     }
 }
 

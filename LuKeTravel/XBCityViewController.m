@@ -56,6 +56,13 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     self.navigationController.navigationBarHidden = YES;
+    
+    [self.view sendSubviewToBack:self.navigationView];
+    
+}
+
+- (void)test {
+    
 }
 
 - (void)reloadData

@@ -23,24 +23,27 @@
 @property (strong, nonatomic) NSMutableArray   *datas;
 @property (strong, nonatomic) XBShareActivity  *shareActivity;
 @property (strong, nonatomic) UIViewController *targetViewController;
+@property (copy  , nonatomic) dispatch_block_t dismissBlock;
 @end
 
 static NSString *const reuseIdentifier = @"XBShareCell";
 @implementation XBShareView
-- (instancetype)initWithShareActivity:(XBShareActivity *)shareActivity targetViewController:(UIViewController *)targetViewController
+- (instancetype)initWithShareActivity:(XBShareActivity *)shareActivity targetViewController:(UIViewController *)targetViewController dismissBlock:(dispatch_block_t)dismissBlock
 {
     if (self = [super init]) {
         _shareActivity = shareActivity;
+        _dismissBlock  = dismissBlock;
         _targetViewController = targetViewController;
         [self initialization];
     }
     return self;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame shareActivity:(XBShareActivity *)shareActivity targetViewController:(UIViewController *)targetViewController
+- (instancetype)initWithFrame:(CGRect)frame shareActivity:(XBShareActivity *)shareActivity targetViewController:(UIViewController *)targetViewController dismissBlock:(dispatch_block_t)dismissBlock
 {
     if (self = [super initWithFrame:frame]) {
         _shareActivity = shareActivity;
+        _dismissBlock  = dismissBlock;
         _targetViewController = targetViewController;
         [self initialization];
     }
@@ -55,7 +58,6 @@ static NSString *const reuseIdentifier = @"XBShareCell";
     [self addSubview:self.effectView];
     
     self.titleLabel = [UILabel new];
-    self.titleLabel.text = NSLocalizedString(@"share-activity-title", @"share-activity-title");
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     self.titleLabel.font = [UIFont systemFontOfSize:17.5f];
@@ -120,25 +122,24 @@ static NSString *const reuseIdentifier = @"XBShareCell";
 
 - (void)reloadData
 {
+    [self.datas removeAllObjects];
     
-    if (self.datas.count <= 0) {
-        //手机是否安装了微信  如果不添加该判断 当手机没有安装微信 上架到app store 会不通过审核
-        if ([WXApi isWXAppInstalled]) {
-            
-            [self.datas addObject:[XBShare shareWithName:NSLocalizedString(@"share-wechat-session", @"share-wechat-session") icon:[UIImage imageNamed:@"share_wechat"] plantform:UMShareToWechatSession]];
-            
-            [self.datas addObject:[XBShare shareWithName:NSLocalizedString(@"share-wechat-timeline", @"share-wechat-timeline") icon:[UIImage imageNamed:@"share_moments"] plantform:UMShareToWechatTimeline]];
-            
-        }
+    //手机是否安装了微信  如果不添加该判断 当手机没有安装微信 上架到app store 会不通过审核
+    if ([WXApi isWXAppInstalled]) {
         
-        [self.datas addObject:[XBShare shareWithName:NSLocalizedString(@"share-sina", @"share-sina") icon:[UIImage imageNamed:@"share_sina"] plantform:UMShareToSina]];
+        [self.datas addObject:[XBShare shareWithName:[XBLanguageControl localizedStringForKey:@"share-wechat-session"] icon:[UIImage imageNamed:@"share_wechat"] plantform:UMShareToWechatSession]];
         
-        [self.datas addObject:[XBShare shareWithName:NSLocalizedString(@"share-email", @"share-email") icon:[UIImage imageNamed:@"share_email"] plantform:UMShareToEmail]];
+        [self.datas addObject:[XBShare shareWithName:[XBLanguageControl localizedStringForKey:@"share-wechat-timeline"] icon:[UIImage imageNamed:@"share_moments"] plantform:UMShareToWechatTimeline]];
         
-        [self.datas addObject:[XBShare shareWithName:NSLocalizedString(@"share-message", @"share-message") icon:[UIImage imageNamed:@"share_message"] plantform:UMShareToSms]];
-        
-        [self.datas addObject:[XBShare shareWithName:NSLocalizedString(@"share-twitter", @"share-twitter") icon:[UIImage imageNamed:@"share_twitter"] plantform:UMShareToTwitter]];
     }
+    
+    [self.datas addObject:[XBShare shareWithName:[XBLanguageControl localizedStringForKey:@"share-sina"] icon:[UIImage imageNamed:@"share_sina"] plantform:UMShareToSina]];
+    
+    [self.datas addObject:[XBShare shareWithName:[XBLanguageControl localizedStringForKey:@"share-email"] icon:[UIImage imageNamed:@"share_email"] plantform:UMShareToEmail]];
+    
+    [self.datas addObject:[XBShare shareWithName:[XBLanguageControl localizedStringForKey:@"share-message"] icon:[UIImage imageNamed:@"share_message"] plantform:UMShareToSms]];
+    
+    [self.datas addObject:[XBShare shareWithName:[XBLanguageControl localizedStringForKey:@"share-twitter"] icon:[UIImage imageNamed:@"share_twitter"] plantform:UMShareToTwitter]];
 
     [self.collectionView reloadData];
 }
@@ -205,6 +206,10 @@ static NSString *const reuseIdentifier = @"XBShareCell";
         
     } else {
         
+        if (self.dismissBlock) {
+            self.dismissBlock();
+        }
+        
         [self.superview sendSubviewToBack:self];
         
         [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
@@ -217,6 +222,11 @@ static NSString *const reuseIdentifier = @"XBShareCell";
     }
 }
 
+
+- (void)setTitle:(NSString *)title
+{
+    self.titleLabel.text = title;
+}
 
 #pragma mark -- lazy loading
 - (NSMutableArray *)datas

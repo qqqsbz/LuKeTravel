@@ -139,13 +139,13 @@
     
     self.instantLabel.text  = activity.participantsFormat;
     
-    self.sellLabel.text = [NSString stringWithFormat:@"￥ %@",[NSIntegerFormatter formatToNSString:activity.sellPrice]];
+    self.sellLabel.text = [NSString stringWithFormat:@"%@ %@",[XBUserDefaultsUtil currentCurrencySymbol],[NSIntegerFormatter formatToNSString:activity.sellPrice]];
     
-    self.markLabel.text = [NSIntegerFormatter formatToNSString:activity.marketPrice];
+    self.markLabel.text = [NSString stringWithFormat:@"%@ %@",[XBUserDefaultsUtil currentCurrencySymbol],[NSIntegerFormatter formatToNSString:activity.marketPrice]];
     
     self.descLabel.text = activity.desc;
     
-    self.reviewsLabel.text = [NSString stringWithFormat:@"%@(%@)",NSLocalizedString(@"activity-detail-reviewcount", @"activity-detail-reviewcount"),[NSIntegerFormatter formatToNSString:activity.reviewsCount]];
+    self.reviewsLabel.text = [NSString stringWithFormat:@"%@(%@)",[XBLanguageControl localizedStringForKey:@"activity-detail-reviewcount"],[NSIntegerFormatter formatToNSString:activity.reviewsCount]];
     
     self.fastLabel.hidden = !self.activity.isInstant;
     
@@ -197,12 +197,14 @@
     
     self.titleLabel = [UILabel new];
     self.titleLabel.numberOfLines = 0;
-    self.titleLabel.lineBreakMode = NSLineBreakByCharWrapping;
+    self.titleLabel.textAlignment = NSTextAlignmentLeft;
     self.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
     self.titleLabel.textColor = defaultColor;
     [self.contentView addSubview:self.titleLabel];
     
     self.subTitleLabel = [UILabel new];
+    self.subTitleLabel.numberOfLines = 0;
+    self.subTitleLabel.textAlignment = NSTextAlignmentLeft;
     self.subTitleLabel.font = [UIFont systemFontOfSize:14.f];
     self.subTitleLabel.textColor = [UIColor colorWithHexString:@"#6C6C6B"];
     [self.contentView addSubview:self.subTitleLabel];
@@ -210,7 +212,7 @@
     
     self.sellLabel = [UILabel new];
     self.sellLabel.textAlignment = NSTextAlignmentRight;
-    self.sellLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+    self.sellLabel.font = [UIFont systemFontOfSize:19.f];
     self.sellLabel.textColor = [UIColor colorWithHexString:@"#4C4C4C"];
     [self.contentView addSubview:self.sellLabel];
     
@@ -246,13 +248,13 @@
     [self.contentView addSubview:self.fastImageView];
     
     self.fastLabel = [UILabel new];
-    self.fastLabel.text = NSLocalizedString(@"activity-detail-instant", @"activity-detail-instant");
+    self.fastLabel.text = [XBLanguageControl localizedStringForKey:@"activity-detail-instant"];
     self.fastLabel.font = [UIFont systemFontOfSize:14.f];
     self.fastLabel.textColor = defaultColor;
     [self.contentView addSubview:self.fastLabel];
     
     self.fastTipLabel = [UILabel new];
-    self.fastLabel.text    = NSLocalizedString(@"activity-detail-fast", @"activity-detail-fast");
+    self.fastTipLabel.text = [XBLanguageControl localizedStringForKey:@"activity-detail-fast"];
     self.fastTipLabel.font = [UIFont systemFontOfSize:11.5f];
     self.fastTipLabel.textColor = [UIColor colorWithHexString:@"#AFAEAD"];
     [self.contentView addSubview:self.fastTipLabel];
@@ -273,7 +275,7 @@
     self.readMoreButton.layer.masksToBounds = YES;
     self.readMoreButton.layer.cornerRadius  = 5.f;
     self.readMoreButton.titleLabel.font = [UIFont systemFontOfSize:15.f];
-    [self.readMoreButton setTitle:NSLocalizedString(@"activity-detail-readmore", @"activity-detail-readmore") forState:UIControlStateNormal];
+    [self.readMoreButton setTitle:[XBLanguageControl localizedStringForKey:@"activity-detail-readmore"] forState:UIControlStateNormal];
     [self.readMoreButton setTitleColor:defaultColor forState:UIControlStateNormal];
     [self.readMoreButton setBackgroundColor:[UIColor clearColor]];
     [self.readMoreButton addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -285,39 +287,39 @@
     self.recommendButton.layer.masksToBounds = YES;
     self.recommendButton.layer.cornerRadius  = 5.f;
     self.recommendButton.titleLabel.font = [UIFont systemFontOfSize:15.f];
-    [self.recommendButton setTitle:NSLocalizedString(@"activity-detail-recommend", @"activity-detail-recommend") forState:UIControlStateNormal];
+    [self.recommendButton setTitle:[XBLanguageControl localizedStringForKey:@"activity-detail-recommend"] forState:UIControlStateNormal];
     [self.recommendButton setTitleColor:defaultColor forState:UIControlStateNormal];
     [self.recommendButton setBackgroundColor:[UIColor clearColor]];
     [self.recommendButton addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.recommendButton];
     
     self.durationNotifyView = [XBNotifyView new];
-    self.durationNotifyView.titleLabel.text = NSLocalizedString(@"activity-notify-duration", @"activity-notify-duration");
+    self.durationNotifyView.titleLabel.text = [XBLanguageControl localizedStringForKey:@"activity-notify-duration"];
     self.durationNotifyView.imageView.image = [UIImage imageNamed:@"activity_time"];
     [self.contentView addSubview:self.durationNotifyView];
     
     self.languageNotifyView = [XBNotifyView new];
-    self.languageNotifyView.titleLabel.text = NSLocalizedString(@"activity-notify-language", @"activity-notify-language");
+    self.languageNotifyView.titleLabel.text = [XBLanguageControl localizedStringForKey:@"activity-notify-language"];
     self.languageNotifyView.imageView.image = [UIImage imageNamed:@"activity_lang"];
     [self.contentView addSubview:self.languageNotifyView];
     
     self.recommendedNumberNotifyView = [XBNotifyView new];
-    self.recommendedNumberNotifyView.titleLabel.text = NSLocalizedString(@"activity-notify-recommendedNumber", @"activity-notify-recommendedNumber");
+    self.recommendedNumberNotifyView.titleLabel.text = [XBLanguageControl localizedStringForKey:@"activity-notify-recommendedNumber"];
     self.recommendedNumberNotifyView.imageView.image = [UIImage imageNamed:@"activity_head_count"];
     [self.contentView addSubview:self.recommendedNumberNotifyView];
     
     self.transportationNotifyView = [XBNotifyView new];
-    self.transportationNotifyView.titleLabel.text = NSLocalizedString(@"activity-notify-transportation", @"activity-notify-transportation");
+    self.transportationNotifyView.titleLabel.text = [XBLanguageControl localizedStringForKey:@"activity-notify-transportation"];
     self.transportationNotifyView.imageView.image = [UIImage imageNamed:@"activity_pickup"];
     [self.contentView addSubview:self.transportationNotifyView];
     
     self.confirmationNotifyView = [XBNotifyView new];
-    self.confirmationNotifyView.titleLabel.text = NSLocalizedString(@"activity-notify-confirmation", @"activity-notify-confirmation");
+    self.confirmationNotifyView.titleLabel.text = [XBLanguageControl localizedStringForKey:@"activity-notify-confirmation"];
     self.confirmationNotifyView.imageView.image = [UIImage imageNamed:@"activity_confirm"];
     [self.contentView addSubview:self.confirmationNotifyView];
     
     self.cancellationNotifyView = [XBNotifyView new];
-    self.cancellationNotifyView.titleLabel.text = NSLocalizedString(@"activity-notify-cancellation", @"activity-notify-cancellation");
+    self.cancellationNotifyView.titleLabel.text = [XBLanguageControl localizedStringForKey:@"activity-notify-cancellation"];
     self.cancellationNotifyView.imageView.image = [UIImage imageNamed:@"activity_refund"];
     [self.contentView addSubview:self.cancellationNotifyView];
     
@@ -369,7 +371,7 @@
     self.reviewsReadMoreButton.layer.masksToBounds = YES;
     self.reviewsReadMoreButton.layer.cornerRadius  = 5.f;
     self.reviewsReadMoreButton.titleLabel.font = [UIFont systemFontOfSize:15.f];
-    [self.reviewsReadMoreButton setTitle:NSLocalizedString(@"activity-detail-readmore", @"activity-detail-readmore") forState:UIControlStateNormal];
+    [self.reviewsReadMoreButton setTitle:[XBLanguageControl localizedStringForKey:@"activity-detail-readmore"] forState:UIControlStateNormal];
     [self.reviewsReadMoreButton setTitleColor:defaultColor forState:UIControlStateNormal];
     [self.reviewsReadMoreButton setBackgroundColor:[UIColor clearColor]];
     [self.reviewsReadMoreButton addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -380,7 +382,7 @@
     [self.contentView addSubview:self.reviewsSeparatorView];
     
     self.directionTitleLabel = [UILabel new];
-    self.directionTitleLabel.text = NSLocalizedString(@"activity-detail-direction", @"activity-detail-direction");
+    self.directionTitleLabel.text = [XBLanguageControl localizedStringForKey:@"activity-detail-direction"];
     self.directionTitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.f];
     self.directionTitleLabel.textColor = [UIColor blackColor];
     [self.contentView addSubview:self.directionTitleLabel];
@@ -409,7 +411,7 @@
     self.directionReadMoreButton.layer.masksToBounds = YES;
     self.directionReadMoreButton.layer.cornerRadius  = 5.f;
     self.directionReadMoreButton.titleLabel.font = [UIFont systemFontOfSize:15.f];
-    [self.directionReadMoreButton setTitle:NSLocalizedString(@"activity-detail-readmore", @"activity-detail-readmore") forState:UIControlStateNormal];
+    [self.directionReadMoreButton setTitle:[XBLanguageControl localizedStringForKey:@"activity-detail-readmore"] forState:UIControlStateNormal];
     [self.directionReadMoreButton setTitleColor:defaultColor forState:UIControlStateNormal];
     [self.directionReadMoreButton setBackgroundColor:[UIColor clearColor]];
     [self.directionReadMoreButton addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -420,7 +422,7 @@
     [self.contentView addSubview:self.directionSeparatorView];
     
     self.useTitleLabel = [UILabel new];
-    self.useTitleLabel.text = NSLocalizedString(@"activity-detail-use", @"activity-detail-use");
+    self.useTitleLabel.text = [XBLanguageControl localizedStringForKey:@"activity-detail-use"];
     self.useTitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.f];
     self.useTitleLabel.textColor = [UIColor blackColor];
     [self.contentView addSubview:self.useTitleLabel];
@@ -430,7 +432,7 @@
     [self.contentView addSubview:self.useView];
     
     self.noticeTitleLabel = [UILabel new];
-    self.noticeTitleLabel.text = NSLocalizedString(@"activity-detail-notice", @"activity-detail-notice");
+    self.noticeTitleLabel.text = [XBLanguageControl localizedStringForKey:@"activity-detail-notice"];
     self.noticeTitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.f];
     self.noticeTitleLabel.textColor = [UIColor blackColor];
     [self.contentView addSubview:self.noticeTitleLabel];
@@ -459,23 +461,24 @@
     [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(kSpace * 2.3);
         make.left.equalTo(self.contentView).offset(kSpace);
-        make.right.equalTo(self.sellLabel.left).offset(-kSpace);
     }];
     
     [self.sellLabel makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView).offset(-kSpace);
         make.centerY.equalTo(self.titleLabel);
-        make.width.mas_greaterThanOrEqualTo(50.f);
+        make.left.equalTo(self.titleLabel.right).offset(kSpace);
+//        make.width.mas_greaterThanOrEqualTo(50.f);
     }];
     
     [self.subTitleLabel makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleLabel);
         make.top.equalTo(self.titleLabel.bottom).offset(kSpace * 0.4);
         make.right.equalTo(self.titleLabel);
+//        make.height.mas_greaterThanOrEqualTo(30.f);
     }];
     
     [self.markLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.subTitleLabel);
+        make.top.equalTo(self.sellLabel.bottom).offset(kSpace * 0.5);
         make.right.equalTo(self.sellLabel);
     }];
     
@@ -744,16 +747,34 @@
                 
                 self.confirmSuccessLabel.parserContentItem = item;
                 
-                XBParserContentItem *emailItem = content.items[1];
-                
-                self.confirmEmailLabel.parserContentItem = emailItem;
+                if (content.items.count >= 2) {
+                    
+                    XBParserContentItem *emailItem = content.items[1];
+                    
+                    self.confirmEmailLabel.parserContentItem = emailItem;
+                    
+                } else {
+                    
+                    [self.confirmEmailLabel updateConstraints:^(MASConstraintMaker *make) {
+                        
+                        make.top.equalTo(self.confirmSuccessLabel.bottom).offset(kSpace);
+                        
+                    }];
+                    
+                    self.confirmEmailLabel.hidden = YES;
+                    
+                }
             }
             
-            XBParserContent *package = datas[1];
-            
-            self.packageTitleLabel.text = package.title;
-            
-            self.directions = datas;
+            if (datas.count >= 2) {
+                
+                XBParserContent *package = datas[1];
+                
+                self.packageTitleLabel.text = package.title;
+                
+                self.directions = datas;
+                
+            }
         }
         
     }];
@@ -948,6 +969,11 @@
     [descAttributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, self.descLabel.text.length)];
     
     self.descLabel.attributedText = descAttributedString;
+    
+    NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc] initWithString:self.markLabel.text attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
+    
+    self.markLabel.attributedText = attribtStr;
+    
 }
 
 #pragma mark -- XBActivityItemViewDelegate

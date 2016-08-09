@@ -1,0 +1,257 @@
+/* 
+  LuKe.strings
+  LuKeTravel
+
+  Created by coder on 16/8/1.
+  Copyright © 2016年 coder. All rights reserved.
+*/
+
+
+
+"commom-cancle" = "Cancel";
+"commom-complete" = "Done";
+"commom-alert-confirm" = "OK";
+"commom-error-phone" = "Please number error.Please conrrect and try again";
+
+
+"loading-fail" = "load fail";
+
+//目的地
+"destination-title" = "Destinations";
+"destination-popular" = "Popular";
+"destination-all" = "All";
+"destination-popular-more" = "Explore More Destinations";
+"destination-all-more" = "More coming soon";
+
+//活动
+"activity-detail-readmore" = "More";
+"activity-detail-recommend" = "What We Love";
+"activity-detail-direction" = "ACTIVITY DETAILS";
+"activity-detail-use" = "HOW TO USE";
+"activity-detail-notice" = "CANCELATION";
+"activity-notify-duration" = "Duration";
+"activity-notify-cancellation" = "Refund";
+"activity-notify-confirmation" = "Confirmation";
+"activity-notify-transportation" = "Transport";
+"activity-notify-recommendedNumber" = "Travelers";
+"activity-notify-language" = "Language";
+"activity-detail-reviewcount" = "Reviews";
+"activity-detail-instant" = "INSTANT";
+"activity-detail-strength" = "Highlights";
+"activity-detail-particulars" = "ACTIVITY DETAILS";
+"activity-detail-fast" = "Book now and get your eticket instantly";
+"activity-detail-package-normal" = "Select Package & Book";
+"activity-detail-package-select" = "Book";
+"activity-share-title" = "Share Activity";
+
+//订单
+"order-title" = "My Bookings";
+"order-noorder" = "No bookings...yet! \n Explore amazing experiences and book seamlessly";
+"order-login-tip" = "Log in to check order and view vouchers";
+"order-login" = "Log in";
+
+"login-textfield-username-placeholder" = "Email";
+"login-textfield-password-placeholder" = "Password";
+"login-title" = "Login/Sign up with your email";
+"login-login-register" = "Login/Sign Up";
+"login-login" = "Login";
+"login-register" = "Sign Up";
+"login-wechat" = "Login With WeChat";
+"login-tip" = "By joining Klook,you argree to General Terms of Use";
+"login-alert-message" = "Oops,invalid email address";
+"login-alert-confirm" = "OK";
+"login-login-account" = "Please enter your login password";
+"login-register-account" = "New users can sign up here";
+"login-forget" = "Forget your password？";
+"login-forget-message" = "Please visit www.klook.com to reset password";
+"login-register-password-error" = "password must be 8-20 characters long,must contain both letters and numbers";
+"register-fail" = "Sign Up fail";
+"login-fail" = "Login fail";
+
+
+//我的
+"mine-title" = "My Account";
+"mine-login" = "Login/Sign Up";
+"mine-message" = "";
+"mine-credits" = "Credits";
+"mine-coupons" = "Coupons";
+"mine-voucher" = "Vouchers";
+"mine-fav" = "Wishlist";
+"mine-refer" = "Invite Friends";
+"mine-refer-detail" = "";
+"mine-credit" = "Promotions";
+"mine-exchange" = "Language/Currency";
+"mine-help" = "Help Center";
+"mine-about" = "About";
+
+//编辑账号
+"user-info-title" = "Edit Account";
+"user-info-loginout" = "Logout";
+"user-info-avtaor" = "Change Avatar";
+"user-info-basic" = "TRAVELER'S INFORMATION";
+"user-info-appellation" = "Title";
+"user-info-appellation-placeholder" = "Select title";
+"user-info-name" = "First Name";
+"user-info-name-placeholder" = "Passport name";
+"user-info-family" = "Family Name";
+"user-info-family-placeholder" = "Passport name";
+"user-info-email" = "Eamil";
+"user-info-email-placeholder" = "name@example.com";
+"user-info-code" = "Country Code";
+"user-info-code-placeholder" = "Enter or select";
+"user-info-phone" = "Phone";
+"user-info-phone-placeholder" = "Number";
+"user-info-code-verified" = "Verified";
+"user-info-save" = "Save";
+"user-info-logout-success" = "Logout Success";
+"user-info-logout-confirm" = "OK";
+"user-info-avator-cancle" = "Cancle";
+"user-info-avator-album" = "Photo Album";
+"user-info-avator-camera" = "Camera";
+"user-info-uploading" = "Uploading...";
+"user-info-upload-success" = "Upload Success";
+"user-info-upload-fail" = "Upload Fail";
+"user-info-unlogin" = "User not login";
+"user-info-error-save" = "Save Fail";
+"user-info-success-save" = "Save Success";
+"user-info-error-all-field" = "Please fill in all fields";
+"user-info-appellation-chose" = "Select title";
+"user-info-appellation-mr" = "MR";
+"user-info-appellation-mrs" = "MRS";
+"user-info-appellation-miss" = "MISS";
+
+//验证码
+"verification-code-title" = "Enter Verification Code";
+"verification-code-text" = "For your payment security, we must verify your phone number, a code has been sent to";
+"verification-code-message" = "(Verification only required noce)";
+"verification-code-input" = "Enter Code";
+"verification-code-resend" = "Resend Code";
+"verification-code-send" = "Verify";
+"verification-code-error-title" = "Code Error";
+"verification-code-error-text" = "We can not recognize the verificaton code you entered";
+"verification-code-error-try" = "Try Again";
+
+
+//使用凭证
+"vouchers-title" = "Vouchers";
+"vouchers-nodata-message" = "No vouchers...yet!\n Once booking is coonfirmed,voucher will be saved here and available to view even when offline";
+
+
+//愿望清单
+"wishlist-title" = "Wishlist";
+"wishlist-nodata-message" = "No favorited items...yes!\nSave all your favorite experiences in the wishlish";
+
+//邀请
+"invite-title" = "Invite Friends";
+"invite-content-title" = "";
+"invite-content-text" = "Give %@ to every friend who joins Klook and Get %@ when your friend completes the experience";
+"invite-code-text" = "(Your Referral Code)";
+"invite-code-copy" = "Copy";
+"invite-send" = "Send Invite";
+"invite-share-title" = "Invite Friends";
+
+//优惠
+"promotions-title" = "Promotions";
+"promotions-coupons" = "Coupons";
+"promotions-credits" = "Credits";
+"promotions-coupons-header-available" = "Available:";
+"promotions-coupons-header-unavailable" = "Used:";
+"promotions-coupons-header-exchange" = "Redeem";
+"promotions-coupons-header-placeholder" = "Enter Promotion Code";
+
+
+//积分
+"credits-account" = "Credits Balance：%@ ";
+"credits-credit" = "\n(Cash Conversion：%@)";
+
+//更换语言
+"exchange-title" = "Language/Currency";
+"exchange-picker-language-title" = "Language";
+"exchange-picker-currency-title" = "Currency";
+
+
+//语言
+"en" = "English";
+"zh-Hans" = "简体中文";
+"zh-Hant" = "繁體中文";
+
+//货币
+"EUR" = "EUR | €";
+"GBP" = "GBP | ￡";
+"SGD" = "SGD | S$";
+"IDR" = "IDR | Rps";
+"USD" = "USD | $";
+"TWD" = "TWD | NT$";
+"THB" = "THB | ฿";
+"AUD" = "AUD | AUD";
+"PHP" = "PHP | ₱";
+"MYR" = "MYR | RM";
+"KRW" = "KRW | ₩";
+"LAK" = "LAK | ₭";
+"CNY" = "CNY | ￥";
+"HKD" = "HKD | HK$";
+"JPY" = "JPY | ￥";
+"VND" = "VND | ₫";
+
+//国家
+"86" = "China (86)";
+"61" = "Australia (61)";
+"852" = "Hong Kong SAR China (852)";
+"62" = "Indonesia (62)";
+"91" = "India (91)";
+"81" = "Japan (81)";
+"82" = "South Korea (82)";
+"853" = "Macau SAR China (853)";
+"60" = "Malaysia (60)";
+"63" = "Philippines (63)";
+"65" = "Singapore (65)";
+"66" = "Thailand (66)";
+"886" = "Taiwan (886)";
+"1" = "United States (1)";
+"355" = "Albania (355)";
+"213" = "Algeria (213)";
+"93" = "Afghanistan (93)";
+"54" = "Argentina (54)";
+"971" = "The United Arab Emirates (971)";
+"297" = "Aruba (297)";
+
+//帮助
+"help-title" = "Help";
+
+//关于
+"about-title" = "About";
+"about-text" = "Klook,Yours To Explore!";
+"about-version" = "Version";
+"about-contact" = "Contact Us";
+"about-email" = "support@klook.com";
+"about-phone-churchyard" = "400-869-4088 (Domestic)";
+"about-phone-overseas" = "(+86) 755-82551180 (International)";
+"about-appstore" = "Rate Us on App Store";
+"about-feedback" = "Feedback";
+"about-clause" = "Terms & Conditions";
+"about-website" = "Visit Klook.com";
+
+
+//反馈
+"feedback-title" = "FeedBack";
+"feedback-name" = "Name";
+"feedback-name-placeholder" = "Enter your name";
+"feedback-email" = "Email";
+"feedback-email-placeholder" = "Enter your email";
+"feedback-content" = "FeddBack";
+"feedback-content-placeholder" = "Please leave any feedback for us here";
+"feedback-submit" = "send";
+"feedback-error-all" = "Please fill in all fields";
+"feedback-error-email" = "Please enter a valid email address";
+"feedback-fail" = "send fail";
+"feedback-done" = "Thank you for your feedback";
+
+
+//分享
+"share-activity-title" = "Share Activity";
+"share-wechat-session" = "WeChat";
+"share-wechat-timeline" = "Moments";
+"share-sina" = "Sina";
+"share-email" = "Emaol";
+"share-message" = "SMS";
+"share-twitter" = "Twitter";

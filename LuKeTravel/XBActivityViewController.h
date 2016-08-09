@@ -6,8 +6,7 @@
 //  Copyright © 2016年 coder. All rights reserved.
 //
 
-#import "XBBasicViewController.h"
 @class XBGroupItem;
-@interface XBActivityViewController : XBBasicViewController
-@property (strong, nonatomic) XBGroupItem  *groupItem;
+@interface XBActivityViewController : UIViewController
+@property (assign, nonatomic) NSInteger activityId;
 @end

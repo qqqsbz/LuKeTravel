@@ -175,6 +175,7 @@
             self.tabShadowViewColor = [self.delegate normalColorForShadowViewInTSTView:self];
         }
         
+        
         [self buildTabButtons];
         [self addConstraintToTabButtons];
         

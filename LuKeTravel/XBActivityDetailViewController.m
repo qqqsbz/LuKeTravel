@@ -13,6 +13,7 @@
 #import "XBParserContent.h"
 #import "XBActivityItemView.h"
 #import "XBParserContentItem.h"
+#import "XBWebViewController.h"
 @interface XBActivityDetailViewController () <XBActivityItemViewDelegate>
 @property (strong, nonatomic) UIScrollView    *scrollView;
 @property (strong, nonatomic) UIView          *contentView;
@@ -155,7 +156,13 @@
 #pragma mark -- XBActivityItemViewDelegate
 - (void)activityItemView:(XBActivityItemView *)activityItemView didSelectLinkWithURL:(NSURL *)url
 {
-    DDLogDebug(@"url:%@",url);
+    XBWebViewController *webVC = [[XBWebViewController alloc] init];
+    
+    webVC.webUrl = url;
+    
+    webVC.view.backgroundColor = [UIColor whiteColor];
+    
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

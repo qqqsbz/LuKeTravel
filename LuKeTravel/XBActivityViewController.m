@@ -22,6 +22,7 @@
 @interface XBActivityViewController () <SDCycleScrollViewDelegate,UIScrollViewDelegate,XBStretchableActivityViewDelegate,XBActivityPackageViewDelegate>
 @property (strong, nonatomic) XBActivity                  *activity;
 @property (strong, nonatomic) XBShareView                 *shareView;
+@property (strong, nonatomic) UIButton                    *shareButton;
 @property (strong, nonatomic) UIScrollView                *scrollView;
 @property (strong, nonatomic) SDCycleScrollView           *bannerView;
 @property (strong, nonatomic) XBActivityPackageView       *packageView;
@@ -47,12 +48,8 @@ static NSString *const reuseIdentifier = @"cell";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    self.navigationView.backgroundColor = [UIColor clearColor];
-    
-    self.navigationSeparatorView.hidden = YES;
-    
-    self.navigationRightButton.enabled = self.activity != nil;
+  
+    self.navigationItem.rightBarButtonItem.enabled = self.activity != nil;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -66,7 +63,7 @@ static NSString *const reuseIdentifier = @"cell";
 - (void)reloadData
 {
     [self showLoadinngInView:self.view];
-    [[XBHttpClient shareInstance] getActivitiesWithActivitiesId:[self.groupItem.modelId integerValue] success:^(XBActivity *activity) {
+    [[XBHttpClient shareInstance] getActivitiesWithActivitiesId:self.activityId success:^(XBActivity *activity) {
         
         [self hideLoading];
         
@@ -80,7 +77,7 @@ static NSString *const reuseIdentifier = @"cell";
         
         self.packageView.packages = activity.packages;
         
-        self.navigationRightButton.enabled = YES;
+        self.navigationItem.rightBarButtonItem.enabled = YES;
     
     } failure:^(NSError *error) {
     
@@ -95,6 +92,8 @@ static NSString *const reuseIdentifier = @"cell";
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"activity_share_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(shareAction)];
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - kActivityToolBarHeight)];
     self.scrollView.delegate = self;
@@ -129,6 +128,7 @@ static NSString *const reuseIdentifier = @"cell";
     self.reviewMaskView.alpha = 0.f;
     [self.reviewMaskView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureAction:)]];
     [keyWindow addSubview:self.reviewMaskView];
+
 }
 
 #pragma mark -- UIScrollViewDelegate
@@ -284,7 +284,13 @@ static NSString *const reuseIdentifier = @"cell";
 - (XBShareView *)shareView
 {
     if (!_shareView) {
-        _shareView = [[XBShareView alloc] initWithFrame:self.view.bounds shareActivity:self.activity.shareActivity targetViewController:self];
+        _shareView = [[XBShareView alloc] initWithFrame:self.view.bounds shareActivity:self.activity.shareActivity targetViewController:self dismissBlock:^{
+            
+            self.navigationController.navigationBarHidden = NO;
+            
+        }];
+        
+        _shareView.title = [XBLanguageControl localizedStringForKey:@"activity-share-title"];
         
         _shareView.alpha = 0.f;
         
@@ -294,12 +300,12 @@ static NSString *const reuseIdentifier = @"cell";
 }
 
 #pragma mark -- XBBasicViewController navigation action
-- (void)rightButtonAction
+- (void)shareAction
 {
     [self.shareView toggle];
     
     //当显示分享页面时 隐藏导航栏
-    self.navigationView.hidden = self.shareView.alpha == 1;
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {

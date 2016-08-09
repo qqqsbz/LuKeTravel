@@ -59,7 +59,7 @@ static NSString *const reuseIdentifier = @"XBActivityPackageCell";
     self.packageButton.layer.cornerRadius  = 8.f;
     self.packageButton.titleLabel.font = [UIFont systemFontOfSize:15.f];
     self.packageButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [self.packageButton setTitle:NSLocalizedString(@"activity-detail-package-normal", @"activity-detail-package-normal") forState:UIControlStateNormal];
+    [self.packageButton setTitle:[XBLanguageControl localizedStringForKey:@"activity-detail-package-normal"] forState:UIControlStateNormal];
     [self.packageButton setTitleColor:[UIColor colorWithWhite:1.f alpha:0.85] forState:UIControlStateNormal];
     [self.packageButton setBackgroundColor:[UIColor colorWithHexString:kDefaultColorHex]];
     [self.packageButton addTarget:self action:@selector(packageAction) forControlEvents:UIControlEventTouchUpInside];
@@ -156,7 +156,7 @@ static NSString *const reuseIdentifier = @"XBActivityPackageCell";
     
     self.selectedIndexPath = indexPath;
     
-    [self.packageButton setTitle:NSLocalizedString(@"activity-detail-package-select", @"activity-detail-package-select") forState:UIControlStateNormal];
+    [self.packageButton setTitle:[XBLanguageControl localizedStringForKey:@"activity-detail-package-select"] forState:UIControlStateNormal];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath

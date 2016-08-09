@@ -7,7 +7,8 @@
 //
 
 #import "XBModel.h"
-
+@class XBGroupItem;
+@class XBWishlist;
 @interface XBSearchItem : XBModel <MTLManagedObjectSerializing>
 @property (strong, nonatomic) NSString      *type;
 @property (strong, nonatomic) NSString      *imageUrl;
@@ -24,4 +25,8 @@
 @property (assign, nonatomic) BOOL          favorite;
 @property (strong, nonatomic) NSString      *hotState;
 @property (strong, nonatomic) NSString      *participantsFormat;
+
+
++ (XBSearchItem *)searchItemFromWishlist:(XBWishlist *)wishlist;
+
 @end

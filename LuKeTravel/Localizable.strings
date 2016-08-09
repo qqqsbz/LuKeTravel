@@ -5,6 +5,10 @@
   Created by trgoofi on 14-7-22.
   Copyright (c) 2014年 vbuy. All rights reserved.
 */
+
+"commom-cancle" = "取消";
+"commom-complete" = "完成";
+
 "logo-title" = "前往目的地，探索无限!";
 "desination-viewall" = "查看所有活动";
 "search-placeholder" = "搜索活动";
@@ -51,3 +55,56 @@
 "share-email" = "邮件";
 "share-message" = "短信";
 "share-twitter" = "Twitter";
+
+"order-title" = "我的订单";
+"order-noorder" = "探索无限，你只差一个预订的步骤";
+"order-login-tip" = "登录后，可以查看订单和离线使用凭证";
+"order-login" = "登录";
+"login-textfield-username-placeholder" = "邮箱";
+"login-textfield-password-placeholder" = "密码";
+"login-title" = "或用邮箱登录/注册";
+"login-login-register" = "登录/注册";
+"login-login" = "登录";
+"login-register" = "注册";
+"login-wechat" = "使用微信登录";
+"login-tip" = "注册表示您已经阅读并同意客路的《使用条款》";
+"login-alert-message" = "邮箱输入有误哟";
+"login-alert-confirm" = "确认";
+"login-login-account" = "请输入登录密码";
+"login-register-account" = "新用户注册账户";
+"login-forget" = "忘记密码？";
+"login-forget-message" = "请在电脑浏览器上前往www.klook.com重置密码";
+"login-register-password-error" = "密码须为8-20位，至少包含一个字母和数字";
+"register-fail" = "注册失败";
+"login-fail" = "登录失败";
+
+"help-title" = "帮助";
+
+"about-title" = "关于";
+"about-text" = "路客旅行，探索未知的你";
+"about-version" = "版本";
+"about-contact" = "联系我们";
+"about-email" = "support@klook.com";
+"about-phone-churchyard" = "400-869-4088 (境内)";
+"about-phone-overseas" = "(+86) 755-82551180 (境外)";
+"about-appstore" = "在 App Store 上给我们评分";
+"about-feedback" = "意见反馈";
+"about-clause" = "使用条款";
+"about-website" = "访问 Klook.com";
+
+"feedback-title" = "意见反馈";
+"feedback-name" = "姓名";
+"feedback-name-placeholder" = "请输入您的姓名";
+"feedback-email" = "邮箱";
+"feedback-email-placeholder" = "请输入您的邮箱地址";
+"feedback-content" = "意见反馈";
+"feedback-content-placeholder" = "请输入反馈意见";
+"feedback-submit" = "提交";
+"feedback-error-all" = "请填写所有信息";
+"feedback-error-email" = "请正确填写邮箱地址";
+"feedback-fail" = "提交失败";
+"feedback-done" = "路客感谢您的反馈";
+
+"exchange-title" = "更换语言/货币";
+"exchange-picker-language-title" = "更换语言";
+"exchange-picker-currency-title" = "更换货币";

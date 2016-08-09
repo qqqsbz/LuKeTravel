@@ -14,17 +14,20 @@
 #import <CoreData/CoreData.h>
 
 #define MAS_SHORTHAND
+#import "DDLog.h"
+#import "XBUser.h"
 #import "XBDBUtil.h"
-#import "UIColor+Util.h"
 #import "XBConstants.h"
-#import "XBApplication.h"
+#import "UIColor+Util.h"
 #import "XBHttpClient.h"
-#import "XBUserDefaultsUtil.h"
-#import "UIView+XBFrame.h"
+#import "NSString+Util.h"
+#import "XBApplication.h"
 #import "XBLoadingView.h"
+#import "UIView+XBFrame.h"
+#import "XBLanguageControl.h"
+#import "XBUserDefaultsUtil.h"
 #import "NSIntegerFormatter.h"
 #import "UIViewController+HUD.h"
-#import "DDLog.h"
 #import <Masonry/Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <TTTAttributedLabel/TTTAttributedLabel.h>

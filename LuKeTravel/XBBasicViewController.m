@@ -5,7 +5,6 @@
 //  Created by coder on 16/7/26.
 //  Copyright © 2016年 coder. All rights reserved.
 //
-#define kSpace 10.f
 #import "XBBasicViewController.h"
 #import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
 @interface XBBasicViewController ()
@@ -86,7 +85,7 @@
     }];
     
     [self.navigationLeftButton makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.navigationView).offset(kSpace * 0.65);
+        make.left.equalTo(self.navigationView).offset(kSpace);
         make.centerY.equalTo(self.navigationView).offset(kSpace * 1.1);
     }];
     
@@ -101,8 +100,8 @@
     
     [self.navigationtTitleLabel makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.navigationLeftButton);
-        make.left.equalTo(self.navigationView).offset(CGRectGetWidth(self.navigationLeftButton.frame) + kSpace * 4.5);
-        make.right.equalTo(self.navigationView).offset(-(CGRectGetWidth(self.navigationRightButton.frame)));
+        make.left.equalTo(self.navigationView).offset(CGRectGetWidth(self.navigationLeftButton.frame) + kSpace);
+        make.right.equalTo(self.navigationView).offset(-(CGRectGetWidth(self.navigationRightButton.frame) + kSpace));
     }];
 }
 

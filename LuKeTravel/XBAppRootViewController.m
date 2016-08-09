@@ -31,27 +31,47 @@
     NSString *imageSelName ;
     NSArray *childers = self.childViewControllers;
     for (int i = 0 ; i < [childers count]; i++) {
+        
         if (i == 0) {
+            
             imageName = @"tab_explore";
+            
             imageSelName = @"tab_explore_selected";
+            
         } else if (i == 1) {
+            
             imageName = @"tab_dest";
+            
             imageSelName = @"tab_dest_selected";
+            
         } else if (i == 2) {
+            
             imageName = @"tab_search";
+            
             imageSelName = @"tab_search_selected";
+            
         } else if (i == 3) {
+            
             imageName = @"tab_mine";
+            
             imageSelName = @"tab_mine_selected";
+            
         }
         
         UIImage *image = [UIImage imageNamed:imageName];
+        
         UIImage *imageSel = [UIImage imageNamed:imageSelName];
+        
         image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
         imageSel = [imageSel imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
         UINavigationController *navigationController = self.childViewControllers[i];
         
         navigationController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"" image:image selectedImage:imageSel];
+        
+        [navigationController.tabBarItem setImageInsets:UIEdgeInsetsMake(7, 0, -7, 0)];
+        
     }
 }
 
@@ -67,6 +87,11 @@
         if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
             [self.locationManager requestWhenInUseAuthorization];  //调用了这句,就会弹出允许框了.
     }
+}
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+    item.title = @"";
 }
 
 #pragma mark -- CLLocation manager
