@@ -118,7 +118,7 @@ static NSString *const subNameReuseIdentifier  = @"XBMoreActivitySubNameCell";
     self.nameButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.nameButton.titleLabel.font = [UIFont systemFontOfSize:16.f];
     [self.nameButton setTitleColor:[UIColor colorWithHexString:@"#434343"] forState:UIControlStateNormal];
-    [self.nameButton setTitle:NSLocalizedString(@"moreactivity-all", @"moreactivity-all") forState:UIControlStateNormal];
+    [self.nameButton setTitle:[XBLanguageControl localizedStringForKey:@"activity-more-all"] forState:UIControlStateNormal];
     [self.nameButton addTarget:self action:@selector(nameAction) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationView addSubview:self.nameButton];
     
@@ -270,7 +270,7 @@ static NSString *const subNameReuseIdentifier  = @"XBMoreActivitySubNameCell";
     
     titleLabel.font = [UIFont systemFontOfSize:15.f];
     
-    titleLabel.text = NSLocalizedString(@"moreactivity-footerall", @"moreactivity-footerall");
+    titleLabel.text = [XBLanguageControl localizedStringForKey:@"activity-more-footerall"];
     
     titleLabel.textColor = [UIColor colorWithHexString:@"#515151"];
     
@@ -544,7 +544,7 @@ static NSString *const subNameReuseIdentifier  = @"XBMoreActivitySubNameCell";
     if (!_allLevelOne) {
         _allLevelOne = [[XBLevelOne alloc] init];
         _allLevelOne.type = @"-1";
-        _allLevelOne.name = NSLocalizedString(@"moreactivity-all", @"moreactivity-all");
+        _allLevelOne.name = [XBLanguageControl localizedStringForKey:@"activity-more-nodata"];
     }
     return _allLevelOne;
 }
