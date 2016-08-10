@@ -10,5 +10,9 @@
 #import <Mantle/Mantle.h>
 
 @interface XBModel : MTLModel <MTLJSONSerializing>
+/** 将id转换成modelId */
 @property(copy, nonatomic) NSString *modelId;
+
+/** 获取数据时的语言 */
+@property (strong, nonatomic) NSString *modelLanguage;
 @end

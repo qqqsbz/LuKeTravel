@@ -51,7 +51,7 @@ static NSString *const reuseIdentifier = @"XBActivityReviewCell";
     
     self.titleLabel = [UILabel new];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.titleLabel.text = NSLocalizedString(@"activity-detail-reviewcount", @"activity-detail-reviewcount");
+    self.titleLabel.text = [XBLanguageControl localizedStringForKey:@"activity-detail-reviewcount"];
     self.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16.f];
     self.titleLabel.textColor = [UIColor whiteColor];
     [self addSubview:self.titleLabel];

@@ -6,8 +6,6 @@
 //  Copyright © 2016年 coder. All rights reserved.
 //
 
-#import "XBBasicViewController.h"
-
-@interface XBWebViewController : XBBasicViewController
+@interface XBWebViewController : UIViewController
 @property (strong, nonatomic) NSURL  *webUrl;
 @end

@@ -6,8 +6,6 @@
 //  Copyright © 2016年 coder. All rights reserved.
 //
 
-#import "XBBasicViewController.h"
-
 @interface XBHelpViewController : UIViewController
 
 @end

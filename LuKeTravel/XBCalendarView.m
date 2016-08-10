@@ -153,9 +153,9 @@ static NSString *const headerReuseIdentifier = @"XBHeader";
                 
                 forMatterDate = [dateFormatter dateFromString:dateString];
                 
-                weekString = cmp.month == toDayComponents.month && cmp.day == toDayComponents.day ? @"今天" : [self weekOfDay:forMatterDate];
+                weekString = cmp.month == toDayComponents.month && cmp.day == toDayComponents.day ? [XBLanguageControl localizedStringForKey:@"activity-more-calendar-today"] : [self weekOfDay:forMatterDate];
                 
-                [days addObject:[XBDate dateWithDate:dateString week:weekString day:[NSIntegerFormatter formatToNSString:cmp.day fix:YES] month:[NSString stringWithFormat:@"%@月",[NSIntegerFormatter formatToNSString:cmp.month]]]];
+                [days addObject:[XBDate dateWithDate:dateString week:weekString day:[NSIntegerFormatter formatToNSString:cmp.day fix:YES] month:[self monthOfString:cmp.month]]];
             }
         }
         
@@ -281,29 +281,78 @@ static NSString *const headerReuseIdentifier = @"XBHeader";
     
     switch ([comps weekday]) {
         case 1:
-            weekDayStr = @"周日";
+            weekDayStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-sun"];
             break;
         case 2:
-            weekDayStr = @"周一";
+            weekDayStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-mon"];
             break;
         case 3:
-            weekDayStr = @"周二";
+            weekDayStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-tue"];
             break;
         case 4:
-            weekDayStr = @"周三";
+            weekDayStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-wed"];
             break;
         case 5:
-            weekDayStr = @"周四";
+            weekDayStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-thu"];
             break;
         case 6:
-            weekDayStr = @"周五";
+            weekDayStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-fri"];
             break;
         case 7:
-            weekDayStr = @"周六";
+            weekDayStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-sat"];
             break;
     }
+    
     
     return weekDayStr;
 }
 
+
+- (NSString *)monthOfString:(NSInteger)month
+{
+    
+    NSString *monthStr = @"";
+    
+    switch (month) {
+        case 1:
+            monthStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-jan"];
+            break;
+        case 2:
+            monthStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-feb"];
+            break;
+        case 3:
+            monthStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-mar"];
+            break;
+        case 4:
+            monthStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-apr"];
+            break;
+        case 5:
+            monthStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-may"];
+            break;
+        case 6:
+            monthStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-jun"];
+            break;
+        case 7:
+            monthStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-jul"];
+            break;
+        case 8:
+            monthStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-aug"];
+            break;
+        case 9:
+            monthStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-sep"];
+            break;
+        case 10:
+            monthStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-oct"];
+            break;
+        case 11:
+            monthStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-nov"];
+            break;
+        case 12:
+            monthStr = [XBLanguageControl localizedStringForKey:@"activity-more-calendar-dec"];
+            break;
+
+    }
+    
+    return monthStr;
+}
 @end

@@ -232,7 +232,7 @@ static NSString *const reuseIdentifier = @"XBActivityPackageCell";
         
         self.selectedIndexPath = nil;
         
-        [self.packageButton setTitle:NSLocalizedString(@"activity-detail-package-normal", @"activity-detail-package-normal") forState:UIControlStateNormal];
+        [self.packageButton setTitle:[XBLanguageControl localizedStringForKey:@"activity-detail-package-normal"] forState:UIControlStateNormal];
         
     }];
 }

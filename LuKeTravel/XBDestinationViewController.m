@@ -38,14 +38,9 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = [XBLanguageControl localizedStringForKey:@"destination-title"];
-    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.titles = @[
-                    [XBLanguageControl localizedStringForKey:@"destination-popular"],
-                    [XBLanguageControl localizedStringForKey:@"destination-all"]
-                  ];
+    [self reloadLanguageConfig];
     
     [self buildView];
     
@@ -54,7 +49,8 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
 
 - (void)reloadData
 {
-    [XBLoadingView showInView:self.view];
+    [XBLoadingView showInView:self.navigationController.view];
+    
     [[XBHttpClient shareInstance] getDestinationsWithSuccess:^(XBDestination *destination) {
         
         self.destination = destination;
@@ -81,6 +77,29 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     
     self.navigationController.navigationBarHidden = NO;
+    
+    //如果用户切换过语言 则重新创建页面加载数据
+    if (self.destination && ![self.destination.modelLanguage isEqualToString:[XBUserDefaultsUtil currentLanguage]]) {
+        
+        [self.tstView removeFromSuperview];
+        
+        [self reloadLanguageConfig];
+        
+        [self buildView];
+        
+        [self reloadData];
+        
+    }
+}
+
+- (void)reloadLanguageConfig
+{
+    self.title = [XBLanguageControl localizedStringForKey:@"destination-title"];
+    
+    self.titles = @[
+                    [XBLanguageControl localizedStringForKey:@"destination-popular"],
+                    [XBLanguageControl localizedStringForKey:@"destination-all"]
+                    ];
 }
 
 - (void)buildView
@@ -207,17 +226,27 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
     self.currentIndexPath = indexPath;
     
     XBHotDestination *hotDestination = self.destination.popularDestinations[indexPath.row];
+    
     XBGroupItem *groupItem = [[XBGroupItem alloc] init];
+    
     groupItem.name = hotDestination.name;
+    
     groupItem.modelId = hotDestination.modelId;
     
     XBDestinationHotCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
     [cell.shapeLayer removeFromSuperlayer];
     
     XBCityViewController *cityVC = [[XBCityViewController alloc] init];
+    
     cityVC.groupItem = groupItem;
+    
     cityVC.type = XBCityViewControllerTypeHot;
+    
+    cityVC.hidesBottomBarWhenPushed = YES;
+    
     self.navigationController.delegate = cityVC;
+    
     [self.navigationController pushViewController:cityVC animated:YES];
 }
 

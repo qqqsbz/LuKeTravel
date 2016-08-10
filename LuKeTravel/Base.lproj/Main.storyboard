@@ -67,7 +67,7 @@
         <!--Navigation Controller-->
         <scene sceneID="qyT-KZ-YUy">
             <objects>
-                <navigationController id="s8H-Ve-Kx8" sceneMemberID="viewController">
+                <navigationController id="s8H-Ve-Kx8" customClass="XBNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="tab_dest" id="bbm-iq-Ehy"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gFP-eK-Zg1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

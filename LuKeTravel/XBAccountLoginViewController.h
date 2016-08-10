@@ -6,9 +6,7 @@
 //  Copyright © 2016年 coder. All rights reserved.
 //
 
-#import "XBBasicViewController.h"
-
-@interface XBAccountLoginViewController : XBBasicViewController
+@interface XBAccountLoginViewController : UIViewController
 @property (strong, nonatomic) NSString *userName;
 @property (assign, nonatomic) BOOL  userExist;
 @end

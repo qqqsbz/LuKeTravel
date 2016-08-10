@@ -7,7 +7,6 @@
 //
 #define kTitleTag   10000
 #define kContentTag 20000
-#define kSpace 10
 
 #import "XBActivityDetailViewController.h"
 #import "XBParserContent.h"
@@ -38,9 +37,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationtTitleLabel.text = _navigationTitle;
+    self.title = self.navigationTitle;
+
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
-    self.navigationRightButton.hidden = YES;
+    [[[self.navigationController.navigationBar subviews] objectAtIndex:0] setAlpha:1];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[[self.navigationController.navigationBar subviews] objectAtIndex:0] setAlpha:0];
 }
 
 - (void)buildView
@@ -99,7 +111,7 @@
 {
     [self.scrollView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view);
-        make.top.equalTo(self.view).offset(64.f);
+        make.top.equalTo(self.view).offset(kSpace);
         make.width.equalTo(self.view);
         make.bottom.equalTo(self.view);
     }];

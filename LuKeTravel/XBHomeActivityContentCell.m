@@ -56,24 +56,56 @@
     if (groupItem.hotState.length > 0) {
         
         self.titleLabel.text    = groupItem.name;
+        
         self.subTitleLabel.text = groupItem.subName;
+        
         self.addressLabel.text  = groupItem.cityName;
+        
         self.participantsLabel.text = groupItem.participants;
+        
         self.marketPriceLabel.text  = [NSString stringWithFormat:@"%@ %@",[XBUserDefaultsUtil currentCurrencySymbol],groupItem.marketPrice];
+        
         self.sellingPriceLabel.text = [NSString stringWithFormat:@"%@ %@",[XBUserDefaultsUtil currentCurrencySymbol],groupItem.sellingPrice];
+        
         self.favoriteImageView.image = [UIImage imageNamed:groupItem.favorite ? @"activityWishSelected" : @"activityWishNormal"];
+        
         [self loadImageFromCacheWithImageView:self.coverImageView];
         
         NSMutableAttributedString *sellAttributedString = [[NSMutableAttributedString alloc] initWithString:self.sellingPriceLabel.text];
+        
         [sellAttributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica-Bold" size:12.f] range:NSMakeRange(0, 1)];
+        
         self.sellingPriceLabel.attributedText = sellAttributedString;
         
         NSMutableAttributedString *markAttribtStr = [[NSMutableAttributedString alloc] initWithString:self.marketPriceLabel.text attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
+        
         self.marketPriceLabel.attributedText = markAttribtStr;
         
-        self.addressLabel.hidden = groupItem.cityName.length <= 0;
-        
-        self.addressImageView.hidden = self.addressLabel.hidden;
+        if (groupItem.cityName.length <= 0) {
+            
+            self.participantsImageView.hidden = YES;
+            
+            self.participantsLabel.hidden = YES;
+            
+            self.addressImageView.image = self.participantsImageView.image;
+            
+            self.addressLabel.text =groupItem.participants;
+            
+        } else {
+            
+            self.participantsImageView.hidden = NO;
+            
+            self.participantsLabel.hidden = NO;
+            
+            self.addressImageView.image = [UIImage imageNamed:@"activityMap"];
+            
+            self.addressLabel.text = groupItem.cityName;
+            
+            self.participantsLabel.text = groupItem.participants;
+            
+            self.participantsImageView.image = [UIImage imageNamed:@"activityBooked"];
+            
+        }
         
     } else {
         

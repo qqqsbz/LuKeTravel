@@ -12,28 +12,30 @@
 #define kAnimationDuration   0.35
 
 #import "XBMoreActivityViewController.h"
-#import "XBCalendarView.h"
-#import "XBNavigationBar.h"
-#import "XBMoreActivity.h"
-#import "XBSubNameView.h"
 #import "XBLevelOne.h"
+#import "XBSearchItem.h"
+#import "XBSubNameView.h"
+#import "XBCalendarView.h"
+#import "XBMoreActivity.h"
 #import "XBNoActivityView.h"
 #import "XBMoreActivitySort.h"
+#import "XBActivityViewController.h"
 #import "XBMoreActivitySubNameItem.h"
+#import "XBMoreActivityNavigationBar.h"
 #import "XBHomeSearchActivityClickCell.h"
-@interface XBMoreActivityViewController () <XBCalendarViewDelegate,XBMoreActivitySubNameDelegate,XBNavigationBarDelegate,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
+@interface XBMoreActivityViewController () <XBCalendarViewDelegate,XBMoreActivitySubNameDelegate,XBMoreActivityNavigationBarDelegate,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 @property (assign, nonatomic) NSInteger  sortType;
 @property (assign, nonatomic) NSInteger  subNameId;
 @property (assign, nonatomic) NSInteger  nameId;
 @property (strong, nonatomic) NSString   *selectedTime;
 @property (assign, nonatomic) NSInteger  cityId;
-@property (strong, nonatomic) XBNavigationBar *navigationBar;
 @property (strong, nonatomic) XBCalendarView  *calendarView;
 @property (strong, nonatomic) XBMoreActivity  *moreActivity;
 @property (strong, nonatomic) XBSubNameView   *subNameView;
 @property (strong, nonatomic) UITableView     *tableView;
 @property (assign, nonatomic) CGFloat         previousOffsetY;
 @property (strong, nonatomic) XBNoActivityView  *noActivityView;
+@property (strong, nonatomic) XBMoreActivityNavigationBar *navigationBar;
 @end
 
 static NSString *const reuseIdentifier = @"XBHomeSearchActivityClickCell";
@@ -62,13 +64,17 @@ static NSString *const reuseIdentifier = @"XBHomeSearchActivityClickCell";
     self.navigationController.navigationBarHidden = YES;
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
+    [self.view bringSubviewToFront:self.navigationBar];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
-    [self.navigationBar removeAllSubviews];
+    self.navigationController.navigationBarHidden = NO;
+    
 }
 
 - (void)reloadData
@@ -81,6 +87,8 @@ static NSString *const reuseIdentifier = @"XBHomeSearchActivityClickCell";
         self.navigationBar.name = moreActivity.name;
         
         self.navigationBar.hideTitle = NO;
+        
+        self.navigationBar.sortEnable = YES;
         
         [self.navigationBar reloadData];
         
@@ -134,10 +142,10 @@ static NSString *const reuseIdentifier = @"XBHomeSearchActivityClickCell";
     self.subNameId = -1;
     self.selectedTime = @"";
     
-    self.navigationBar = [XBNavigationBar new];
+    self.navigationBar = [[XBMoreActivityNavigationBar alloc] initWithTargetViewController:self];
     self.navigationBar.hideTitle = YES;
-    self.navigationBar.tagetViewController = self;
     self.navigationBar.delegate = self;
+    self.navigationBar.sortEnable = NO;
     [self.view addSubview:self.navigationBar];
     
     self.calendarView = [XBCalendarView new];
@@ -161,6 +169,8 @@ static NSString *const reuseIdentifier = @"XBHomeSearchActivityClickCell";
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"#F2F4F5"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeSearchActivityClickCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuseIdentifier];
     [self.view addSubview:self.tableView];
+    
+    [self.view bringSubviewToFront:self.navigationBar];
 }
 
 - (void)viewDidLayoutSubviews
@@ -224,15 +234,28 @@ static NSString *const reuseIdentifier = @"XBHomeSearchActivityClickCell";
     return 240.f;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XBSearchItem *searchItem = self.moreActivity.items[indexPath.row];
+    
+    XBActivityViewController *activityVC = [XBActivityViewController new];
+    
+    activityVC.activityId = [searchItem.modelId integerValue];
+    
+    [[[self.navigationController.navigationBar subviews] firstObject] setAlpha:0];
+    
+    [self.navigationController pushViewController:activityVC animated:YES];
+}
+
 #pragma mark -- XBNavigationBarDelegate
-- (void)navigationBar:(XBNavigationBar *)navigationBar didSelectedWithLevelOne:(XBLevelOne *)levelOne
+- (void)navigationBar:(XBMoreActivityNavigationBar *)navigationBar didSelectedWithLevelOne:(XBLevelOne *)levelOne
 {
     self.nameId = [levelOne.type integerValue];
     
     [self reloadData];
 }
 
-- (void)navigationBar:(XBNavigationBar *)navigationBar didSelectedWithMoreActivitySort:(XBMoreActivitySort *)sort
+- (void)navigationBar:(XBMoreActivityNavigationBar *)navigationBar didSelectedWithMoreActivitySort:(XBMoreActivitySort *)sort
 {
     self.sortType = sort.type;
     
@@ -295,7 +318,7 @@ static NSString *const reuseIdentifier = @"XBHomeSearchActivityClickCell";
         }
     }
     
-    DDLogDebug(@"frame :%@  offsetX: %f  previousOffsetX:%f",NSStringFromCGRect(self.tableView.frame),offsetY,self.previousOffsetY);
+//    DDLogDebug(@"frame :%@  offsetX: %f  previousOffsetX:%f",NSStringFromCGRect(self.tableView.frame),offsetY,self.previousOffsetY);
     
     self.previousOffsetY = offsetY;
 }

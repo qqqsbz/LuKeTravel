@@ -24,12 +24,19 @@
 {
     [super viewWillAppear:animated];
     
-    self.navigationRightButton.hidden = YES;
+    [[[self.navigationController.navigationBar subviews] firstObject] setAlpha:1];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[[self.navigationController.navigationBar subviews] firstObject] setAlpha:0];
 }
 
 - (void)buildView
 {
-    self.webView = [[XBWebView alloc] initWithFrame:CGRectMake(0, 44, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 44.f) targetViewController:self];
+    self.webView = [[XBWebView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)) targetViewController:self];
     self.webView.delegate = self;
     self.webView.url = self.webUrl;
     [self.view addSubview:self.webView];
@@ -38,7 +45,7 @@
 #pragma mark -- XBWebViewDelegate
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    self.navigationtTitleLabel.text = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 }
 
 - (void)didReceiveMemoryWarning {

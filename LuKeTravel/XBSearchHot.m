@@ -21,8 +21,12 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    return @{
-            };
+    return @{};
+}
+
++ (NSSet *)propertyKeysForManagedObjectUniquing
+{
+    return [NSSet setWithObject:@"modelId"];
 }
 
 + (NSDictionary *)relationshipModelClassesByPropertyKey

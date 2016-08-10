@@ -9,29 +9,34 @@
 #import <UIKit/UIKit.h>
 @class XBMoreActivityName;
 @class XBMoreActivitySubName;
-@class XBNavigationBar;
+@class XBMoreActivityNavigationBar;
 @class XBMoreActivitySort;
 @class XBLevelOne;
 
-@protocol XBNavigationBarDelegate <NSObject>
+@protocol XBMoreActivityNavigationBarDelegate <NSObject>
 
 @optional
-- (void)navigationBar:(XBNavigationBar *)navigationBar didSelectedWithLevelOne:(XBLevelOne *)levelOne;
+- (void)navigationBar:(XBMoreActivityNavigationBar *)navigationBar didSelectedWithLevelOne:(XBLevelOne *)levelOne;
 
-- (void)navigationBar:(XBNavigationBar *)navigationBar didSelectedWithMoreActivitySort:(XBMoreActivitySort *)sort;
+- (void)navigationBar:(XBMoreActivityNavigationBar *)navigationBar didSelectedWithMoreActivitySort:(XBMoreActivitySort *)sort;
 
 @end
 
-@interface XBNavigationBar : UIView
+@interface XBMoreActivityNavigationBar : UIView
 //设置数据
 @property (strong, nonatomic) XBMoreActivityName    *name;
-//目标控制器 用来pop
-@property (strong, nonatomic) UIViewController  *tagetViewController;
 //代理
-@property (weak, nonatomic) id<XBNavigationBarDelegate> delegate;
+@property (weak, nonatomic) id<XBMoreActivityNavigationBarDelegate> delegate;
 
-//标题是否隐藏
+/** 标题是否隐藏 */
 @property (assign, nonatomic) BOOL  hideTitle;
+
+/** 右边排序按钮是否可用 */
+@property (assign, nonatomic) BOOL  sortEnable;
+
+- (instancetype)initWithTargetViewController:(UIViewController *)targetViewController;
+
+- (instancetype)initWithFrame:(CGRect)frame targetViewController:(UIViewController *)targetViewController;
 
 - (void)reloadData;
 

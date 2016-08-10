@@ -5,7 +5,6 @@
 //  Created by coder on 16/7/12.
 //  Copyright © 2016年 coder. All rights reserved.
 //
-#define kSpace    10.f
 #define kTopSpace 30.f
 #define kCancleW  90.f
 #define kSearchH  64.f
@@ -58,7 +57,7 @@
     self.searchBar.delegate = self;
     self.searchBar.layer.masksToBounds = YES;
     self.searchBar.layer.cornerRadius  = 5.f;
-    self.searchBar.placeholder = NSLocalizedString(@"search-placeholder", @"search-placeholder");
+    self.searchBar.placeholder = [XBLanguageControl localizedStringForKey:@"search-placeholder"];
     self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.searchBar.autocorrectionType     = UITextAutocorrectionTypeNo;
     self.searchBar.tintColor = [UIColor colorWithHexString:kDefaultColorHex];
@@ -68,8 +67,8 @@
     
     self.cancleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.cancleButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [self.cancleButton.titleLabel setFont:[UIFont systemFontOfSize:16.f]];
-    [self.cancleButton setTitle:NSLocalizedString(@"search-cancle", @"search-cancle") forState:UIControlStateNormal];
+    [self.cancleButton.titleLabel setFont:[UIFont systemFontOfSize:15.f]];
+    [self.cancleButton setTitle:[XBLanguageControl localizedStringForKey:@"search-cancel"] forState:UIControlStateNormal];
     [self.cancleButton setTitleColor:[UIColor colorWithHexString:kDefaultColorHex] forState:UIControlStateNormal];
     [self.cancleButton addTarget:self action:@selector(cancleAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.cancleButton];
@@ -96,13 +95,13 @@
     
     [self.cancleButton makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.searchView).offset(kTopSpace * 0.9);
-        make.right.equalTo(self.searchView).offset(-kSpace);
+        make.right.equalTo(self.searchView).offset(-kSpace * 0.7);
         make.bottom.equalTo(self.searchView).offset(-kSpace * 0.8);
     }];
     
     [self.searchBar makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.searchView).offset(kSpace);
-        make.right.equalTo(self.cancleButton.left).offset(-kSpace);
+        make.right.equalTo(self.cancleButton.left).offset(-kSpace * 0.7);
         make.top.equalTo(self.cancleButton);
         make.bottom.equalTo(self.cancleButton);
     }];

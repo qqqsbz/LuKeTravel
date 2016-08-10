@@ -41,7 +41,7 @@
     self.titleLabel.numberOfLines = 0;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.font = [UIFont systemFontOfSize:15.f];
-    self.titleLabel.text = NSLocalizedString(@"moreactivity-nodata", @"moreactivity-nodata");
+    self.titleLabel.text = [XBLanguageControl localizedStringForKey:@"activity-more-nodata"];
     self.titleLabel.textColor = [UIColor colorWithHexString:@"#9B9B9B"];
     [self addSubview:self.titleLabel];
     

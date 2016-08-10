@@ -30,11 +30,11 @@ NSString *const kAppStore = @"itunes.apple.com/cn/app/ke-lu-lu-xing-tan-suo-yu-d
 
 NSString *const kHelp = @"http://www.klook.com/%@/otherpage/faq?platform=ios";
 
-NSString *const kLanguageZHCN = @"zh-CN";
+NSString *const kLanguageZHCN = @"zh_CN";
 
-NSString *const kLanguageTW = @"zh-TW";
+NSString *const kLanguageTW = @"zh_TW";
 
-NSString *const kLanguageENUS = @"en-US";
+NSString *const kLanguageENUS = @"en_US";
 
 NSString *const kDefaultColorHex = @"#FF5729";
 

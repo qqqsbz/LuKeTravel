@@ -16,12 +16,17 @@
 
 "loading-fail" = "load fail";
 
+//首页
+"search-placeholder" = "Search Destinations or Activities";
+"search-cancel" = "Cancel";
+
 //目的地
 "destination-title" = "Destinations";
 "destination-popular" = "Popular";
 "destination-all" = "All";
 "destination-popular-more" = "Explore More Destinations";
 "destination-all-more" = "More coming soon";
+"destination-browse-all" = "Browse All Activities";
 
 //活动
 "activity-detail-readmore" = "More";
@@ -43,6 +48,38 @@
 "activity-detail-package-normal" = "Select Package & Book";
 "activity-detail-package-select" = "Book";
 "activity-share-title" = "Share Activity";
+"activity-more-all" = "All Activities";
+"activity-more-footerall" = "Browse All Activities";
+"activity-more-nodata" = "Sorry, no activities today.\n Why not check tomorrow instend?";
+"activity-more-sort-popular" = "Most popular";
+"activity-more-sort-reviewed" = "Best reviewed";
+"activity-more-sort-price" = "Price (low to high)";
+"activity-more-sort-top" = "Top new activites";
+
+//星期
+"activity-more-calendar-today" = "TODAY";
+"activity-more-calendar-mon" = "MON";
+"activity-more-calendar-tue" = "TUE";
+"activity-more-calendar-wed" = "WED";
+"activity-more-calendar-thu" = "THU";
+"activity-more-calendar-fri" = "FRI";
+"activity-more-calendar-sat" = "SAT";
+"activity-more-calendar-sun" = "SUN";
+
+//月份
+"activity-more-calendar-jan" = "JAN";
+"activity-more-calendar-feb" = "FEB";
+"activity-more-calendar-mar" = "MAR";
+"activity-more-calendar-apr" = "APR";
+"activity-more-calendar-may" = "MAY";
+"activity-more-calendar-jun" = "JUN";
+"activity-more-calendar-jul" = "JUL";
+"activity-more-calendar-aug" = "AUG";
+"activity-more-calendar-sep" = "SEP";
+"activity-more-calendar-oct" = "OCT";
+"activity-more-calendar-nov" = "NOV";
+"activity-more-calendar-dec" = "DEC";
+
 
 //订单
 "order-title" = "My Bookings";
@@ -57,6 +94,7 @@
 "login-login" = "Login";
 "login-register" = "Sign Up";
 "login-wechat" = "Login With WeChat";
+"login-facebook" = "Login/Sign Up with Facebook";
 "login-tip" = "By joining Klook,you argree to General Terms of Use";
 "login-alert-message" = "Oops,invalid email address";
 "login-alert-confirm" = "OK";

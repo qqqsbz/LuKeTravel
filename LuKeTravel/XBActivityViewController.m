@@ -181,7 +181,7 @@ static NSString *const reuseIdentifier = @"cell";
 
 - (void)stretchableActivityView:(XBStretchableActivityView *)stretchableActivityView didSelectDirectionWithParserContent:(NSArray<XBParserContent *> *)parserContents
 {
-    XBActivityDetailViewController *detailVC = [[XBActivityDetailViewController alloc] initWithParserContents:parserContents navigationTitle:NSLocalizedString(@"activity-detail-particulars", @"activity-detail-particulars")];
+    XBActivityDetailViewController *detailVC = [[XBActivityDetailViewController alloc] initWithParserContents:parserContents navigationTitle:[XBLanguageControl localizedStringForKey:@"activity-detail-particulars"]];
     
     detailVC.view.backgroundColor = [UIColor whiteColor];
     
@@ -190,7 +190,7 @@ static NSString *const reuseIdentifier = @"cell";
 
 - (void)stretchableActivityView:(XBStretchableActivityView *)stretchableActivityView didSelectDetailWithParserContent:(NSArray<XBParserContent *> *)parserContents
 {
-    XBActivityDetailViewController *detailVC = [[XBActivityDetailViewController alloc] initWithParserContents:parserContents navigationTitle:NSLocalizedString(@"activity-detail-strength", @"activity-detail-strength")];
+    XBActivityDetailViewController *detailVC = [[XBActivityDetailViewController alloc] initWithParserContents:parserContents navigationTitle:[XBLanguageControl localizedStringForKey:@"activity-detail-strength"]];
     
     detailVC.view.backgroundColor = [UIColor whiteColor];
     
@@ -299,7 +299,7 @@ static NSString *const reuseIdentifier = @"cell";
     return _shareView;
 }
 
-#pragma mark -- XBBasicViewController navigation action
+#pragma mark --  navigation action
 - (void)shareAction
 {
     [self.shareView toggle];

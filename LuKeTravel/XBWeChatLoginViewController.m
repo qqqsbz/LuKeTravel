@@ -15,6 +15,9 @@
 
 @interface XBWeChatLoginViewController () <UITextFieldDelegate>
 @property (strong, nonatomic) UIImageView   *coverImageView;
+@property (strong, nonatomic) UIView        *facebookView;
+@property (strong, nonatomic) UIImageView   *facebookImageView;
+@property (strong, nonatomic) UILabel       *facebookTitleLabel;
 @property (strong, nonatomic) UIView        *weChatView;
 @property (strong, nonatomic) UIImageView   *weChatImageView;
 @property (strong, nonatomic) UILabel       *weChatTitleLabel;
@@ -51,29 +54,49 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self buildView];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    self.navigationRightButton.hidden = YES;
-    
-    self.navigationView.backgroundColor = [UIColor clearColor];
-    
-    self.navigationSeparatorView.hidden = YES;
-    
-    [self.navigationLeftButton setImage:[UIImage imageNamed:@"Back_Arrow"] forState:UIControlStateNormal];
+    [[[self.navigationController.navigationBar subviews] objectAtIndex:0] setAlpha:0];
     
 }
 
 - (void)buildView
 {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 30, 30);
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [button setImage:[UIImage imageNamed:@"Back_Arrow"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(popAction) forControlEvents:UIControlEventTouchUpInside];
+    button.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
     self.coverImageView = [UIImageView new];
     self.coverImageView.image = [UIImage imageNamed:@"login_bg"];
     [self.view addSubview:self.coverImageView];
+    
+    self.facebookView = [UIView new];
+    self.facebookView.layer.masksToBounds = YES;
+    self.facebookView.layer.cornerRadius  = 4.f;
+    self.facebookView.hidden = ![[XBUserDefaultsUtil currentLanguage] isEqualToString:kLanguageENUS];
+    self.facebookView.backgroundColor = [UIColor colorWithHexString:@"#2E5E93"];
+    [self.facebookView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(facebookLoginAction)]];
+    [self.view addSubview:self.facebookView];
+    
+    self.facebookImageView = [UIImageView new];
+    self.facebookImageView.image = [UIImage imageNamed:@"facebook_icon"];
+    [self.facebookView addSubview:self.facebookImageView];
+    
+    self.facebookTitleLabel = [UILabel new];
+    self.facebookTitleLabel.textColor = [UIColor whiteColor];
+    self.facebookTitleLabel.font = [UIFont systemFontOfSize:16.f];
+    self.facebookTitleLabel.text = [XBLanguageControl localizedStringForKey:@"login-facebook"];
+    [self.facebookView addSubview:self.facebookTitleLabel];
+    
     
     self.weChatView = [UIView new];
     self.weChatView.layer.masksToBounds = YES;
@@ -92,7 +115,6 @@
     self.weChatTitleLabel.text = [XBLanguageControl localizedStringForKey:@"login-wechat"];
     [self.weChatView addSubview:self.weChatTitleLabel];
 
-    
     self.loginTitleLabel = [UILabel new];
     self.loginTitleLabel.font = [UIFont systemFontOfSize:16.f];
     self.loginTitleLabel.textColor = [UIColor whiteColor];
@@ -147,6 +169,23 @@
         make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     
+    [self.facebookView makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.weChatView);
+        make.right.equalTo(self.weChatView);
+        make.bottom.equalTo(self.weChatView.top).offset(-kSpace * 1.5);
+        make.height.equalTo(self.weChatView);
+    }];
+    
+    [self.facebookTitleLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.facebookView);
+        make.centerX.equalTo(self.facebookView).offset(kSpace * 2);
+    }];
+    
+    [self.facebookImageView makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.facebookView);
+        make.right.equalTo(self.facebookTitleLabel.left).offset(-kSpace * 0.5);
+    }];
+    
     [self.weChatView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.textView);
         make.right.equalTo(self.textView);
@@ -164,8 +203,11 @@
         make.right.equalTo(self.weChatTitleLabel.left).offset(-kSpace * 0.5);
     }];
     
+    
+    BOOL showFaceBook = [[XBUserDefaultsUtil currentLanguage] isEqualToString:kLanguageENUS];
+    
     [self.textView makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view.centerY).offset(kSpace * 2);
+        make.bottom.equalTo(self.view.centerY).offset(showFaceBook ? kSpace * 6 : kSpace * 2);
         make.left.equalTo(self.view).offset(kSpace * 1.5);
         make.right.equalTo(self.view).offset(-kSpace * 1.5);
         make.height.mas_equalTo(45.f);
@@ -279,6 +321,8 @@
 
 - (void)weChatLoginAction
 {
+    DDLogDebug(@"weChat登录暂未实现........");
+    
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToWechatSession];
     
     snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
@@ -290,6 +334,16 @@
             NSLog(@"\nusername = %@,\n usid = %@,\n token = %@ iconUrl = %@,\n unionId = %@,\n thirdPlatformUserProfile = %@,\n thirdPlatformResponse = %@ \n, message = %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL, snsAccount.unionId, response.thirdPlatformUserProfile, response.thirdPlatformResponse, response.message);
             
         }});
+}
+
+- (void)facebookLoginAction
+{
+    DDLogDebug(@"facebook登录暂未实现........");
+}
+
+- (void)popAction
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)endEdit

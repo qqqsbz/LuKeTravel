@@ -94,7 +94,7 @@
     //已登录
     if ([XBUserDefaultsUtil userInfo]) {
         
-        self.title = NSLocalizedString(@"order-title", @"order-title");
+        self.title = [XBLanguageControl localizedStringForKey:@"order-title"];
         
         self.navigationController.navigationBarHidden = NO;
         

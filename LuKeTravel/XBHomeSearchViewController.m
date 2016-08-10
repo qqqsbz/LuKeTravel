@@ -20,6 +20,7 @@
 #import "XBHomeSearchCityCell.h"
 #import "XBHomeSearchFlowLayout.h"
 #import "XBHomeSearchHistoryCell.h"
+#import "XBActivityViewController.h"
 #import "XBHomeSearchActivityCell.h"
 #import "XBHomeSearchActivityClickCell.h"
 #import "XBHomeSearchHistoryHeaderView.h"
@@ -89,15 +90,28 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
             
             self.searchHot = [MTLManagedObjectAdapter modelOfClass:[XBSearchHot class] fromManagedObject:result error:&error];
             
-            NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"_type"ascending:YES];
-            
-            self.searchHot.items = [self.searchHot.items sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
-
-            [self dislodgeRepeatAndSortItems];
-            
-            [self.view bringSubviewToFront:self.collectionView];
-            
-            [self.collectionView reloadData];
+            if (!error) {
+                
+                //如果本地的热搜词的语言当前语言不同  则重新从服务器获取数据
+                if (![self.searchHot.modelLanguage isEqualToString:[XBUserDefaultsUtil currentLanguage]]) {
+                    
+                    [self sendSearchHotRequest];
+                    
+                } else {
+                    
+                    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"_type"ascending:YES];
+                    
+                    self.searchHot.items = [self.searchHot.items sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+                    
+                    [self dislodgeRepeatAndSortItems];
+                    
+                    [self.view bringSubviewToFront:self.collectionView];
+                    
+                    [self.collectionView reloadData];
+                    
+                }
+                
+            }
             
         } else {
             
@@ -385,8 +399,11 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
         
     } else if ([item.type isEqualToString:kTypeOfActivity]) {
         
+        XBActivityViewController *activityVC = [XBActivityViewController new];
         
-        DDLogDebug(@"跳转到活动页........");
+        activityVC.activityId = [item.modelId integerValue];
+        
+        [self.navigationController pushViewController:activityVC animated:YES];
         
     }
 }
@@ -466,7 +483,11 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
             
         } else if ([item.type isEqualToString:kTypeOfActivity]) {
             
-            DDLogDebug(@"跳转到活动页........");
+            XBActivityViewController *activityVC = [XBActivityViewController new];
+            
+            activityVC.activityId = [item.modelId integerValue];
+            
+            [self.navigationController pushViewController:activityVC animated:YES];
             
         }
         
@@ -617,12 +638,14 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
             
             [self.tableView reloadData];
             
-        } else {
-            
-            //加载热搜
-            [self reloadDataSearchHot];
-            
         }
+        
+//        else {
+//            
+//            //加载热搜
+//            [self reloadDataSearchHot];
+//            
+//        }
         
     }];
 }

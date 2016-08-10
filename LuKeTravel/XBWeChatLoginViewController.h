@@ -6,9 +6,7 @@
 //  Copyright © 2016年 coder. All rights reserved.
 //
 
-#import "XBBasicViewController.h"
-
-@interface XBWeChatLoginViewController : XBBasicViewController
+@interface XBWeChatLoginViewController : UIViewController
 
 - (instancetype)init;
 

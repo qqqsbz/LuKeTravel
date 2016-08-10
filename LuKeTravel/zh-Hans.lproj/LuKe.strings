@@ -13,12 +13,17 @@
 
 "loading-fail" = "加载失败";
 
+//首页
+"search-placeholder" = "搜索亚洲城市、活动";
+"search-cancel" = "取消";
+
 //目的地
 "destination-title" = "目的地";
 "destination-popular" = "热门";
 "destination-all" = "全部";
 "destination-popular-more" = "探索更多目的地";
 "destination-all-more" = "更多目的地敬请期待";
+"destination-browse-all" = "查看所有活动";
 
 //活动
 
@@ -41,6 +46,39 @@
 "activity-detail-package-normal" = "选择套餐&预订";
 "activity-detail-package-select" = "立即预订";
 "activity-share-title" = "分享活动";
+"activity-more-all" = "所有活动";
+"activity-more-footerall" = "所有活动";
+"activity-more-nodata" = "今日没有你想玩的活动?\n试试探索其他日期吧!";
+"activity-more-sort-popular" = "最受欢迎";
+"activity-more-sort-reviewed" = "最多评价";
+"activity-more-sort-price" = "价格从低到高";
+"activity-more-sort-top" = "最新活动";
+
+//星期
+"activity-more-calendar-today" = "今天";
+"activity-more-calendar-mon" = "周一";
+"activity-more-calendar-tue" = "周二";
+"activity-more-calendar-wed" = "周三";
+"activity-more-calendar-thu" = "周四";
+"activity-more-calendar-fri" = "周五";
+"activity-more-calendar-sat" = "周六";
+"activity-more-calendar-sun" = "周日";
+
+
+
+//月份
+"activity-more-calendar-jan" = "1月";
+"activity-more-calendar-feb" = "2月";
+"activity-more-calendar-mar" = "3月";
+"activity-more-calendar-apr" = "4月";
+"activity-more-calendar-may" = "5月";
+"activity-more-calendar-jun" = "6月";
+"activity-more-calendar-jul" = "7月";
+"activity-more-calendar-aug" = "8月";
+"activity-more-calendar-sep" = "9月";
+"activity-more-calendar-oct" = "10月";
+"activity-more-calendar-nov" = "11月";
+"activity-more-calendar-dec" = "12月";
 
 //订单
 "order-title" = "我的订单";
@@ -56,6 +94,7 @@
 "login-login" = "登录";
 "login-register" = "注册";
 "login-wechat" = "使用微信登录";
+"login-facebook" = "";
 "login-tip" = "注册表示您已经阅读并同意客路的《使用条款》";
 "login-alert-message" = "邮箱输入有误哟";
 "login-alert-confirm" = "确认";

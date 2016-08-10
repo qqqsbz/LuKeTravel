@@ -57,6 +57,14 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     self.navigationController.navigationBarHidden = YES;
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    //如果用户切换过语言 则重新加载数据
+    if (self.home && ![self.home.modelLanguage isEqualToString:[XBUserDefaultsUtil currentLanguage]]) {
+        
+        [self reloadData];
+        
+    }
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -360,28 +368,11 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     
     [self.navigationController pushViewController:searchVC animated:YES];
     
-//    XBActivityViewController *activityVC = [[XBActivityViewController alloc] init];
-//    
-//    activityVC.hidesBottomBarWhenPushed = YES;
-//    
-//    activityVC.view.backgroundColor = [UIColor whiteColor];
-//    
-//    [self.navigationController pushViewController:activityVC animated:YES];
 }
 
 - (void)setNavigationBarTranslucent
 {
-    self.navigationController.navigationBar.translucent = YES;
-    UIColor *color = [UIColor clearColor];
-    CGRect rect = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), 64.f);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setClipsToBounds:YES];
+    [[[self.navigationController.navigationBar subviews] firstObject] setAlpha:0];
 }
 
 @end

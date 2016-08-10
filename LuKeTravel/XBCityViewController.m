@@ -19,13 +19,12 @@
 #import "XBHomeActivityCell.h"
 #import "XBCityPushTransition.h"
 #import "XBDesinationFooterView.h"
+#import "XBActivityViewController.h"
 #import "XBMoreActivityViewController.h"
 #import "XBStretchableCityHeaderView.h"
-@interface XBCityViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface XBCityViewController () <UITableViewDelegate,UITableViewDataSource,XBHomeActivityCellDelegate>
 @property (strong, nonatomic) UITableView   *tableView;
 @property (strong, nonatomic) XBCity        *city;
-@property (strong, nonatomic) UIView        *navigationView;
-@property (strong, nonatomic) UILabel       *titleLabel;
 @property (strong, nonatomic) UIButton      *backButton;
 @property (strong, nonatomic) UIButton      *searchButton;
 @property (strong, nonatomic) XBSearchView  *searchView;
@@ -53,16 +52,19 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 {
     [super viewWillAppear:animated];
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
-    self.navigationController.navigationBarHidden = YES;
-    
-    [self.view sendSubviewToBack:self.navigationView];
+    [[UIApplication sharedApplication] setStatusBarStyle:[[self.navigationController.navigationBar subviews] objectAtIndex:0].alpha == 1 ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent];
+
+    [self setNavigationAlphaWithScrollView:self.tableView];
     
 }
 
-- (void)test {
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
     
+    [[[self.navigationController.navigationBar subviews] firstObject] setAlpha:0];
+    
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor colorWithRed:79.f/255.f green:79.f/255.f blue:79.f/255.f alpha:1]};
 }
 
 - (void)reloadData
@@ -76,6 +78,8 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
         
         [XBLoadingView hide];
         
+        self.title = city.name;
+        
         self.stretchHeaderView.title = city.name;
         
         self.stretchHeaderView.levelOnes = self.city.levelOnes;
@@ -88,9 +92,7 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
         
         [self startStretchableHeaderAnimation];
         
-        if (!self.coverImageView.image) {
-            [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.city.imageUrl]];
-        }
+        [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.city.imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder_image"]];
         
     } failure:^(NSError *error) {
     
@@ -192,6 +194,7 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     [self.view addSubview:self.tableView];
     
     self.coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 185)];
+    self.coverImageView.image = [UIImage imageNamed:@"placeholder_image"];
     self.coverImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.coverImageView.clipsToBounds = YES;
     
@@ -199,13 +202,11 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     [self.stretchHeaderView stretchHeaderForTableView:self.tableView withView:self.coverImageView];
     self.stretchHeaderView.levelOneTableView.hidden = YES;
     
-    self.footerView = [[XBDesinationFooterView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 100) title:NSLocalizedString(@"desination-viewall", @"desination-viewall") didSelectedBlock:^{
+    self.footerView = [[XBDesinationFooterView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 100) title:[XBLanguageControl localizedStringForKey:@"destination-browse-all"] didSelectedBlock:^{
         
         XBMoreActivityViewController *moreActivityVC = [[XBMoreActivityViewController alloc] initWithCityId:[self.groupItem.modelId integerValue]];
         
         moreActivityVC.view.backgroundColor = [UIColor whiteColor];
-        
-        moreActivityVC.navigationController.delegate = nil;
     
         [self.navigationController pushViewController:moreActivityVC animated:YES];
     
@@ -213,26 +214,23 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     
     self.navigationItem.hidesBackButton = YES;
 
-    self.navigationView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.navigationView.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
-    [self.view addSubview:self.navigationView];
-
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.backButton.frame = CGRectMake(0, 0, 30, 30);
+    self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [self.backButton setImage:[UIImage imageNamed:@"Back_Arrow"] forState:UIControlStateNormal];
     [self.backButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.backButton];
+    self.backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
     
-    self.titleLabel = [UILabel new];
-    self.titleLabel.alpha = 0.f;
-    self.titleLabel.font  = [UIFont systemFontOfSize:19.f];
-    self.titleLabel.textColor = [UIColor colorWithRed:28.f/255.f green:28.f/255.f blue:28.f/255.f alpha:1.f];
-    self.titleLabel.text = self.groupItem.name;
-    [self.view addSubview:self.titleLabel];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.backButton];
+    
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor colorWithRed:28.f/255.f green:28.f/255.f blue:28.f/255.f alpha:0]};
     
     self.searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.searchButton.frame = CGRectMake(0, 0, 23, 23);
+    self.searchButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [self.searchButton setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
     [self.searchButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.searchButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
 
     [self addConstraint];
 }
@@ -241,32 +239,6 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 {
     [self.searchView makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(0, 0, 0, 0));
-    }];
-    
-    [self.navigationView makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view);
-        make.left.equalTo(self.view);
-        make.right.equalTo(self.view);
-        make.height.mas_equalTo(64);
-    }];
-    
-    [self.backButton makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view);
-        make.top.equalTo(self.view).offset(25);
-        make.width.mas_equalTo(30);
-        make.height.mas_equalTo(35);
-    }];
-    
-    [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.view);
-        make.centerY.equalTo(self.backButton);
-    }];
-    
-    [self.searchButton makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.view).offset(-15);
-        make.centerY.equalTo(self.backButton);
-        make.width.mas_equalTo(25);
-        make.height.mas_equalTo(25);
     }];
 }
 
@@ -297,10 +269,17 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *key  = [self.groupDic allKeys][indexPath.section];
+    
     NSArray *datas = [self.groupDic objectForKey:key];
+    
     XBGroup *group = datas[indexPath.row];
+    
     XBHomeActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+    
+    cell.delegate = self;
+    
     cell.groupItems = group.items;
+    
     return cell;
 }
 
@@ -317,13 +296,44 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     NSString *key  = [self.groupDic allKeys][section];
+    
     NSArray *datas = [self.groupDic objectForKey:key];
+    
     XBGroup *group = [datas firstObject];
+    
     XBHomeHeaderView *headerView = [[XBHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 50.f)];
+    
     headerView.leftLabel.text = group.className;
+    
     headerView.rightLabel.text = group.displayText;
+    
     [self.sectionHeaderViews addObject:headerView];
+    
     return headerView;
+}
+
+#pragma mark -- XBHomeActivityCellDelegate
+- (void)activityCell:(XBHomeActivityCell *)activityCell didSelectedWithGroupItem:(XBGroupItem *)groupItem
+{
+    
+    if (groupItem.hotState.length <= 0) {
+        
+        XBMoreActivityViewController *moreActivityVC = [[XBMoreActivityViewController alloc] initWithCityId:[self.groupItem.modelId integerValue]];
+        
+        moreActivityVC.view.backgroundColor = [UIColor whiteColor];
+        
+        [self.navigationController pushViewController:moreActivityVC animated:YES];
+        
+    } else {
+        
+        XBActivityViewController *activityVC = [[XBActivityViewController alloc] init];
+        
+        activityVC.activityId = [groupItem.modelId integerValue];
+        
+        [self.navigationController pushViewController:activityVC animated:YES];
+        
+    }
+    
 }
 
 #pragma mark -- UITableViewDelegate
@@ -333,11 +343,7 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     
     CGFloat contentOffsetY = scrollView.contentOffset.y;
     
-    CGFloat alpha = contentOffsetY - kThreshold;
-    
-    self.navigationView.backgroundColor = [UIColor colorWithWhite:1 alpha:alpha/50];
-    
-    self.titleLabel.alpha = alpha;
+    [self setNavigationAlphaWithScrollView:scrollView];
     
     BOOL changeIcon = contentOffsetY > 0 && contentOffsetY > kThreshold;
     
@@ -348,28 +354,49 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     [[UIApplication sharedApplication] setStatusBarStyle:changeIcon ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent];
     
     //section header 不悬浮
-//    CGFloat sectionHeaderHeight = kHeaderHeight;
-//    
-//    if (scrollView.contentOffset.y <= sectionHeaderHeight&&scrollView.contentOffset.y >= 0) {
-//        
-//        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
-//        
-//    } else if (scrollView.contentOffset.y >= sectionHeaderHeight) {
-//        
-//        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
-//        
-//    }
-// 
+    CGFloat sectionHeaderHeight = kHeaderHeight;
+    
+    if (scrollView.contentOffset.y <= sectionHeaderHeight&&scrollView.contentOffset.y >= 0) {
+        
+        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+        
+    } else if (scrollView.contentOffset.y >= sectionHeaderHeight) {
+        
+        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
+        
+    }
+ 
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
 {
-    NSString *tagetString = NSStringFromClass([XBMoreActivityViewController class]);
-    if ([NSStringFromClass([fromVC class]) isEqualToString:tagetString] || [NSStringFromClass([toVC class]) isEqualToString:tagetString]) {
+    NSString *moreActivityVC = NSStringFromClass([XBMoreActivityViewController class]);
+    
+    NSString *activityVC = NSStringFromClass([XBActivityViewController class]);
+    
+    if ([NSStringFromClass([fromVC class]) isEqualToString:moreActivityVC] || [NSStringFromClass([toVC class]) isEqualToString:moreActivityVC]) {
+        
+        return nil;
+        
+    } else if ([NSStringFromClass([fromVC class]) isEqualToString:activityVC] || [NSStringFromClass([toVC class]) isEqualToString:activityVC]) {
+        
         return nil;
     }
     
+    [[[self.navigationController.navigationBar subviews] firstObject] setAlpha:0];
+    
     return [XBCityPushTransition transitionWithTransitionType:operation == UINavigationControllerOperationPush ? XBCityPushTransitionTypePush : XBCityPushTransitionTypePop];
+}
+
+- (void)setNavigationAlphaWithScrollView:(UIScrollView *)scrollView
+{
+    CGFloat contentOffsetY = scrollView.contentOffset.y;
+    
+    CGFloat alpha = contentOffsetY - kThreshold;
+    
+    [[[self.navigationController.navigationBar subviews] objectAtIndex:0] setAlpha:alpha/50];
+    
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor colorWithRed:28.f/255.f green:28.f/255.f blue:28.f/255.f alpha:alpha/50]};
 }
 
 #pragma mark -- private method

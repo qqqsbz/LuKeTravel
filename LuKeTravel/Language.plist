@@ -4,19 +4,19 @@
 <array>
 	<dict>
 		<key>desc</key>
-		<string>en-US</string>
+		<string>en_US</string>
 		<key>text</key>
 		<string>en</string>
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>zh-CN</string>
+		<string>zh_CN</string>
 		<key>text</key>
 		<string>zh-Hans</string>
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>zh-TW</string>
+		<string>zh_TW</string>
 		<key>text</key>
 		<string>zh-Hant</string>
 	</dict>

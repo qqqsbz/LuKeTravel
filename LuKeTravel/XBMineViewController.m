@@ -51,6 +51,7 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
  
     [self reloadLanguageConfig];
+    
 }
 
 - (void)reloadLanguageConfig

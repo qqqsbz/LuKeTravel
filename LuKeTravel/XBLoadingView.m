@@ -69,32 +69,49 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
 - (void)showAnimationFromTop
 {
     self.loadingImageView.image = self.images[self.currentIndex];
+    
     [UIView animateWithDuration:self.duration delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:250.f options:UIViewAnimationOptionCurveEaseIn animations:^{
+    
         self.loadingImageView.frame = CGRectMake(kLoadingImageXY, kLoadingImageXY, kLoadingImageWH, kLoadingImageWH);
+   
     } completion:^(BOOL finished) {
+    
         self.loadingImageView.frame = CGRectMake(-(CGRectGetWidth(self.frame) + kLoadingImageWH), kLoadingImageXY, kLoadingImageWH, kLoadingImageWH);
+    
         [self calculateCurrentIndex];
+    
         [self showAnimationFromRight];
+    
     }];
 }
 
 - (void)showAnimationFromRight
 {
     self.loadingImageView.image = self.images[self.currentIndex];
+   
     [UIView animateWithDuration:self.duration delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:250.f options:UIViewAnimationOptionCurveEaseIn animations:^{
+    
         self.loadingImageView.frame = CGRectMake(kLoadingImageXY, kLoadingImageXY, kLoadingImageWH, kLoadingImageWH);
+   
     } completion:^(BOOL finished) {
+    
         self.loadingImageView.frame = CGRectMake(kLoadingImageXY, CGRectGetHeight(self.frame) + kLoadingImageWH, kLoadingImageWH, kLoadingImageWH);
+    
         [self calculateCurrentIndex];
+    
         [self showAnimationFromTop];
+    
     }];
 }
 
 - (void)calculateCurrentIndex
 {
     if (self.currentIndex != self.images.count - 1) {
+    
         self.currentIndex ++;
+    
     } else {
+    
         self.currentIndex = 0;
     }
 }

@@ -35,13 +35,7 @@
 {
     [super viewWillAppear:animated];
     
-    self.navigationRightButton.hidden = YES;
-    
-    self.navigationView.backgroundColor = [UIColor clearColor];
-    
-    self.navigationSeparatorView.hidden = YES;
-    
-    [self.navigationLeftButton setImage:[UIImage imageNamed:@"Back_Arrow"] forState:UIControlStateNormal];
+    [[[self.navigationController.navigationBar subviews] objectAtIndex:0] setAlpha:0];
     
     if (self.userExist) {
       
@@ -56,6 +50,16 @@
 
 - (void)buildView
 {
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 30, 30);
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [button setImage:[UIImage imageNamed:@"Back_Arrow"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(popAction) forControlEvents:UIControlEventTouchUpInside];
+    button.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
     self.coverImageView = [UIImageView new];
     self.coverImageView.image = [UIImage imageNamed:@"login_bg"];
     [self.view addSubview:self.coverImageView];
@@ -256,6 +260,10 @@
         
         if (self.userExist) {
             
+            [self.userNameTextField resignFirstResponder];
+            
+            [self.passWordTextField resignFirstResponder];
+            
             [self userLogin];
         
         } else {
@@ -284,6 +292,8 @@
         [XBUserDefaultsUtil updateCurrentCurrency:user.currency];
         
         [XBUserDefaultsUtil updateCurrentLanguage:user.language];
+        
+        [XBLanguageControl setUserlanguage:[XBLanguageControl exchangeUserLanguageToLocalLanguage:user.language]];
         
         //发送登录成功通知
         [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotificaton object:user];
@@ -348,6 +358,11 @@
         [self showFail:[XBLanguageControl localizedStringForKey:@"login-fail"]];
         
     }];
+}
+
+- (void)popAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)endEdit

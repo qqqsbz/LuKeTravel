@@ -10,11 +10,11 @@
 #define kNavigationBarHeight 64.f
 #define kLevelOneRowHeight   55.f
 #define kSortRowHeight       44.f
-#define kOpenDuration        0.25
-#define kCloseDuration       0.25
+#define kOpenDuration        0.15
+#define kCloseDuration       0.15
 #define kNavigationBarFooterHeight 45.f
 
-#import "XBNavigationBar.h"
+#import "XBMoreActivityNavigationBar.h"
 #import "XBLevelOne.h"
 #import "XBCalendarView.h"
 #import "XBLevelOneCell.h"
@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger,XBFilterState) {
     XBFilterStateSortClose,
     XBFilterStateSortOpen
 };
-@interface XBNavigationBar() <UITableViewDataSource,UITableViewDelegate>
+@interface XBMoreActivityNavigationBar() <UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) UIView            *navigationView;
 @property (strong, nonatomic) UIButton          *backButton;
 @property (strong, nonatomic) UIButton          *nameButton;
@@ -46,22 +46,28 @@ typedef NS_ENUM(NSInteger,XBFilterState) {
 @property (assign, nonatomic) XBFilterState     state;
 @property (strong, nonatomic) XBLevelOne        *allLevelOne;
 @property (strong, nonatomic) NSArray<XBMoreActivitySort *> *sortDatas;
+
+//目标控制器 用来pop
+@property (strong, nonatomic) UIViewController  *targetViewController;
+
 @end
 static NSString *const levelOneReuseIdentifier = @"XBLevelOneCell";
 static NSString *const subNameReuseIdentifier  = @"XBMoreActivitySubNameCell";
-@implementation XBNavigationBar
+@implementation XBMoreActivityNavigationBar
 
-- (instancetype)init
+- (instancetype)initWithTargetViewController:(UIViewController *)targetViewController
 {
     if (self = [super init]) {
+        _targetViewController = targetViewController;
         [self initialization];
     }
     return self;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame targetViewController:(UIViewController *)targetViewController
 {
     if (self = [super initWithFrame:frame]) {
+        _targetViewController = targetViewController;
         [self initialization];
     }
     return self;
@@ -76,24 +82,23 @@ static NSString *const subNameReuseIdentifier  = @"XBMoreActivitySubNameCell";
     
     self.sortSelectedColor = [UIColor colorWithHexString:kDefaultColorHex];
     
-    self.sortDatas = @[[XBMoreActivitySort sortWithName:@"最受欢迎" type:1],
-                       [XBMoreActivitySort sortWithName:@"最多评价" type:2],
-                       [XBMoreActivitySort sortWithName:@"价格从低到高" type:3],
-                       [XBMoreActivitySort sortWithName:@"最新活动" type:4]
+    self.sortDatas = @[
+                       [XBMoreActivitySort sortWithName:[XBLanguageControl localizedStringForKey:@"activity-more-sort-popular"] type:1],
+                       [XBMoreActivitySort sortWithName:[XBLanguageControl localizedStringForKey:@"activity-more-sort-reviewed"] type:2],
+                       [XBMoreActivitySort sortWithName:[XBLanguageControl localizedStringForKey:@"activity-more-sort-price"] type:3],
+                       [XBMoreActivitySort sortWithName:[XBLanguageControl localizedStringForKey:@"activity-more-sort-top"] type:4]
                       ];
-    
+
     
     UIColor *defaultColor = [UIColor whiteColor];
     
     self.backgroundColor  = defaultColor;
     
-    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-    
     self.maskView = [UIView new];
     self.maskView.alpha = 0.f;
     self.maskView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.55];
     [self.maskView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeListView)]];
-    [keyWindow addSubview:self.maskView];
+    [self.targetViewController.view addSubview:self.maskView];
     
     self.filterTableView = [UITableView new];
     self.filterTableView.alpha = 0.f;
@@ -104,11 +109,11 @@ static NSString *const subNameReuseIdentifier  = @"XBMoreActivitySubNameCell";
     self.filterTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.filterTableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBLevelOneCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:levelOneReuseIdentifier];
     [self.filterTableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBMoreActivitySubNameCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:subNameReuseIdentifier];
-    [keyWindow addSubview:self.filterTableView];
+    [self.targetViewController.view addSubview:self.filterTableView];
     
     self.navigationView = [UIView new];
     self.navigationView.backgroundColor = defaultColor;
-    [keyWindow addSubview:self.navigationView];
+    [self addSubview:self.navigationView];
     
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.backButton setImage:[UIImage imageNamed:@"backArrow"] forState:UIControlStateNormal];
@@ -163,11 +168,13 @@ static NSString *const subNameReuseIdentifier  = @"XBMoreActivitySubNameCell";
     [self.sortButton makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.nameButton);
         make.right.equalTo(self.navigationView).offset(-15);
+        make.width.mas_equalTo(30);
+        make.height.mas_equalTo(30);
     }];
     
     [self.filterTableView makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self);
-        make.right.equalTo(self);
+        make.left.equalTo(self.targetViewController.view);
+        make.right.equalTo(self.targetViewController.view);
         make.bottom.equalTo(self.separatorView);
         make.height.mas_greaterThanOrEqualTo(kNavigationBarFooterHeight);
     }];
@@ -179,12 +186,10 @@ static NSString *const subNameReuseIdentifier  = @"XBMoreActivitySubNameCell";
         make.height.mas_equalTo(0.7);
     }];
     
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    
     [self.maskView makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(window);
-        make.right.equalTo(window);
-        make.bottom.equalTo(window);
+        make.left.equalTo(self.targetViewController.view);
+        make.right.equalTo(self.targetViewController.view);
+        make.bottom.equalTo(self.targetViewController.view);
         make.top.equalTo(self.filterTableView.bottom);
     }];
     
@@ -330,7 +335,7 @@ static NSString *const subNameReuseIdentifier  = @"XBMoreActivitySubNameCell";
 
 - (void)popAction
 {
-    [self.tagetViewController.navigationController popViewControllerAnimated:YES];
+    [self.targetViewController.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)nameAction
@@ -386,6 +391,12 @@ static NSString *const subNameReuseIdentifier  = @"XBMoreActivitySubNameCell";
 {
     if (self.state == XBFilterStateSortClose) {
         
+        [self.targetViewController.view bringSubviewToFront:self.maskView];
+        
+        [self.targetViewController.view bringSubviewToFront:self.filterTableView];
+        
+        [self.targetViewController.view bringSubviewToFront:self];
+        
         self.state = XBFilterStateSortOpen;
         
         [self.filterTableView reloadData];
@@ -411,6 +422,12 @@ static NSString *const subNameReuseIdentifier  = @"XBMoreActivitySubNameCell";
 - (void)showNameAnimation
 {
     if (self.state == XBFilterStateNameClose) {
+        
+        [self.targetViewController.view bringSubviewToFront:self.maskView];
+        
+        [self.targetViewController.view bringSubviewToFront:self.filterTableView];
+        
+        [self.targetViewController.view bringSubviewToFront:self];
         
         self.state = XBFilterStateNameOpen;
         
@@ -510,6 +527,13 @@ static NSString *const subNameReuseIdentifier  = @"XBMoreActivitySubNameCell";
     self.nameButton.hidden = hideTitle;
     
     self.nameImageView.hidden = hideTitle;
+}
+
+- (void)setSortEnable:(BOOL)sortEnable
+{
+    _sortEnable = sortEnable;
+    
+    self.sortButton.enabled = sortEnable;
 }
 
 - (void)closeListView
