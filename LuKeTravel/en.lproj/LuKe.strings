@@ -56,6 +56,16 @@
 "activity-more-sort-price" = "Price (low to high)";
 "activity-more-sort-top" = "Top new activites";
 
+
+//下单
+"activity-order-chosedate" = "Select Date";
+"activity-order-date" = "Book %@ %d，%d";
+"activity-order-time-am" = "AM";
+"activity-order-time-pm" = "PM";
+"activity-order-time-begin-chose" = "Please select begin time";
+"activity-order-time-begin-title" = "Begin time";
+
+
 //星期
 "activity-more-calendar-today" = "TODAY";
 "activity-more-calendar-mon" = "MON";
@@ -80,6 +90,32 @@
 "activity-more-calendar-nov" = "NOV";
 "activity-more-calendar-dec" = "DEC";
 
+//下单月份
+"activity-order-calendar-jan" = "January";
+"activity-order-calendar-feb" = "February";
+"activity-order-calendar-mar" = "March";
+"activity-order-calendar-apr" = "April";
+"activity-order-calendar-may" = "May";
+"activity-order-calendar-jun" = "June";
+"activity-order-calendar-jul" = "July";
+"activity-order-calendar-aug" = "August";
+"activity-order-calendar-sep" = "September";
+"activity-order-calendar-oct" = "October";
+"activity-order-calendar-nov" = "November";
+"activity-order-calendar-dec" = "Decemebr";
+
+"activity-order-select-jan" = "Jan";
+"activity-order-select-feb" = "Feb";
+"activity-order-select-mar" = "Mar";
+"activity-order-select-apr" = "Apr";
+"activity-order-select-may" = "May";
+"activity-order-select-jun" = "Jun";
+"activity-order-select-jul" = "Jul";
+"activity-order-select-aug" = "Aug";
+"activity-order-select-sep" = "Sep";
+"activity-order-select-oct" = "Oct";
+"activity-order-select-nov" = "Nov";
+"activity-order-select-dec" = "Dec";
 
 //订单
 "order-title" = "My Bookings";

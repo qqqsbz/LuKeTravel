@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		AB5D2AF3D682081A57B21851 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D95E95B864608E4C431C809 /* libPods.a */; };
+		DC0652501D5C1D2F00755471 /* XBOrderCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC06524F1D5C1D2F00755471 /* XBOrderCalendarCell.xib */; };
+		DC0652531D5C1D5700755471 /* XBOrderCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652521D5C1D5700755471 /* XBOrderCalendarCell.m */; };
+		DC0652561D5C28A300755471 /* XBArrangement.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652551D5C28A300755471 /* XBArrangement.m */; };
+		DC0652591D5D9D4300755471 /* XBOrderBookView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652581D5D9D4300755471 /* XBOrderBookView.m */; };
 		DC1332DF1D3C6ACE005F4B3A /* XBPlainFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1332DE1D3C6ACE005F4B3A /* XBPlainFlowLayout.m */; };
 		DC1332E21D3CB401005F4B3A /* XBMoreActivityNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1332E11D3CB401005F4B3A /* XBMoreActivityNavigationBar.m */; };
 		DC1332E51D3CC455005F4B3A /* XBMoreActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1332E41D3CC455005F4B3A /* XBMoreActivity.m */; };
@@ -33,7 +37,9 @@
 		DC13333E1D4097D3005F4B3A /* XBParserContentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DC13333D1D4097D3005F4B3A /* XBParserContentItem.m */; };
 		DC1333441D40C186005F4B3A /* XBActivityItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1333431D40C186005F4B3A /* XBActivityItemView.m */; };
 		DC1333471D40CC29005F4B3A /* XBNotifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1333461D40CC29005F4B3A /* XBNotifyView.m */; };
-		DC1D55561D5AF5C800680779 /* XBPlaceAnOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1D55551D5AF5C800680779 /* XBPlaceAnOrderViewController.m */; };
+		DC1D555C1D5B10EA00680779 /* XBPlaceOnOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1D555B1D5B10EA00680779 /* XBPlaceOnOrderViewController.m */; };
+		DC1D55901D5B1EDE00680779 /* XBOrderNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1D558F1D5B1EDE00680779 /* XBOrderNavigationBar.m */; };
+		DC1D55931D5B20AF00680779 /* XBOrderCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1D55921D5B20AF00680779 /* XBOrderCalendarView.m */; };
 		DC2627BB1D484347002795C3 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC2627BA1D484347002795C3 /* ImageIO.framework */; };
 		DC2627FE1D484454002795C3 /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC2627BE1D484454002795C3 /* UMSocialLocalizable.strings */; };
 		DC2627FF1D484454002795C3 /* libUMSocial_Sdk_5.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC2627CC1D484454002795C3 /* libUMSocial_Sdk_5.2.1.a */; };
@@ -227,6 +233,13 @@
 		37C54C8C4F188F6849E40750 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9D95E95B864608E4C431C809 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC21827E9A9FE60E33F37637 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		DC06524F1D5C1D2F00755471 /* XBOrderCalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBOrderCalendarCell.xib; sourceTree = "<group>"; };
+		DC0652511D5C1D5700755471 /* XBOrderCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderCalendarCell.h; sourceTree = "<group>"; };
+		DC0652521D5C1D5700755471 /* XBOrderCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderCalendarCell.m; sourceTree = "<group>"; };
+		DC0652541D5C28A300755471 /* XBArrangement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBArrangement.h; sourceTree = "<group>"; };
+		DC0652551D5C28A300755471 /* XBArrangement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBArrangement.m; sourceTree = "<group>"; };
+		DC0652571D5D9D4300755471 /* XBOrderBookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderBookView.h; sourceTree = "<group>"; };
+		DC0652581D5D9D4300755471 /* XBOrderBookView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderBookView.m; sourceTree = "<group>"; };
 		DC1332DD1D3C6ACE005F4B3A /* XBPlainFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPlainFlowLayout.h; sourceTree = "<group>"; };
 		DC1332DE1D3C6ACE005F4B3A /* XBPlainFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBPlainFlowLayout.m; sourceTree = "<group>"; };
 		DC1332E01D3CB401005F4B3A /* XBMoreActivityNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBMoreActivityNavigationBar.h; sourceTree = "<group>"; };
@@ -276,8 +289,12 @@
 		DC1333431D40C186005F4B3A /* XBActivityItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityItemView.m; sourceTree = "<group>"; };
 		DC1333451D40CC29005F4B3A /* XBNotifyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBNotifyView.h; sourceTree = "<group>"; };
 		DC1333461D40CC29005F4B3A /* XBNotifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBNotifyView.m; sourceTree = "<group>"; };
-		DC1D55541D5AF5C800680779 /* XBPlaceAnOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPlaceAnOrderViewController.h; sourceTree = "<group>"; };
-		DC1D55551D5AF5C800680779 /* XBPlaceAnOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBPlaceAnOrderViewController.m; sourceTree = "<group>"; };
+		DC1D555A1D5B10EA00680779 /* XBPlaceOnOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPlaceOnOrderViewController.h; sourceTree = "<group>"; };
+		DC1D555B1D5B10EA00680779 /* XBPlaceOnOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBPlaceOnOrderViewController.m; sourceTree = "<group>"; };
+		DC1D558E1D5B1EDE00680779 /* XBOrderNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderNavigationBar.h; sourceTree = "<group>"; };
+		DC1D558F1D5B1EDE00680779 /* XBOrderNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderNavigationBar.m; sourceTree = "<group>"; };
+		DC1D55911D5B20AF00680779 /* XBOrderCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderCalendarView.h; sourceTree = "<group>"; };
+		DC1D55921D5B20AF00680779 /* XBOrderCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderCalendarView.m; sourceTree = "<group>"; };
 		DC2627BA1D484347002795C3 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		DC2627BF1D484454002795C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		DC2627C11D484454002795C3 /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
@@ -508,7 +525,7 @@
 		DC8A7B461D2DF2F60032BC48 /* XBLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBLoadingView.h; sourceTree = "<group>"; };
 		DC8A7B471D2DF2F60032BC48 /* XBLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBLoadingView.m; sourceTree = "<group>"; };
 		DC8A7B491D2E2A4C0032BC48 /* XBActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityViewController.h; sourceTree = "<group>"; };
-		DC8A7B4A1D2E2A4C0032BC48 /* XBActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityViewController.m; sourceTree = "<group>"; };
+		DC8A7B4A1D2E2A4C0032BC48 /* XBActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
 		DC8A7B4F1D2E395C0032BC48 /* XBStretchableActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBStretchableActivityView.h; sourceTree = "<group>"; };
 		DC8A7B501D2E395C0032BC48 /* XBStretchableActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBStretchableActivityView.m; sourceTree = "<group>"; };
 		DC8A7B581D2E43640032BC48 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
@@ -870,8 +887,17 @@
 				DC26282A1D48A964002795C3 /* XBWeChatLoginViewController.m */,
 				DC26282F1D49AF75002795C3 /* XBAccountLoginViewController.h */,
 				DC2628301D49AF75002795C3 /* XBAccountLoginViewController.m */,
-				DC1D55541D5AF5C800680779 /* XBPlaceAnOrderViewController.h */,
-				DC1D55551D5AF5C800680779 /* XBPlaceAnOrderViewController.m */,
+				DC1D555A1D5B10EA00680779 /* XBPlaceOnOrderViewController.h */,
+				DC1D555B1D5B10EA00680779 /* XBPlaceOnOrderViewController.m */,
+				DC1D558E1D5B1EDE00680779 /* XBOrderNavigationBar.h */,
+				DC1D558F1D5B1EDE00680779 /* XBOrderNavigationBar.m */,
+				DC1D55911D5B20AF00680779 /* XBOrderCalendarView.h */,
+				DC1D55921D5B20AF00680779 /* XBOrderCalendarView.m */,
+				DC06524F1D5C1D2F00755471 /* XBOrderCalendarCell.xib */,
+				DC0652511D5C1D5700755471 /* XBOrderCalendarCell.h */,
+				DC0652521D5C1D5700755471 /* XBOrderCalendarCell.m */,
+				DC0652571D5D9D4300755471 /* XBOrderBookView.h */,
+				DC0652581D5D9D4300755471 /* XBOrderBookView.m */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -1116,6 +1142,8 @@
 				DC1333301D406C01005F4B3A /* XBShareActivity.m */,
 				DC13333C1D4097D3005F4B3A /* XBParserContentItem.h */,
 				DC13333D1D4097D3005F4B3A /* XBParserContentItem.m */,
+				DC0652541D5C28A300755471 /* XBArrangement.h */,
+				DC0652551D5C28A300755471 /* XBArrangement.m */,
 			);
 			name = Activity;
 			sourceTree = "<group>";
@@ -1459,6 +1487,7 @@
 				DC8A7A7B1D2B57730032BC48 /* LaunchScreen.storyboard in Resources */,
 				DC2627FE1D484454002795C3 /* UMSocialLocalizable.strings in Resources */,
 				DC2628001D484454002795C3 /* UMSCommentDetailController.xib in Resources */,
+				DC0652501D5C1D2F00755471 /* XBOrderCalendarCell.xib in Resources */,
 				DC725CD11D4F1B7400A89B70 /* Currency.plist in Resources */,
 				DC4DCD181D46FFCA00DFBA97 /* XBActivityPackageCell.xib in Resources */,
 				DC8A7A781D2B57730032BC48 /* Assets.xcassets in Resources */,
@@ -1555,8 +1584,10 @@
 				DC13332D1D3F6AA0005F4B3A /* TADotView.m in Sources */,
 				DC8A7BED1D34E8AA0032BC48 /* XBDestinationAllFooterView.m in Sources */,
 				DC13333E1D4097D3005F4B3A /* XBParserContentItem.m in Sources */,
+				DC1D555C1D5B10EA00680779 /* XBPlaceOnOrderViewController.m in Sources */,
 				DC1332F91D3E0FA8005F4B3A /* XBSubNameView.m in Sources */,
 				DC26281D1D484821002795C3 /* XBShare.m in Sources */,
+				DC1D55901D5B1EDE00680779 /* XBOrderNavigationBar.m in Sources */,
 				DC5C55851D54951B00DCD14E /* XBCoupons.m in Sources */,
 				DC5C55941D5854B700DCD14E /* XBWishlist.m in Sources */,
 				DC8A7BD91D3497E30032BC48 /* XBHotDestination.m in Sources */,
@@ -1568,6 +1599,7 @@
 				DC8A7B761D2F52C40032BC48 /* XBHomeActivityCell.m in Sources */,
 				DC2628311D49AF75002795C3 /* XBAccountLoginViewController.m in Sources */,
 				DC4DCD081D45EB5700DFBA97 /* XBActivityDetailViewController.m in Sources */,
+				DC0652531D5C1D5700755471 /* XBOrderCalendarCell.m in Sources */,
 				DC1332DF1D3C6ACE005F4B3A /* XBPlainFlowLayout.m in Sources */,
 				DC26282E1D48AA6A002795C3 /* XBLoginTipView.m in Sources */,
 				DC8A7C311D38C68C0032BC48 /* XBMoreActivityViewController.m in Sources */,
@@ -1579,7 +1611,6 @@
 				DC725CC91D4EEA9D00A89B70 /* XBPickerView.m in Sources */,
 				DC1333211D3F6A88005F4B3A /* UIView+SDExtension.m in Sources */,
 				DC5C55881D58234900DCD14E /* XBCreditsCash.m in Sources */,
-				DC1D55561D5AF5C800680779 /* XBPlaceAnOrderViewController.m in Sources */,
 				DC4DCD131D46F3A100DFBA97 /* XBActivityPackageView.m in Sources */,
 				DC5C557F1D54869D00DCD14E /* XBCouponsCell.m in Sources */,
 				DC1332E21D3CB401005F4B3A /* XBMoreActivityNavigationBar.m in Sources */,
@@ -1610,6 +1641,7 @@
 				DC5C558E1D58282100DCD14E /* XBCreditsHeaderView.m in Sources */,
 				DC5C55821D5494EE00DCD14E /* XBCoupon.m in Sources */,
 				DC5C558B1D58238600DCD14E /* XBCredits.m in Sources */,
+				DC0652591D5D9D4300755471 /* XBOrderBookView.m in Sources */,
 				DC8A7B671D2E4CC70032BC48 /* XBStretchableCityHeaderView.m in Sources */,
 				DC8A7A911D2B58100032BC48 /* UIViewController+HUD.m in Sources */,
 				DC8A7C1B1D3788B70032BC48 /* XBHomeSearchHistoryHeaderView.m in Sources */,
@@ -1629,6 +1661,7 @@
 				DC1332E51D3CC455005F4B3A /* XBMoreActivity.m in Sources */,
 				DC8A7C2E1D38C4E70032BC48 /* XBCalendarCell.m in Sources */,
 				DC1332EB1D3CC525005F4B3A /* XBMoreActivitySubName.m in Sources */,
+				DC0652561D5C28A300755471 /* XBArrangement.m in Sources */,
 				DC1332F61D3DB9DD005F4B3A /* XBMoreActivitySort.m in Sources */,
 				DC8A7B611D2E48740032BC48 /* XBCity.m in Sources */,
 				DC13331F1D3F6A88005F4B3A /* SDCollectionViewCell.m in Sources */,
@@ -1668,6 +1701,7 @@
 				DC4DCD221D4758D300DFBA97 /* XBShareView.m in Sources */,
 				DC8A7A951D2B58100032BC48 /* UIColor+Util.m in Sources */,
 				DC8A7A931D2B58100032BC48 /* NSString+Util.m in Sources */,
+				DC1D55931D5B20AF00680779 /* XBOrderCalendarView.m in Sources */,
 				DC1333311D406C01005F4B3A /* XBShareActivity.m in Sources */,
 				DC8A7A701D2B57730032BC48 /* AppDelegate.m in Sources */,
 				DC8A7BEA1D34E05E0032BC48 /* XBDestinationAllLayout.m in Sources */,

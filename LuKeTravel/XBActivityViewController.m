@@ -18,6 +18,8 @@
 #import "XBActivityReviewMaskView.h"
 #import "XBStretchableActivityView.h"
 #import "XBActivityRecommendMaskView.h"
+#import "XBWeChatLoginViewController.h"
+#import "XBPlaceOnOrderViewController.h"
 #import "XBActivityDetailViewController.h"
 @interface XBActivityViewController () <SDCycleScrollViewDelegate,UIScrollViewDelegate,XBStretchableActivityViewDelegate,XBActivityPackageViewDelegate>
 @property (strong, nonatomic) XBActivity                  *activity;
@@ -30,6 +32,11 @@
 @property (strong, nonatomic) XBActivityNavigationBar     *navigationBarView;
 @property (strong, nonatomic) XBStretchableActivityView   *stretchHeaderView;
 @property (strong, nonatomic) XBActivityRecommendMaskView *recommendMaskView;
+/** 用户登录成功前是否进行收藏操作 */
+@property (assign, nonatomic) BOOL  isFavorite;
+/** 进行下单的数据 */
+@property (strong, nonatomic) XBPackage *orderPackage;
+
 @end
 
 static NSString *const reuseIdentifier = @"cell";
@@ -43,6 +50,8 @@ static NSString *const reuseIdentifier = @"cell";
     [self builView];
     
     [self reloadData];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccessAction) name:kUserLoginSuccessNotificaton object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -50,6 +59,13 @@ static NSString *const reuseIdentifier = @"cell";
     [super viewWillAppear:animated];
   
     self.navigationItem.rightBarButtonItem.enabled = self.activity != nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -140,11 +156,11 @@ static NSString *const reuseIdentifier = @"cell";
     
     if (offsetY >= CGRectGetHeight(self.bannerView.frame) * 0.3) {
         
-        [self navigationBarAnimation:YES];
+        [self navigationBarAnimation:YES complete:nil];
         
     } else {
         
-        [self navigationBarAnimation:NO];
+        [self navigationBarAnimation:NO complete:nil];
         
     }
     
@@ -211,7 +227,11 @@ static NSString *const reuseIdentifier = @"cell";
 
 - (void)stretchableActivityView:(XBStretchableActivityView *)stretchableActivityView didSelectFavoriteWithActivity:(XBActivity *)activity
 {
-    DDLogDebug(@"favorite activity........");
+    self.isFavorite = YES;
+
+    [self checkUserIfLogin];
+    
+    [self toggleFavorite];
 }
 
 #pragma mark --  UIGestureRecognizer
@@ -227,20 +247,27 @@ static NSString *const reuseIdentifier = @"cell";
 #pragma mark -- XBActivityPackageViewDelegate
 - (void)activityPackageView:(XBActivityPackageView *)activityPackageView didShowPackageWithButton:(UIButton *)btn
 {
-    [self navigationBarAnimation:NO];
+    [self navigationBarAnimation:NO complete:nil];
 }
 
 - (void)activityPackageView:(XBActivityPackageView *)activityPackageView didHidePackageWithButton:(UIButton *)btn
 {
-    [self navigationBarAnimation:YES];
+    [self navigationBarAnimation:YES complete:nil];
 }
 
 - (void)activityPackageView:(XBActivityPackageView *)activityPackageView didSelectPackageWithPackage:(XBPackage *)package
 {
-    DDLogDebug(@"提交订单:%@",package);
+    self.isFavorite = NO;
+    
+    [self checkUserIfLogin];
+    
+    self.orderPackage = package;
+    
+    [self placeAnOrder];
+    
 }
 
-- (void)navigationBarAnimation:(BOOL)isShow
+- (void)navigationBarAnimation:(BOOL)isShow complete:(dispatch_block_t)block
 {
     if (isShow) {
         
@@ -255,7 +282,11 @@ static NSString *const reuseIdentifier = @"cell";
             } completion:^(BOOL finished) {
                 
                 self.navigationBarView.animationing = NO;
-            
+                
+                if (block) {
+                    
+                    block();
+                }
             }];
         }
         
@@ -263,7 +294,7 @@ static NSString *const reuseIdentifier = @"cell";
         
         if (self.navigationBarView.xb_y == 0 && !self.navigationBarView.animationing) {
             
-            [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [UIView animateWithDuration:0.35 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                 
                 self.navigationBarView.xb_y = -kActivityNavigationBarHeight;
                 
@@ -273,11 +304,125 @@ static NSString *const reuseIdentifier = @"cell";
                 
                 self.navigationBarView.animationing = NO;
                 
+                if (block) {
+                    
+                    block();
+                }
             }];
             
         }
     
     }
+}
+
+#pragma mark -- user operation
+/** 登录成功后进行的操作 */
+- (void)loginSuccessAction
+{
+    if (self.isFavorite) {
+        
+        [self toggleFavorite];
+        
+    } else {
+        
+        self.navigationController.navigationBarHidden = YES;
+        
+        [self placeAnOrder];
+        
+    }
+}
+
+/** 提交订单 */
+- (void)placeAnOrder
+{
+    
+    self.packageView.hideMenu = YES;
+    
+    [self navigationBarAnimation:YES complete:^{
+
+        XBPlaceOnOrderViewController *placeOnOrderVC = [[XBPlaceOnOrderViewController alloc] initWithPackage:self.orderPackage];
+        
+        placeOnOrderVC.view.alpha = 0.f;
+        
+        [self addChildViewController:placeOnOrderVC];
+        
+        [self.view addSubview:placeOnOrderVC.view];
+        
+        self.navigationController.navigationBarHidden = YES;
+        
+        [UIView animateWithDuration:0.75 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            placeOnOrderVC.view.alpha = 1.f;
+            
+        } completion:^(BOOL finished) {
+            
+            [placeOnOrderVC showCalendar];
+            
+        }];
+        
+    }];
+    
+}
+
+/** 检查是否登录 */
+- (void)checkUserIfLogin
+{
+    if (![XBUserDefaultsUtil userInfo]) {
+        
+        [self presentToLoginViewController];
+        
+        return;
+    }
+}
+
+/** 跳转到登录界面 */
+- (void)presentToLoginViewController
+{
+    XBWeChatLoginViewController *loginViewController = [[XBWeChatLoginViewController alloc] init];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+    
+    navigationController.navigationBarHidden = YES;
+    
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+/** 根据情况切换收藏 或者取消 */
+- (void)toggleFavorite
+{
+    //取消收藏
+    if (self.activity.isFavourite) {
+        
+        [[XBHttpClient shareInstance] deleteWisheWithActivityId:[self.activity.modelId integerValue] success:^(BOOL success) {
+            
+            self.stretchHeaderView.favorite = NO;
+            
+        } failure:^(NSError *error) {
+            
+            if (error.code == kUserUnLoginCode) {
+                
+                [self presentToLoginViewController];
+            }
+            
+        }];
+        
+    } else {
+        
+        [[XBHttpClient shareInstance] postWisheWithActivityId:[self.activity.modelId integerValue] success:^(BOOL success) {
+            
+            self.stretchHeaderView.favorite = YES;
+            
+        } failure:^(NSError *error) {
+            
+            if (error.code == kUserUnLoginCode) {
+                
+                [self presentToLoginViewController];
+            }
+            
+        }];
+        
+    }
+
 }
 
 #pragma mark --  XBShareView

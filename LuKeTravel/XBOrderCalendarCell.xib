@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="XBOrderCalendarCell" id="xam-Fa-oWu" customClass="XBOrderCalendarCell">
+            <rect key="frame" x="0.0" y="0.0" width="53" height="53"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="53" height="53"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WCd-JR-ocw">
+                        <rect key="frame" x="10" y="10" width="33" height="33"/>
+                        <color key="backgroundColor" red="1" green="0.3411764705882353" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="33" id="Gww-uU-Phk"/>
+                            <constraint firstAttribute="height" constant="33" id="VOe-3V-s9e"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWj-hm-ir1" userLabel="title">
+                        <rect key="frame" x="10" y="19" width="33" height="15"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdU-LH-eJq" userLabel="subTitle">
+                        <rect key="frame" x="12" y="34" width="29" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="nWj-hm-ir1" secondAttribute="centerY" id="CdK-7m-wut"/>
+                <constraint firstItem="HdU-LH-eJq" firstAttribute="top" secondItem="nWj-hm-ir1" secondAttribute="bottom" id="Imv-Pn-4vI"/>
+                <constraint firstItem="nWj-hm-ir1" firstAttribute="centerX" secondItem="xam-Fa-oWu" secondAttribute="centerX" id="Jyt-Au-K6b"/>
+                <constraint firstItem="WCd-JR-ocw" firstAttribute="centerY" secondItem="nWj-hm-ir1" secondAttribute="centerY" id="cGb-f3-yyU"/>
+                <constraint firstItem="HdU-LH-eJq" firstAttribute="centerX" secondItem="xam-Fa-oWu" secondAttribute="centerX" id="l8e-cF-N3D"/>
+                <constraint firstItem="WCd-JR-ocw" firstAttribute="centerX" secondItem="nWj-hm-ir1" secondAttribute="centerX" id="wzM-Pr-noi"/>
+            </constraints>
+            <connections>
+                <outlet property="highLightView" destination="WCd-JR-ocw" id="pxm-rM-bmG"/>
+                <outlet property="subTitleLabel" destination="HdU-LH-eJq" id="uTM-Gu-fdr"/>
+                <outlet property="titleLabel" destination="nWj-hm-ir1" id="QGP-m8-lkO"/>
+            </connections>
+            <point key="canvasLocation" x="470" y="417"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -153,6 +153,8 @@
     
     self.fastTipLabel.hidden = !self.activity.isInstant;
     
+    self.favorite = activity.isFavourite;
+    
     [self addStar];
     
     [self addNotify];
@@ -1045,6 +1047,24 @@
         
         if ([self.delegate respondsToSelector:@selector(stretchableActivityView:didSelectFavoriteWithActivity:)]) {
             
+            CASpringAnimation *springAnimation = [CASpringAnimation animationWithKeyPath:@"transform.scale"];
+            
+            springAnimation.damping = 5.f;
+            
+            springAnimation.stiffness = 2000.f;
+            
+            springAnimation.mass = 5;
+            
+            springAnimation.initialVelocity = 10;
+            
+            springAnimation.fromValue = @(1);
+            
+            springAnimation.toValue = @(1.165);
+            
+            springAnimation.duration = 0.7;
+            
+            [self.favoriteButton.layer addAnimation:springAnimation forKey:@"SpringAnimation"];
+            
             [self.delegate stretchableActivityView:self didSelectFavoriteWithActivity:self.activity];
             
         }
@@ -1052,5 +1072,12 @@
     }
 }
 
+
+- (void)setFavorite:(BOOL)favorite
+{
+    _favorite = favorite;
+    
+    [self.favoriteButton setImage:[UIImage imageNamed:favorite ? @"heart" : @"heart-o"] forState:UIControlStateNormal];
+}
 
 @end

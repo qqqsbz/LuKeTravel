@@ -296,7 +296,7 @@
         [XBLanguageControl setUserlanguage:[XBLanguageControl exchangeUserLanguageToLocalLanguage:user.language]];
         
         //发送登录成功通知
-        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotificaton object:user];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginSuccessNotificaton object:user];
         
         [self dismissViewControllerAnimated:YES completion:nil];
         
@@ -345,7 +345,7 @@
         [XBUserDefaultsUtil updateUserInfo:user];
         
         //发送登录成功通知
-        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotificaton object:user];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginSuccessNotificaton object:user];
         
         [self dismissViewControllerAnimated:YES completion:nil];
         

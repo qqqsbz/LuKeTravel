@@ -31,13 +31,21 @@
     _searchItem = searchItem;
     
     self.instantImageView.hidden = !searchItem.instant;
+    
     self.titleLabel.text    = searchItem.name;
+    
     self.subTitleLabel.text = searchItem.subName;
+    
     self.addressLabel.text  = searchItem.cityName;
+    
     self.participantsLabel.text = searchItem.participantsFormat;
+    
     self.sellingPriceLabel.text  = [NSString stringWithFormat:@"%@ %@",[XBUserDefaultsUtil currentCurrencySymbol],[NSIntegerFormatter formatToNSString:searchItem.marketPrice]];
+    
     self.marketPriceLabel.text = [NSString stringWithFormat:@"%@ %@",[XBUserDefaultsUtil currentCurrencySymbol],[NSIntegerFormatter formatToNSString:searchItem.sellingPrice]];
+    
     [self.favoriteButton setImage:[UIImage imageNamed:searchItem.favorite ? @"activityWishSelected" : @"activityWishNormal"] forState:UIControlStateNormal];
+    
     [self loadImageFromCacheWithImageView:self.coverImageView imageUrl:searchItem.imageUrl];
     
     BOOL cityEmpty = searchItem.cityName.length <= 0;
@@ -45,6 +53,8 @@
     self.participantsLabel.hidden = cityEmpty;
     
     self.participantsImageView.hidden = cityEmpty;
+    
+    self.favorite = searchItem.favorite;
     
     if (cityEmpty) {
         

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const kLoginSuccessNotificaton;        //登录成功通知
+extern NSString *const kUserLoginSuccessNotificaton;     //登录成功通知
 
 extern NSString *const kUserUnLoginNotification;        //用户未登录通知
 

@@ -46,7 +46,7 @@ static NSString *const kCouponsReuseIdentifier = @"XBCouponsCell";
     
     [self reloadConpon];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadConpon) name:kLoginSuccessNotificaton object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadConpon) name:kUserLoginSuccessNotificaton object:nil];
 }
 
 - (void)reloadConpon

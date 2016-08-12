@@ -139,6 +139,8 @@ static NSString *const reuseIdentifier = @"XBActivityPackageCell";
     
     cell.package = self.packages[indexPath.row];
     
+    cell.pickSelected = NO;
+    
     return cell;
 }
 
@@ -171,6 +173,18 @@ static NSString *const reuseIdentifier = @"XBActivityPackageCell";
 {
     if (!self.showPackage) {
         
+        //如果只有一个选项 则直接选中
+        if (self.packages.count <= 1) {
+            
+            if ([self.delegate respondsToSelector:@selector(activityPackageView:didSelectPackageWithPackage:)]) {
+                
+                [self.delegate activityPackageView:self didSelectPackageWithPackage:[self.packages firstObject]];
+            }
+            
+            return;
+            
+        }
+        
         //开始动画
         if ([self.delegate respondsToSelector:@selector(activityPackageView:didShowPackageWithButton:)]) {
             [self.delegate activityPackageView:self didShowPackageWithButton:self.packageButton];
@@ -185,6 +199,8 @@ static NSString *const reuseIdentifier = @"XBActivityPackageCell";
         self.tableView.xb_height = height;
         
         self.tableView.scrollEnabled = isFill;
+        
+        [self.tableView reloadData];
         
         [self.superview bringSubviewToFront:self];
         
@@ -211,8 +227,10 @@ static NSString *const reuseIdentifier = @"XBActivityPackageCell";
 
 - (void)dismissAction
 {
-    //结束动画
-    if ([self.delegate respondsToSelector:@selector(activityPackageView:didHidePackageWithButton:)]) {
+    if (self.tableView.xb_y == self.xb_height) return;
+    
+    //结束动画  当从外部调用关闭方法 则不需要再调代理
+    if (!self.hideMenu && [self.delegate respondsToSelector:@selector(activityPackageView:didHidePackageWithButton:)]) {
         [self.delegate activityPackageView:self didHidePackageWithButton:self.packageButton];
     }
     
@@ -235,6 +253,13 @@ static NSString *const reuseIdentifier = @"XBActivityPackageCell";
         [self.packageButton setTitle:[XBLanguageControl localizedStringForKey:@"activity-detail-package-normal"] forState:UIControlStateNormal];
         
     }];
+}
+
+- (void)setHideMenu:(BOOL)hideMenu
+{
+    _hideMenu = hideMenu;
+    
+    [self dismissAction];
 }
 
 @end

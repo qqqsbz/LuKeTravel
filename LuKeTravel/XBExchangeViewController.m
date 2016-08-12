@@ -44,7 +44,7 @@
     
     [self reloadData];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(exchangeLanguageOrCurrency) name:kLoginSuccessNotificaton object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(exchangeLanguageOrCurrency) name:kUserLoginSuccessNotificaton object:nil];
 }
 
 - (void)reloadData

@@ -29,14 +29,16 @@
 @end
 
 @interface XBStretchableActivityView : UIView
+/** 目标控件 */
 @property (strong, nonatomic) UIScrollView  *scrollView;
-
+/** 封面view */
 @property (strong, nonatomic) UIView        *headerView;
-
+/** 活动数据 */
 @property (strong, nonatomic) XBActivity    *activity;
-
+/** 代理 */
 @property (weak, nonatomic) id<XBStretchableActivityViewDelegate> delegate;
-
+/** 是否收藏 */
+@property (assign, nonatomic, getter=isFavorite) BOOL  favorite;
 /**
  * subview:内容部分
  * view   :拉伸的背景图片

@@ -33,6 +33,9 @@ didSelectPackageWithPackage:(XBPackage *)package;
 /** 数据源 */
 @property (strong, nonatomic) NSArray<XBPackage *>  *packages;
 
+/** 隐藏菜单栏 */
+@property (assign, nonatomic) BOOL  hideMenu;
+
 @property (weak, nonatomic) id<XBActivityPackageViewDelegate> delegate;
 
 @end

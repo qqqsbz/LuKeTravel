@@ -31,7 +31,7 @@ static NSString *const reuseIdentifier = @"XBHomeSearchActivityClickCell";
     
     [self reloadData];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kLoginSuccessNotificaton object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kUserLoginSuccessNotificaton object:nil];
 }
 
 - (void)reloadData

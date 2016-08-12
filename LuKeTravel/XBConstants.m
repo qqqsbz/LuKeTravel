@@ -8,7 +8,7 @@
 
 #import "XBConstants.h"
 
-NSString *const kLoginSuccessNotificaton = @"LOGIN_SUCCESS_NOTIFICATION";
+NSString *const kUserLoginSuccessNotificaton = @"USER_LOGIN_SUCCESS_NOTIFICATION";
 
 NSString *const kUserUnLoginNotification = @"USER_UNLOGIN_NOTIFICATION";
 

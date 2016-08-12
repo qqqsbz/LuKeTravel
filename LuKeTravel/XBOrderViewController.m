@@ -22,7 +22,7 @@
     
     [self buildView];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:kLoginSuccessNotificaton object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:kUserLoginSuccessNotificaton object:nil];
     
 }
 

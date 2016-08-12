@@ -54,6 +54,16 @@
 "activity-more-sort-reviewed" = "最多評價";
 "activity-more-sort-price" = "價格從低到高";
 "activity-more-sort-top" = "最新活動";
+
+
+//下单
+"activity-order-chosedate" = "選擇日期";
+"activity-order-date" = "预订 %d年%d月%d日";
+"activity-order-time-am" = "上午";
+"activity-order-time-pm" = "下午";
+"activity-order-time-begin-chose" = "請選擇開始時間";
+"activity-order-time-begin-title" = "開始時間";
+
 //星期
 "activity-more-calendar-today" = "今天";
 "activity-more-calendar-mon" = "週一";
@@ -78,6 +88,20 @@
 "activity-more-calendar-oct" = "10月";
 "activity-more-calendar-nov" = "11月";
 "activity-more-calendar-dec" = "12月";
+
+//下单日期
+"activity-order-calendar-jan" = "1月";
+"activity-order-calendar-feb" = "2月";
+"activity-order-calendar-mar" = "3月";
+"activity-order-calendar-apr" = "4月";
+"activity-order-calendar-may" = "5月";
+"activity-order-calendar-jun" = "6月";
+"activity-order-calendar-jul" = "7月";
+"activity-order-calendar-aug" = "8月";
+"activity-order-calendar-sep" = "9月";
+"activity-order-calendar-oct" = "10月";
+"activity-order-calendar-nov" = "11月";
+"activity-order-calendar-dec" = "12月";
 
 //订单
 "order-title" = "我的訂單";
