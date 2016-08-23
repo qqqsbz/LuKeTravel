@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="XBOrderConfirmBasicCell" id="eF5-eb-Qpp" customClass="XBOrderConfirmBasicCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eF5-eb-Qpp" id="W3F-CU-YOq">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="itq-Qf-aLg" userLabel="topSeparator">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.73725490196078436" green="0.72941176470588232" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="rqA-qR-9Aj"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyB-gW-PTO" userLabel="title">
+                        <rect key="frame" x="15" y="13" width="38" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.51764705882352935" green="0.51764705882352935" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入护照名字拼音" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mUt-4j-O5C" userLabel="textfield">
+                        <rect key="frame" x="130" y="13" width="130" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已验证" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1g-aA-SjO" userLabel="verifity">
+                        <rect key="frame" x="260" y="14" width="50" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="OLj-cM-gJZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.21176470588235294" green="0.74509803921568629" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3HJ-rt-KIE" userLabel="pSearator">
+                        <rect key="frame" x="288" y="16" width="2" height="12"/>
+                        <color key="backgroundColor" red="0.77254901960784317" green="0.77254901960784317" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="VOb-qc-Rcj"/>
+                            <constraint firstAttribute="width" constant="2" id="raS-xd-HF2"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LMI-Kv-JTH" userLabel="pull">
+                        <rect key="frame" x="280" y="10" width="40" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="Gwa-GP-EQE"/>
+                        </constraints>
+                        <state key="normal" image="iconPull"/>
+                        <connections>
+                            <action selector="pullAction:" destination="eF5-eb-Qpp" eventType="touchUpInside" id="Uen-cP-OWi"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0u-iq-ckc" userLabel="contentSeparator">
+                        <rect key="frame" x="15" y="42" width="305" height="1"/>
+                        <color key="backgroundColor" red="0.73725490196078436" green="0.72941176470588232" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="EXv-KE-YRU"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="crK-6x-0Cu" userLabel="bottomSeparator">
+                        <rect key="frame" x="0.0" y="42" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.73725490196078436" green="0.72941176470588232" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="7TL-r6-6Oj"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="crK-6x-0Cu" firstAttribute="leading" secondItem="W3F-CU-YOq" secondAttribute="leading" id="1Hw-Ra-K7t"/>
+                    <constraint firstAttribute="bottom" secondItem="y0u-iq-ckc" secondAttribute="bottom" id="1gQ-sU-sS5"/>
+                    <constraint firstAttribute="trailing" secondItem="y0u-iq-ckc" secondAttribute="trailing" id="28I-4l-OAR"/>
+                    <constraint firstAttribute="trailing" secondItem="crK-6x-0Cu" secondAttribute="trailing" id="6ho-sy-HF7"/>
+                    <constraint firstItem="itq-Qf-aLg" firstAttribute="top" secondItem="W3F-CU-YOq" secondAttribute="top" id="6nm-Io-tFU"/>
+                    <constraint firstItem="p1g-aA-SjO" firstAttribute="centerY" secondItem="W3F-CU-YOq" secondAttribute="centerY" id="7nE-63-d25"/>
+                    <constraint firstItem="y0u-iq-ckc" firstAttribute="leading" secondItem="zyB-gW-PTO" secondAttribute="leading" id="BA4-l6-mvS"/>
+                    <constraint firstItem="3HJ-rt-KIE" firstAttribute="trailing" secondItem="LMI-Kv-JTH" secondAttribute="leading" constant="10" id="FYX-sR-xc9"/>
+                    <constraint firstAttribute="trailing" secondItem="mUt-4j-O5C" secondAttribute="trailing" constant="60" id="IW5-ob-9uV"/>
+                    <constraint firstAttribute="trailing" secondItem="p1g-aA-SjO" secondAttribute="trailing" constant="10" id="Lux-fX-GMn"/>
+                    <constraint firstItem="itq-Qf-aLg" firstAttribute="leading" secondItem="W3F-CU-YOq" secondAttribute="leading" id="TQC-6g-KCw"/>
+                    <constraint firstAttribute="trailing" secondItem="itq-Qf-aLg" secondAttribute="trailing" id="VfU-Fb-t1D"/>
+                    <constraint firstAttribute="bottom" secondItem="crK-6x-0Cu" secondAttribute="bottom" id="XHw-ja-QXm"/>
+                    <constraint firstItem="LMI-Kv-JTH" firstAttribute="centerY" secondItem="W3F-CU-YOq" secondAttribute="centerY" id="Y5o-yl-LZd"/>
+                    <constraint firstAttribute="trailing" secondItem="LMI-Kv-JTH" secondAttribute="trailing" id="k9T-fa-uTf"/>
+                    <constraint firstItem="3HJ-rt-KIE" firstAttribute="centerY" secondItem="W3F-CU-YOq" secondAttribute="centerY" id="kXf-DT-Ytw"/>
+                    <constraint firstItem="zyB-gW-PTO" firstAttribute="leading" secondItem="W3F-CU-YOq" secondAttribute="leading" constant="15" id="kcJ-lh-hcb"/>
+                    <constraint firstItem="zyB-gW-PTO" firstAttribute="centerY" secondItem="W3F-CU-YOq" secondAttribute="centerY" id="uoK-iL-OUt"/>
+                    <constraint firstItem="mUt-4j-O5C" firstAttribute="centerY" secondItem="W3F-CU-YOq" secondAttribute="centerY" id="xvy-2z-BYO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bottomSeparator" destination="crK-6x-0Cu" id="ltW-Fj-N89"/>
+                <outlet property="contentSeparator" destination="y0u-iq-ckc" id="ceL-vi-2i1"/>
+                <outlet property="pSeparatorView" destination="3HJ-rt-KIE" id="HZL-Ec-MUb"/>
+                <outlet property="pullButton" destination="LMI-Kv-JTH" id="KYV-u3-ZtG"/>
+                <outlet property="separatorConstraints" destination="7TL-r6-6Oj" id="mgI-DM-PO0"/>
+                <outlet property="textField" destination="mUt-4j-O5C" id="gIQ-J7-kq8"/>
+                <outlet property="textFieldRightConstraints" destination="IW5-ob-9uV" id="O06-wj-Kue"/>
+                <outlet property="titleLabel" destination="zyB-gW-PTO" id="HD9-ja-vSF"/>
+                <outlet property="topSeparator" destination="itq-Qf-aLg" id="x2u-fA-Jgo"/>
+                <outlet property="verifityLabel" destination="p1g-aA-SjO" id="fG1-ON-zVg"/>
+            </connections>
+            <point key="canvasLocation" x="345" y="166"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="iconPull" width="14" height="8"/>
+    </resources>
+</document>
