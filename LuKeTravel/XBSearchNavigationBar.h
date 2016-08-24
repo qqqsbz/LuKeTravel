@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class XBSearchView;
+@class XBSearchNavigationBar;
 
-@protocol XBSearchViewDelegate <NSObject>
+@protocol XBSearchNavigationBarDelegate <NSObject>
 
 @optional
 - (void)searchViewDidSelectedCancle;
@@ -24,7 +24,7 @@
 
 @end
 
-@interface XBSearchView : UIView
+@interface XBSearchNavigationBar : UIView
 
 @property (weak, nonatomic) id<XBSearchViewDelegate> delegate;
 
