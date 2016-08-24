@@ -55,3 +55,7 @@ NSString *const kEmailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}
 NSString *const kPhoneRegex = @"^((13[0-9])|(147)|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";
 
 NSString *const kPassWordRegex = @"^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$";
+
+NSString *const kPayWayAliPay = @"alipay";
+
+NSString *const kPayWayWechatPay = @"wechatpay";

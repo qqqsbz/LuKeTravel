@@ -9,5 +9,21 @@
 #import "XBConfigImages.h"
 
 @implementation XBConfigImages
++ (NSString *)managedObjectEntityName
+{
+    return NSStringFromClass(self);
+}
 
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    return @{};
+}
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    return @{@"beginTime":@"begin_time",
+             @"endTime":@"end_time",
+             @"imgUrl":@"img_url"
+             };
+}
 @end

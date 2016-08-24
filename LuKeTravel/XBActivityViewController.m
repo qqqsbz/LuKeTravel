@@ -13,15 +13,20 @@
 #import "XBShareView.h"
 #import "SDCycleScrollView.h"
 #import "XBWebViewController.h"
+#import "XBBookOrderTransition.h"
 #import "XBActivityPackageView.h"
 #import "XBActivityNavigationBar.h"
 #import "XBActivityReviewMaskView.h"
 #import "XBStretchableActivityView.h"
+#import "XBOrderNavigationController.h"
 #import "XBActivityRecommendMaskView.h"
 #import "XBWeChatLoginViewController.h"
-#import "XBPlaceOnOrderViewController.h"
+#import "XBOrderCalendarViewController.h"
 #import "XBActivityDetailViewController.h"
-@interface XBActivityViewController () <SDCycleScrollViewDelegate,UIScrollViewDelegate,XBStretchableActivityViewDelegate,XBActivityPackageViewDelegate>
+
+
+@interface XBActivityViewController () <SDCycleScrollViewDelegate,UIScrollViewDelegate,
+XBStretchableActivityViewDelegate,XBActivityPackageViewDelegate,UIViewControllerTransitioningDelegate>
 @property (strong, nonatomic) XBActivity                  *activity;
 @property (strong, nonatomic) XBShareView                 *shareView;
 @property (strong, nonatomic) UIButton                    *shareButton;
@@ -29,6 +34,7 @@
 @property (strong, nonatomic) SDCycleScrollView           *bannerView;
 @property (strong, nonatomic) XBActivityPackageView       *packageView;
 @property (strong, nonatomic) XBActivityReviewMaskView    *reviewMaskView;
+@property (strong, nonatomic) UINavigationController      *bookOrderNavigationController;
 @property (strong, nonatomic) XBActivityNavigationBar     *navigationBarView;
 @property (strong, nonatomic) XBStretchableActivityView   *stretchHeaderView;
 @property (strong, nonatomic) XBActivityRecommendMaskView *recommendMaskView;
@@ -52,6 +58,7 @@ static NSString *const reuseIdentifier = @"cell";
     [self reloadData];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccessAction) name:kUserLoginSuccessNotificaton object:nil];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -59,6 +66,8 @@ static NSString *const reuseIdentifier = @"cell";
     [super viewWillAppear:animated];
   
     self.navigationItem.rightBarButtonItem.enabled = self.activity != nil;
+    
+    [[[self.navigationController.navigationBar subviews] firstObject] setAlpha:0];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -66,6 +75,8 @@ static NSString *const reuseIdentifier = @"cell";
     [super viewDidAppear:animated];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
+    [[[self.navigationController.navigationBar subviews] firstObject] setAlpha:0];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -267,7 +278,7 @@ static NSString *const reuseIdentifier = @"cell";
     
 }
 
-- (void)navigationBarAnimation:(BOOL)isShow complete:(dispatch_block_t)block
+- (void)navigationBarAnimation:(BOOL)isShow complete:(dispatch_block_t)complete
 {
     if (isShow) {
         
@@ -283,10 +294,11 @@ static NSString *const reuseIdentifier = @"cell";
                 
                 self.navigationBarView.animationing = NO;
                 
-                if (block) {
+                if (complete) {
                     
-                    block();
+                    complete();
                 }
+                
             }];
         }
         
@@ -304,10 +316,11 @@ static NSString *const reuseIdentifier = @"cell";
                 
                 self.navigationBarView.animationing = NO;
                 
-                if (block) {
+                if (complete) {
                     
-                    block();
+                    complete();
                 }
+                
             }];
             
         }
@@ -339,29 +352,30 @@ static NSString *const reuseIdentifier = @"cell";
     self.packageView.hideMenu = YES;
     
     [self navigationBarAnimation:YES complete:^{
-
-        XBPlaceOnOrderViewController *placeOnOrderVC = [[XBPlaceOnOrderViewController alloc] initWithPackage:self.orderPackage];
         
-        placeOnOrderVC.view.alpha = 0.f;
+        XBOrderCalendarViewController *bookOrderVC = [[XBOrderCalendarViewController alloc] init];
         
-        [self addChildViewController:placeOnOrderVC];
+        bookOrderVC.package = self.orderPackage;
         
-        [self.view addSubview:placeOnOrderVC.view];
+        XBOrderNavigationController *navigationController = [[XBOrderNavigationController alloc] initWithRootViewController:bookOrderVC];
         
-        self.navigationController.navigationBarHidden = YES;
+        navigationController.transitioningDelegate = self;
         
-        [UIView animateWithDuration:0.75 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            
-            placeOnOrderVC.view.alpha = 1.f;
-            
-        } completion:^(BOOL finished) {
-            
-            [placeOnOrderVC showCalendar];
-            
-        }];
+        [self presentViewController:navigationController animated:YES completion:nil];
         
     }];
     
+}
+
+/** 自定义转场动画 */
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+{
+    return [XBBookOrderTransition transitionWithTransitionType:XBBookOrderTransitionTypePresent];
+}
+
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    return [XBBookOrderTransition transitionWithTransitionType:XBBookOrderTransitionTypeDismiss];
 }
 
 /** 检查是否登录 */

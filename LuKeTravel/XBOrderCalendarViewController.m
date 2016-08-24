@@ -6,21 +6,27 @@
 //  Copyright © 2016年 coder. All rights reserved.
 //
 
-#import "XBBookOrderViewController.h"
+#import "XBOrderCalendarViewController.h"
 #import "XBPackage.h"
 #import "XBOrderCalendarView.h"
-@interface XBBookOrderViewController () <XBOrderCalendarViewDelegate>
+#import "XBBookOrderViewController.h"
+#import "XBWeChatLoginViewController.h"
+@interface XBOrderCalendarViewController () <XBOrderCalendarViewDelegate>
 /** 日历 */
 @property (strong, nonatomic) XBOrderCalendarView *calendarView;
 @end
 
-@implementation XBBookOrderViewController
+@implementation XBOrderCalendarViewController
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
     [self buildView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadArrangements) name:kUserLoginSuccessNotificaton object:nil];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentToLoginViewController) name:kUserUnLoginNotification object:nil];
 }
 
 - (void)reloadArrangements
@@ -37,6 +43,15 @@
         
         [self hideLoading];
         
+        if (error.code == kUserUnLoginCode) {
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:kUserUnLoginNotification object:nil];
+            
+        } else {
+            
+            [self showNoSignalAlert];
+        }
+        
     }];
 }
 
@@ -47,13 +62,19 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.calendarView = [XBOrderCalendarView new];
+    
     self.calendarView.delegate = self;
+    
     [self.view addSubview:self.calendarView];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
     button.frame = CGRectMake(0, 0, 30, 30);
+    
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    
     [button setImage:[UIImage imageNamed:@"backArrow"] forState:UIControlStateNormal];
+    
     [button addTarget:self action:@selector(dismissAction) forControlEvents:UIControlEventTouchUpInside];
     button.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
     
@@ -78,13 +99,30 @@
 - (void)orderCalendarView:(XBOrderCalendarView *)orderCalendarView didSelectOrderWithArrangement:(XBArrangement *)arrangement
 {
 
-    DDLogDebug(@"下单 :%@",arrangement);
+    XBBookOrderViewController *bookOrderVC = [[XBBookOrderViewController alloc] init];
+    
+    bookOrderVC.arrangement = arrangement;
+    
+    [self.navigationController pushViewController:bookOrderVC animated:YES];
 }
 
 - (void)dismissAction
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+/** 用户未登陆 跳转到登陆界面 */
+- (void)presentToLoginViewController
+{
+    XBWeChatLoginViewController *loginViewController = [[XBWeChatLoginViewController alloc] init];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+    
+    navigationController.navigationBarHidden = YES;
+    
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

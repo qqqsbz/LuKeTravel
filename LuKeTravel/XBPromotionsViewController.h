@@ -11,4 +11,5 @@
 @interface XBPromotionsViewController : UIViewController
 /** 优惠券码 */
 @property (strong, nonatomic) NSString *couponCode;
+
 @end

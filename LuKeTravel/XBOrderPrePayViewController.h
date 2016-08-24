@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@class XBBook;
+@class XBPayContact;
+@class XBOrderPrePayNavigationBar;
+@interface XBOrderPrePayViewController : UITableViewController <UINavigationControllerDelegate>
 
-@interface XBOrderPrePayViewController : UIViewController
+/** 订单信息 */
+@property (strong, nonatomic) XBOrderPrePayNavigationBar *orderPrePayNavigationBar;
 
+@property (strong, nonatomic) XBBook *book;
 @end
+

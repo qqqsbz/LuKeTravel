@@ -7,6 +7,7 @@
 //
 #define kSpace 10.f
 #define kHeaderHeight 50.f
+#define kDuration 0.7
 #define kStatusHeight   CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)
 #define kTabbarHeight   CGRectGetHeight(self.tabBarController.tabBar.frame)
 #define kResetTabviewContentSize self.tableView.contentSize.height - CGRectGetHeight(self.navigationController.navigationBar.frame)
@@ -16,26 +17,40 @@
 #import "XBGroup.h"
 #import "XBGroupItem.h"
 #import "XBInviation.h"
+#import "XBGuideView.h"
 #import "XBHomeHeaderView.h"
 #import "XBHomeActivityCell.h"
 #import "XBHomeInviationCell.h"
 #import "XBActivityViewController.h"
 #import "XBCityViewController.h"
+#import "XBPromotionsViewController.h"
 #import "XBHomeSearchViewController.h"
+#import "XBWeChatLoginViewController.h"
 #import "XBStretchableTableHeaderView.h"
 #import "XBMoreActivityViewController.h"
 
 @interface XBHomeViewController () <UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,XBHomeInviationCellDelegate,XBHomeActivityCellDelegate>
+/** 数据列表 */
 @property (strong, nonatomic) UITableView   *tableView;
+/** 横幅图片 */
 @property (strong, nonatomic) UIImageView   *bannerImageView;
+/** 数据 */
 @property (strong, nonatomic) XBHome        *home;
+/** 状态栏view */
 @property (strong, nonatomic) UIView        *statusView;
+/** 搜索按钮 */
 @property (strong, nonatomic) UIButton      *searchButton;
+/** logo文字 */
 @property (strong, nonatomic) UILabel       *logoLabel;
+/** logo图片 */
 @property (strong, nonatomic) UIImageView   *logoImageView;
+/** 定时器 */
+@property (strong, nonatomic) NSTimer       *timer;
+/** 处理横幅图片拉伸 */
 @property (strong, nonatomic) XBStretchableTableHeaderView  *stretchHeaderView;
 @end
 
+static NSInteger bannerIndex;
 static NSString *activityReuseIdentifier = @"XBHomeActivityCell";
 static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 @implementation XBHomeViewController
@@ -43,16 +58,20 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     [self setNavigationBarTranslucent];
 
     [self buildView];
     
     [self reloadData];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:kUserLoginSuccessNotificaton object:nil];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     
     self.navigationController.navigationBarHidden = YES;
     
@@ -97,6 +116,12 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
         
         self.tableView.contentSize = CGSizeMake(CGRectGetWidth(self.tableView.frame),kResetTabviewContentSize);
         
+        bannerIndex = 0;
+        
+        [self.bannerImageView sd_setImageWithURL:[NSURL URLWithString:[self.home.bannerImages firstObject]] placeholderImage:[UIImage imageNamed:@"placeholder_image"]];
+        
+        [self.timer setFireDate:[NSDate date]];
+        
         [XBLoadingView hide];
         
     } failure:^(NSError *error) {
@@ -105,7 +130,7 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
         
         [XBLoadingView hide];
         
-        [self showFail:@"加载失败!"];
+        [self showNoSignalAlert];
         
     }];
 }
@@ -119,7 +144,6 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"#F2F4F5"];
     self.tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
-//    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBActivityCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:activityReuseIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeActivityCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:activityReuseIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeInviationCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:inviationReuseIdentifier];
     [self.view addSubview:self.tableView];
@@ -127,7 +151,7 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     
     CGFloat height = CGRectGetHeight(self.view.frame) - kTabbarHeight;
     self.bannerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), height * 0.605)];
-    self.bannerImageView.image = [UIImage imageNamed:@"banner1.jpg"];
+    self.bannerImageView.image = [UIImage imageNamed:@"placeholder_image"];
     self.bannerImageView.contentMode = UIViewContentModeScaleAspectFill ;
     self.bannerImageView.clipsToBounds = YES;
     
@@ -155,6 +179,10 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     self.logoImageView.image  = [UIImage imageNamed:@"Klook_More"];
     self.logoImageView.hidden = YES;
     [self.tableView insertSubview:self.logoImageView atIndex:1];
+    
+    //创建定时器
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:kDuration * 7 target:self selector:@selector(bannerStartAnimation) userInfo:nil repeats:YES];
+    [self.timer setFireDate:[NSDate distantFuture]];
     
     [self addConstraint];
 
@@ -188,7 +216,28 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 
 - (void)bannerStartAnimation
 {
+    CATransition *animation = [CATransition animation];
     
+    animation.duration = kDuration;
+    
+    animation.type = kCATransitionFade;
+    
+    animation.subtype = kCATransitionFromTop;
+    
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    
+    [self.bannerImageView.layer addAnimation:animation forKey:@"TransitionAnimation"];
+    
+    if (bannerIndex < self.home.bannerImages.count - 1) {
+        
+        bannerIndex ++;
+    
+    } else {
+     
+        bannerIndex = 0;
+    }
+    
+    [self.bannerImageView sd_setImageWithURL:[NSURL URLWithString:self.home.bannerImages[bannerIndex]] placeholderImage:[UIImage imageNamed:@"placeholder_image"]];
 }
 
 
@@ -199,12 +248,15 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSInteger count = self.home.groups.count + (self.home.inviation ? 1 : 0);
+    
+    NSInteger count = self.home.groups.count + (self.home.inviation && self.home.inviation.visable ? 1 : 0);
+    
     return count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section < self.home.groups.count) {
+        
         return 1;
     }
     return self.home.inviation ? 1 : 0;
@@ -213,31 +265,49 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section < self.home.groups.count) {
+        
         XBGroup *group = self.home.groups[indexPath.section];
+        
         XBHomeActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:activityReuseIdentifier forIndexPath:indexPath];
+        
         cell.groupItems = group.items;
+        
         cell.delegate = self;
+        
         return cell;
     }
     
     XBHomeInviationCell *cell = [tableView dequeueReusableCellWithIdentifier:inviationReuseIdentifier forIndexPath:indexPath];
+    
     cell.inviation = self.home.inviation;
+    
     cell.delegate  = self;
+    
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat height = 230.f;
+    
     if (indexPath.section < self.home.groups.count) {
+        
         XBGroup *group = self.home.groups[indexPath.section];
+        
         if (![group.type isEqualToString:@"4"]) {
+            
             height = 275.f;
+            
         } else {
+            
             height = 210.f;
+            
         }
+        
     }
+    
     height *= [XBApplication isPlus] ? 1.2 : 1;
+    
     return height;
 }
 
@@ -250,9 +320,13 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 {
     
     XBGroup *group = self.home.groups[section];
+    
     XBHomeHeaderView *headerView = [[XBHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 50.f)];
+    
     headerView.leftLabel.text = group.className;
+    
     headerView.rightLabel.text = group.displayText;
+    
     return headerView;
 }
 
@@ -266,6 +340,7 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 - (void)activityCell:(XBHomeActivityCell *)activityCell didSelectedWithGroupItem:(XBGroupItem *)groupItem
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:activityCell];
+    
     XBGroup *group = self.home.groups[indexPath.section];
     
     if ([group.type isEqualToString:@"4"]) {
@@ -303,23 +378,33 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     BOOL isShowStatus = fabs(scrollView.contentOffset.y) >= CGRectGetHeight(self.bannerImageView.frame) * 0.5;
     if (isShowStatus) {
         if (self.statusView.xb_y == -kStatusHeight) {
+            
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+            
             [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
                 self.statusView.xb_y = 0;
+        
             } completion:nil];
         }
     } else {
         if (self.statusView.xb_y == 0) {
+            
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+            
             [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                
                 self.statusView.xb_y = - kStatusHeight;
+                
             } completion:nil];
         }
     }
     
     //显示底部logo
     BOOL isShowLogo = (scrollView.contentOffset.y + CGRectGetHeight(scrollView.frame)) > (scrollView.contentSize.height + kSpace);
+    
     self.logoImageView.hidden = !isShowLogo;
+    
     self.logoLabel.hidden  = !isShowLogo;
     
     
@@ -342,19 +427,39 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 - (void)inviationCellDidSelectedClose
 {
     self.home.inviation = nil;
+    
     [self.tableView beginUpdates];
+    
     [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:self.home.groups.count] withRowAnimation:UITableViewRowAnimationBottom];
+    
     [self.tableView endUpdates];
     
     dispatch_async(dispatch_get_main_queue(), ^{
+        
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        
     });
     
 }
 
 - (void)inviationCellDidSelectedGo
 {
-    
+    if ([XBUserDefaultsUtil userInfo]) {
+        
+        XBPromotionsViewController *promotionsVC = [[XBPromotionsViewController alloc] init];
+        
+        promotionsVC.couponCode = self.home.inviation.code;
+        
+        promotionsVC.hidesBottomBarWhenPushed = YES;
+        
+        [[[self.navigationController.navigationBar subviews] firstObject] setAlpha:1];
+        
+        [self.navigationController pushViewController:promotionsVC animated:YES];
+        
+    } else {
+        
+        [self presentToLoginVC];
+    }
 }
 
 #pragma mark -- public method
@@ -368,6 +473,21 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     
     [self.navigationController pushViewController:searchVC animated:YES];
     
+}
+
+/** 用户未登录跳转到登录页 登录后进行的操作 */
+- (void)loginSuccess
+{
+    [self inviationCellDidSelectedGo];
+}
+
+- (void)presentToLoginVC
+{
+    XBWeChatLoginViewController *weChatLoginVC = [[XBWeChatLoginViewController alloc] init];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:weChatLoginVC];
+    
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)setNavigationBarTranslucent

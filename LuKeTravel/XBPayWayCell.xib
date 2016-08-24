@@ -1,15 +1,68 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-        </view>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="XBPayWayCell" id="KR3-WV-D0K" customClass="XBPayWayCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KR3-WV-D0K" id="yQ6-zd-CuQ">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alipay" translatesAutoresizingMaskIntoConstraints="NO" id="SJM-7p-dZC">
+                        <rect key="frame" x="10" y="8" width="44" height="44"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5km-q4-cLh" userLabel="title">
+                        <rect key="frame" x="69" y="21" width="38" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.51764705879999995" green="0.51764705879999995" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNV-am-03k" userLabel="separator">
+                        <rect key="frame" x="20" y="58" width="300" height="1"/>
+                        <color key="backgroundColor" red="0.73725490199999999" green="0.72941176470000002" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="hq7-48-hrX"/>
+                        </constraints>
+                    </view>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="item_selected" translatesAutoresizingMaskIntoConstraints="NO" id="XCy-Yy-PFI">
+                        <rect key="frame" x="283" y="19" width="22" height="22"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="XCy-Yy-PFI" secondAttribute="trailing" constant="15" id="3l1-iI-x35"/>
+                    <constraint firstItem="5km-q4-cLh" firstAttribute="leading" secondItem="SJM-7p-dZC" secondAttribute="trailing" constant="15" id="5Lc-4n-VbV"/>
+                    <constraint firstItem="xNV-am-03k" firstAttribute="leading" secondItem="SJM-7p-dZC" secondAttribute="leading" id="8JB-GR-bj7"/>
+                    <constraint firstItem="SJM-7p-dZC" firstAttribute="leading" secondItem="yQ6-zd-CuQ" secondAttribute="leading" constant="10" id="AWm-FJ-j3s"/>
+                    <constraint firstItem="5km-q4-cLh" firstAttribute="centerY" secondItem="yQ6-zd-CuQ" secondAttribute="centerY" id="EY3-ZJ-IiL"/>
+                    <constraint firstItem="xNV-am-03k" firstAttribute="leading" secondItem="yQ6-zd-CuQ" secondAttribute="leading" constant="20" id="YNh-Wc-g2a"/>
+                    <constraint firstAttribute="trailing" secondItem="xNV-am-03k" secondAttribute="trailing" id="ZEe-F6-QNE"/>
+                    <constraint firstItem="XCy-Yy-PFI" firstAttribute="centerY" secondItem="yQ6-zd-CuQ" secondAttribute="centerY" id="dn5-7V-nem"/>
+                    <constraint firstAttribute="bottom" secondItem="xNV-am-03k" secondAttribute="bottom" id="igQ-jE-XVw"/>
+                    <constraint firstItem="SJM-7p-dZC" firstAttribute="centerY" secondItem="yQ6-zd-CuQ" secondAttribute="centerY" id="nos-Qg-0Vj"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="8JB-GR-bj7"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="checkMarkImageView" destination="XCy-Yy-PFI" id="twX-l1-VXp"/>
+                <outlet property="iconImageView" destination="SJM-7p-dZC" id="2ba-qZ-FR3"/>
+                <outlet property="separatorConstraint" destination="hq7-48-hrX" id="FNl-YZ-zQ9"/>
+                <outlet property="titleLabel" destination="5km-q4-cLh" id="bYx-0r-LPa"/>
+            </connections>
+            <point key="canvasLocation" x="292" y="191"/>
+        </tableViewCell>
     </objects>
+    <resources>
+        <image name="alipay" width="44" height="44"/>
+        <image name="item_selected" width="22" height="22"/>
+    </resources>
 </document>

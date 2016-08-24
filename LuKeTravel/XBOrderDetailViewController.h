@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@class XBBook;
+@class XBPayWay;
+@interface XBOrderDetailViewController : UITableViewController <UINavigationControllerDelegate>
 
-@interface XBOrderDetailViewController : UITableViewController
+/** 订单详细 */
+@property (strong, nonatomic) XBBook *book;
+/** 支付方式 */
+@property (strong, nonatomic) XBPayWay *payWay;
+/** 日期 */
+@property (strong, nonatomic) NSString *dateString;
 
 @end

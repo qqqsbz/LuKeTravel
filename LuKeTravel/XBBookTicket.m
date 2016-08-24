@@ -6,9 +6,10 @@
 //  Copyright © 2016年 coder. All rights reserved.
 //
 
-#import "XBBookTickets.h"
+#import "XBBookTicket.h"
 #import "XBArrangement.h"
-@implementation XBBookTickets
+#import "XBBookOtherInfo.h"
+@implementation XBBookTicket
 + (NSString *)managedObjectEntityName
 {
     return NSStringFromClass(self);
@@ -26,14 +27,16 @@
              @"packageDesc":@"package_desc",
              @"ticketPrice":@"ticket_price",
              @"ticketTypeCounts":@"ticket_type_counts",
-             @"totalCounts":@"total_counts"
+             @"totalCounts":@"total_counts",
+             @"modelId":@"id"
              };
 }
 
 + (NSDictionary *)relationshipModelClassesByPropertyKey
 {
     return @{
-             @"arrangement":[XBArrangement class]
+             @"arrangement":[XBArrangement class],
+             @"generalOtherInfos":[XBBookOtherInfo class]
              };
 }
 
@@ -41,6 +44,11 @@
 + (NSValueTransformer *)arrangementJSONTransformer
 {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[XBArrangement class]];
+}
+
++ (NSValueTransformer *)generalOtherInfosJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[XBBookOtherInfo class]];
 }
 
 @end

@@ -65,7 +65,7 @@ static NSString *const reuseIdentifier = @"XBHomeSearchActivityClickCell";
             
         } else {
             
-            [self showFail:[XBLanguageControl localizedStringForKey:@"loading-fail"] inView:self.view];
+            [self showNoSignalAlert];
         }
 
     }];

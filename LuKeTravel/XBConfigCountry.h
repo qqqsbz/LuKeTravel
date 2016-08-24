@@ -9,5 +9,5 @@
 #import "XBModel.h"
 
 @interface XBConfigCountry : XBModel
-
+@property (strong, nonatomic) NSArray<NSString *> *countryCode;
 @end

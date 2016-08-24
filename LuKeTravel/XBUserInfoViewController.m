@@ -150,9 +150,7 @@
         
         if (error.code == kUserUnLoginCode) {
             
-            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:[XBLanguageControl localizedStringForKey:@"user-info-unlogin"] message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:[XBLanguageControl localizedStringForKey:@"user-info-logout-confirm"], nil];
-            
-            [alertView show];
+            [self showAlertWithTitle:[XBLanguageControl localizedStringForKey:@"user-info-unlogin"]];
             
             XBWeChatLoginViewController *loginViewController = [[XBWeChatLoginViewController alloc] initWithDismissBlock:^{
                 
@@ -169,7 +167,7 @@
             
         } else {
             
-            [self showFail:[XBLanguageControl localizedStringForKey:@"load-fail"]];
+            [self showNoSignalAlert];
         }
         
     }];
@@ -364,16 +362,13 @@
     
     if (name.length <= 0 || family.length <= 0 || email.length <= 0 || code.length <= 0 || phone.length <= 0 || [appellation isEqualToString:[XBLanguageControl localizedStringForKey:@"user-info-appellation-placeholder"]]) {
         
-        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:[XBLanguageControl localizedStringForKey:@"user-info-error-all-field"] message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:[XBLanguageControl localizedStringForKey:@"user-info-logout-confirm"], nil];
-        
-        [alertView show];
+        [self showAlertWithTitle:[XBLanguageControl localizedStringForKey:@"user-info-error-all-field"]];
         
         return;
         
     } else if (emailRange.location == NSNotFound) {
         
-        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:[XBLanguageControl localizedStringForKey:@"login-alert-message"] message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:[XBLanguageControl localizedStringForKey:@"login-alert-confirm"], nil];
-        [alertView show];
+        [self showAlertWithTitle:[XBLanguageControl localizedStringForKey:@"login-alert-message"]];
         
         return;
     }
@@ -396,10 +391,9 @@
 - (IBAction)loginOut:(UIBarButtonItem *)sender {
 
     [XBUserDefaultsUtil clearUserInfo];
+
+    [self showAlertWithTitle:[XBLanguageControl localizedStringForKey:@"user-info-logout-success"]];
     
-    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:[XBLanguageControl localizedStringForKey:@"user-info-logout-success"] message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:[XBLanguageControl localizedStringForKey:@"user-info-logout-confirm"], nil];
-    
-    [alertView show];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -606,9 +600,8 @@
         
         [self hideLoading];
         
-        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:[XBLanguageControl localizedStringForKey:@"user-info-success-save"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:[XBLanguageControl localizedStringForKey:@"user-info-logout-confirm"], nil];
+        [self showAlertWithTitle:[XBLanguageControl localizedStringForKey:@"user-info-success-save"]];
         
-        [alertView show];
         
     } failure:^(NSError *error) {
         
@@ -637,9 +630,8 @@
         
         NSString *message = [error.userInfo valueForKey:kErrorMessage] ? [XBLanguageControl localizedStringForKey:@"verification-code-error-get"] : [error.userInfo valueForKey:kErrorMessage];
         
-        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:message message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:[XBLanguageControl localizedStringForKey:@"commom-alert-confirm"], nil];
+        [self showAlertWithTitle:message];
         
-        [alertView show];
         
     }];
 }

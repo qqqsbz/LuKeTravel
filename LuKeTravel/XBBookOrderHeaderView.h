@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface XBBookOrderHeaderView : UIView
-
+/** 标题 */
+@property (strong, nonatomic) UILabel *titleLabel;
+/** 详细 */
+@property (strong, nonatomic) UILabel *detailLabel;
 @end

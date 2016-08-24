@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface XBBookOrderMoneyCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *moneyLabel;
+@property (strong, nonatomic) IBOutlet UILabel *saveLabel;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *separatorConstraint;
 
 @end

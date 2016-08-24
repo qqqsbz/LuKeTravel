@@ -8,15 +8,15 @@
 
 #import "XBModel.h"
 @class XBArrangement;
-
-@interface XBBookTickets : XBModel
+@class XBBookOtherInfo;
+@interface XBBookTicket : XBModel
 @property (strong, nonatomic) NSString  *marketPrice;
 @property (strong, nonatomic) NSString  *packageDesc;
 @property (strong, nonatomic) NSString  *ticketPrice;
 @property (assign, nonatomic) NSInteger totalCounts;
 @property (strong, nonatomic) XBArrangement *arrangement;
 
-@property (strong, nonatomic) NSArray<NSString *> *ticketTypeCounts;
-@property (strong, nonatomic) NSArray *generalOtherInfos;
+@property (strong, nonatomic) NSArray<NSString *>        *ticketTypeCounts;
+@property (strong, nonatomic) NSArray<XBBookOtherInfo *> *generalOtherInfos;
 @property (strong, nonatomic) NSArray *individualOtherInfos;
 @end

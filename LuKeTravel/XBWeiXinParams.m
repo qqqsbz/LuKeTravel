@@ -9,5 +9,13 @@
 #import "XBWeiXinParams.h"
 
 @implementation XBWeiXinParams
++ (NSString *)managedObjectEntityName
+{
+    return NSStringFromClass(self);
+}
 
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    return @{};
+}
 @end

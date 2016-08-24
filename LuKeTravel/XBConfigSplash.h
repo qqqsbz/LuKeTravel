@@ -7,7 +7,7 @@
 //
 
 #import "XBModel.h"
-
+@class XBConfigImages;
 @interface XBConfigSplash : XBModel
-
+@property (strong, nonatomic) NSArray<XBConfigImages *> *images;
 @end

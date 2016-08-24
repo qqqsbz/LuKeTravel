@@ -10,4 +10,10 @@
 
 @interface XBLaunchScreenViewController : UIViewController
 
+/** 菊花转动 */
+- (void)startIndicatorView;
+
+/** 显示引导页 */
+- (void)showGuideViewWithComplete:(dispatch_block_t)complete;
+
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class XBPackage;
-@interface XBBookOrderViewController : UIViewController
+@interface XBOrderCalendarViewController : UIViewController
 
 @property (strong, nonatomic) XBPackage *package;
 

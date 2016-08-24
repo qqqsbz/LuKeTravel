@@ -22,10 +22,15 @@
 #import "XBDestinationAllHeaderView.h"
 #import "XBDestinationAllFooterView.h"
 @interface XBDestinationViewController () <TSTViewDelegate,TSTViewDataSource,UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
+/** 多视图切换 */
 @property (strong, nonatomic) XBTSTView         *tstView;
+/** 标题 */
 @property (strong, nonatomic) NSArray           *titles;
+/** 目的地数据 */
 @property (strong, nonatomic) XBDestination     *destination;
+/** 列表 */
 @property (strong, nonatomic) UICollectionView  *allCollectionView;
+/** 底部view */
 @property (strong, nonatomic) XBDesinationFooterView  *desinationFooterView;
 @end
 
@@ -75,9 +80,7 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
     [super viewWillAppear:animated];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    
-    self.navigationController.navigationBarHidden = NO;
-    
+
     //如果用户切换过语言 则重新创建页面加载数据
     if (self.destination && ![self.destination.modelLanguage isEqualToString:[XBUserDefaultsUtil currentLanguage]]) {
         
@@ -90,6 +93,18 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
         [self reloadData];
         
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
+    self.navigationController.navigationBarHidden = NO;
+    
+    [[[self.navigationController.navigationBar subviews] firstObject] setAlpha:1];
+    
 }
 
 - (void)reloadLanguageConfig
@@ -210,7 +225,9 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     XBDestinationHotCell *cell = [tableView dequeueReusableCellWithIdentifier:destinationCityReuseIdentifier forIndexPath:indexPath];
+    
     cell.hotDestination = self.destination.popularDestinations[indexPath.row];
+   
     return cell;
 }
 
@@ -265,9 +282,13 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     XBDestinationCities *city = self.destination.allCities[indexPath.section];
+    
     XBDestinationItem *item = city.items[indexPath.row];
+    
     XBDestinationAllCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:destinationAllReuseIdentifier forIndexPath:indexPath];
+   
     cell.titleLabel.text = item.name;
+    
     cell.separatorView.hidden = indexPath.row == city.items.count - 1 ;
     return cell;
 }
@@ -317,14 +338,19 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     XBDestinationCities *city = self.destination.allCities[indexPath.section];
+   
     XBDestinationItem *item = city.items[indexPath.row];
-    
+
     XBGroupItem *groupItem = [[XBGroupItem alloc] init];
+    
     groupItem.modelId = item.modelId;
+   
     groupItem.name = item.name;
     
     XBCityViewController *cityVC = [[XBCityViewController alloc] init];
+    
     cityVC.groupItem = groupItem;
+    
     cityVC.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:cityVC animated:YES];

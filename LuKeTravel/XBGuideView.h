@@ -10,4 +10,8 @@
 
 @interface XBGuideView : UIView
 
+- (instancetype)initWitImages:(NSArray<UIImage *> *)images titles:(NSArray<NSString *> *)titles contents:(NSArray<NSString *> *)contents complete:(dispatch_block_t)complete;
+
+- (instancetype)initWithFrame:(CGRect)frame images:(NSArray<UIImage *> *)images titles:(NSArray<NSString *> *)titles contents:(NSArray<NSString *> *)contents complete:(dispatch_block_t)complete;
+
 @end

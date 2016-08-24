@@ -71,7 +71,7 @@
             
         } else {
             
-            [self showFail:[XBLanguageControl localizedStringForKey:@"loading-fail"]];
+            [self showNoSignalAlert];
         }
         
         

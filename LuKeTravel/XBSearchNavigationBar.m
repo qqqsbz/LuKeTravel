@@ -8,9 +8,9 @@
 #define kTopSpace 30.f
 #define kCancleW  90.f
 #define kSearchH  64.f
-#import "XBSearchView.h"
+#import "XBSearchNavigationBar.h"
 #import "UIImage+Util.h"
-@interface XBSearchView() <UISearchBarDelegate>
+@interface XBSearchNavigationBar() <UISearchBarDelegate>
 @property (strong, nonatomic) UIVisualEffectView    *effectView;
 @property (strong, nonatomic) UIVisualEffectView    *searchEffectView;
 @property (strong, nonatomic) UIView                *searchView;
@@ -18,7 +18,7 @@
 @property (strong, nonatomic) UIButton              *cancleButton;
 @property (strong, nonatomic) UIView                *separatorView;
 @end
-@implementation XBSearchView
+@implementation XBSearchNavigationBar
 - (instancetype)init
 {
     if (self = [super init]) {
@@ -126,36 +126,36 @@
 #pragma mark -- UISearchBarDelegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    if ([self.delegate respondsToSelector:@selector(searchViewTextDidChange:)]) {
-        [self.delegate searchViewTextDidChange:searchText];
+    if ([self.delegate respondsToSelector:@selector(searchNavigationBarTextDidChange:)]) {
+        [self.delegate searchNavigationBarTextDidChange:searchText];
     }
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    if ([self.delegate respondsToSelector:@selector(searchViewDidSelectedCancle)]) {
-        [self.delegate searchViewSearchButtonClicked:searchBar.text];
+    if ([self.delegate respondsToSelector:@selector(searchNavigationBarSearchButtonClicked:)]) {
+        [self.delegate searchNavigationBarSearchButtonClicked:searchBar.text];
     }
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
-    if ([self.delegate respondsToSelector:@selector(searchViewDidBeginEditing)]) {
-        [self.delegate searchViewDidBeginEditing];
+    if ([self.delegate respondsToSelector:@selector(searchNavigationBarDidBeginEditing)]) {
+        [self.delegate searchNavigationBarDidBeginEditing];
     }
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
-    if ([self.delegate respondsToSelector:@selector(searchViewDidEndEditing)]) {
-        [self.delegate searchViewDidEndEditing];
+    if ([self.delegate respondsToSelector:@selector(searchNavigationBarDidEndEditing)]) {
+        [self.delegate searchNavigationBarDidEndEditing];
     }
 }
 
 - (void)cancleAction
 {
-    if ([self.delegate respondsToSelector:@selector(searchViewDidSelectedCancle)]) {
-        [self.delegate searchViewDidSelectedCancle];
+    if ([self.delegate respondsToSelector:@selector(searchNavigationBarDidSelectedCancle)]) {
+        [self.delegate searchNavigationBarDidSelectedCancle];
     }
 }
 

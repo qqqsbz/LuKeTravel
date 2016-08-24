@@ -88,6 +88,7 @@
 }
 
 - (IBAction)inviationAction:(UIButton *)sender {
+    
     if ([self.delegate respondsToSelector:@selector(inviationCellDidSelectedGo)]) {
         [self.delegate inviationCellDidSelectedGo];
     }

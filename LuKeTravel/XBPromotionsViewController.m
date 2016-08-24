@@ -49,6 +49,13 @@ static NSString *const kCouponsReuseIdentifier = @"XBCouponsCell";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadConpon) name:kUserLoginSuccessNotificaton object:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+}
+
 - (void)reloadConpon
 {
     if (self.coupon) return;
@@ -133,11 +140,10 @@ static NSString *const kCouponsReuseIdentifier = @"XBCouponsCell";
                 
                 NSString *errorMsg = [error.userInfo valueForKey:kErrorMessage];
                 
-                errorMsg = errorMsg.length > 0 ? errorMsg : [XBLanguageControl localizedStringForKey:@"loading-fail"];
+                errorMsg = errorMsg.length > 0 ? errorMsg : [XBLanguageControl localizedStringForKey:@"error-no-network-signal"];
                 
-                UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:errorMsg message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:[XBLanguageControl localizedStringForKey:@"user-info-logout-confirm"], nil];
                 
-                [alertView show];
+                [self showAlertWithTitle:errorMsg];
                 
             }];
         }
@@ -281,7 +287,7 @@ static NSString *const kCouponsReuseIdentifier = @"XBCouponsCell";
         
     } else {
         
-        [self showFail:[XBLanguageControl localizedStringForKey:@"loading-fail"]];
+        [self showNoSignalAlert];
         
     }
 }

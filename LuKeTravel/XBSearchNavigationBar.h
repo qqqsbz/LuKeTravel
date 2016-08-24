@@ -12,21 +12,21 @@
 @protocol XBSearchNavigationBarDelegate <NSObject>
 
 @optional
-- (void)searchViewDidSelectedCancle;
+- (void)searchNavigationBarDidSelectedCancle;
 
-- (void)searchViewTextDidChange:(NSString *)text;
+- (void)searchNavigationBarTextDidChange:(NSString *)text;
 
-- (void)searchViewSearchButtonClicked:(NSString *)text;
+- (void)searchNavigationBarSearchButtonClicked:(NSString *)text;
 
-- (void)searchViewDidBeginEditing;
+- (void)searchNavigationBarDidBeginEditing;
 
-- (void)searchViewDidEndEditing;
+- (void)searchNavigationBarDidEndEditing;
 
 @end
 
 @interface XBSearchNavigationBar : UIView
 
-@property (weak, nonatomic) id<XBSearchViewDelegate> delegate;
+@property (weak, nonatomic) id<XBSearchNavigationBarDelegate> delegate;
 
 @property (assign, nonatomic) BOOL  becomFirstreSpondent;
 

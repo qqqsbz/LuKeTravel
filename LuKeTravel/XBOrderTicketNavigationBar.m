@@ -6,14 +6,14 @@
 //  Copyright © 2016年 coder. All rights reserved.
 //
 
-#import "XBOrderConfirmNavigationBar.h"
-@interface XBOrderConfirmNavigationBar()
+#import "XBOrderTicketNavigationBar.h"
+@interface XBOrderTicketNavigationBar()
 /** 返回 */
 @property (strong, nonatomic) UIButton *backButton;
 /** 返回代码块 */
 @property (copy, nonatomic) dispatch_block_t  popBlock;
 @end
-@implementation XBOrderConfirmNavigationBar
+@implementation XBOrderTicketNavigationBar
 
 - (instancetype)initWithPopBlock:(dispatch_block_t)popBlock
 {
@@ -61,7 +61,6 @@
     self.countLabel.textColor = [UIColor colorWithHexString:@"#6E6E6E"];
     [self.countLabel sizeToFit];
     [self addSubview:self.countLabel];
-
     
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.backButton.titleLabel.font = [UIFont systemFontOfSize:14.f];
@@ -75,20 +74,21 @@
 {
     [super layoutSubviews];
     
-    [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(kSpace);
-        make.top.equalTo(self).offset(kSpace * 1.5);
-        make.right.equalTo(self.sellLabel.left).offset(-kSpace * 2);
-    }];
-    
     [self.markerLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.titleLabel);
+        make.centerY.equalTo(self.titleLabel).offset(-kSpace * 0.5);
         make.right.equalTo(self).offset(-kSpace);
     }];
     
     [self.sellLabel makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.markerLabel);
-        make.centerY.equalTo(self.dateLabel);
+        make.top.equalTo(self.markerLabel.bottom).offset(kSpace * 0.5);
+        make.width.mas_greaterThanOrEqualTo(50.f);
+    }];
+    
+    [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self).offset(kSpace);
+        make.top.equalTo(self).offset(kSpace * 1.5);
+        make.right.lessThanOrEqualTo(self.sellLabel.left).offset(-kSpace * 2);
     }];
     
     [self.dateLabel makeConstraints:^(MASConstraintMaker *make) {

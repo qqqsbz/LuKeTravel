@@ -9,5 +9,20 @@
 #import "XBConfigCountry.h"
 
 @implementation XBConfigCountry
++ (NSString *)managedObjectEntityName
+{
+    return NSStringFromClass(self);
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    return @{};
+}
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    return @{@"countryCode":@"country_code"
+             };
+}
 
 @end

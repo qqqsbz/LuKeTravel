@@ -6,22 +6,22 @@
 //  Copyright © 2016年 coder. All rights reserved.
 //
 
-#import "XBOrderConfirmTransition.h"
+#import "XBOrderTicketTransition.h"
 #import "XBOrderEffectView.h"
 #import "XBBookOrderViewController.h"
 #import "XBOrderNavigationController.h"
 #import "XBOrderTicketViewController.h"
 #import "XBOrderTicketNavigationBar.h"
-@interface XBOrderConfirmTransition()
-@property (assign, nonatomic) XBOrderConfirmTransitionType  type;
+@interface XBOrderTicketTransition()
+@property (assign, nonatomic) XBOrderTicketTransitionType  type;
 @end
-@implementation XBOrderConfirmTransition
-+ (instancetype)transitionWithTransitionType:(XBOrderConfirmTransitionType)type
+@implementation XBOrderTicketTransition
++ (instancetype)transitionWithTransitionType:(XBOrderTicketTransitionType)type
 {
     return [[self alloc] initWithTransitionType:type];
 }
 
-- (instancetype)initWithTransitionType:(XBOrderConfirmTransitionType)type
+- (instancetype)initWithTransitionType:(XBOrderTicketTransitionType)type
 {
     if (self = [super init]) {
         _type = type;
@@ -38,10 +38,10 @@
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext
 {
     switch (_type) {
-        case XBOrderConfirmTransitionTypePush:
+        case XBOrderTicketTransitionTypePush:
             [self pushAnimation:transitionContext];
             break;
-        case XBOrderConfirmTransitionTypePop:
+        case XBOrderTicketTransitionTypePop:
             [self popAnimation:transitionContext];
             break;
     }
@@ -61,7 +61,9 @@
     
     UIView *containerView = [transitionContext containerView];
     
-    toVC.tableView.contentInset = UIEdgeInsetsMake(containerView.xb_height, 0, 0, 0);
+    CGFloat tableViewY = toVC.tableView.xb_y;
+    
+    toVC.tableView.xb_y = containerView.xb_height;
     
     toVC.orderTicketNavigationBar.xb_y = - (kTopSpace + toVC.orderTicketNavigationBar.xb_height);
     
@@ -71,15 +73,18 @@
     
     [containerView addSubview:toVC.view];
     
-    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:10 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:7 options:UIViewAnimationOptionCurveEaseOut animations:^{
         
-        toVC.tableView.contentInset = UIEdgeInsetsMake(70, 0, 0, 0);
+        toVC.tableView.xb_y = tableViewY;
         
         toVC.orderTicketNavigationBar.xb_y = -kTopSpace  * 0.5;
         
     } completion:^(BOOL finished) {
        
-        [transitionContext completeTransition:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+           
+            toVC.tableView.contentSize = CGSizeMake(toVC.tableView.contentSize.width, toVC.tableView.contentSize.height + 85);
+        });
         
         [UIView animateWithDuration:0.25 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:15 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
@@ -91,6 +96,7 @@
             
         } completion:^(BOOL finished) {
             
+            [transitionContext completeTransition:YES];
         }];
         
     }];
@@ -131,7 +137,7 @@
             orderNavigationController.orderEffectView.subNameLabel.alpha = 1;
             
         } completion:^(BOOL finished) {
-            
+        
         }];
         
     }];

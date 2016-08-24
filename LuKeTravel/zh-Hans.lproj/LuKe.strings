@@ -12,10 +12,23 @@
 "commom-error-phone" = "请输入正确的手机号码";
 
 "loading-fail" = "加载失败";
+"error-no-network-signal" = "暂无网络信号？可在你的账户中查看离线凭证";
+
+//引导页
+"guide-first-title" = "体验师精选活动";
+"guide-first-content" = "路客旅行体验师深入目的地，收集特色优质的旅行体验活动";
+"guide-second-title" = "轻松的预订方式";
+"guide-second-content" = "简捷预订流程，预订后立即出票，收集电子凭证，还可享受经典快捷通道";
+"guide-third-title" = "专享优惠";
+"guide-third-content" = "路客携手合作伙伴，打造旅途中的专属优惠，更可享受低至5折的超值价格";
+"guide-jump" = "跳过";
+"guide-start" = "开始";
+
 
 //首页
 "search-placeholder" = "搜索亚洲城市、活动";
 "search-cancel" = "取消";
+"search-noresult" = "暂无相关搜索结果哦";
 
 //目的地
 "destination-title" = "目的地";
@@ -56,11 +69,53 @@
 
 //下单
 "activity-order-chosedate" = "选择日期";
-"activity-order-date" = "预订 %d年%d月%d日";
+"activity-order-date" = "预订 %@年%@月%@日";
 "activity-order-time-am" = "上午";
 "activity-order-time-pm" = "下午";
 "activity-order-time-begin-chose" = "请选择开始时间";
 "activity-order-time-begin-title" = "开始时间";
+"activity-order-book-title" = "提交订单";
+"activity-order-next" = "下一步";
+"activity-order-name" = "每人";
+"activity-order-unitname" = "数量";
+"activity-order-total" = "支付金额";
+"activity-order-book-date" = "预订日期";
+"activity-order-save" = "共节省";
+"activity-order-max" = "最多购买数量为%d";
+"activity-order-back" = "返回修改";
+"activity-order-ticket-date" = "%@年%@月%@日";
+"activity-order-special" = "特别信息";
+"activity-order-basic" = "出行人基本信息";
+"activity-order-otherinfo-date" = "%@年%@月%@日";
+"activity-order-contact-name" = "联系人:";
+"activity-order-contact-phone" = "电话:";
+"activity-order-contact-email" = "电子邮箱:";
+"activity-order-prepay-option-title" = "选择支付方式";
+"activity-order-prepay-option" = "选择支付方式";
+"activity-order-prepay-option-alipay" = "支付宝";
+"activity-order-prepay-option-wechatpay" = "微信支付";
+"activity-order-prepay-total" = "金额";
+"activity-order-prepay-coupon" = "使用优惠券";
+"activity-order-prepay-coupon-notuse" = "不使用优惠券";
+"activity-order-prepay-pay" = "支付金额";
+"activity-order-prepay-topay" = "去支付";
+"activity-order-prepay-coupon-tocoupon" = "兑换";
+"activity-order-prepay-coupon-input" = "输入优惠券";
+"activity-order-prepay-none-payoption" = "请选择支付方式";
+
+//订单详情
+"order-detail-title" = "订单详情";
+"order-detail-contact-title" = "出行人信息";
+"order-detail-contact-name" = "联系人";
+"order-detail-contact-email" = "邮箱";
+"order-detail-contact-phone" = "电话";
+"order-detail-payway-title" = "支付方式";
+"order-detail-money-title" = "金额";
+"order-detail-money-total-title" = "总金额";
+"order-detail-money-total-coupon" = "使用优惠券";
+"order-detail-money-total-pay" = "支付金额";
+"order-detail-money-total-save" = "为您节省";
+"order-detail-pay" = "支付";
 
 //星期
 "activity-more-calendar-today" = "今天";

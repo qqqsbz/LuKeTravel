@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class XBOrderTicketNavigationBar;
+@class XBBook;
+@interface XBOrderTicketViewController : UITableViewController <UINavigationControllerDelegate>
 
-@interface XBOrderTicketViewController : UITableViewController
+/** 订单信息 */
+@property (strong, nonatomic) XBOrderTicketNavigationBar *orderTicketNavigationBar;
+/** 订单数据 */
+@property (strong, nonatomic) XBBook *book;
 
 @end

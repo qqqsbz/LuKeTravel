@@ -288,8 +288,7 @@
         
         if (range.location == NSNotFound) {
             
-            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:[XBLanguageControl localizedStringForKey:@"login-alert-message"] message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:[XBLanguageControl localizedStringForKey:@"login-alert-confirm"], nil];
-            [alertView show];
+            [self showAlertWithTitle:[XBLanguageControl localizedStringForKey:@"login-alert-message"]];
          
             return;
         }
@@ -309,6 +308,10 @@
             [self.navigationController pushViewController:accountLoginVC animated:YES];
             
         } failure:^(NSError *error) {
+            
+            [self hideLoading];
+            
+            [self showNoSignalAlert];
             
         }];
         

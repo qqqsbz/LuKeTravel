@@ -163,6 +163,7 @@
     return YES;
 }
 
+/** 用户未登陆 跳转到登陆界面 */
 - (void)presentToLoginViewController
 {
     XBWeChatLoginViewController *loginViewController = [[XBWeChatLoginViewController alloc] init];

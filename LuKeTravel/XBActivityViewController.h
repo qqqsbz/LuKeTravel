@@ -8,5 +8,6 @@
 
 @class XBGroupItem;
 @interface XBActivityViewController : UIViewController
+/** 活动id */
 @property (assign, nonatomic) NSInteger activityId;
 @end

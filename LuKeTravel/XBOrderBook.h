@@ -7,7 +7,9 @@
 //
 
 #import "XBModel.h"
-
+@class XBOrderBookPrice;
 @interface XBOrderBook : XBModel
-
+@property (strong, nonatomic) NSString  *currency;
+@property (assign, nonatomic) NSInteger remainTicketCount;
+@property (strong, nonatomic) NSArray<XBOrderBookPrice *> *prices;
 @end

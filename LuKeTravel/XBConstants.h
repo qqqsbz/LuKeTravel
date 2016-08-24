@@ -55,3 +55,7 @@ extern NSString *const kEmailRegex;                     //邮箱正则表达式
 extern NSString *const kPhoneRegex;                     //手机号码正则
 
 extern NSString *const kPassWordRegex;                  //密码正则表达式
+
+extern NSString *const kPayWayAliPay;                   //支付宝支付
+
+extern NSString *const kPayWayWechatPay;                //微信支付

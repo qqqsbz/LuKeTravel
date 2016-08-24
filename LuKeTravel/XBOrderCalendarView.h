@@ -13,7 +13,6 @@
 @protocol XBOrderCalendarViewDelegate <NSObject>
 
 @optional
-- (void)orderCalendarViewDidSelectDissmiss;
 
 - (void)orderCalendarView:(XBOrderCalendarView *)orderCalendarView didSelectOrderWithArrangement:(XBArrangement *)arrangement;
 

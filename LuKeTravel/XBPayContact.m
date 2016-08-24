@@ -9,5 +9,13 @@
 #import "XBPayContact.h"
 
 @implementation XBPayContact
++ (NSString *)managedObjectEntityName
+{
+    return NSStringFromClass(self);
+}
 
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    return @{};
+}
 @end

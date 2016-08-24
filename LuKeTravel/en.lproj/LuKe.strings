@@ -15,10 +15,22 @@
 
 
 "loading-fail" = "load fail";
+"error-no-network-signal" = "No Wi-Fi signal? No worries - view Klook vouchers offline in your account";
+
+//引导页
+"guide-first-title" = "體驗師精選活動";
+"guide-first-content" = "路客旅行體驗師深入目的地，收集特色優質的旅行體驗活動";
+"guide-second-title" = "輕松的預訂方式";
+"guide-second-content" = "簡捷預訂流程，預訂後立即出票，收集電子憑證，還可享受經典快捷通道";
+"guide-third-title" = "專享優惠";
+"guide-third-content" = "路客攜手合作夥伴，打造旅途中的專屬優惠，更可享受低至5折的超值價格";
+"guide-jump" = "跳過";
+"guide-start" = "開始";
 
 //首页
 "search-placeholder" = "Search Destinations or Activities";
 "search-cancel" = "Cancel";
+"search-noresult" = "暫無相關搜索結果哦";
 
 //目的地
 "destination-title" = "Destinations";
@@ -59,11 +71,54 @@
 
 //下单
 "activity-order-chosedate" = "Select Date";
-"activity-order-date" = "Book %@ %d，%d";
+"activity-order-date" = "Book %@ %@，%@";
 "activity-order-time-am" = "AM";
 "activity-order-time-pm" = "PM";
 "activity-order-time-begin-chose" = "Please select begin time";
 "activity-order-time-begin-title" = "Begin time";
+"activity-order-book-title" = "Your Order";
+"activity-order-next" = "Continue";
+"activity-order-name" = "Person";
+"activity-order-unitname" = "Quantity";
+"activity-order-total" = "Yoatl";
+"activity-order-book-date" = "Selected Date";
+"activity-order-save" = "Savings:";
+"activity-order-max" = "You can only select up to %d unit(s)";
+"activity-order-back" = "Go Back";
+"activity-order-ticket-date" = "%@ %@,%@";
+"activity-order-special" = "SPECIAL REQUIREMENTS";
+"activity-order-basic" = "TRAVELER'S INFORMATION";
+"activity-order-otherinfo-date" = "%@年%@月%@日";
+"activity-order-contact-name" = "Name:";
+"activity-order-contact-phone" = "Phone:";
+"activity-order-contact-email" = "Eamil:";
+"activity-order-prepay-option-title" = "PAYMENT OPTION";
+"activity-order-prepay-option" = "Payment Options";
+"activity-order-prepay-option-alipay" = "Alipay";
+"activity-order-prepay-option-wechatpay" = "Wechat Pay";
+"activity-order-prepay-total" = "TOTAL";
+"activity-order-prepay-coupon" = "Apply Promo Code";
+"activity-order-prepay-coupon-notuse" = "Do not use a promo code";
+"activity-order-prepay-pay" = "Payment Amount";
+"activity-order-prepay-topay" = "Proceed to Pay";
+"activity-order-prepay-coupon-tocoupon" = "Redeem";
+"activity-order-prepay-coupon-input" = "Enter Promotion Code";
+"activity-order-prepay-none-payoption" = "Please choose a payment option";
+
+
+//订单详情
+"order-detail-title" = "Order detail";
+"order-detail-contact-title" = "TRAVELER'S INFORMATION";
+"order-detail-contact-name" = "Name";
+"order-detail-contact-email" = "Email";
+"order-detail-contact-phone" = "Tel";
+"order-detail-payway-title" = "PAYMENT OPTION";
+"order-detail-money-title" = "TOTAL";
+"order-detail-money-total-title" = "Total Amount";
+"order-detail-money-total-coupon" = "Promo Code Discount";
+"order-detail-money-total-pay" = "Payment Amount";
+"order-detail-money-total-save" = "Total Savings";
+"order-detail-pay" = "Pay";
 
 
 //星期

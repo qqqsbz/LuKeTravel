@@ -12,6 +12,53 @@
 		DC0652531D5C1D5700755471 /* XBOrderCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652521D5C1D5700755471 /* XBOrderCalendarCell.m */; };
 		DC0652561D5C28A300755471 /* XBArrangement.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652551D5C28A300755471 /* XBArrangement.m */; };
 		DC0652591D5D9D4300755471 /* XBOrderBookView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652581D5D9D4300755471 /* XBOrderBookView.m */; };
+		DC06525B1D5DAB6800755471 /* XBOrderBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC06525A1D5DAB6800755471 /* XBOrderBookCell.xib */; };
+		DC06525E1D5DAF4500755471 /* XBOrderBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC06525D1D5DAF4500755471 /* XBOrderBookCell.m */; };
+		DC0652621D5DB31C00755471 /* XBOrderBook.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652611D5DB31C00755471 /* XBOrderBook.m */; };
+		DC0652651D5DB36200755471 /* XBOrderBookPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652641D5DB36200755471 /* XBOrderBookPrice.m */; };
+		DC0652921D5DC0BF00755471 /* XBOrderCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652911D5DC0BF00755471 /* XBOrderCalendarViewController.m */; };
+		DC06529E1D61652600755471 /* XBBookOrderTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DC06529C1D61652600755471 /* XBBookOrderTransition.m */; };
+		DC0652A41D61751900755471 /* XBOrderEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652A31D61751900755471 /* XBOrderEffectView.m */; };
+		DC0652AD1D61B44B00755471 /* XBBookOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652AC1D61B44B00755471 /* XBBookOrderViewController.m */; };
+		DC0652B01D61B6FF00755471 /* XBBookOrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652AF1D61B6FF00755471 /* XBBookOrderHeaderView.m */; };
+		DC0652B31D61BBA600755471 /* XBBookOrderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652B21D61BBA600755471 /* XBBookOrderFooterView.m */; };
+		DC0652B51D61BC3E00755471 /* XBBookOrderMoneyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC0652B41D61BC3E00755471 /* XBBookOrderMoneyCell.xib */; };
+		DC0652B81D61BD7C00755471 /* XBBookOrderMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652B71D61BD7C00755471 /* XBBookOrderMoneyCell.m */; };
+		DC0652BB1D62AB3500755471 /* XBBook.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652BA1D62AB3500755471 /* XBBook.m */; };
+		DC0652BE1D62AE4400755471 /* XBPayContact.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652BD1D62AE4400755471 /* XBPayContact.m */; };
+		DC0652C11D62AF2900755471 /* XBBookTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652C01D62AF2900755471 /* XBBookTicket.m */; };
+		DC0652CA1D62BBBB00755471 /* XBOrderTicketTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652C91D62BBBB00755471 /* XBOrderTicketTransition.m */; };
+		DC0652CF1D62F4C700755471 /* XBOrderNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652CE1D62F4C700755471 /* XBOrderNavigationController.m */; };
+		DC0652D21D63059E00755471 /* XBOrderTicketNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652D11D63059E00755471 /* XBOrderTicketNavigationBar.m */; };
+		DC0652D51D6319FE00755471 /* XBBookOtherInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652D41D6319FE00755471 /* XBBookOtherInfo.m */; };
+		DC0652D71D64110700755471 /* XBOrderTicketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC0652D61D64110700755471 /* XBOrderTicketCell.xib */; };
+		DC0652DA1D6412F400755471 /* XBOrderTicketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652D91D6412F400755471 /* XBOrderTicketCell.m */; };
+		DC0652DD1D64168900755471 /* XBOrderTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652DC1D64168900755471 /* XBOrderTicketViewController.m */; };
+		DC0652E01D64439500755471 /* XBOrderTicketHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652DF1D64439500755471 /* XBOrderTicketHeaderView.m */; };
+		DC0652E21D6447F000755471 /* XBOrderOtherInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC0652E11D6447F000755471 /* XBOrderOtherInfoCell.xib */; };
+		DC0652E51D64482200755471 /* XBOrderOtherInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652E41D64482200755471 /* XBOrderOtherInfoCell.m */; };
+		DC0652E81D64521000755471 /* XBDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652E71D64521000755471 /* XBDatePickerView.m */; };
+		DC0652EA1D645C2900755471 /* XBOrderTicketHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC0652E91D645C2900755471 /* XBOrderTicketHeaderCell.xib */; };
+		DC0652ED1D645CAC00755471 /* XBOrderTicketHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652EC1D645CAC00755471 /* XBOrderTicketHeaderCell.m */; };
+		DC0652F01D6460D800755471 /* XBOrderNextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652EF1D6460D800755471 /* XBOrderNextView.m */; };
+		DC0652F31D655E4200755471 /* UIViewController+AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652F21D655E4200755471 /* UIViewController+AlertView.m */; };
+		DC0652FE1D656A9700755471 /* XBOrderPrePayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0652FD1D656A9700755471 /* XBOrderPrePayViewController.m */; };
+		DC0653011D65811D00755471 /* XBOrderPrePayTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0653001D65811D00755471 /* XBOrderPrePayTransition.m */; };
+		DC0653041D658DB700755471 /* XBOrderPrePayNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0653031D658DB700755471 /* XBOrderPrePayNavigationBar.m */; };
+		DC0653061D659DCC00755471 /* XBOrderPrePayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC0653051D659DCC00755471 /* XBOrderPrePayCell.xib */; };
+		DC0653091D659FF900755471 /* XBOrderPrePayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0653081D659FF900755471 /* XBOrderPrePayCell.m */; };
+		DC06530C1D65A9BB00755471 /* XBPayWayView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC06530B1D65A9BB00755471 /* XBPayWayView.m */; };
+		DC06530E1D65ADCD00755471 /* XBPayWayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC06530D1D65ADCD00755471 /* XBPayWayCell.xib */; };
+		DC0653111D65AF2700755471 /* XBPayWayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0653101D65AF2700755471 /* XBPayWayCell.m */; };
+		DC0653141D65B04C00755471 /* XBPayWay.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0653131D65B04C00755471 /* XBPayWay.m */; };
+		DC0653171D65B80500755471 /* XBPayUseCouponView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0653161D65B80500755471 /* XBPayUseCouponView.m */; };
+		DC0653191D66944D00755471 /* XBPayUseCouponCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC0653181D66944D00755471 /* XBPayUseCouponCell.xib */; };
+		DC06531C1D66949200755471 /* XBPayUseCouponCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC06531B1D66949200755471 /* XBPayUseCouponCell.m */; };
+		DC06531F1D66D19100755471 /* XBWeiXinParams.m in Sources */ = {isa = PBXBuildFile; fileRef = DC06531E1D66D19100755471 /* XBWeiXinParams.m */; };
+		DC0653231D66DBC300755471 /* XBOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0653221D66DBC300755471 /* XBOrderDetailViewController.m */; };
+		DC0653261D67006900755471 /* XBOrderDetailToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0653251D67006900755471 /* XBOrderDetailToolBar.m */; };
+		DC0653291D670BFA00755471 /* XBOrderDetailTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0653281D670BFA00755471 /* XBOrderDetailTransition.m */; };
+		DC06532C1D695FA500755471 /* XBGuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC06532B1D695FA500755471 /* XBGuideView.m */; };
 		DC1332DF1D3C6ACE005F4B3A /* XBPlainFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1332DE1D3C6ACE005F4B3A /* XBPlainFlowLayout.m */; };
 		DC1332E21D3CB401005F4B3A /* XBMoreActivityNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1332E11D3CB401005F4B3A /* XBMoreActivityNavigationBar.m */; };
 		DC1332E51D3CC455005F4B3A /* XBMoreActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1332E41D3CC455005F4B3A /* XBMoreActivity.m */; };
@@ -37,8 +84,6 @@
 		DC13333E1D4097D3005F4B3A /* XBParserContentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DC13333D1D4097D3005F4B3A /* XBParserContentItem.m */; };
 		DC1333441D40C186005F4B3A /* XBActivityItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1333431D40C186005F4B3A /* XBActivityItemView.m */; };
 		DC1333471D40CC29005F4B3A /* XBNotifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1333461D40CC29005F4B3A /* XBNotifyView.m */; };
-		DC1D555C1D5B10EA00680779 /* XBPlaceOnOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1D555B1D5B10EA00680779 /* XBPlaceOnOrderViewController.m */; };
-		DC1D55901D5B1EDE00680779 /* XBOrderNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1D558F1D5B1EDE00680779 /* XBOrderNavigationBar.m */; };
 		DC1D55931D5B20AF00680779 /* XBOrderCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1D55921D5B20AF00680779 /* XBOrderCalendarView.m */; };
 		DC2627BB1D484347002795C3 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC2627BA1D484347002795C3 /* ImageIO.framework */; };
 		DC2627FE1D484454002795C3 /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC2627BE1D484454002795C3 /* UMSocialLocalizable.strings */; };
@@ -78,6 +123,16 @@
 		DC26282E1D48AA6A002795C3 /* XBLoginTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC26282D1D48AA6A002795C3 /* XBLoginTipView.m */; };
 		DC2628311D49AF75002795C3 /* XBAccountLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2628301D49AF75002795C3 /* XBAccountLoginViewController.m */; };
 		DC2628341D49DC90002795C3 /* XBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2628331D49DC90002795C3 /* XBUser.m */; };
+		DC46F7E61D6ACFBC0095A1F6 /* XBGuideContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC46F7E51D6ACFBC0095A1F6 /* XBGuideContentView.m */; };
+		DC46F7E91D6AE8520095A1F6 /* AppDelegate+LaunchScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = DC46F7E81D6AE8520095A1F6 /* AppDelegate+LaunchScreen.m */; };
+		DC46F7EC1D6AE94E0095A1F6 /* XBLaunchScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC46F7EB1D6AE94E0095A1F6 /* XBLaunchScreenViewController.m */; };
+		DC46F7EF1D6AF9700095A1F6 /* XBConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DC46F7EE1D6AF9700095A1F6 /* XBConfig.m */; };
+		DC46F7F21D6AF9A40095A1F6 /* XBConfigImages.m in Sources */ = {isa = PBXBuildFile; fileRef = DC46F7F11D6AF9A40095A1F6 /* XBConfigImages.m */; };
+		DC46F7F51D6AFA310095A1F6 /* XBConfigSplash.m in Sources */ = {isa = PBXBuildFile; fileRef = DC46F7F41D6AFA310095A1F6 /* XBConfigSplash.m */; };
+		DC46F7F91D6AFB6B0095A1F6 /* XBConfigCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = DC46F7F81D6AFB6B0095A1F6 /* XBConfigCountry.m */; };
+		DC46F8051D6C3FBB0095A1F6 /* XBSearchNoResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC46F8041D6C3FBB0095A1F6 /* XBSearchNoResultView.m */; };
+		DC46F80D1D6C4FD60095A1F6 /* XBCitySearchTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DC46F8091D6C4FD60095A1F6 /* XBCitySearchTransition.m */; };
+		DC46F80E1D6C4FD60095A1F6 /* XBCitySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC46F80A1D6C4FD60095A1F6 /* XBCitySearchViewController.m */; };
 		DC4DCCFC1D45B99C00DFBA97 /* XBActivityNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCCFB1D45B99C00DFBA97 /* XBActivityNavigationBar.m */; };
 		DC4DCCFF1D45C14900DFBA97 /* XBActivityRecommendMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCCFE1D45C14900DFBA97 /* XBActivityRecommendMaskView.m */; };
 		DC4DCD021D45E16600DFBA97 /* XBActivityStrengthsView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCD011D45E16600DFBA97 /* XBActivityStrengthsView.m */; };
@@ -131,7 +186,6 @@
 		DC8A7A701D2B57730032BC48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7A6F1D2B57730032BC48 /* AppDelegate.m */; };
 		DC8A7A761D2B57730032BC48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7A741D2B57730032BC48 /* Main.storyboard */; };
 		DC8A7A781D2B57730032BC48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7A771D2B57730032BC48 /* Assets.xcassets */; };
-		DC8A7A7B1D2B57730032BC48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7A791D2B57730032BC48 /* LaunchScreen.storyboard */; };
 		DC8A7A911D2B58100032BC48 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7A851D2B58100032BC48 /* UIViewController+HUD.m */; };
 		DC8A7A921D2B58100032BC48 /* UIView+XBFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7A861D2B58100032BC48 /* UIView+XBFrame.m */; };
 		DC8A7A931D2B58100032BC48 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7A891D2B58100032BC48 /* NSString+Util.m */; };
@@ -160,10 +214,7 @@
 		DC8A7B181D2B93CE0032BC48 /* XBSearchHot.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B171D2B93CE0032BC48 /* XBSearchHot.m */; };
 		DC8A7B1B1D2B94440032BC48 /* XBSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B1A1D2B94440032BC48 /* XBSearch.m */; };
 		DC8A7B211D2B948E0032BC48 /* XBSearchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B201D2B948E0032BC48 /* XBSearchItem.m */; };
-		DC8A7B231D2B9C9C0032BC48 /* banner1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7B221D2B9C9C0032BC48 /* banner1.jpg */; };
 		DC8A7B261D2BA4770032BC48 /* XBStretchableTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B251D2BA4770032BC48 /* XBStretchableTableHeaderView.m */; };
-		DC8A7B291D2BB0980032BC48 /* banner3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7B271D2BB0980032BC48 /* banner3.jpg */; };
-		DC8A7B2A1D2BB0980032BC48 /* banner2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7B281D2BB0980032BC48 /* banner2.jpg */; };
 		DC8A7B3C1D2CD6450032BC48 /* XBHomeInviationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B3B1D2CD6450032BC48 /* XBHomeInviationCell.m */; };
 		DC8A7B3E1D2CD65E0032BC48 /* XBHomeInviationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7B3D1D2CD65E0032BC48 /* XBHomeInviationCell.xib */; };
 		DC8A7B481D2DF2F60032BC48 /* XBLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B471D2DF2F60032BC48 /* XBLoadingView.m */; };
@@ -183,7 +234,7 @@
 		DC8A7B791D2F53920032BC48 /* XBHomeActivityContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7B781D2F53920032BC48 /* XBHomeActivityContentCell.m */; };
 		DC8A7BBA1D3347020032BC48 /* XBHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BB91D3347020032BC48 /* XBHomeHeaderView.m */; };
 		DC8A7BC31D3378900032BC48 /* XBDesinationFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BC21D3378900032BC48 /* XBDesinationFooterView.m */; };
-		DC8A7BC61D347BF90032BC48 /* XBSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BC51D347BF90032BC48 /* XBSearchView.m */; };
+		DC8A7BC61D347BF90032BC48 /* XBSearchNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BC51D347BF90032BC48 /* XBSearchNavigationBar.m */; };
 		DC8A7BCA1D348B180032BC48 /* XBDestinationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BC91D348B180032BC48 /* XBDestinationViewController.m */; };
 		DC8A7BCD1D348BBF0032BC48 /* XBTSTView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7BCC1D348BBF0032BC48 /* XBTSTView.m */; };
 		DC8A7BCF1D3495BF0032BC48 /* XBDestinationHotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7BCE1D3495BF0032BC48 /* XBDestinationHotCell.xib */; };
@@ -220,6 +271,7 @@
 		DC8A7C2E1D38C4E70032BC48 /* XBCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7C2D1D38C4E70032BC48 /* XBCalendarCell.m */; };
 		DC8A7C311D38C68C0032BC48 /* XBMoreActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7C301D38C68C0032BC48 /* XBMoreActivityViewController.m */; };
 		DC8A7C351D38EA810032BC48 /* XBDate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7C341D38EA810032BC48 /* XBDate.m */; };
+		DCC23ADF1D6AA1B400B88E89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCC23ADD1D6AA1B400B88E89 /* LaunchScreen.storyboard */; };
 		DCDB6E971D49EE9800E31B07 /* XBNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDB6E961D49EE9800E31B07 /* XBNoDataView.m */; };
 		DCDB6EA11D4A03E000E31B07 /* XBMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDB6EA01D4A03E000E31B07 /* XBMineViewController.m */; };
 		DCDB6EA41D4AEADF00E31B07 /* XBAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDB6EA31D4AEADF00E31B07 /* XBAboutViewController.m */; };
@@ -240,6 +292,92 @@
 		DC0652551D5C28A300755471 /* XBArrangement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBArrangement.m; sourceTree = "<group>"; };
 		DC0652571D5D9D4300755471 /* XBOrderBookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderBookView.h; sourceTree = "<group>"; };
 		DC0652581D5D9D4300755471 /* XBOrderBookView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderBookView.m; sourceTree = "<group>"; };
+		DC06525A1D5DAB6800755471 /* XBOrderBookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBOrderBookCell.xib; sourceTree = "<group>"; };
+		DC06525C1D5DAF4500755471 /* XBOrderBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderBookCell.h; sourceTree = "<group>"; };
+		DC06525D1D5DAF4500755471 /* XBOrderBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderBookCell.m; sourceTree = "<group>"; };
+		DC0652601D5DB31C00755471 /* XBOrderBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderBook.h; sourceTree = "<group>"; };
+		DC0652611D5DB31C00755471 /* XBOrderBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderBook.m; sourceTree = "<group>"; };
+		DC0652631D5DB36200755471 /* XBOrderBookPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderBookPrice.h; sourceTree = "<group>"; };
+		DC0652641D5DB36200755471 /* XBOrderBookPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderBookPrice.m; sourceTree = "<group>"; };
+		DC0652901D5DC0BF00755471 /* XBOrderCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderCalendarViewController.h; sourceTree = "<group>"; };
+		DC0652911D5DC0BF00755471 /* XBOrderCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderCalendarViewController.m; sourceTree = "<group>"; };
+		DC06529C1D61652600755471 /* XBBookOrderTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBBookOrderTransition.m; sourceTree = "<group>"; };
+		DC06529D1D61652600755471 /* XBBookOrderTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBBookOrderTransition.h; sourceTree = "<group>"; };
+		DC0652A21D61751900755471 /* XBOrderEffectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderEffectView.h; sourceTree = "<group>"; };
+		DC0652A31D61751900755471 /* XBOrderEffectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderEffectView.m; sourceTree = "<group>"; };
+		DC0652AB1D61B44B00755471 /* XBBookOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBBookOrderViewController.h; sourceTree = "<group>"; };
+		DC0652AC1D61B44B00755471 /* XBBookOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBBookOrderViewController.m; sourceTree = "<group>"; };
+		DC0652AE1D61B6FF00755471 /* XBBookOrderHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBBookOrderHeaderView.h; sourceTree = "<group>"; };
+		DC0652AF1D61B6FF00755471 /* XBBookOrderHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBBookOrderHeaderView.m; sourceTree = "<group>"; };
+		DC0652B11D61BBA600755471 /* XBBookOrderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBBookOrderFooterView.h; sourceTree = "<group>"; };
+		DC0652B21D61BBA600755471 /* XBBookOrderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBBookOrderFooterView.m; sourceTree = "<group>"; };
+		DC0652B41D61BC3E00755471 /* XBBookOrderMoneyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBBookOrderMoneyCell.xib; sourceTree = "<group>"; };
+		DC0652B61D61BD7C00755471 /* XBBookOrderMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBBookOrderMoneyCell.h; sourceTree = "<group>"; };
+		DC0652B71D61BD7C00755471 /* XBBookOrderMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBBookOrderMoneyCell.m; sourceTree = "<group>"; };
+		DC0652B91D62AB3500755471 /* XBBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBBook.h; sourceTree = "<group>"; };
+		DC0652BA1D62AB3500755471 /* XBBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBBook.m; sourceTree = "<group>"; };
+		DC0652BC1D62AE4400755471 /* XBPayContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPayContact.h; sourceTree = "<group>"; };
+		DC0652BD1D62AE4400755471 /* XBPayContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBPayContact.m; sourceTree = "<group>"; };
+		DC0652BF1D62AF2900755471 /* XBBookTicket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBBookTicket.h; sourceTree = "<group>"; };
+		DC0652C01D62AF2900755471 /* XBBookTicket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBBookTicket.m; sourceTree = "<group>"; };
+		DC0652C81D62BBBB00755471 /* XBOrderTicketTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderTicketTransition.h; sourceTree = "<group>"; };
+		DC0652C91D62BBBB00755471 /* XBOrderTicketTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderTicketTransition.m; sourceTree = "<group>"; };
+		DC0652CD1D62F4C700755471 /* XBOrderNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderNavigationController.h; sourceTree = "<group>"; };
+		DC0652CE1D62F4C700755471 /* XBOrderNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderNavigationController.m; sourceTree = "<group>"; };
+		DC0652D01D63059E00755471 /* XBOrderTicketNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderTicketNavigationBar.h; sourceTree = "<group>"; };
+		DC0652D11D63059E00755471 /* XBOrderTicketNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderTicketNavigationBar.m; sourceTree = "<group>"; };
+		DC0652D31D6319FE00755471 /* XBBookOtherInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBBookOtherInfo.h; sourceTree = "<group>"; };
+		DC0652D41D6319FE00755471 /* XBBookOtherInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBBookOtherInfo.m; sourceTree = "<group>"; };
+		DC0652D61D64110700755471 /* XBOrderTicketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBOrderTicketCell.xib; sourceTree = "<group>"; };
+		DC0652D81D6412F400755471 /* XBOrderTicketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderTicketCell.h; sourceTree = "<group>"; };
+		DC0652D91D6412F400755471 /* XBOrderTicketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderTicketCell.m; sourceTree = "<group>"; };
+		DC0652DB1D64168900755471 /* XBOrderTicketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderTicketViewController.h; sourceTree = "<group>"; };
+		DC0652DC1D64168900755471 /* XBOrderTicketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderTicketViewController.m; sourceTree = "<group>"; };
+		DC0652DE1D64439500755471 /* XBOrderTicketHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderTicketHeaderView.h; sourceTree = "<group>"; };
+		DC0652DF1D64439500755471 /* XBOrderTicketHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderTicketHeaderView.m; sourceTree = "<group>"; };
+		DC0652E11D6447F000755471 /* XBOrderOtherInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBOrderOtherInfoCell.xib; sourceTree = "<group>"; };
+		DC0652E31D64482200755471 /* XBOrderOtherInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderOtherInfoCell.h; sourceTree = "<group>"; };
+		DC0652E41D64482200755471 /* XBOrderOtherInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderOtherInfoCell.m; sourceTree = "<group>"; };
+		DC0652E61D64521000755471 /* XBDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDatePickerView.h; sourceTree = "<group>"; };
+		DC0652E71D64521000755471 /* XBDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDatePickerView.m; sourceTree = "<group>"; };
+		DC0652E91D645C2900755471 /* XBOrderTicketHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBOrderTicketHeaderCell.xib; sourceTree = "<group>"; };
+		DC0652EB1D645CAC00755471 /* XBOrderTicketHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderTicketHeaderCell.h; sourceTree = "<group>"; };
+		DC0652EC1D645CAC00755471 /* XBOrderTicketHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderTicketHeaderCell.m; sourceTree = "<group>"; };
+		DC0652EE1D6460D800755471 /* XBOrderNextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderNextView.h; sourceTree = "<group>"; };
+		DC0652EF1D6460D800755471 /* XBOrderNextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderNextView.m; sourceTree = "<group>"; };
+		DC0652F11D655E4200755471 /* UIViewController+AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AlertView.h"; sourceTree = "<group>"; };
+		DC0652F21D655E4200755471 /* UIViewController+AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AlertView.m"; sourceTree = "<group>"; };
+		DC0652FC1D656A9700755471 /* XBOrderPrePayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderPrePayViewController.h; sourceTree = "<group>"; };
+		DC0652FD1D656A9700755471 /* XBOrderPrePayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderPrePayViewController.m; sourceTree = "<group>"; };
+		DC0652FF1D65811D00755471 /* XBOrderPrePayTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderPrePayTransition.h; sourceTree = "<group>"; };
+		DC0653001D65811D00755471 /* XBOrderPrePayTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderPrePayTransition.m; sourceTree = "<group>"; };
+		DC0653021D658DB700755471 /* XBOrderPrePayNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderPrePayNavigationBar.h; sourceTree = "<group>"; };
+		DC0653031D658DB700755471 /* XBOrderPrePayNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderPrePayNavigationBar.m; sourceTree = "<group>"; };
+		DC0653051D659DCC00755471 /* XBOrderPrePayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBOrderPrePayCell.xib; sourceTree = "<group>"; };
+		DC0653071D659FF900755471 /* XBOrderPrePayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderPrePayCell.h; sourceTree = "<group>"; };
+		DC0653081D659FF900755471 /* XBOrderPrePayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderPrePayCell.m; sourceTree = "<group>"; };
+		DC06530A1D65A9BB00755471 /* XBPayWayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPayWayView.h; sourceTree = "<group>"; };
+		DC06530B1D65A9BB00755471 /* XBPayWayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBPayWayView.m; sourceTree = "<group>"; };
+		DC06530D1D65ADCD00755471 /* XBPayWayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBPayWayCell.xib; sourceTree = "<group>"; };
+		DC06530F1D65AF2700755471 /* XBPayWayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPayWayCell.h; sourceTree = "<group>"; };
+		DC0653101D65AF2700755471 /* XBPayWayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBPayWayCell.m; sourceTree = "<group>"; };
+		DC0653121D65B04C00755471 /* XBPayWay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPayWay.h; sourceTree = "<group>"; };
+		DC0653131D65B04C00755471 /* XBPayWay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBPayWay.m; sourceTree = "<group>"; };
+		DC0653151D65B80500755471 /* XBPayUseCouponView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPayUseCouponView.h; sourceTree = "<group>"; };
+		DC0653161D65B80500755471 /* XBPayUseCouponView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBPayUseCouponView.m; sourceTree = "<group>"; };
+		DC0653181D66944D00755471 /* XBPayUseCouponCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBPayUseCouponCell.xib; sourceTree = "<group>"; };
+		DC06531A1D66949200755471 /* XBPayUseCouponCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPayUseCouponCell.h; sourceTree = "<group>"; };
+		DC06531B1D66949200755471 /* XBPayUseCouponCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBPayUseCouponCell.m; sourceTree = "<group>"; };
+		DC06531D1D66D19100755471 /* XBWeiXinParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBWeiXinParams.h; sourceTree = "<group>"; };
+		DC06531E1D66D19100755471 /* XBWeiXinParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBWeiXinParams.m; sourceTree = "<group>"; };
+		DC0653211D66DBC300755471 /* XBOrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderDetailViewController.h; sourceTree = "<group>"; };
+		DC0653221D66DBC300755471 /* XBOrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderDetailViewController.m; sourceTree = "<group>"; };
+		DC0653241D67006900755471 /* XBOrderDetailToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderDetailToolBar.h; sourceTree = "<group>"; };
+		DC0653251D67006900755471 /* XBOrderDetailToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderDetailToolBar.m; sourceTree = "<group>"; };
+		DC0653271D670BFA00755471 /* XBOrderDetailTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderDetailTransition.h; sourceTree = "<group>"; };
+		DC0653281D670BFA00755471 /* XBOrderDetailTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderDetailTransition.m; sourceTree = "<group>"; };
+		DC06532A1D695FA400755471 /* XBGuideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBGuideView.h; sourceTree = "<group>"; };
+		DC06532B1D695FA500755471 /* XBGuideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBGuideView.m; sourceTree = "<group>"; };
 		DC1332DD1D3C6ACE005F4B3A /* XBPlainFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPlainFlowLayout.h; sourceTree = "<group>"; };
 		DC1332DE1D3C6ACE005F4B3A /* XBPlainFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBPlainFlowLayout.m; sourceTree = "<group>"; };
 		DC1332E01D3CB401005F4B3A /* XBMoreActivityNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBMoreActivityNavigationBar.h; sourceTree = "<group>"; };
@@ -289,10 +427,6 @@
 		DC1333431D40C186005F4B3A /* XBActivityItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityItemView.m; sourceTree = "<group>"; };
 		DC1333451D40CC29005F4B3A /* XBNotifyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBNotifyView.h; sourceTree = "<group>"; };
 		DC1333461D40CC29005F4B3A /* XBNotifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBNotifyView.m; sourceTree = "<group>"; };
-		DC1D555A1D5B10EA00680779 /* XBPlaceOnOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPlaceOnOrderViewController.h; sourceTree = "<group>"; };
-		DC1D555B1D5B10EA00680779 /* XBPlaceOnOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBPlaceOnOrderViewController.m; sourceTree = "<group>"; };
-		DC1D558E1D5B1EDE00680779 /* XBOrderNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderNavigationBar.h; sourceTree = "<group>"; };
-		DC1D558F1D5B1EDE00680779 /* XBOrderNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderNavigationBar.m; sourceTree = "<group>"; };
 		DC1D55911D5B20AF00680779 /* XBOrderCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOrderCalendarView.h; sourceTree = "<group>"; };
 		DC1D55921D5B20AF00680779 /* XBOrderCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOrderCalendarView.m; sourceTree = "<group>"; };
 		DC2627BA1D484347002795C3 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -368,6 +502,26 @@
 		DC2628301D49AF75002795C3 /* XBAccountLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBAccountLoginViewController.m; sourceTree = "<group>"; };
 		DC2628321D49DC90002795C3 /* XBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBUser.h; sourceTree = "<group>"; };
 		DC2628331D49DC90002795C3 /* XBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBUser.m; sourceTree = "<group>"; };
+		DC46F7E41D6ACFBC0095A1F6 /* XBGuideContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBGuideContentView.h; sourceTree = "<group>"; };
+		DC46F7E51D6ACFBC0095A1F6 /* XBGuideContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBGuideContentView.m; sourceTree = "<group>"; };
+		DC46F7E71D6AE8520095A1F6 /* AppDelegate+LaunchScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+LaunchScreen.h"; sourceTree = "<group>"; };
+		DC46F7E81D6AE8520095A1F6 /* AppDelegate+LaunchScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+LaunchScreen.m"; sourceTree = "<group>"; };
+		DC46F7EA1D6AE94E0095A1F6 /* XBLaunchScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBLaunchScreenViewController.h; sourceTree = "<group>"; };
+		DC46F7EB1D6AE94E0095A1F6 /* XBLaunchScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBLaunchScreenViewController.m; sourceTree = "<group>"; };
+		DC46F7ED1D6AF9700095A1F6 /* XBConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBConfig.h; sourceTree = "<group>"; };
+		DC46F7EE1D6AF9700095A1F6 /* XBConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBConfig.m; sourceTree = "<group>"; };
+		DC46F7F01D6AF9A40095A1F6 /* XBConfigImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBConfigImages.h; sourceTree = "<group>"; };
+		DC46F7F11D6AF9A40095A1F6 /* XBConfigImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBConfigImages.m; sourceTree = "<group>"; };
+		DC46F7F31D6AFA310095A1F6 /* XBConfigSplash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBConfigSplash.h; sourceTree = "<group>"; };
+		DC46F7F41D6AFA310095A1F6 /* XBConfigSplash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBConfigSplash.m; sourceTree = "<group>"; };
+		DC46F7F71D6AFB6B0095A1F6 /* XBConfigCountry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBConfigCountry.h; sourceTree = "<group>"; };
+		DC46F7F81D6AFB6B0095A1F6 /* XBConfigCountry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBConfigCountry.m; sourceTree = "<group>"; };
+		DC46F8031D6C3FBB0095A1F6 /* XBSearchNoResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSearchNoResultView.h; sourceTree = "<group>"; };
+		DC46F8041D6C3FBB0095A1F6 /* XBSearchNoResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSearchNoResultView.m; sourceTree = "<group>"; };
+		DC46F8091D6C4FD60095A1F6 /* XBCitySearchTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBCitySearchTransition.m; sourceTree = "<group>"; };
+		DC46F80A1D6C4FD60095A1F6 /* XBCitySearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBCitySearchViewController.m; sourceTree = "<group>"; };
+		DC46F80B1D6C4FD60095A1F6 /* XBCitySearchTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBCitySearchTransition.h; sourceTree = "<group>"; };
+		DC46F80C1D6C4FD60095A1F6 /* XBCitySearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBCitySearchViewController.h; sourceTree = "<group>"; };
 		DC4DCCFA1D45B99C00DFBA97 /* XBActivityNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityNavigationBar.h; sourceTree = "<group>"; };
 		DC4DCCFB1D45B99C00DFBA97 /* XBActivityNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityNavigationBar.m; sourceTree = "<group>"; };
 		DC4DCCFD1D45C14900DFBA97 /* XBActivityRecommendMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityRecommendMaskView.h; sourceTree = "<group>"; };
@@ -458,7 +612,6 @@
 		DC8A7A6F1D2B57730032BC48 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DC8A7A751D2B57730032BC48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DC8A7A771D2B57730032BC48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DC8A7A7A1D2B57730032BC48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC8A7A7C1D2B57730032BC48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC8A7A831D2B57E20032BC48 /* LuKeTravel-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LuKeTravel-Prefix.pch"; sourceTree = "<group>"; };
 		DC8A7A841D2B58100032BC48 /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
@@ -514,11 +667,8 @@
 		DC8A7B1A1D2B94440032BC48 /* XBSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSearch.m; sourceTree = "<group>"; };
 		DC8A7B1F1D2B948E0032BC48 /* XBSearchItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSearchItem.h; sourceTree = "<group>"; };
 		DC8A7B201D2B948E0032BC48 /* XBSearchItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSearchItem.m; sourceTree = "<group>"; };
-		DC8A7B221D2B9C9C0032BC48 /* banner1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner1.jpg; sourceTree = "<group>"; };
 		DC8A7B241D2BA4770032BC48 /* XBStretchableTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBStretchableTableHeaderView.h; sourceTree = "<group>"; };
 		DC8A7B251D2BA4770032BC48 /* XBStretchableTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBStretchableTableHeaderView.m; sourceTree = "<group>"; };
-		DC8A7B271D2BB0980032BC48 /* banner3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner3.jpg; sourceTree = "<group>"; };
-		DC8A7B281D2BB0980032BC48 /* banner2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner2.jpg; sourceTree = "<group>"; };
 		DC8A7B3A1D2CD6450032BC48 /* XBHomeInviationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeInviationCell.h; sourceTree = "<group>"; };
 		DC8A7B3B1D2CD6450032BC48 /* XBHomeInviationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeInviationCell.m; sourceTree = "<group>"; };
 		DC8A7B3D1D2CD65E0032BC48 /* XBHomeInviationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBHomeInviationCell.xib; sourceTree = "<group>"; };
@@ -553,8 +703,8 @@
 		DC8A7BB91D3347020032BC48 /* XBHomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeHeaderView.m; sourceTree = "<group>"; };
 		DC8A7BC11D3378900032BC48 /* XBDesinationFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDesinationFooterView.h; sourceTree = "<group>"; };
 		DC8A7BC21D3378900032BC48 /* XBDesinationFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDesinationFooterView.m; sourceTree = "<group>"; };
-		DC8A7BC41D347BF90032BC48 /* XBSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSearchView.h; sourceTree = "<group>"; };
-		DC8A7BC51D347BF90032BC48 /* XBSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSearchView.m; sourceTree = "<group>"; };
+		DC8A7BC41D347BF90032BC48 /* XBSearchNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSearchNavigationBar.h; sourceTree = "<group>"; };
+		DC8A7BC51D347BF90032BC48 /* XBSearchNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSearchNavigationBar.m; sourceTree = "<group>"; };
 		DC8A7BC81D348B180032BC48 /* XBDestinationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDestinationViewController.h; sourceTree = "<group>"; };
 		DC8A7BC91D348B180032BC48 /* XBDestinationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDestinationViewController.m; sourceTree = "<group>"; };
 		DC8A7BCB1D348BBF0032BC48 /* XBTSTView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTSTView.h; sourceTree = "<group>"; };
@@ -618,6 +768,7 @@
 		DC8A7C301D38C68C0032BC48 /* XBMoreActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBMoreActivityViewController.m; sourceTree = "<group>"; };
 		DC8A7C331D38EA810032BC48 /* XBDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDate.h; sourceTree = "<group>"; };
 		DC8A7C341D38EA810032BC48 /* XBDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDate.m; sourceTree = "<group>"; };
+		DCC23ADE1D6AA1B400B88E89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DCDB6E951D49EE9800E31B07 /* XBNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBNoDataView.h; sourceTree = "<group>"; };
 		DCDB6E961D49EE9800E31B07 /* XBNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBNoDataView.m; sourceTree = "<group>"; };
 		DCDB6E9F1D4A03E000E31B07 /* XBMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBMineViewController.h; sourceTree = "<group>"; };
@@ -686,6 +837,148 @@
 				AC21827E9A9FE60E33F37637 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		DC06525F1D5DB30300755471 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				DC0652541D5C28A300755471 /* XBArrangement.h */,
+				DC0652551D5C28A300755471 /* XBArrangement.m */,
+				DC0652601D5DB31C00755471 /* XBOrderBook.h */,
+				DC0652611D5DB31C00755471 /* XBOrderBook.m */,
+				DC0652631D5DB36200755471 /* XBOrderBookPrice.h */,
+				DC0652641D5DB36200755471 /* XBOrderBookPrice.m */,
+				DC0652B91D62AB3500755471 /* XBBook.h */,
+				DC0652BA1D62AB3500755471 /* XBBook.m */,
+				DC0652BC1D62AE4400755471 /* XBPayContact.h */,
+				DC0652BD1D62AE4400755471 /* XBPayContact.m */,
+				DC0652BF1D62AF2900755471 /* XBBookTicket.h */,
+				DC0652C01D62AF2900755471 /* XBBookTicket.m */,
+				DC0652D31D6319FE00755471 /* XBBookOtherInfo.h */,
+				DC0652D41D6319FE00755471 /* XBBookOtherInfo.m */,
+				DC06531D1D66D19100755471 /* XBWeiXinParams.h */,
+				DC06531E1D66D19100755471 /* XBWeiXinParams.m */,
+			);
+			name = Order;
+			sourceTree = "<group>";
+		};
+		DC0652C21D62B97C00755471 /* OrderCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				DC06529D1D61652600755471 /* XBBookOrderTransition.h */,
+				DC06529C1D61652600755471 /* XBBookOrderTransition.m */,
+				DC0652901D5DC0BF00755471 /* XBOrderCalendarViewController.h */,
+				DC0652911D5DC0BF00755471 /* XBOrderCalendarViewController.m */,
+				DC0652A21D61751900755471 /* XBOrderEffectView.h */,
+				DC0652A31D61751900755471 /* XBOrderEffectView.m */,
+				DC1D55911D5B20AF00680779 /* XBOrderCalendarView.h */,
+				DC1D55921D5B20AF00680779 /* XBOrderCalendarView.m */,
+				DC06524F1D5C1D2F00755471 /* XBOrderCalendarCell.xib */,
+				DC0652511D5C1D5700755471 /* XBOrderCalendarCell.h */,
+				DC0652521D5C1D5700755471 /* XBOrderCalendarCell.m */,
+			);
+			name = OrderCalendar;
+			sourceTree = "<group>";
+		};
+		DC0652C31D62B99F00755471 /* OrderBook */ = {
+			isa = PBXGroup;
+			children = (
+				DC0652AB1D61B44B00755471 /* XBBookOrderViewController.h */,
+				DC0652AC1D61B44B00755471 /* XBBookOrderViewController.m */,
+				DC0652571D5D9D4300755471 /* XBOrderBookView.h */,
+				DC0652581D5D9D4300755471 /* XBOrderBookView.m */,
+				DC06525A1D5DAB6800755471 /* XBOrderBookCell.xib */,
+				DC06525C1D5DAF4500755471 /* XBOrderBookCell.h */,
+				DC06525D1D5DAF4500755471 /* XBOrderBookCell.m */,
+				DC0652AE1D61B6FF00755471 /* XBBookOrderHeaderView.h */,
+				DC0652AF1D61B6FF00755471 /* XBBookOrderHeaderView.m */,
+				DC0652B11D61BBA600755471 /* XBBookOrderFooterView.h */,
+				DC0652B21D61BBA600755471 /* XBBookOrderFooterView.m */,
+				DC0652B41D61BC3E00755471 /* XBBookOrderMoneyCell.xib */,
+				DC0652B61D61BD7C00755471 /* XBBookOrderMoneyCell.h */,
+				DC0652B71D61BD7C00755471 /* XBBookOrderMoneyCell.m */,
+				DC0652EE1D6460D800755471 /* XBOrderNextView.h */,
+				DC0652EF1D6460D800755471 /* XBOrderNextView.m */,
+			);
+			name = OrderBook;
+			sourceTree = "<group>";
+		};
+		DC0652C41D62B9F700755471 /* OrderTicket */ = {
+			isa = PBXGroup;
+			children = (
+				DC0652C81D62BBBB00755471 /* XBOrderTicketTransition.h */,
+				DC0652C91D62BBBB00755471 /* XBOrderTicketTransition.m */,
+				DC0652D01D63059E00755471 /* XBOrderTicketNavigationBar.h */,
+				DC0652D11D63059E00755471 /* XBOrderTicketNavigationBar.m */,
+				DC0652D61D64110700755471 /* XBOrderTicketCell.xib */,
+				DC0652D81D6412F400755471 /* XBOrderTicketCell.h */,
+				DC0652D91D6412F400755471 /* XBOrderTicketCell.m */,
+				DC0652DB1D64168900755471 /* XBOrderTicketViewController.h */,
+				DC0652DC1D64168900755471 /* XBOrderTicketViewController.m */,
+				DC0652DE1D64439500755471 /* XBOrderTicketHeaderView.h */,
+				DC0652DF1D64439500755471 /* XBOrderTicketHeaderView.m */,
+				DC0652E11D6447F000755471 /* XBOrderOtherInfoCell.xib */,
+				DC0652E31D64482200755471 /* XBOrderOtherInfoCell.h */,
+				DC0652E41D64482200755471 /* XBOrderOtherInfoCell.m */,
+				DC0652E91D645C2900755471 /* XBOrderTicketHeaderCell.xib */,
+				DC0652EB1D645CAC00755471 /* XBOrderTicketHeaderCell.h */,
+				DC0652EC1D645CAC00755471 /* XBOrderTicketHeaderCell.m */,
+			);
+			name = OrderTicket;
+			sourceTree = "<group>";
+		};
+		DC0652F71D65685000755471 /* Commom */ = {
+			isa = PBXGroup;
+			children = (
+				DC2628261D48A950002795C3 /* XBOrderViewController.h */,
+				DC2628271D48A950002795C3 /* XBOrderViewController.m */,
+				DC2628291D48A964002795C3 /* XBWeChatLoginViewController.h */,
+				DC26282A1D48A964002795C3 /* XBWeChatLoginViewController.m */,
+				DC26282F1D49AF75002795C3 /* XBAccountLoginViewController.h */,
+				DC2628301D49AF75002795C3 /* XBAccountLoginViewController.m */,
+				DC0652CD1D62F4C700755471 /* XBOrderNavigationController.h */,
+				DC0652CE1D62F4C700755471 /* XBOrderNavigationController.m */,
+			);
+			name = Commom;
+			sourceTree = "<group>";
+		};
+		DC0652F81D65685900755471 /* OrderPrePay */ = {
+			isa = PBXGroup;
+			children = (
+				DC0652FC1D656A9700755471 /* XBOrderPrePayViewController.h */,
+				DC0652FD1D656A9700755471 /* XBOrderPrePayViewController.m */,
+				DC0652FF1D65811D00755471 /* XBOrderPrePayTransition.h */,
+				DC0653001D65811D00755471 /* XBOrderPrePayTransition.m */,
+				DC0653021D658DB700755471 /* XBOrderPrePayNavigationBar.h */,
+				DC0653031D658DB700755471 /* XBOrderPrePayNavigationBar.m */,
+				DC0653051D659DCC00755471 /* XBOrderPrePayCell.xib */,
+				DC0653071D659FF900755471 /* XBOrderPrePayCell.h */,
+				DC0653081D659FF900755471 /* XBOrderPrePayCell.m */,
+				DC06530A1D65A9BB00755471 /* XBPayWayView.h */,
+				DC06530B1D65A9BB00755471 /* XBPayWayView.m */,
+				DC06530D1D65ADCD00755471 /* XBPayWayCell.xib */,
+				DC06530F1D65AF2700755471 /* XBPayWayCell.h */,
+				DC0653101D65AF2700755471 /* XBPayWayCell.m */,
+				DC0653151D65B80500755471 /* XBPayUseCouponView.h */,
+				DC0653161D65B80500755471 /* XBPayUseCouponView.m */,
+				DC0653181D66944D00755471 /* XBPayUseCouponCell.xib */,
+				DC06531A1D66949200755471 /* XBPayUseCouponCell.h */,
+				DC06531B1D66949200755471 /* XBPayUseCouponCell.m */,
+			);
+			name = OrderPrePay;
+			sourceTree = "<group>";
+		};
+		DC0653201D66DB7B00755471 /* OrderDetail */ = {
+			isa = PBXGroup;
+			children = (
+				DC0653211D66DBC300755471 /* XBOrderDetailViewController.h */,
+				DC0653221D66DBC300755471 /* XBOrderDetailViewController.m */,
+				DC0653241D67006900755471 /* XBOrderDetailToolBar.h */,
+				DC0653251D67006900755471 /* XBOrderDetailToolBar.m */,
+				DC0653271D670BFA00755471 /* XBOrderDetailTransition.h */,
+				DC0653281D670BFA00755471 /* XBOrderDetailTransition.m */,
+			);
+			name = OrderDetail;
 			sourceTree = "<group>";
 		};
 		DC1333011D3F6722005F4B3A /* Kits */ = {
@@ -881,25 +1174,42 @@
 		DC2628251D48A935002795C3 /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				DC2628261D48A950002795C3 /* XBOrderViewController.h */,
-				DC2628271D48A950002795C3 /* XBOrderViewController.m */,
-				DC2628291D48A964002795C3 /* XBWeChatLoginViewController.h */,
-				DC26282A1D48A964002795C3 /* XBWeChatLoginViewController.m */,
-				DC26282F1D49AF75002795C3 /* XBAccountLoginViewController.h */,
-				DC2628301D49AF75002795C3 /* XBAccountLoginViewController.m */,
-				DC1D555A1D5B10EA00680779 /* XBPlaceOnOrderViewController.h */,
-				DC1D555B1D5B10EA00680779 /* XBPlaceOnOrderViewController.m */,
-				DC1D558E1D5B1EDE00680779 /* XBOrderNavigationBar.h */,
-				DC1D558F1D5B1EDE00680779 /* XBOrderNavigationBar.m */,
-				DC1D55911D5B20AF00680779 /* XBOrderCalendarView.h */,
-				DC1D55921D5B20AF00680779 /* XBOrderCalendarView.m */,
-				DC06524F1D5C1D2F00755471 /* XBOrderCalendarCell.xib */,
-				DC0652511D5C1D5700755471 /* XBOrderCalendarCell.h */,
-				DC0652521D5C1D5700755471 /* XBOrderCalendarCell.m */,
-				DC0652571D5D9D4300755471 /* XBOrderBookView.h */,
-				DC0652581D5D9D4300755471 /* XBOrderBookView.m */,
+				DC0652F71D65685000755471 /* Commom */,
+				DC0652C21D62B97C00755471 /* OrderCalendar */,
+				DC0652C31D62B99F00755471 /* OrderBook */,
+				DC0652C41D62B9F700755471 /* OrderTicket */,
+				DC0652F81D65685900755471 /* OrderPrePay */,
+				DC0653201D66DB7B00755471 /* OrderDetail */,
 			);
 			name = Order;
+			sourceTree = "<group>";
+		};
+		DC46F7F61D6AFB430095A1F6 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				DC46F7ED1D6AF9700095A1F6 /* XBConfig.h */,
+				DC46F7EE1D6AF9700095A1F6 /* XBConfig.m */,
+				DC46F7F01D6AF9A40095A1F6 /* XBConfigImages.h */,
+				DC46F7F11D6AF9A40095A1F6 /* XBConfigImages.m */,
+				DC46F7F31D6AFA310095A1F6 /* XBConfigSplash.h */,
+				DC46F7F41D6AFA310095A1F6 /* XBConfigSplash.m */,
+				DC46F7F71D6AFB6B0095A1F6 /* XBConfigCountry.h */,
+				DC46F7F81D6AFB6B0095A1F6 /* XBConfigCountry.m */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		DC46F80F1D6D32FC0095A1F6 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				DC46F8031D6C3FBB0095A1F6 /* XBSearchNoResultView.h */,
+				DC46F8041D6C3FBB0095A1F6 /* XBSearchNoResultView.m */,
+				DC46F80C1D6C4FD60095A1F6 /* XBCitySearchViewController.h */,
+				DC46F80A1D6C4FD60095A1F6 /* XBCitySearchViewController.m */,
+				DC46F80B1D6C4FD60095A1F6 /* XBCitySearchTransition.h */,
+				DC46F8091D6C4FD60095A1F6 /* XBCitySearchTransition.m */,
+			);
+			name = Search;
 			sourceTree = "<group>";
 		};
 		DC4DCD1C1D47479200DFBA97 /* Basic */ = {
@@ -979,7 +1289,7 @@
 			isa = PBXGroup;
 			children = (
 				DC8A7A741D2B57730032BC48 /* Main.storyboard */,
-				DC8A7A791D2B57730032BC48 /* LaunchScreen.storyboard */,
+				DCC23ADD1D6AA1B400B88E89 /* LaunchScreen.storyboard */,
 				DC8A7AEA1D2B5F9C0032BC48 /* Localizable.strings */,
 				DC8A7C001D3723270032BC48 /* CoreData */,
 				DC4DCD1C1D47479200DFBA97 /* Basic */,
@@ -1001,9 +1311,6 @@
 		DC8A7A6B1D2B57730032BC48 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				DC8A7B271D2BB0980032BC48 /* banner3.jpg */,
-				DC8A7B281D2BB0980032BC48 /* banner2.jpg */,
-				DC8A7B221D2B9C9C0032BC48 /* banner1.jpg */,
 				DC8A7A771D2B57730032BC48 /* Assets.xcassets */,
 				DC8A7A7C1D2B57730032BC48 /* Info.plist */,
 				DC8A7A6C1D2B57730032BC48 /* main.m */,
@@ -1027,6 +1334,10 @@
 				DC8A7A6F1D2B57730032BC48 /* AppDelegate.m */,
 				DC8A7AEC1D2B60BD0032BC48 /* XBAppRootViewController.h */,
 				DC8A7AED1D2B60BD0032BC48 /* XBAppRootViewController.m */,
+				DC46F7E71D6AE8520095A1F6 /* AppDelegate+LaunchScreen.h */,
+				DC46F7E81D6AE8520095A1F6 /* AppDelegate+LaunchScreen.m */,
+				DC46F7EA1D6AE94E0095A1F6 /* XBLaunchScreenViewController.h */,
+				DC46F7EB1D6AE94E0095A1F6 /* XBLaunchScreenViewController.m */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -1046,6 +1357,8 @@
 				DC8A7A8D1D2B58100032BC48 /* UIColor+Util.m */,
 				DC8A7A8E1D2B58100032BC48 /* UIImage+Util.h */,
 				DC8A7A8F1D2B58100032BC48 /* UIImage+Util.m */,
+				DC0652F11D655E4200755471 /* UIViewController+AlertView.h */,
+				DC0652F21D655E4200755471 /* UIViewController+AlertView.m */,
 			);
 			name = Category;
 			path = ../../XHCookBook/XHCookBook;
@@ -1072,6 +1385,7 @@
 		DC8A7AA61D2B58F40032BC48 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DC06525F1D5DB30300755471 /* Order */,
 				DC725CCC1D4F181F00A89B70 /* Mine */,
 				DC8A7C321D38EA6B0032BC48 /* MoreActivity */,
 				DC8A7BD31D3497A40032BC48 /* Destination */,
@@ -1100,6 +1414,7 @@
 		DC8A7AF61D2B82EE0032BC48 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				DC46F7F61D6AFB430095A1F6 /* Config */,
 				DC8A7AA91D2B59D30032BC48 /* XBModel.h */,
 				DC8A7AAA1D2B59D30032BC48 /* XBModel.m */,
 				DC1333361D407B03005F4B3A /* XBRange.h */,
@@ -1108,6 +1423,8 @@
 				DC26281C1D484821002795C3 /* XBShare.m */,
 				DC2628321D49DC90002795C3 /* XBUser.h */,
 				DC2628331D49DC90002795C3 /* XBUser.m */,
+				DC0653121D65B04C00755471 /* XBPayWay.h */,
+				DC0653131D65B04C00755471 /* XBPayWay.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1142,8 +1459,6 @@
 				DC1333301D406C01005F4B3A /* XBShareActivity.m */,
 				DC13333C1D4097D3005F4B3A /* XBParserContentItem.h */,
 				DC13333D1D4097D3005F4B3A /* XBParserContentItem.m */,
-				DC0652541D5C28A300755471 /* XBArrangement.h */,
-				DC0652551D5C28A300755471 /* XBArrangement.m */,
 			);
 			name = Activity;
 			sourceTree = "<group>";
@@ -1185,8 +1500,8 @@
 				DC8A7B251D2BA4770032BC48 /* XBStretchableTableHeaderView.m */,
 				DC8A7B461D2DF2F60032BC48 /* XBLoadingView.h */,
 				DC8A7B471D2DF2F60032BC48 /* XBLoadingView.m */,
-				DC8A7BC41D347BF90032BC48 /* XBSearchView.h */,
-				DC8A7BC51D347BF90032BC48 /* XBSearchView.m */,
+				DC8A7BC41D347BF90032BC48 /* XBSearchNavigationBar.h */,
+				DC8A7BC51D347BF90032BC48 /* XBSearchNavigationBar.m */,
 				DC4DCD201D4758D300DFBA97 /* XBShareView.h */,
 				DC4DCD211D4758D300DFBA97 /* XBShareView.m */,
 				DC4DCD231D475E5700DFBA97 /* XBShareCell.xib */,
@@ -1206,6 +1521,12 @@
 				DC5C55601D52E8C900DCD14E /* XBCountryView.m */,
 				DC5C55621D530D5B00DCD14E /* XBVerificationCodeView.h */,
 				DC5C55631D530D5B00DCD14E /* XBVerificationCodeView.m */,
+				DC0652E61D64521000755471 /* XBDatePickerView.h */,
+				DC0652E71D64521000755471 /* XBDatePickerView.m */,
+				DC06532A1D695FA400755471 /* XBGuideView.h */,
+				DC06532B1D695FA500755471 /* XBGuideView.m */,
+				DC46F7E41D6ACFBC0095A1F6 /* XBGuideContentView.h */,
+				DC46F7E51D6ACFBC0095A1F6 /* XBGuideContentView.m */,
 			);
 			name = Facility;
 			sourceTree = "<group>";
@@ -1226,6 +1547,7 @@
 		DC8A7B7F1D2F97FD0032BC48 /* city */ = {
 			isa = PBXGroup;
 			children = (
+				DC46F80F1D6D32FC0095A1F6 /* Search */,
 				DC1332E01D3CB401005F4B3A /* XBMoreActivityNavigationBar.h */,
 				DC1332E11D3CB401005F4B3A /* XBMoreActivityNavigationBar.m */,
 				DC8A7C2F1D38C68C0032BC48 /* XBMoreActivityViewController.h */,
@@ -1385,14 +1707,6 @@
 				DC5C557A1D54864700DCD14E /* Promotions */,
 				DCDB6E9F1D4A03E000E31B07 /* XBMineViewController.h */,
 				DCDB6EA01D4A03E000E31B07 /* XBMineViewController.m */,
-				DCDB6EA21D4AEADF00E31B07 /* XBAboutViewController.h */,
-				DCDB6EA31D4AEADF00E31B07 /* XBAboutViewController.m */,
-				DCDB6EA51D4AFB6100E31B07 /* XBFeedBackViewController.h */,
-				DCDB6EA61D4AFB6100E31B07 /* XBFeedBackViewController.m */,
-				DCDB6EAE1D4B348200E31B07 /* XBHelpViewController.h */,
-				DCDB6EAF1D4B348200E31B07 /* XBHelpViewController.m */,
-				DC725C801D4B604000A89B70 /* XBExchangeViewController.h */,
-				DC725C811D4B604000A89B70 /* XBExchangeViewController.m */,
 				DC5C55571D51C1D900DCD14E /* XBUserInfoViewController.h */,
 				DC5C55581D51C1D900DCD14E /* XBUserInfoViewController.m */,
 				DC5C55651D54326500DCD14E /* XBVouchersViewController.h */,
@@ -1401,6 +1715,14 @@
 				DC5C556F1D543E7000DCD14E /* XBInviteViewController.m */,
 				DC5C558F1D5830EE00DCD14E /* XBWishlistViewController.h */,
 				DC5C55901D5830EE00DCD14E /* XBWishlistViewController.m */,
+				DC725C801D4B604000A89B70 /* XBExchangeViewController.h */,
+				DC725C811D4B604000A89B70 /* XBExchangeViewController.m */,
+				DCDB6EAE1D4B348200E31B07 /* XBHelpViewController.h */,
+				DCDB6EAF1D4B348200E31B07 /* XBHelpViewController.m */,
+				DCDB6EA21D4AEADF00E31B07 /* XBAboutViewController.h */,
+				DCDB6EA31D4AEADF00E31B07 /* XBAboutViewController.m */,
+				DCDB6EA51D4AFB6100E31B07 /* XBFeedBackViewController.h */,
+				DCDB6EA61D4AFB6100E31B07 /* XBFeedBackViewController.m */,
 			);
 			name = Mine;
 			sourceTree = "<group>";
@@ -1469,27 +1791,28 @@
 			files = (
 				DC8A7AEB1D2B5F9C0032BC48 /* Localizable.strings in Resources */,
 				DC2628131D484454002795C3 /* ios-social-sdk-like.html in Resources */,
-				DC8A7B291D2BB0980032BC48 /* banner3.jpg in Resources */,
-				DC8A7B2A1D2BB0980032BC48 /* banner2.jpg in Resources */,
+				DC0652E21D6447F000755471 /* XBOrderOtherInfoCell.xib in Resources */,
 				DC2628031D484454002795C3 /* UMShareEditViewController.xib in Resources */,
 				DC8A7C2B1D38C41E0032BC48 /* XBCalendarCell.xib in Resources */,
 				DC8A7C151D3780BA0032BC48 /* XBHomeSearchHistoryCell.xib in Resources */,
 				DC2628161D484454002795C3 /* ios-social-sdk-shake.html in Resources */,
 				DC2628111D484454002795C3 /* ios-social-sdk-comment-detail.html in Resources */,
 				DC8A7C081D3775A90032BC48 /* XBHomeSearchActivityCell.xib in Resources */,
+				DC0652B51D61BC3E00755471 /* XBBookOrderMoneyCell.xib in Resources */,
 				DC2628121D484454002795C3 /* ios-social-sdk-comment-quick.html in Resources */,
 				DC2628051D484454002795C3 /* UMSLoginViewController.xib in Resources */,
 				DC2628151D484454002795C3 /* ios-social-sdk-login-quick.html in Resources */,
 				DC2628071D484454002795C3 /* UMSShareListController.xib in Resources */,
 				DC2628191D484454002795C3 /* ios-social-sdk-socialbar.html in Resources */,
+				DCC23ADF1D6AA1B400B88E89 /* LaunchScreen.storyboard in Resources */,
 				DC2628011D484454002795C3 /* UMSCommentInputController.xib in Resources */,
 				DC26280E1D484454002795C3 /* README.txt in Resources */,
-				DC8A7A7B1D2B57730032BC48 /* LaunchScreen.storyboard in Resources */,
 				DC2627FE1D484454002795C3 /* UMSocialLocalizable.strings in Resources */,
 				DC2628001D484454002795C3 /* UMSCommentDetailController.xib in Resources */,
 				DC0652501D5C1D2F00755471 /* XBOrderCalendarCell.xib in Resources */,
 				DC725CD11D4F1B7400A89B70 /* Currency.plist in Resources */,
 				DC4DCD181D46FFCA00DFBA97 /* XBActivityPackageCell.xib in Resources */,
+				DC0652D71D64110700755471 /* XBOrderTicketCell.xib in Resources */,
 				DC8A7A781D2B57730032BC48 /* Assets.xcassets in Resources */,
 				DC26281A1D484454002795C3 /* markdown.css in Resources */,
 				DC8A7AA51D2B582C0032BC48 /* Podfile in Resources */,
@@ -1497,24 +1820,28 @@
 				DC2628171D484454002795C3 /* ios-social-sdk-share-detail.html in Resources */,
 				DC8A7B691D2E550F0032BC48 /* XBLevelOneCell.xib in Resources */,
 				DC2628061D484454002795C3 /* UMSnsAccountViewController.xib in Resources */,
+				DC0652EA1D645C2900755471 /* XBOrderTicketHeaderCell.xib in Resources */,
 				DC8A7BE11D34CC5E0032BC48 /* XBDestinationAllCell.xib in Resources */,
 				DC5C557C1D54866900DCD14E /* XBCouponsCell.xib in Resources */,
+				DC06525B1D5DAB6800755471 /* XBOrderBookCell.xib in Resources */,
 				DC2628101D484454002795C3 /* iOS-social-releasenote.html in Resources */,
 				DC4DCD241D475E5700DFBA97 /* XBShareCell.xib in Resources */,
 				DC8A7C0D1D3776AE0032BC48 /* XBHomeSearchCityCell.xib in Resources */,
 				DC1332F01D3CD3B1005F4B3A /* XBMoreActivitySubNameCell.xib in Resources */,
 				DC2628041D484454002795C3 /* UMShareEditViewControlleriPad.xib in Resources */,
+				DC06530E1D65ADCD00755471 /* XBPayWayCell.xib in Resources */,
 				DC8A7B3E1D2CD65E0032BC48 /* XBHomeInviationCell.xib in Resources */,
 				DC8A7C1D1D38789D0032BC48 /* XBHomeSearchActivityClickCell.xib in Resources */,
 				DC5C555E1D52DDEB00DCD14E /* Countries.plist in Resources */,
+				DC0653061D659DCC00755471 /* XBOrderPrePayCell.xib in Resources */,
 				DC725CCB1D4EFFFA00A89B70 /* Language.plist in Resources */,
+				DC0653191D66944D00755471 /* XBPayUseCouponCell.xib in Resources */,
 				DC8A7A761D2B57730032BC48 /* Main.storyboard in Resources */,
 				DC8A7BCF1D3495BF0032BC48 /* XBDestinationHotCell.xib in Resources */,
 				DC2628181D484454002795C3 /* ios-social-sdk-share-quick.html in Resources */,
 				DC26280F1D484454002795C3 /* iOS-social-analytics-releasenote.html in Resources */,
 				DC8A7BF61D363A590032BC48 /* XBHomeSearchCell.xib in Resources */,
 				DC2628021D484454002795C3 /* UMSCommentInputControlleriPad.xib in Resources */,
-				DC8A7B231D2B9C9C0032BC48 /* banner1.jpg in Resources */,
 				DC4DCD0D1D4602E200DFBA97 /* XBActivityReviewCell.xib in Resources */,
 				DC26280B1D484454002795C3 /* WeiboSDK.bundle in Resources */,
 				DC2628081D484454002795C3 /* UMSocialSDKResourcesNew.bundle in Resources */,
@@ -1584,29 +1911,37 @@
 				DC13332D1D3F6AA0005F4B3A /* TADotView.m in Sources */,
 				DC8A7BED1D34E8AA0032BC48 /* XBDestinationAllFooterView.m in Sources */,
 				DC13333E1D4097D3005F4B3A /* XBParserContentItem.m in Sources */,
-				DC1D555C1D5B10EA00680779 /* XBPlaceOnOrderViewController.m in Sources */,
 				DC1332F91D3E0FA8005F4B3A /* XBSubNameView.m in Sources */,
 				DC26281D1D484821002795C3 /* XBShare.m in Sources */,
-				DC1D55901D5B1EDE00680779 /* XBOrderNavigationBar.m in Sources */,
 				DC5C55851D54951B00DCD14E /* XBCoupons.m in Sources */,
 				DC5C55941D5854B700DCD14E /* XBWishlist.m in Sources */,
+				DC0652D51D6319FE00755471 /* XBBookOtherInfo.m in Sources */,
 				DC8A7BD91D3497E30032BC48 /* XBHotDestination.m in Sources */,
+				DC0652ED1D645CAC00755471 /* XBOrderTicketHeaderCell.m in Sources */,
 				DC8A7AAB1D2B59D30032BC48 /* XBModel.m in Sources */,
 				DC8A7B791D2F53920032BC48 /* XBHomeActivityContentCell.m in Sources */,
 				DC8A7BF01D34F5D20032BC48 /* XBCityPushTransition.m in Sources */,
+				DC0652F31D655E4200755471 /* UIViewController+AlertView.m in Sources */,
+				DC06531C1D66949200755471 /* XBPayUseCouponCell.m in Sources */,
+				DC0652AD1D61B44B00755471 /* XBBookOrderViewController.m in Sources */,
 				DC8A7C0B1D37763C0032BC48 /* XBHomeSearchActivityCell.m in Sources */,
 				DC13332C1D3F6AA0005F4B3A /* TAAnimatedDotView.m in Sources */,
 				DC8A7B761D2F52C40032BC48 /* XBHomeActivityCell.m in Sources */,
 				DC2628311D49AF75002795C3 /* XBAccountLoginViewController.m in Sources */,
+				DC0652B81D61BD7C00755471 /* XBBookOrderMoneyCell.m in Sources */,
+				DC0652E81D64521000755471 /* XBDatePickerView.m in Sources */,
 				DC4DCD081D45EB5700DFBA97 /* XBActivityDetailViewController.m in Sources */,
 				DC0652531D5C1D5700755471 /* XBOrderCalendarCell.m in Sources */,
 				DC1332DF1D3C6ACE005F4B3A /* XBPlainFlowLayout.m in Sources */,
 				DC26282E1D48AA6A002795C3 /* XBLoginTipView.m in Sources */,
+				DC46F80D1D6C4FD60095A1F6 /* XBCitySearchTransition.m in Sources */,
 				DC8A7C311D38C68C0032BC48 /* XBMoreActivityViewController.m in Sources */,
 				DC8A7A941D2B58100032BC48 /* NSIntegerFormatter.m in Sources */,
+				DC0652621D5DB31C00755471 /* XBOrderBook.m in Sources */,
 				DC1333001D3F5190005F4B3A /* XBNoActivityView.m in Sources */,
 				DC13332B1D3F6AA0005F4B3A /* TAAbstractDotView.m in Sources */,
 				DC1332F31D3CD4B3005F4B3A /* XBMoreActivitySubNameCell.m in Sources */,
+				DC06532C1D695FA500755471 /* XBGuideView.m in Sources */,
 				DC8A7B111D2B914D0032BC48 /* XBReview.m in Sources */,
 				DC725CC91D4EEA9D00A89B70 /* XBPickerView.m in Sources */,
 				DC1333211D3F6A88005F4B3A /* UIView+SDExtension.m in Sources */,
@@ -1618,57 +1953,81 @@
 				DCDB6E971D49EE9800E31B07 /* XBNoDataView.m in Sources */,
 				DC8A7BDC1D3498B90032BC48 /* XBDestinationCities.m in Sources */,
 				DC8A7C061D37236C0032BC48 /* XBDBUtil.m in Sources */,
+				DC06531F1D66D19100755471 /* XBWeiXinParams.m in Sources */,
+				DC0652B01D61B6FF00755471 /* XBBookOrderHeaderView.m in Sources */,
 				DC8A7C201D387D7C0032BC48 /* XBHomeSearchActivityClickCell.m in Sources */,
+				DC0653091D659FF900755471 /* XBOrderPrePayCell.m in Sources */,
 				DC2628281D48A950002795C3 /* XBOrderViewController.m in Sources */,
 				DC1333351D40769E005F4B3A /* XBParserUtils.m in Sources */,
+				DC0653011D65811D00755471 /* XBOrderPrePayTransition.m in Sources */,
+				DC0652CA1D62BBBB00755471 /* XBOrderTicketTransition.m in Sources */,
 				DC8A7B071D2B8CFD0032BC48 /* XBActivity.m in Sources */,
 				DC725CCF1D4F183300A89B70 /* XBExchange.m in Sources */,
 				DC8A7B261D2BA4770032BC48 /* XBStretchableTableHeaderView.m in Sources */,
 				DC8A7B181D2B93CE0032BC48 /* XBSearchHot.m in Sources */,
 				DC5C55611D52E8C900DCD14E /* XBCountryView.m in Sources */,
 				DC8A7A921D2B58100032BC48 /* UIView+XBFrame.m in Sources */,
+				DC46F7EF1D6AF9700095A1F6 /* XBConfig.m in Sources */,
+				DC0652651D5DB36200755471 /* XBOrderBookPrice.m in Sources */,
+				DC46F7F91D6AFB6B0095A1F6 /* XBConfigCountry.m in Sources */,
 				DC725CBF1D4EE4A200A89B70 /* XBLanguageControl.m in Sources */,
 				DC8A7C031D3723450032BC48 /* LuKeTravel.xcdatamodeld in Sources */,
 				DC8A7C351D38EA810032BC48 /* XBDate.m in Sources */,
 				DC8A7B0D1D2B8E510032BC48 /* XBNotify.m in Sources */,
 				DC1333381D407B03005F4B3A /* XBRange.m in Sources */,
+				DC0652E01D64439500755471 /* XBOrderTicketHeaderView.m in Sources */,
 				DC4DCD0B1D45FF7900DFBA97 /* XBActivityReviewMaskView.m in Sources */,
 				DC8A7B6C1D2E56640032BC48 /* XBLevelOneCell.m in Sources */,
-				DC8A7BC61D347BF90032BC48 /* XBSearchView.m in Sources */,
+				DC8A7BC61D347BF90032BC48 /* XBSearchNavigationBar.m in Sources */,
 				DC8A7BE41D34CDBB0032BC48 /* XBDestinationAllCell.m in Sources */,
+				DC0652BB1D62AB3500755471 /* XBBook.m in Sources */,
 				DC8A7B1B1D2B94440032BC48 /* XBSearch.m in Sources */,
+				DC0653111D65AF2700755471 /* XBPayWayCell.m in Sources */,
+				DC0652DD1D64168900755471 /* XBOrderTicketViewController.m in Sources */,
 				DC8A7AFD1D2B83BE0032BC48 /* XBInviation.m in Sources */,
+				DC46F80E1D6C4FD60095A1F6 /* XBCitySearchViewController.m in Sources */,
 				DC5C558E1D58282100DCD14E /* XBCreditsHeaderView.m in Sources */,
 				DC5C55821D5494EE00DCD14E /* XBCoupon.m in Sources */,
 				DC5C558B1D58238600DCD14E /* XBCredits.m in Sources */,
 				DC0652591D5D9D4300755471 /* XBOrderBookView.m in Sources */,
 				DC8A7B671D2E4CC70032BC48 /* XBStretchableCityHeaderView.m in Sources */,
+				DC46F7EC1D6AE94E0095A1F6 /* XBLaunchScreenViewController.m in Sources */,
 				DC8A7A911D2B58100032BC48 /* UIViewController+HUD.m in Sources */,
 				DC8A7C1B1D3788B70032BC48 /* XBHomeSearchHistoryHeaderView.m in Sources */,
 				DC8A7BFF1D371CCE0032BC48 /* XBSearchHeaderView.m in Sources */,
+				DC0652DA1D6412F400755471 /* XBOrderTicketCell.m in Sources */,
+				DC46F7E61D6ACFBC0095A1F6 /* XBGuideContentView.m in Sources */,
 				DC8A7B4B1D2E2A4C0032BC48 /* XBActivityViewController.m in Sources */,
+				DC0652CF1D62F4C700755471 /* XBOrderNavigationController.m in Sources */,
 				DC1333441D40C186005F4B3A /* XBActivityItemView.m in Sources */,
 				DC8A7C131D377CED0032BC48 /* XBSearchHistory.m in Sources */,
 				DC8A7BE71D34DC0F0032BC48 /* XBDestinationAllHeaderView.m in Sources */,
+				DC46F7E91D6AE8520095A1F6 /* AppDelegate+LaunchScreen.m in Sources */,
 				DC8A7B001D2B84770032BC48 /* XBGroup.m in Sources */,
 				DC8A7BD61D3497CF0032BC48 /* XBDestination.m in Sources */,
 				DC8A7B3C1D2CD6450032BC48 /* XBHomeInviationCell.m in Sources */,
 				DC5C55911D5830EE00DCD14E /* XBWishlistViewController.m in Sources */,
+				DC0652FE1D656A9700755471 /* XBOrderPrePayViewController.m in Sources */,
+				DC46F8051D6C3FBB0095A1F6 /* XBSearchNoResultView.m in Sources */,
 				DCDB6EB61D4B4CB800E31B07 /* XBNavigationController.m in Sources */,
 				DC5C556A1D5437F500DCD14E /* XBVoucher.m in Sources */,
 				DC8A7BCD1D348BBF0032BC48 /* XBTSTView.m in Sources */,
 				DCDB6EB01D4B348200E31B07 /* XBHelpViewController.m in Sources */,
+				DC06530C1D65A9BB00755471 /* XBPayWayView.m in Sources */,
 				DC1332E51D3CC455005F4B3A /* XBMoreActivity.m in Sources */,
 				DC8A7C2E1D38C4E70032BC48 /* XBCalendarCell.m in Sources */,
 				DC1332EB1D3CC525005F4B3A /* XBMoreActivitySubName.m in Sources */,
 				DC0652561D5C28A300755471 /* XBArrangement.m in Sources */,
 				DC1332F61D3DB9DD005F4B3A /* XBMoreActivitySort.m in Sources */,
+				DC0653041D658DB700755471 /* XBOrderPrePayNavigationBar.m in Sources */,
 				DC8A7B611D2E48740032BC48 /* XBCity.m in Sources */,
 				DC13331F1D3F6A88005F4B3A /* SDCollectionViewCell.m in Sources */,
 				DC5C55641D530D5B00DCD14E /* XBVerificationCodeView.m in Sources */,
+				DC46F7F21D6AF9A40095A1F6 /* XBConfigImages.m in Sources */,
 				DC8A7B5A1D2E43640032BC48 /* RegexKitLite.m in Sources */,
 				DC5C556D1D54394E00DCD14E /* XBVouchers.m in Sources */,
 				DC13332E1D3F6AA0005F4B3A /* TAPageControl.m in Sources */,
+				DC0652E51D64482200755471 /* XBOrderOtherInfoCell.m in Sources */,
 				DC4DCCFF1D45C14900DFBA97 /* XBActivityRecommendMaskView.m in Sources */,
 				DC8A7B5D1D2E474F0032BC48 /* XBCityViewController.m in Sources */,
 				DCDB6EA11D4A03E000E31B07 /* XBMineViewController.m in Sources */,
@@ -1678,6 +2037,8 @@
 				DCDB6EA41D4AEADF00E31B07 /* XBAboutViewController.m in Sources */,
 				DC1333471D40CC29005F4B3A /* XBNotifyView.m in Sources */,
 				DC13333B1D407EE2005F4B3A /* XBParserContent.m in Sources */,
+				DC0652921D5DC0BF00755471 /* XBOrderCalendarViewController.m in Sources */,
+				DC0653291D670BFA00755471 /* XBOrderDetailTransition.m in Sources */,
 				DC5C55731D5466F100DCD14E /* XBInvite.m in Sources */,
 				DC725C821D4B604000A89B70 /* XBExchangeViewController.m in Sources */,
 				DC8A7AF51D2B623B0032BC48 /* XBHomeViewController.m in Sources */,
@@ -1685,22 +2046,31 @@
 				DC8A7AEE1D2B60BD0032BC48 /* XBAppRootViewController.m in Sources */,
 				DC8A7B511D2E395C0032BC48 /* XBStretchableActivityView.m in Sources */,
 				DC8A7B141D2B91A30032BC48 /* XBComment.m in Sources */,
+				DC0652B31D61BBA600755471 /* XBBookOrderFooterView.m in Sources */,
 				DC2628341D49DC90002795C3 /* XBUser.m in Sources */,
 				DC8A7AFA1D2B83110032BC48 /* XBHome.m in Sources */,
 				DC8A7BBA1D3347020032BC48 /* XBHomeHeaderView.m in Sources */,
 				DC8A7A961D2B58100032BC48 /* UIImage+Util.m in Sources */,
+				DC06529E1D61652600755471 /* XBBookOrderTransition.m in Sources */,
+				DC06525E1D5DAF4500755471 /* XBOrderBookCell.m in Sources */,
 				DC8A7A9D1D2B58160032BC48 /* XBUserDefaultsUtil.m in Sources */,
 				DC1332EE1D3CC554005F4B3A /* XBMoreActivitySubNameItem.m in Sources */,
 				DC8A7BF41D362DAA0032BC48 /* XBHomeSearchViewController.m in Sources */,
+				DC0652BE1D62AE4400755471 /* XBPayContact.m in Sources */,
+				DC0652C11D62AF2900755471 /* XBBookTicket.m in Sources */,
 				DC4DCD1B1D47024A00DFBA97 /* XBActivityPackageCell.m in Sources */,
 				DCDB6EAA1D4B0AF200E31B07 /* XBDoneView.m in Sources */,
 				DC5C55591D51C1D900DCD14E /* XBUserInfoViewController.m in Sources */,
 				DC8A7BCA1D348B180032BC48 /* XBDestinationViewController.m in Sources */,
 				DC4DCD021D45E16600DFBA97 /* XBActivityStrengthsView.m in Sources */,
+				DC0652D21D63059E00755471 /* XBOrderTicketNavigationBar.m in Sources */,
 				DC5C55791D54801D00DCD14E /* XBCouponHeaderView.m in Sources */,
+				DC0653141D65B04C00755471 /* XBPayWay.m in Sources */,
 				DC4DCD221D4758D300DFBA97 /* XBShareView.m in Sources */,
 				DC8A7A951D2B58100032BC48 /* UIColor+Util.m in Sources */,
 				DC8A7A931D2B58100032BC48 /* NSString+Util.m in Sources */,
+				DC0653231D66DBC300755471 /* XBOrderDetailViewController.m in Sources */,
+				DC0653171D65B80500755471 /* XBPayUseCouponView.m in Sources */,
 				DC1D55931D5B20AF00680779 /* XBOrderCalendarView.m in Sources */,
 				DC1333311D406C01005F4B3A /* XBShareActivity.m in Sources */,
 				DC8A7A701D2B57730032BC48 /* AppDelegate.m in Sources */,
@@ -1717,6 +2087,7 @@
 				DC8A7B481D2DF2F60032BC48 /* XBLoadingView.m in Sources */,
 				DC8A7BD21D3496300032BC48 /* XBDestinationHotCell.m in Sources */,
 				DC26282B1D48A964002795C3 /* XBWeChatLoginViewController.m in Sources */,
+				DC0652F01D6460D800755471 /* XBOrderNextView.m in Sources */,
 				DC1332E81D3CC4B0005F4B3A /* XBMoreActivityName.m in Sources */,
 				DCDB6EA71D4AFB6100E31B07 /* XBFeedBackViewController.m in Sources */,
 				DC4DCCFC1D45B99C00DFBA97 /* XBActivityNavigationBar.m in Sources */,
@@ -1724,10 +2095,13 @@
 				DC8A7B641D2E48AE0032BC48 /* XBLevelOne.m in Sources */,
 				DC8A7AA31D2B58210032BC48 /* XBConstants.m in Sources */,
 				DC8A7B211D2B948E0032BC48 /* XBSearchItem.m in Sources */,
+				DC0652A41D61751900755471 /* XBOrderEffectView.m in Sources */,
 				DC4DCD271D475F2700DFBA97 /* XBShareCell.m in Sources */,
 				DC8A7BDF1D3498DD0032BC48 /* XBDestinationItem.m in Sources */,
 				DC1333201D3F6A88005F4B3A /* SDCycleScrollView.m in Sources */,
 				DC5C55671D54326500DCD14E /* XBVouchersViewController.m in Sources */,
+				DC46F7F51D6AFA310095A1F6 /* XBConfigSplash.m in Sources */,
+				DC0653261D67006900755471 /* XBOrderDetailToolBar.m in Sources */,
 				DC8A7C181D3780E90032BC48 /* XBHomeSearchHistoryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1761,10 +2135,10 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		DC8A7A791D2B57730032BC48 /* LaunchScreen.storyboard */ = {
+		DCC23ADD1D6AA1B400B88E89 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DC8A7A7A1D2B57730032BC48 /* Base */,
+				DCC23ADE1D6AA1B400B88E89 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1859,6 +2233,7 @@
 			baseConfigurationReference = 37C54C8C4F188F6849E40750 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1866,6 +2241,7 @@
 				);
 				GCC_PREFIX_HEADER = "/Users/coder/Documents/xcodeworkspace/LuKeTravel/LuKeTravel/LuKeTravel-Prefix.pch";
 				INFOPLIST_FILE = LuKeTravel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1910,6 +2286,7 @@
 			baseConfigurationReference = AC21827E9A9FE60E33F37637 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1917,6 +2294,7 @@
 				);
 				GCC_PREFIX_HEADER = "/Users/coder/Documents/xcodeworkspace/LuKeTravel/LuKeTravel/LuKeTravel-Prefix.pch";
 				INFOPLIST_FILE = LuKeTravel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

@@ -9,5 +9,13 @@
 #import "XBBookOtherInfo.h"
 
 @implementation XBBookOtherInfo
++ (NSString *)managedObjectEntityName
+{
+    return NSStringFromClass(self);
+}
 
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    return @{};
+}
 @end

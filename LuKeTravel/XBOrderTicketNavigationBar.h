@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XBOrderConfirmNavigationBar : UIView
+@interface XBOrderTicketNavigationBar : UIView
 /** 标题 */
 @property (strong, nonatomic) UILabel  *titleLabel;
 /** 市场价 */

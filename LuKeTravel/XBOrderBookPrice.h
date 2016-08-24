@@ -9,5 +9,10 @@
 #import "XBModel.h"
 
 @interface XBOrderBookPrice : XBModel
-
+@property (strong, nonatomic) NSString  *name;
+@property (assign, nonatomic) NSInteger marketPrice;
+@property (assign, nonatomic) NSInteger maxNum;
+@property (assign, nonatomic) NSInteger minNum;
+@property (assign, nonatomic) NSInteger price;
+@property (strong, nonatomic) NSString  *unitName;
 @end

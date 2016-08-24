@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="XBOrderConfirmBasicCell" id="eF5-eb-Qpp" customClass="XBOrderConfirmBasicCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="XBOrderTicketCell" id="eF5-eb-Qpp" customClass="XBOrderTicketCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eF5-eb-Qpp" id="W3F-CU-YOq">
@@ -27,7 +27,7 @@
                         <color key="textColor" red="0.51764705882352935" green="0.51764705882352935" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入护照名字拼音" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mUt-4j-O5C" userLabel="textfield">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入护照名字拼音" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mUt-4j-O5C" userLabel="textfield">
                         <rect key="frame" x="130" y="13" width="130" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
@@ -42,7 +42,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3HJ-rt-KIE" userLabel="pSearator">
-                        <rect key="frame" x="288" y="16" width="2" height="12"/>
+                        <rect key="frame" x="278" y="16" width="2" height="12"/>
                         <color key="backgroundColor" red="0.77254901960784317" green="0.77254901960784317" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="VOb-qc-Rcj"/>
@@ -82,7 +82,7 @@
                     <constraint firstItem="itq-Qf-aLg" firstAttribute="top" secondItem="W3F-CU-YOq" secondAttribute="top" id="6nm-Io-tFU"/>
                     <constraint firstItem="p1g-aA-SjO" firstAttribute="centerY" secondItem="W3F-CU-YOq" secondAttribute="centerY" id="7nE-63-d25"/>
                     <constraint firstItem="y0u-iq-ckc" firstAttribute="leading" secondItem="zyB-gW-PTO" secondAttribute="leading" id="BA4-l6-mvS"/>
-                    <constraint firstItem="3HJ-rt-KIE" firstAttribute="trailing" secondItem="LMI-Kv-JTH" secondAttribute="leading" constant="10" id="FYX-sR-xc9"/>
+                    <constraint firstItem="LMI-Kv-JTH" firstAttribute="leading" secondItem="3HJ-rt-KIE" secondAttribute="trailing" id="FYX-sR-xc9"/>
                     <constraint firstAttribute="trailing" secondItem="mUt-4j-O5C" secondAttribute="trailing" constant="60" id="IW5-ob-9uV"/>
                     <constraint firstAttribute="trailing" secondItem="p1g-aA-SjO" secondAttribute="trailing" constant="10" id="Lux-fX-GMn"/>
                     <constraint firstItem="itq-Qf-aLg" firstAttribute="leading" secondItem="W3F-CU-YOq" secondAttribute="leading" id="TQC-6g-KCw"/>
@@ -101,12 +101,14 @@
                 <outlet property="contentSeparator" destination="y0u-iq-ckc" id="ceL-vi-2i1"/>
                 <outlet property="pSeparatorView" destination="3HJ-rt-KIE" id="HZL-Ec-MUb"/>
                 <outlet property="pullButton" destination="LMI-Kv-JTH" id="KYV-u3-ZtG"/>
-                <outlet property="separatorConstraints" destination="7TL-r6-6Oj" id="mgI-DM-PO0"/>
                 <outlet property="textField" destination="mUt-4j-O5C" id="gIQ-J7-kq8"/>
                 <outlet property="textFieldRightConstraints" destination="IW5-ob-9uV" id="O06-wj-Kue"/>
                 <outlet property="titleLabel" destination="zyB-gW-PTO" id="HD9-ja-vSF"/>
                 <outlet property="topSeparator" destination="itq-Qf-aLg" id="x2u-fA-Jgo"/>
                 <outlet property="verifityLabel" destination="p1g-aA-SjO" id="fG1-ON-zVg"/>
+                <outletCollection property="separatorConstraints" destination="rqA-qR-9Aj" id="vT1-fj-YDf"/>
+                <outletCollection property="separatorConstraints" destination="EXv-KE-YRU" id="gCx-9c-zGP"/>
+                <outletCollection property="separatorConstraints" destination="7TL-r6-6Oj" id="Hdv-hK-cez"/>
             </connections>
             <point key="canvasLocation" x="345" y="166"/>
         </tableViewCell>

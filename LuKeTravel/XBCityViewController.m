@@ -12,25 +12,36 @@
 #import "XBGroup.h"
 #import "XBWeather.h"
 #import "XBGroupItem.h"
+#import "XBSearchItem.h"
 #import "UIImage+Util.h"
-#import "XBSearchView.h"
 #import "XBLoadingView.h"
 #import "XBHomeHeaderView.h"
 #import "XBHomeActivityCell.h"
 #import "XBCityPushTransition.h"
+#import "XBNavigationController.h"
 #import "XBDesinationFooterView.h"
+#import "XBCitySearchTransition.h"
 #import "XBActivityViewController.h"
+#import "XBCitySearchViewController.h"
 #import "XBMoreActivityViewController.h"
 #import "XBStretchableCityHeaderView.h"
-@interface XBCityViewController () <UITableViewDelegate,UITableViewDataSource,XBHomeActivityCellDelegate>
+
+@interface XBCityViewController () <UITableViewDelegate,UITableViewDataSource,XBHomeActivityCellDelegate,UIViewControllerTransitioningDelegate>
+/** 数据列表 */
 @property (strong, nonatomic) UITableView   *tableView;
+/** 城市数据 */
 @property (strong, nonatomic) XBCity        *city;
+/** 返回按钮 */
 @property (strong, nonatomic) UIButton      *backButton;
+/** 搜索按钮 */
 @property (strong, nonatomic) UIButton      *searchButton;
-@property (strong, nonatomic) XBSearchView  *searchView;
+/** 分组头部view */
 @property (strong, nonatomic) NSMutableArray                *sectionHeaderViews;
+/** 分组数据 */
 @property (strong, nonatomic) NSMutableDictionary           *groupDic;
+/** 底部view */
 @property (strong, nonatomic) XBDesinationFooterView        *footerView;
+/** 处理封面拉伸 */
 @property (strong, nonatomic) XBStretchableCityHeaderView   *stretchHeaderView;
 @end
 
@@ -39,6 +50,8 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self buildView];
     
@@ -55,7 +68,6 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     [[UIApplication sharedApplication] setStatusBarStyle:[[self.navigationController.navigationBar subviews] objectAtIndex:0].alpha == 1 ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent];
 
     [self setNavigationAlphaWithScrollView:self.tableView];
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -75,6 +87,8 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
         self.city = city;
         
         self.stretchHeaderView.levelOneTableView.hidden = NO;
+        
+        self.navigationItem.rightBarButtonItem.enabled = YES;
         
         [XBLoadingView hide];
         
@@ -180,10 +194,7 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 
 - (void)buildView
 {
-    self.searchView =  [XBSearchView new];
-    [self.view addSubview:self.searchView];
-    
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0 , CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
@@ -222,33 +233,39 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     self.backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.backButton];
-    
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor colorWithRed:28.f/255.f green:28.f/255.f blue:28.f/255.f alpha:0]};
     
     self.searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.searchButton.enabled = NO;
     self.searchButton.frame = CGRectMake(0, 0, 23, 23);
     self.searchButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [self.searchButton setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
     [self.searchButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
-
-    [self addConstraint];
-}
-
-- (void)addConstraint
-{
-    [self.searchView makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(0, 0, 0, 0));
-    }];
 }
 
 - (void)buttonAction:(UIButton *)sender
 {
     if (sender == self.backButton) {
+        
         [self.navigationController popViewControllerAnimated:YES];
+        
     } else {
         
-        [self.view bringSubviewToFront:self.searchView];
+        XBCitySearchViewController *citySearchVC = [[XBCitySearchViewController alloc] init];
+        
+        citySearchVC.cityId = [self.groupItem.modelId integerValue];
+        
+        XBNavigationController *navigationController = [[XBNavigationController alloc] initWithRootViewController:citySearchVC];
+        
+        navigationController.navigationBarHidden = YES;
+        
+        [[[navigationController.navigationBar subviews] objectAtIndex:0] setAlpha:0];
+        
+        navigationController.transitioningDelegate = self;
+        
+        [self presentViewController:navigationController animated:YES completion:nil];
+        
     }
 }
 
@@ -368,6 +385,8 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
  
 }
 
+
+/** 转场动画-push */
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
 {
     NSString *moreActivityVC = NSStringFromClass([XBMoreActivityViewController class]);
@@ -388,6 +407,17 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     return [XBCityPushTransition transitionWithTransitionType:operation == UINavigationControllerOperationPush ? XBCityPushTransitionTypePush : XBCityPushTransitionTypePop];
 }
 
+/** 转场动画-present */
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+{
+    return [XBCitySearchTransition transitionWithTransitionType:XBCitySearchTransitionTypePresent];
+}
+
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    return [XBCitySearchTransition transitionWithTransitionType:XBCitySearchTransitionTypeDismiss];
+}
+
 - (void)setNavigationAlphaWithScrollView:(UIScrollView *)scrollView
 {
     CGFloat contentOffsetY = scrollView.contentOffset.y;
@@ -403,6 +433,7 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 - (NSMutableDictionary *)groupDic
 {
     if (!_groupDic) {
+        
         _groupDic = [NSMutableDictionary dictionary];
     }
     return _groupDic;
@@ -411,6 +442,7 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 - (NSMutableArray *)sectionHeaderViews
 {
     if (!_sectionHeaderViews) {
+        
         _sectionHeaderViews = [NSMutableArray array];
     }
     return _sectionHeaderViews;

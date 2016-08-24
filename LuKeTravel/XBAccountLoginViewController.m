@@ -274,8 +274,7 @@
         
     } else if (sender == self.forgetButton) {
         
-        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:[XBLanguageControl localizedStringForKey:@"login-forget-message"] message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:[XBLanguageControl localizedStringForKey:@"login-alert-confirm"], nil];
-        [alertView show];
+        [self showAlertWithTitle:[XBLanguageControl localizedStringForKey:@"login-forget-message"]];
         
     }
 }
@@ -317,9 +316,8 @@
             message = [XBLanguageControl localizedStringForKey:@"login-fail"];
         }
         
-        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:message message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:[XBLanguageControl localizedStringForKey:@"login-alert-confirm"], nil];
+        [self showAlertWithTitle:message];
         
-        [alertView show];
         
     }];
 }
@@ -331,9 +329,7 @@
     
     if (range.location == NSNotFound) {
         
-        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:[XBLanguageControl localizedStringForKey:@"login-register-password-error"] message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:[XBLanguageControl localizedStringForKey:@"login-alert-confirm"], nil];
-        
-        [alertView show];
+        [self showAlertWithTitle:[XBLanguageControl localizedStringForKey:@"login-register-password-error"]];
         
         return;
     }

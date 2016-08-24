@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface XBOrderTicketHeaderView : UIView
-
+/** icon */
+@property (strong, nonatomic) UIImageView *imageView;
+/** 标题 */
+@property (strong, nonatomic) UILabel *titleLabel;
 @end

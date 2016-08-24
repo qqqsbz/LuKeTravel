@@ -7,7 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+typedef NS_ENUM(NSInteger,XBOrderPrePayTransitionType) {
+    XBOrderPrePayTransitionTypePush = 0,
+    XBOrderPrePayTransitionTypePop
+};
 
-@interface XBOrderPrePayTransition : NSObject
+@interface XBOrderPrePayTransition : NSObject <UIViewControllerAnimatedTransitioning>
+
++ (instancetype)transitionWithTransitionType:(XBOrderPrePayTransitionType)type;
+
+- (instancetype)initWithTransitionType:(XBOrderPrePayTransitionType)type;
+
 
 @end

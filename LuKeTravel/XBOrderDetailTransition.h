@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+typedef NS_ENUM(NSInteger,XBOrderDetailTransitionType) {
+    XBOrderDetailTransitionTypePresent = 0,
+    XBOrderDetailTransitionTypeDismiss
+};
 
-@interface XBOrderDetailTransition : NSObject
+@interface XBOrderDetailTransition : NSObject <UIViewControllerAnimatedTransitioning>
+
++ (instancetype)transitionWithTransitionType:(XBOrderDetailTransitionType)type;
+
+- (instancetype)initWithTransitionType:(XBOrderDetailTransitionType)type;
 
 @end

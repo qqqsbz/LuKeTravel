@@ -13,11 +13,8 @@
 #import "XBArrangement.h"
 #import "UIImage+Util.h"
 #import "XBPickerView.h"
-#import "XBOrderNavigationBar.h"
 #import "XBOrderCalendarCell.h"
 @interface XBOrderCalendarView() <UICollectionViewDelegate,UICollectionViewDataSource,XBPickerViewDelegate,XBPickerViewDatasource>
-/** 导航栏 */
-@property (strong, nonatomic) XBOrderNavigationBar *navigationBar;
 /** 滚动栏 */
 @property (strong, nonatomic) UIScrollView *scrollView;
 /** 滚动view 存放其他view的内容view */
@@ -129,17 +126,6 @@ static NSString *const reuseIdentifier = @"XBOrderCalendarCell";
     
     self.backgroundColor = [UIColor colorWithHexString:@"#F5F5F5"];
     
-    self.navigationBar = [[XBOrderNavigationBar alloc] initWithBackBlock:^{
-        
-        if ([self.delegate respondsToSelector:@selector(orderCalendarViewDidSelectDissmiss)]) {
-            
-            [self.delegate orderCalendarViewDidSelectDissmiss];
-        }
-        
-    }];
-    self.navigationBar.titleText = [XBLanguageControl localizedStringForKey:@"activity-order-chosedate"];
-    [self addSubview:self.navigationBar];
-    
     self.scrollView = [UIScrollView new];
     [self addSubview:self.scrollView];
     
@@ -226,19 +212,6 @@ static NSString *const reuseIdentifier = @"XBOrderCalendarCell";
     self.pickerView.delegate = self;
     self.pickerView.title = [XBLanguageControl localizedStringForKey:@"activity-order-time-begin-chose"];
     [keyWindow addSubview:self.pickerView];
-
-    [self addConstraint];
-}
-
-- (void)addConstraint
-{
-    [self.navigationBar makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self);
-        make.right.equalTo(self);
-        make.top.equalTo(self);
-        make.height.mas_equalTo(44);
-    }];
-
 }
 
 - (void)layoutSubviews
@@ -248,7 +221,7 @@ static NSString *const reuseIdentifier = @"XBOrderCalendarCell";
     [self.scrollView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self);
         make.right.equalTo(self);
-        make.top.equalTo(self.navigationBar.bottom);
+        make.top.equalTo(self).offset(44.f);
         make.bottom.equalTo(self);
     }];
     
@@ -500,7 +473,18 @@ static NSString *const reuseIdentifier = @"XBOrderCalendarCell";
             
             self.orderArrangement = [self.times firstObject];
             
-            self.orderArrangement.startTime = [[[self.orderButton titleForState:UIControlStateNormal] componentsSeparatedByString:@" "] lastObject];
+            NSMutableArray *dateStrings = [NSMutableArray arrayWithArray:[[self.orderButton titleForState:UIControlStateNormal] componentsSeparatedByString:@" "]];
+            
+            [dateStrings removeObjectAtIndex:0];
+            
+            NSString *dateString = @"";
+
+            for (NSString *string in dateStrings) {
+                
+                dateString = [dateString stringByAppendingString:[NSString stringWithFormat:@"%@ ",string]];
+            }
+            
+            self.orderArrangement.startTime = dateString;
             
         }
         
@@ -601,11 +585,12 @@ static NSString *const reuseIdentifier = @"XBOrderCalendarCell";
     
     if (![[XBUserDefaultsUtil currentLanguage] isEqualToString:kLanguageENUS]) {
         
-        orderTitle = [NSString stringWithFormat:[XBLanguageControl localizedStringForKey:@"activity-order-date"],comp.year,comp.month,day];
+        orderTitle = [NSString stringWithFormat:[XBLanguageControl localizedStringForKey:@"activity-order-date"],[NSIntegerFormatter formatToNSString:comp.year],[NSIntegerFormatter formatToNSString:comp.month],[NSIntegerFormatter formatToNSString:day]];
         
     } else {
         
-        orderTitle = [NSString stringWithFormat:[XBLanguageControl localizedStringForKey:@"activity-order-date"],[self monthOfString:comp.month],day,comp.year];
+        orderTitle = [NSString stringWithFormat:[XBLanguageControl localizedStringForKey:@"activity-order-date"],[NSString monthOfStringForENUS:comp.month],[NSIntegerFormatter formatToNSString:day],[NSIntegerFormatter formatToNSString:comp.year]];
+        
         
     }
     
@@ -616,8 +601,6 @@ static NSString *const reuseIdentifier = @"XBOrderCalendarCell";
 /** 下单 */
 - (void)orderAction
 {
-    DDLogDebug(@"下单 :%@",self.orderArrangement);
-    
     if ([self.delegate respondsToSelector:@selector(orderCalendarView:didSelectOrderWithArrangement:)]) {
         
         [self.delegate orderCalendarView:self didSelectOrderWithArrangement:self.orderArrangement];

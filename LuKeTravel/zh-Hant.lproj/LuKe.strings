@@ -14,10 +14,22 @@
 "commom-error-phone" = "請輸入正確的手機號碼";
 
 "loading-fail" = "加載失敗";
+"error-no-network-signal" = "暫無網絡信號？可在妳的賬戶中查看離線憑證";
+
+//引导页
+"guide-first-title" = "體驗師精選活動";
+"guide-first-content" = "路客旅行體驗師深入目的地，收集特色優質的旅行體驗活動";
+"guide-second-title" = "輕松的預訂方式";
+"guide-second-content" = "簡捷預訂流程，預訂後立即出票，收集電子憑證，還可享受經典快捷通道";
+"guide-third-title" = "專享優惠";
+"guide-third-content" = "路客攜手合作夥伴，打造旅途中的專屬優惠，更可享受低至5折的超值價格";
+"guide-jump" = "跳過";
+"guide-start" = "開始";
 
 //首页
 "search-placeholder" = "搜索亞洲城市、活動";
 "search-cancel" = "取消";
+"search-noresult" = "暫無相關搜索結果哦";
 
 //目的地
 "destination-title" = "目的地";
@@ -54,15 +66,57 @@
 "activity-more-sort-reviewed" = "最多評價";
 "activity-more-sort-price" = "價格從低到高";
 "activity-more-sort-top" = "最新活動";
+"activity-order-book-date" = "預訂日期";
+"activity-order-save" = "共節省";
+"activity-order-max" = "最多購買數量為%d";
+"activity-order-back" = "返回修改";
+"activity-order-ticket-date" = "%@年%@月%@日";
+"activity-order-special" = "特别信息";
+"activity-order-basic" = "出行人基本信息";
+"activity-order-otherinfo-date" = "%@年%@月%@日";
+"activity-order-contact-name" = "聯系人:";
+"activity-order-contact-phone" = "電話:";
+"activity-order-contact-email" = "電子郵箱:";
+"activity-order-prepay-option-title" = "選擇支付方式";
+"activity-order-prepay-option" = "選擇支付方式";
+"activity-order-prepay-option-alipay" = "支付寶";
+"activity-order-prepay-option-wechatpay" = "微信支付";
+"activity-order-prepay-total" = "金額";
+"activity-order-prepay-coupon" = "使用優惠券";
+"activity-order-prepay-coupon-notuse" = "不使用優惠券";
+"activity-order-prepay-pay" = "支付金額";
+"activity-order-prepay-topay" = "去支付";
+"activity-order-prepay-coupon-tocoupon" = "兌換";
+"activity-order-prepay-coupon-input" = "輸入優惠券";
+"activity-order-prepay-none-payoption" = "請選擇支付方式";
 
+
+//订单详情
+"order-detail-title" = "訂單詳情";
+"order-detail-contact-title" = "出行人信息";
+"order-detail-contact-name" = "聯系人";
+"order-detail-contact-email" = "郵箱";
+"order-detail-contact-phone" = "電話";
+"order-detail-payway-title" = "支付方式";
+"order-detail-money-title" = "金額";
+"order-detail-money-total-title" = "總金額";
+"order-detail-money-total-coupon" = "使用優惠券";
+"order-detail-money-total-pay" = "支付金額";
+"order-detail-money-total-save" = "為您節省";
+"order-detail-pay" = "支付";
 
 //下单
 "activity-order-chosedate" = "選擇日期";
-"activity-order-date" = "预订 %d年%d月%d日";
+"activity-order-date" = "预订 %@年%@月%@日";
 "activity-order-time-am" = "上午";
 "activity-order-time-pm" = "下午";
 "activity-order-time-begin-chose" = "請選擇開始時間";
 "activity-order-time-begin-title" = "開始時間";
+"activity-order-book-title" = "提交訂單";
+"activity-order-next" = "下壹步";
+"activity-order-name" = "每人";
+"activity-order-unitname" = "數量";
+"activity-order-total" = "支付金額";
 
 //星期
 "activity-more-calendar-today" = "今天";

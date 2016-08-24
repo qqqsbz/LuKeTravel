@@ -7,7 +7,27 @@
 //
 
 #import "XBConfigSplash.h"
-
+#import "XBConfigImages.h"
 @implementation XBConfigSplash
++ (NSString *)managedObjectEntityName
+{
+    return NSStringFromClass(self);
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    return @{};
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey
+{
+    return @{@"images":[XBConfigImages class]
+             };
+}
+
++ (NSValueTransformer *)imagesJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[XBConfigImages class]];
+}
 
 @end

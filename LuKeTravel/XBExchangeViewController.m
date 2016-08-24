@@ -196,7 +196,7 @@
                     
                 } else {
                     
-                    [self showFail:@""];
+                    [self showNoSignalAlert];
                 }
                 
             }];
@@ -221,7 +221,7 @@
                     
                 } else {
                     
-                    [self showFail:@""];
+                    [self showNoSignalAlert];
                 }
                 
             }];

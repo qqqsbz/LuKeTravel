@@ -14,8 +14,8 @@
 #import <AFNetworkActivityIndicatorManager.h>
 #import <AFNetworkReachabilityManager.h>
 #import <SDImageCache.h>
+#import "AppDelegate+LaunchScreen.h"
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate
@@ -63,6 +63,8 @@
     [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:@"61509799"
                                               secret:@"bd08f4f0a1988d317cdc45f889593eb6"
                                          RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+    
+    [self startLaunchScreen];
     
     return YES;
 }

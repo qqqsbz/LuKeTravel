@@ -10,4 +10,12 @@
 
 @interface XBOrderNextView : UIView
 
+/** 设置标题 */
+@property (strong, nonatomic) NSString *title;
+
+- (instancetype)initWithNextBlock:(dispatch_block_t)nextBlock;
+
+- (instancetype)initWithFrame:(CGRect)frame nextBlock:(dispatch_block_t)nextBlock;
+
+
 @end

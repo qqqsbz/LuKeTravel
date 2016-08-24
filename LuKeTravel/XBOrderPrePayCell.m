@@ -12,13 +12,20 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    for (NSLayoutConstraint *constraint in self.separatorConstraints) {
+        
+        constraint.constant = 0.5f;
+    }
+    
+    self.textColor = [UIColor colorWithHexString:@"#848484"];
+    
+    self.textFont = [UIFont systemFontOfSize:15.f];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
 }
 
 @end

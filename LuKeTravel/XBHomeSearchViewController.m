@@ -11,13 +11,13 @@
 #import "XBSearchHot.h"
 #import "XBGroupItem.h"
 #import "XBSearchItem.h"
-#import "XBSearchView.h"
 #import "NSString+Util.h"
 #import "XBSearchHistory.h"
 #import "XBHomeSearchCell.h"
 #import "XBSearchHeaderView.h"
 #import "XBCityViewController.h"
 #import "XBHomeSearchCityCell.h"
+#import "XBSearchNavigationBar.h"
 #import "XBHomeSearchFlowLayout.h"
 #import "XBHomeSearchHistoryCell.h"
 #import "XBActivityViewController.h"
@@ -25,15 +25,24 @@
 #import "XBHomeSearchActivityClickCell.h"
 #import "XBHomeSearchHistoryHeaderView.h"
 #import <MJRefresh/MJRefresh.h>
-@interface XBHomeSearchViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,XBSearchViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface XBHomeSearchViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,XBSearchNavigationBarDelegate,UITableViewDelegate,UITableViewDataSource,XBHomeSearchActivityClickCellDelegate>
+/** 当前页数 */
 @property (assign, nonatomic) NSInteger     page;
-@property (strong, nonatomic) XBSearchView  *searchView;
+/** 热门搜索 */
 @property (strong, nonatomic) XBSearchHot   *searchHot;
+/** 列表 */
 @property (strong, nonatomic) UITableView       *tableView;
+/**  */
 @property (strong, nonatomic) UICollectionView  *collectionView;
+/** 搜索结果 */
 @property (strong, nonatomic) NSArray<XBSearchItem *>       *searchItems;
+/** 搜索历史 */
 @property (strong, nonatomic) NSArray<XBSearchHistory *>    *searchHistorys;
+/** 是否点击 “搜索” */
 @property (assign, nonatomic, getter=isSearchClicked) BOOL  searchClicked;
+/** 搜索框导航栏 */
+@property (strong, nonatomic) XBSearchNavigationBar         *searchNavigationBar;
+/** 加载更多 */
 @property (strong, nonatomic) MJRefreshAutoNormalFooter     *tableFooterView;
 @end
 
@@ -68,7 +77,7 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
 {
     [super viewWillDisappear:animated];
     
-    self.searchView.becomFirstreSpondent = NO;
+    self.searchNavigationBar.becomFirstreSpondent = NO;
 }
 
 #pragma mark -- 从本地加载热搜关键词
@@ -148,7 +157,7 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
         
         DDLogDebug(@"error:%@",error);
         
-        [self showFail:@"加载失败!"];
+        [self showNoSignalAlert];
         
         [XBLoadingView hide];
         
@@ -186,7 +195,7 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    [[XBHttpClient shareInstance] getSearchWithQuery:query page:self.page limit:limit success:^(NSArray<XBSearchItem *> *searchs) {
+    [[XBHttpClient shareInstance] getSearchWithQuery:query page:self.page limit:limit cityId:0 success:^(NSArray<XBSearchItem *> *searchs) {
         
         self.searchClicked = isClicked;
         
@@ -231,9 +240,9 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
 {
     self.view.backgroundColor = [UIColor colorWithHexString:@"#F5F5F5"];
     
-    self.searchView = [XBSearchView new];
-    self.searchView.delegate = self;
-    [self.view addSubview:self.searchView];
+    self.searchNavigationBar = [XBSearchNavigationBar new];
+    self.searchNavigationBar.delegate = self;
+    [self.view addSubview:self.searchNavigationBar];
     
     self.tableView = [UITableView new];
     self.tableView.delegate = self;
@@ -266,7 +275,7 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
 {
     self.tableFooterView = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         
-        [self sendSearchRequestWithQuery:self.searchView.searchText isClicked:YES];
+        [self sendSearchRequestWithQuery:self.searchNavigationBar.searchText isClicked:YES];
         
     }];
     
@@ -283,7 +292,7 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
 {
     [super viewDidLayoutSubviews];
     
-    [self.searchView makeConstraints:^(MASConstraintMaker *make) {
+    [self.searchNavigationBar makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view);
         make.top.equalTo(self.view);
         make.right.equalTo(self.view);
@@ -292,14 +301,14 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
     
     [self.collectionView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view);
-        make.top.equalTo(self.searchView.bottom);
+        make.top.equalTo(self.searchNavigationBar.bottom);
         make.bottom.equalTo(self.view);
         make.right.equalTo(self.view);
     }];
     
     [self.tableView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view);
-        make.top.equalTo(self.searchView.bottom);
+        make.top.equalTo(self.searchNavigationBar.bottom);
         make.bottom.equalTo(self.view);
         make.right.equalTo(self.view);
     }];
@@ -436,6 +445,8 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
             
             activityCell.searchItem = item;
             
+            activityCell.delegate = self;
+            
             return activityCell;
             
         } else {
@@ -495,7 +506,7 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
         
         XBSearchHistory *history = self.searchHistorys[indexPath.row];
         
-        self.searchView.searchText = history.name;
+        self.searchNavigationBar.searchText = history.name;
         
         [self sendSearchRequestWithQuery:history.name isClicked:NO];
         
@@ -559,13 +570,13 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
 }
 
 #pragma mark -- XBSearchViewDelegate
-- (void)searchViewDidSelectedCancle
+- (void)searchNavigationBarDidSelectedCancle
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 
-- (void)searchViewTextDidChange:(NSString *)text
+- (void)searchNavigationBarTextDidChange:(NSString *)text
 {
     if ([text stringByTrimmingCharactersInSet:
         [NSCharacterSet whitespaceAndNewlineCharacterSet]].length > 0) {
@@ -578,12 +589,12 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
     } else {
         //显示历史记录
         
-        [self searchViewDidBeginEditing];
+        [self searchNavigationBarDidBeginEditing];
     
     }
 }
 
-- (void)searchViewSearchButtonClicked:(NSString *)text
+- (void)searchNavigationBarSearchButtonClicked:(NSString *)text
 {
     //初始化数据
     self.page = 1;
@@ -602,11 +613,11 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
     [[XBDBUtil shareDBUtil] add:history];
 }
 
-- (void)searchViewDidBeginEditing
+- (void)searchNavigationBarDidBeginEditing
 {
     //查询历史记录
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    fetchRequest.fetchLimit = 100;
+    fetchRequest.fetchLimit = 1000000;
     
     NSSortDescriptor *sortDesc = [[NSSortDescriptor alloc] initWithKey:@"createdDate" ascending:NO];
     
@@ -648,6 +659,39 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
 //        }
         
     }];
+}
+
+#pragma mark -- XBHomeSearchActivityClickCellDelegate
+- (void)searchActivityClickCell:(XBHomeSearchActivityClickCell *)searchActivityClickCell didSelectFavorite:(XBSearchItem *)searchItem
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:searchActivityClickCell];
+    
+    XBSearchItem *item = self.searchItems[indexPath.row];
+    
+    if (item.favorite) {
+        
+        [[XBHttpClient shareInstance] deleteWisheWithActivityId:[item.modelId integerValue] success:^(BOOL success) {
+            
+            searchItem.favorite = !success;
+            
+            searchActivityClickCell.favorite = !success;
+            
+        } failure:^(NSError *error) {
+            
+        }];
+        
+    } else {
+        
+        [[XBHttpClient shareInstance] postWisheWithActivityId:[item.modelId integerValue] success:^(BOOL success) {
+           
+            searchItem.favorite = success;
+            
+            searchActivityClickCell.favorite = success;
+            
+        } failure:^(NSError *error) {
+            
+        }];
+    }
 }
 
 - (NSString *)dateString

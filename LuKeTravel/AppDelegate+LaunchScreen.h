@@ -10,4 +10,6 @@
 
 @interface AppDelegate (LaunchScreen)
 
+- (void)startLaunchScreen;
+
 @end

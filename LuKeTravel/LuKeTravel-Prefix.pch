@@ -28,6 +28,7 @@
 #import "XBUserDefaultsUtil.h"
 #import "NSIntegerFormatter.h"
 #import "UIViewController+HUD.h"
+#import "UIViewController+AlertView.h"
 #import <Masonry/Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <TTTAttributedLabel/TTTAttributedLabel.h>
