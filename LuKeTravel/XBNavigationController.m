@@ -26,7 +26,7 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(0, 0, 30, 30);
         button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        [button setImage:[UIImage imageNamed:self.isBackStateNormal ? @"Back_Arrow" : @"backArrow"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"backArrow"] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(popAction) forControlEvents:UIControlEventTouchUpInside];
         button.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
         

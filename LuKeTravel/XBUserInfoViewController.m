@@ -168,6 +168,8 @@
         } else {
             
             [self showNoSignalAlert];
+            
+            [self.navigationController popViewControllerAnimated:YES];
         }
         
     }];

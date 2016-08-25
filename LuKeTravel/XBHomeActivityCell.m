@@ -21,10 +21,15 @@ static NSString *const footerIdentifier = @"XBActivityFooterView";
     [super awakeFromNib];
     
     self.collectionView.dataSource = self;
+    
     self.collectionView.delegate   = self;
+    
     self.collectionView.pagingEnabled = YES;
+    
     self.collectionView.clipsToBounds = NO;
+    
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeActivityContentCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"XBHomeActivityContentCell"];
+    
     self.collectionView.contentInset = UIEdgeInsetsMake(0, -0.5, 0, -0.5);
 }
 
@@ -52,6 +57,7 @@ static NSString *const footerIdentifier = @"XBActivityFooterView";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+
     XBHomeActivityContentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     cell.delegate = self;
@@ -84,15 +90,14 @@ static NSString *const footerIdentifier = @"XBActivityFooterView";
     }
 }
 
-
-- (void)layoutSubviews
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [super layoutSubviews];
-    
-    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-    flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.collectionView.frame) - kMinimumLineSpacing - 0.2, CGRectGetHeight(self.collectionView.frame));
-    flowLayout.minimumLineSpacing = kMinimumLineSpacing;
+    return (CGSize){collectionView.xb_width - kMinimumLineSpacing - 0.2,collectionView.xb_height - 0.5};
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return kMinimumLineSpacing;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -60,7 +60,7 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     
     [self buildView];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:kUserLoginSuccessNotificaton object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccessAction) name:kUserLoginSuccessNotificaton object:nil];
     
     //如果为普通类型则默认加载数据 
     if (self.type == XBCityViewControllerTypeNormal) {
@@ -72,11 +72,15 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 {
     [super viewWillAppear:animated];
     
-    [[UIApplication sharedApplication] setStatusBarStyle:[[self.navigationController.navigationBar subviews] objectAtIndex:0].alpha == 1 ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent];
+    BOOL isAlpha = [[self.navigationController.navigationBar subviews] objectAtIndex:0].alpha == 1;
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:isAlpha ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent];
 
     [self setNavigationAlphaWithScrollView:self.tableView];
     
     self.backButton = self.navigationItem.leftBarButtonItem.customView;
+    
+    [self.backButton setImage:[UIImage imageNamed:isAlpha ? @"backArrow" : @"Back_Arrow"] forState:UIControlStateNormal];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -504,7 +508,7 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 }
 
 /** 登录成功后的操作 */
-- (void)loginSuccess
+- (void)loginSuccessAction
 {
     [self.favoriteTemp.homeActivityContentCell startFavoriteAnimation];
     

@@ -136,6 +136,11 @@
 		DC46F8131D6D4D4D0095A1F6 /* XBHomeHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC46F8121D6D4D4D0095A1F6 /* XBHomeHeaderCell.xib */; };
 		DC46F8161D6D4E3C0095A1F6 /* XBHomeHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC46F8151D6D4E3C0095A1F6 /* XBHomeHeaderCell.m */; };
 		DC46F8191D6D873C0095A1F6 /* XBFavoriteTemp.m in Sources */ = {isa = PBXBuildFile; fileRef = DC46F8181D6D873C0095A1F6 /* XBFavoriteTemp.m */; };
+		DC46F81C1D6E94790095A1F6 /* XBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DC46F81B1D6E94790095A1F6 /* XBRequest.m */; };
+		DC46F81E1D6EDA1A0095A1F6 /* XBHomeDestinationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC46F81D1D6EDA1A0095A1F6 /* XBHomeDestinationCell.xib */; };
+		DC46F8211D6EDA900095A1F6 /* XBHomeDestinationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC46F8201D6EDA900095A1F6 /* XBHomeDestinationCell.m */; };
+		DC46F8231D6EDF180095A1F6 /* XBHomeDestinationContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC46F8221D6EDF180095A1F6 /* XBHomeDestinationContentCell.xib */; };
+		DC46F8261D6EDFB00095A1F6 /* XBHomeDestinationContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC46F8251D6EDFB00095A1F6 /* XBHomeDestinationContentCell.m */; };
 		DC4DCCFC1D45B99C00DFBA97 /* XBActivityNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCCFB1D45B99C00DFBA97 /* XBActivityNavigationBar.m */; };
 		DC4DCCFF1D45C14900DFBA97 /* XBActivityRecommendMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCCFE1D45C14900DFBA97 /* XBActivityRecommendMaskView.m */; };
 		DC4DCD021D45E16600DFBA97 /* XBActivityStrengthsView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCD011D45E16600DFBA97 /* XBActivityStrengthsView.m */; };
@@ -530,6 +535,14 @@
 		DC46F8151D6D4E3C0095A1F6 /* XBHomeHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeHeaderCell.m; sourceTree = "<group>"; };
 		DC46F8171D6D873C0095A1F6 /* XBFavoriteTemp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBFavoriteTemp.h; sourceTree = "<group>"; };
 		DC46F8181D6D873C0095A1F6 /* XBFavoriteTemp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBFavoriteTemp.m; sourceTree = "<group>"; };
+		DC46F81A1D6E94790095A1F6 /* XBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBRequest.h; sourceTree = "<group>"; };
+		DC46F81B1D6E94790095A1F6 /* XBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBRequest.m; sourceTree = "<group>"; };
+		DC46F81D1D6EDA1A0095A1F6 /* XBHomeDestinationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBHomeDestinationCell.xib; sourceTree = "<group>"; };
+		DC46F81F1D6EDA900095A1F6 /* XBHomeDestinationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeDestinationCell.h; sourceTree = "<group>"; };
+		DC46F8201D6EDA900095A1F6 /* XBHomeDestinationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeDestinationCell.m; sourceTree = "<group>"; };
+		DC46F8221D6EDF180095A1F6 /* XBHomeDestinationContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBHomeDestinationContentCell.xib; sourceTree = "<group>"; };
+		DC46F8241D6EDFB00095A1F6 /* XBHomeDestinationContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeDestinationContentCell.h; sourceTree = "<group>"; };
+		DC46F8251D6EDFB00095A1F6 /* XBHomeDestinationContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeDestinationContentCell.m; sourceTree = "<group>"; };
 		DC4DCCFA1D45B99C00DFBA97 /* XBActivityNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityNavigationBar.h; sourceTree = "<group>"; };
 		DC4DCCFB1D45B99C00DFBA97 /* XBActivityNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityNavigationBar.m; sourceTree = "<group>"; };
 		DC4DCCFD1D45C14900DFBA97 /* XBActivityRecommendMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityRecommendMaskView.h; sourceTree = "<group>"; };
@@ -1435,6 +1448,8 @@
 				DC0653131D65B04C00755471 /* XBPayWay.m */,
 				DC46F8171D6D873C0095A1F6 /* XBFavoriteTemp.h */,
 				DC46F8181D6D873C0095A1F6 /* XBFavoriteTemp.m */,
+				DC46F81A1D6E94790095A1F6 /* XBRequest.h */,
+				DC46F81B1D6E94790095A1F6 /* XBRequest.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1672,6 +1687,12 @@
 				DC46F8121D6D4D4D0095A1F6 /* XBHomeHeaderCell.xib */,
 				DC46F8141D6D4E3C0095A1F6 /* XBHomeHeaderCell.h */,
 				DC46F8151D6D4E3C0095A1F6 /* XBHomeHeaderCell.m */,
+				DC46F81D1D6EDA1A0095A1F6 /* XBHomeDestinationCell.xib */,
+				DC46F81F1D6EDA900095A1F6 /* XBHomeDestinationCell.h */,
+				DC46F8201D6EDA900095A1F6 /* XBHomeDestinationCell.m */,
+				DC46F8221D6EDF180095A1F6 /* XBHomeDestinationContentCell.xib */,
+				DC46F8241D6EDFB00095A1F6 /* XBHomeDestinationContentCell.h */,
+				DC46F8251D6EDFB00095A1F6 /* XBHomeDestinationContentCell.m */,
 			);
 			name = home;
 			sourceTree = "<group>";
@@ -1822,6 +1843,7 @@
 				DC26280E1D484454002795C3 /* README.txt in Resources */,
 				DC2627FE1D484454002795C3 /* UMSocialLocalizable.strings in Resources */,
 				DC2628001D484454002795C3 /* UMSCommentDetailController.xib in Resources */,
+				DC46F8231D6EDF180095A1F6 /* XBHomeDestinationContentCell.xib in Resources */,
 				DC0652501D5C1D2F00755471 /* XBOrderCalendarCell.xib in Resources */,
 				DC725CD11D4F1B7400A89B70 /* Currency.plist in Resources */,
 				DC4DCD181D46FFCA00DFBA97 /* XBActivityPackageCell.xib in Resources */,
@@ -1852,6 +1874,7 @@
 				DC0653191D66944D00755471 /* XBPayUseCouponCell.xib in Resources */,
 				DC8A7A761D2B57730032BC48 /* Main.storyboard in Resources */,
 				DC8A7BCF1D3495BF0032BC48 /* XBDestinationHotCell.xib in Resources */,
+				DC46F81E1D6EDA1A0095A1F6 /* XBHomeDestinationCell.xib in Resources */,
 				DC2628181D484454002795C3 /* ios-social-sdk-share-quick.html in Resources */,
 				DC26280F1D484454002795C3 /* iOS-social-analytics-releasenote.html in Resources */,
 				DC8A7BF61D363A590032BC48 /* XBHomeSearchCell.xib in Resources */,
@@ -1929,6 +1952,7 @@
 				DC26281D1D484821002795C3 /* XBShare.m in Sources */,
 				DC5C55851D54951B00DCD14E /* XBCoupons.m in Sources */,
 				DC5C55941D5854B700DCD14E /* XBWishlist.m in Sources */,
+				DC46F8261D6EDFB00095A1F6 /* XBHomeDestinationContentCell.m in Sources */,
 				DC0652D51D6319FE00755471 /* XBBookOtherInfo.m in Sources */,
 				DC8A7BD91D3497E30032BC48 /* XBHotDestination.m in Sources */,
 				DC0652ED1D645CAC00755471 /* XBOrderTicketHeaderCell.m in Sources */,
@@ -1945,6 +1969,7 @@
 				DC0652B81D61BD7C00755471 /* XBBookOrderMoneyCell.m in Sources */,
 				DC0652E81D64521000755471 /* XBDatePickerView.m in Sources */,
 				DC4DCD081D45EB5700DFBA97 /* XBActivityDetailViewController.m in Sources */,
+				DC46F81C1D6E94790095A1F6 /* XBRequest.m in Sources */,
 				DC0652531D5C1D5700755471 /* XBOrderCalendarCell.m in Sources */,
 				DC1332DF1D3C6ACE005F4B3A /* XBPlainFlowLayout.m in Sources */,
 				DC26282E1D48AA6A002795C3 /* XBLoginTipView.m in Sources */,
@@ -2006,6 +2031,7 @@
 				DC5C558B1D58238600DCD14E /* XBCredits.m in Sources */,
 				DC0652591D5D9D4300755471 /* XBOrderBookView.m in Sources */,
 				DC8A7B671D2E4CC70032BC48 /* XBStretchableCityHeaderView.m in Sources */,
+				DC46F8211D6EDA900095A1F6 /* XBHomeDestinationCell.m in Sources */,
 				DC46F7EC1D6AE94E0095A1F6 /* XBLaunchScreenViewController.m in Sources */,
 				DC8A7A911D2B58100032BC48 /* UIViewController+HUD.m in Sources */,
 				DC8A7C1B1D3788B70032BC48 /* XBHomeSearchHistoryHeaderView.m in Sources */,

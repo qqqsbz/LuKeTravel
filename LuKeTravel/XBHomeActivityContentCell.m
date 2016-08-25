@@ -45,6 +45,8 @@
     self.shapeLayer = [CAShapeLayer layer];
     
     self.shapeLayer.fillColor = [UIColor colorWithWhite:0 alpha:0.25f].CGColor;
+    
+    self.instantImageView.clipsToBounds = YES;
 }
 
 - (void)setGroupItem:(XBGroupItem *)groupItem

@@ -10,7 +10,6 @@
 #define kDuration 0.7
 #define kStatusHeight   CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)
 #define kTabbarHeight   CGRectGetHeight(self.tabBarController.tabBar.frame)
-#define kResetTabviewContentSize self.tableView.contentSize.height - CGRectGetHeight(self.navigationController.navigationBar.frame)
 
 #import "XBHomeViewController.h"
 #import "XBHome.h"
@@ -24,6 +23,7 @@
 #import "XBHomeActivityCell.h"
 #import "XBHomeInviationCell.h"
 #import "XBCityViewController.h"
+#import "XBHomeDestinationCell.h"
 #import "XBNavigationController.h"
 #import "XBActivityViewController.h"
 #import "XBHomeActivityContentCell.h"
@@ -33,7 +33,7 @@
 #import "XBStretchableTableHeaderView.h"
 #import "XBMoreActivityViewController.h"
 
-@interface XBHomeViewController () <UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,XBHomeInviationCellDelegate,XBHomeActivityCellDelegate,XBHomeHeaderCellDelegate>
+@interface XBHomeViewController () <UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,XBHomeInviationCellDelegate,XBHomeActivityCellDelegate,XBHomeHeaderCellDelegate,XBHomeDestinationCellDelegate>
 /** 数据列表 */
 @property (strong, nonatomic) UITableView   *tableView;
 /** 横幅图片 */
@@ -62,6 +62,7 @@ static NSInteger bannerIndex;
 static NSString *activityReuseIdentifier = @"XBHomeActivityCell";
 static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 static NSString *headerReuseIdentifier = @"XBHomeHeaderCell";
+static NSString *destinationReuseIdentifier = @"XBHomeDestinationCell";
 @implementation XBHomeViewController
 
 - (void)viewDidLoad {
@@ -74,8 +75,6 @@ static NSString *headerReuseIdentifier = @"XBHomeHeaderCell";
     [self buildView];
     
     [self reloadData];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:kUserLoginSuccessNotificaton object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -84,9 +83,13 @@ static NSString *headerReuseIdentifier = @"XBHomeHeaderCell";
     
     self.navigationController.navigationBarHidden = YES;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:kUserLoginSuccessNotificaton object:nil];
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    //如果用户切换过语言 则重新加载数据
+    [self scrollViewDidScroll:self.tableView];
+    
+    //如果切换过语言 则重新加载数据
     if (self.home && ![self.home.modelLanguage isEqualToString:[XBUserDefaultsUtil currentLanguage]]) {
         
         [self reloadData];
@@ -100,6 +103,8 @@ static NSString *headerReuseIdentifier = @"XBHomeHeaderCell";
     [super viewWillDisappear:animated];
     
     self.navigationController.navigationBarHidden = NO;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kUserLoginSuccessNotificaton object:nil];
 }
 
 - (void)reloadData
@@ -127,7 +132,7 @@ static NSString *headerReuseIdentifier = @"XBHomeHeaderCell";
         
         [self.tableView reloadData];
         
-        self.tableView.contentSize = CGSizeMake(CGRectGetWidth(self.tableView.frame),kResetTabviewContentSize);
+        self.tableView.contentSize = CGSizeMake(self.tableView.contentSize.width,self.tableView.contentSize.height + kSpace);
         
         bannerIndex = 0;
         
@@ -150,7 +155,7 @@ static NSString *headerReuseIdentifier = @"XBHomeHeaderCell";
 
 - (void)buildView
 {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -20, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - kTabbarHeight + 20)];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - kTabbarHeight)];
     self.tableView.dataSource = self;
     self.tableView.delegate   = self;
     self.tableView.showsVerticalScrollIndicator = NO;
@@ -160,11 +165,10 @@ static NSString *headerReuseIdentifier = @"XBHomeHeaderCell";
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeActivityCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:activityReuseIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeInviationCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:inviationReuseIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeHeaderCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:headerReuseIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeDestinationCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:destinationReuseIdentifier];
     [self.view addSubview:self.tableView];
     
-    
-    CGFloat height = CGRectGetHeight(self.view.frame) - kTabbarHeight;
-    self.bannerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), height * 0.605)];
+    self.bannerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), self.tableView.xb_height * 0.605)];
     self.bannerImageView.contentMode = UIViewContentModeScaleAspectFill ;
     self.bannerImageView.clipsToBounds = YES;
     
@@ -298,17 +302,28 @@ static NSString *headerReuseIdentifier = @"XBHomeHeaderCell";
             
             XBGroup *group = self.home.groups[indexPath.section];
             
-            XBHomeActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:activityReuseIdentifier forIndexPath:indexPath];
-            
-            cell.groupItems = group.items;
-            
-            cell.delegate = self;
-            
-            return cell;
-
+            if (![group.type isEqualToString:@"4"]) {
+                
+                XBHomeActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:activityReuseIdentifier forIndexPath:indexPath];
+                
+                cell.groupItems = group.items;
+                
+                cell.delegate = self;
+                
+                return cell;
+                
+            } else {
+                
+                XBHomeDestinationCell *cell = [tableView dequeueReusableCellWithIdentifier:destinationReuseIdentifier forIndexPath:indexPath];
+                
+                cell.groupItems = group.items;
+                
+                cell.delegate = self;
+                
+                return cell;
+                
+            }
         }
-        
-        
     }
     
     XBHomeInviationCell *cell = [tableView dequeueReusableCellWithIdentifier:inviationReuseIdentifier forIndexPath:indexPath];
@@ -334,7 +349,7 @@ static NSString *headerReuseIdentifier = @"XBHomeHeaderCell";
             
         } else {
             
-            height = indexPath.row == 0 ? kHeaderHeight : 210.f;
+            height = indexPath.row == 0 ? kHeaderHeight : 200.f;
             
         }
         
@@ -345,34 +360,16 @@ static NSString *headerReuseIdentifier = @"XBHomeHeaderCell";
     return height;
 }
 
-#pragma mark -- Table view data delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
-
 #pragma mark -- XBHomeActivityCellDelegate
 - (void)homeActivityCell:(XBHomeActivityCell *)activityCell didSelectWithGroupItem:(XBGroupItem *)groupItem
 {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:activityCell];
+    XBActivityViewController *activityVC = [[XBActivityViewController alloc] init];
     
-    XBGroup *group = self.home.groups[indexPath.section];
+    activityVC.activityId = [groupItem.modelId integerValue];
     
-    if ([group.type isEqualToString:@"4"]) {
-        
-        [self pushToCityVCWithCityId:[groupItem.modelId integerValue]];
+    activityVC.hidesBottomBarWhenPushed  = YES;
     
-    } else {
-        
-        XBActivityViewController *activityVC = [[XBActivityViewController alloc] init];
-        
-        activityVC.activityId = [groupItem.modelId integerValue];
-        
-        activityVC.hidesBottomBarWhenPushed  = YES;
-        
-        [self.navigationController pushViewController:activityVC animated:YES];
-        
-    }
+    [self.navigationController pushViewController:activityVC animated:YES];
 
 }
 
@@ -437,6 +434,12 @@ static NSString *headerReuseIdentifier = @"XBHomeHeaderCell";
     }
 }
 
+#pragma mark -- XBHomeDestinationCellDelegate
+- (void)homeDestinationCell:(XBHomeDestinationCell *)homeDestinationCell didSelectRowWithGroupItem:(XBGroupItem *)groupItem
+{
+    [self pushToCityVCWithCityId:[groupItem.modelId integerValue]];
+}
+
 #pragma mark -- UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -444,6 +447,7 @@ static NSString *headerReuseIdentifier = @"XBHomeHeaderCell";
     
     //显示、隐藏状态栏-view
     BOOL isShowStatus = fabs(scrollView.contentOffset.y) >= CGRectGetHeight(self.bannerImageView.frame) * 0.5;
+    
     if (isShowStatus) {
         if (self.statusView.xb_y == -kStatusHeight) {
             
@@ -453,7 +457,10 @@ static NSString *headerReuseIdentifier = @"XBHomeHeaderCell";
             
                 self.statusView.xb_y = 0;
         
-            } completion:nil];
+            } completion:^(BOOL finished) {
+            
+                self.statusView.xb_y = 0;
+            }];
         }
     } else {
         if (self.statusView.xb_y == 0) {
@@ -464,14 +471,16 @@ static NSString *headerReuseIdentifier = @"XBHomeHeaderCell";
                 
                 self.statusView.xb_y = - kStatusHeight;
                 
-            } completion:nil];
+            } completion:^(BOOL finished) {
+                
+                self.statusView.xb_y = - kStatusHeight;
+                
+            }];
         }
     }
     
     //显示底部logo
     BOOL isShowLogo = (scrollView.contentOffset.y + CGRectGetHeight(scrollView.frame)) > (scrollView.contentSize.height + kSpace);
-    
-//    DDLogDebug(@"contentOffsetY:%f    logoY:%f",scrollView.contentOffset.y,self.logoImageView.xb_maxY);
     
     self.logoImageView.hidden = !isShowLogo;
     
@@ -573,10 +582,6 @@ static NSString *headerReuseIdentifier = @"XBHomeHeaderCell";
     cityVC.hidesBottomBarWhenPushed  = YES;
     
     cityVC.view.backgroundColor = [UIColor whiteColor];
-    
-    XBNavigationController *navigationController = (XBNavigationController *)self.navigationController;
-    
-    navigationController.backStateNormal = YES;
     
     [self.navigationController pushViewController:cityVC animated:YES];
 }

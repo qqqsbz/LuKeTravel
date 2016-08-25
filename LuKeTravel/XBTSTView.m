@@ -66,7 +66,6 @@
         self.tabHeight          = 40.f;
         self.tabSeparatorHeight = .5f;
         self.onePageOfItemCount = 4;
-        //self.autoAverageSort    = NO;
         
         self.tabHighlightColor  = [UIColor greenColor];
         self.tabNormalColor     = [UIColor redColor];

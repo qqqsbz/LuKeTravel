@@ -44,6 +44,7 @@
     _tableView.tableHeaderView = emptyTableHeaderView;
 
     [_tableView addSubview:_view];
+    
     [_tableView addSubview:self.contentView];
 
     [self addConstraint];
@@ -69,7 +70,9 @@
 - (void)scrollViewDidScroll:(UIScrollView*)scrollView
 {
     CGRect f     = _view.frame;
+    
     f.size.width = _tableView.frame.size.width;
+    
     _view.frame  = f;
     
     if(scrollView.contentOffset.y < 0)
@@ -89,6 +92,7 @@
 - (void)resizeView
 {
     _initialFrame.size.width = _tableView.frame.size.width;
+    
     _view.frame = _initialFrame;
 }
 

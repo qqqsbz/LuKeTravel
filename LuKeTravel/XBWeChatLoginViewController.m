@@ -129,7 +129,7 @@
     
     self.textField = [UITextField new];
     self.textField.delegate = self;
-    self.textField.text = @"wuxubin1992@qq.com";
+    self.textField.text = @"932170917@qq.com";
     self.textField.font = [UIFont systemFontOfSize:14.f];
     self.textField.borderStyle = UITextBorderStyleNone;
     self.textField.backgroundColor = [UIColor whiteColor];
