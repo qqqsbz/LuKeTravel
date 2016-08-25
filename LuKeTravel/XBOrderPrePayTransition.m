@@ -51,8 +51,6 @@
 
 - (void)pushAnimation:(id <UIViewControllerContextTransitioning>)transitionContext
 {
-    XBOrderTicketViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-    
     XBOrderPrePayViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
     UIView *containerView = [transitionContext containerView];

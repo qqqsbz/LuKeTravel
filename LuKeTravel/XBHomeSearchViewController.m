@@ -402,7 +402,7 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
         
         XBCityViewController *cityVC = [[XBCityViewController alloc] init];
         
-        cityVC.groupItem = groupItem;
+        cityVC.cityId = [groupItem.modelId integerValue];
         
         [self.navigationController pushViewController:cityVC animated:YES];
         
@@ -488,7 +488,7 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
             
             XBCityViewController *cityVC = [[XBCityViewController alloc] init];
             
-            cityVC.groupItem = groupItem;
+            cityVC.cityId = [groupItem.modelId integerValue];
             
             [self.navigationController pushViewController:cityVC animated:YES];
             

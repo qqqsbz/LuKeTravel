@@ -31,13 +31,11 @@
     self.contentView = [[UIView alloc] initWithFrame:view.bounds];
     
     self.titleLabel = [UILabel new];
-    self.titleLabel.text = @"探索未知的你";
     self.titleLabel.textColor = [UIColor whiteColor];
     self.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:30.f];
     [self.contentView addSubview:self.titleLabel];
     
     self.subTitleLabel = [UILabel new];
-    self.subTitleLabel.text = @"发现更好玩的世界，预订独一无二的旅行体验";
     self.subTitleLabel.numberOfLines = 0;
     self.subTitleLabel.textColor = [UIColor whiteColor];
     self.subTitleLabel.font = [UIFont systemFontOfSize:16.f];

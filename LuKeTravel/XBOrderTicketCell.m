@@ -187,21 +187,17 @@
 {
     _pickerString = pickerString;
     
-    switch (self.type) {
-        case XBOrderTicketTypeTitle:
-        {
-            self.book.payContact.title = pickerString;
-            
-            self.textField.text = pickerString;
-        }
-            break;
-        case XBOrderTicketTypeCountryCode:
-        {
-            self.book.payContact.mobile = [NSString stringWithFormat:@"%@-%@",pickerString,[[self.book.payContact.mobile componentsSeparatedByString:@"-"] lastObject]];
-            
-            self.textField.text = [NSString stringWithFormat:@"+%@",pickerString];
-        }
-            break;
+    if (self.type == XBOrderTicketTypeTitle) {
+        
+        self.book.payContact.title = pickerString;
+        
+        self.textField.text = pickerString;
+        
+    } else if (self.type == XBOrderTicketTypeCountryCode) {
+        
+        self.book.payContact.mobile = [NSString stringWithFormat:@"%@-%@",pickerString,[[self.book.payContact.mobile componentsSeparatedByString:@"-"] lastObject]];
+        
+        self.textField.text = [NSString stringWithFormat:@"+%@",pickerString];
     }
 }
 

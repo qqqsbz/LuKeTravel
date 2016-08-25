@@ -19,6 +19,7 @@
 #import "XBCityViewController.h"
 #import "XBDesinationFooterView.h"
 #import "XBDestinationAllLayout.h"
+#import "XBNavigationController.h"
 #import "XBDestinationAllHeaderView.h"
 #import "XBDestinationAllFooterView.h"
 @interface XBDestinationViewController () <TSTViewDelegate,TSTViewDataSource,UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
@@ -32,6 +33,8 @@
 @property (strong, nonatomic) UICollectionView  *allCollectionView;
 /** 底部view */
 @property (strong, nonatomic) XBDesinationFooterView  *desinationFooterView;
+/** 导航栏控制器 */
+@property (strong, nonatomic) XBNavigationController *xbNavigationController;
 @end
 
 static NSString *const destinationCityReuseIdentifier = @"XBDestinationHotCell";
@@ -119,6 +122,8 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
 
 - (void)buildView
 {
+    self.xbNavigationController = (XBNavigationController *)self.navigationController;
+    
     self.tstView = [[XBTSTView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 64 - 49)];
     self.tstView.delegate = self;
     self.tstView.dataSource = self;
@@ -256,15 +261,17 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
     
     XBCityViewController *cityVC = [[XBCityViewController alloc] init];
     
-    cityVC.groupItem = groupItem;
+    cityVC.cityId = [groupItem.modelId integerValue];
     
     cityVC.type = XBCityViewControllerTypeHot;
     
     cityVC.hidesBottomBarWhenPushed = YES;
     
-    self.navigationController.delegate = cityVC;
+    self.xbNavigationController.delegate = cityVC;
     
-    [self.navigationController pushViewController:cityVC animated:YES];
+    self.xbNavigationController.backStateNormal = YES;
+    
+    [self.xbNavigationController pushViewController:cityVC animated:YES];
 }
 
 #pragma mark -- UICollectionViewDataSource
@@ -326,6 +333,7 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
     CGFloat cellHeight = 40.f;
     
     XBDestinationCities *city = self.destination.allCities[indexPath.section];
+    
     XBDestinationItem *item = city.items[indexPath.row];
     
     CGFloat width = [item.name sizeWithFont:[UIFont systemFontOfSize:15.f] maxSize:CGSizeMake(CGFLOAT_MAX, 40)].width;
@@ -349,11 +357,15 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
     
     XBCityViewController *cityVC = [[XBCityViewController alloc] init];
     
-    cityVC.groupItem = groupItem;
+    cityVC.cityId = [groupItem.modelId integerValue];
     
     cityVC.hidesBottomBarWhenPushed = YES;
     
-    [self.navigationController pushViewController:cityVC animated:YES];
+    self.xbNavigationController.backStateNormal = YES;
+    
+    self.xbNavigationController.delegate = nil;
+    
+    [self.xbNavigationController pushViewController:cityVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -9,7 +9,7 @@
 #import "XBHomeActivityCell.h"
 #import "XBGroupItem.h"
 #import "XBHomeActivityContentCell.h"
-@interface XBHomeActivityCell() <UICollectionViewDelegate,UICollectionViewDataSource>
+@interface XBHomeActivityCell() <UICollectionViewDelegate,UICollectionViewDataSource,XBHomeActivityContentCellDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @end
 static NSString *const reuseIdentifier = @"XBHomeActivityContentCell";
@@ -53,19 +53,37 @@ static NSString *const footerIdentifier = @"XBActivityFooterView";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     XBHomeActivityContentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    
+    cell.delegate = self;
+    
     cell.layer.masksToBounds = YES;
+    
     cell.layer.cornerRadius  = 7.f;
+    
     cell.groupItem = self.groupItems[indexPath.row];
+    
     return cell;
 }
 
 #pragma mark -- UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.delegate respondsToSelector:@selector(activityCell:didSelectedWithGroupItem:)]) {
-        [self.delegate activityCell:self didSelectedWithGroupItem:self.groupItems[indexPath.row]];
+    if ([self.delegate respondsToSelector:@selector(homeActivityCell:didSelectWithGroupItem:)]) {
+        [self.delegate homeActivityCell:self didSelectWithGroupItem:self.groupItems[indexPath.row]];
     }
 }
+
+#pragma mark -- XBHomeActivityContentCellDelegate
+- (void)homeActivityContentCell:(XBHomeActivityContentCell *)homeActivityContentCell didSelectFavoriteWithGroupItem:(XBGroupItem *)groupItem
+{
+    if ([self.delegate respondsToSelector:@selector(homeActivityCell:homeActivityContentCell:didSelectFavoriteAtIndex:)]) {
+        
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:homeActivityContentCell];
+        
+        [self.delegate homeActivityCell:self homeActivityContentCell:homeActivityContentCell didSelectFavoriteAtIndex:indexPath.row];
+    }
+}
+
 
 - (void)layoutSubviews
 {

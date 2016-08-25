@@ -50,7 +50,7 @@
     
     [self.rightLabel makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self).offset(-20);
-        make.bottom.equalTo(self);
+        make.centerY.equalTo(self.leftLabel);
     }];
 }
 

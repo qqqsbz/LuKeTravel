@@ -64,15 +64,15 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="05v-Xt-TF0" firstAttribute="leading" secondItem="oqb-Jq-DH4" secondAttribute="leading" id="1Ex-zh-tIU"/>
-                    <constraint firstItem="vS2-0O-gVh" firstAttribute="centerY" secondItem="oqb-Jq-DH4" secondAttribute="centerY" id="4cc-Cr-BKP"/>
                     <constraint firstItem="FEh-jh-kTy" firstAttribute="leading" secondItem="sqd-yr-4qp" secondAttribute="leading" id="ABn-K0-c6j"/>
                     <constraint firstAttribute="trailing" secondItem="FEh-jh-kTy" secondAttribute="trailing" id="BVt-Cm-j60"/>
                     <constraint firstItem="7cd-qy-x0a" firstAttribute="top" secondItem="oqb-Jq-DH4" secondAttribute="top" id="HxD-3S-Q50"/>
                     <constraint firstAttribute="trailing" secondItem="7cd-qy-x0a" secondAttribute="trailing" id="KV0-bW-Cjk"/>
                     <constraint firstItem="7cd-qy-x0a" firstAttribute="leading" secondItem="oqb-Jq-DH4" secondAttribute="leading" id="Nhx-kJ-Iz1"/>
-                    <constraint firstAttribute="trailing" secondItem="vS2-0O-gVh" secondAttribute="trailing" constant="15" id="Qh2-JU-IAB"/>
+                    <constraint firstItem="vS2-0O-gVh" firstAttribute="centerY" secondItem="oqb-Jq-DH4" secondAttribute="centerY" id="Q80-d1-f5j"/>
                     <constraint firstAttribute="trailing" secondItem="05v-Xt-TF0" secondAttribute="trailing" id="Uyv-sH-U4t"/>
                     <constraint firstItem="sqd-yr-4qp" firstAttribute="top" secondItem="3y4-NZ-tey" secondAttribute="bottom" constant="1" id="XQb-uh-OHB"/>
+                    <constraint firstAttribute="trailing" secondItem="vS2-0O-gVh" secondAttribute="trailing" constant="15" id="XtC-wy-Nh2"/>
                     <constraint firstItem="5DV-DV-0QV" firstAttribute="leading" secondItem="oqb-Jq-DH4" secondAttribute="leading" constant="15" id="bWk-yG-8m8"/>
                     <constraint firstItem="Dd3-Rn-zjj" firstAttribute="top" secondItem="oqb-Jq-DH4" secondAttribute="top" constant="10" id="cND-lI-FHj"/>
                     <constraint firstItem="5DV-DV-0QV" firstAttribute="centerY" secondItem="oqb-Jq-DH4" secondAttribute="centerY" id="cXz-Yx-zXX"/>

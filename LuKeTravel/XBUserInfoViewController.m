@@ -392,6 +392,8 @@
 
     [XBUserDefaultsUtil clearUserInfo];
 
+    [XBHttpClient recoverInstance];
+    
     [self showAlertWithTitle:[XBLanguageControl localizedStringForKey:@"user-info-logout-success"]];
     
     

@@ -27,16 +27,27 @@
 
 @interface XBActivityViewController () <SDCycleScrollViewDelegate,UIScrollViewDelegate,
 XBStretchableActivityViewDelegate,XBActivityPackageViewDelegate,UIViewControllerTransitioningDelegate>
+/** 数据对象 */
 @property (strong, nonatomic) XBActivity                  *activity;
+/** 分享界面 */
 @property (strong, nonatomic) XBShareView                 *shareView;
+/** 分享按钮 */
 @property (strong, nonatomic) UIButton                    *shareButton;
+/** 滚动view */
 @property (strong, nonatomic) UIScrollView                *scrollView;
+/** 横幅 */
 @property (strong, nonatomic) SDCycleScrollView           *bannerView;
+/** 选择套餐 */
 @property (strong, nonatomic) XBActivityPackageView       *packageView;
+/** 评论 */
 @property (strong, nonatomic) XBActivityReviewMaskView    *reviewMaskView;
+/** 导航栏 */
 @property (strong, nonatomic) UINavigationController      *bookOrderNavigationController;
+/** 滚动超过横幅出现的导航栏 */
 @property (strong, nonatomic) XBActivityNavigationBar     *navigationBarView;
+/** 处理横幅拉伸 */
 @property (strong, nonatomic) XBStretchableActivityView   *stretchHeaderView;
+/** 体验师推荐 */
 @property (strong, nonatomic) XBActivityRecommendMaskView *recommendMaskView;
 /** 用户登录成功前是否进行收藏操作 */
 @property (assign, nonatomic) BOOL  isFavorite;

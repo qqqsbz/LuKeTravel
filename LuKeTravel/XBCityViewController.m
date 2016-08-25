@@ -15,6 +15,7 @@
 #import "XBSearchItem.h"
 #import "UIImage+Util.h"
 #import "XBLoadingView.h"
+#import "XBFavoriteTemp.h"
 #import "XBHomeHeaderView.h"
 #import "XBHomeActivityCell.h"
 #import "XBCityPushTransition.h"
@@ -22,9 +23,11 @@
 #import "XBDesinationFooterView.h"
 #import "XBCitySearchTransition.h"
 #import "XBActivityViewController.h"
+#import "XBHomeActivityContentCell.h"
 #import "XBCitySearchViewController.h"
-#import "XBMoreActivityViewController.h"
 #import "XBStretchableCityHeaderView.h"
+#import "XBWeChatLoginViewController.h"
+#import "XBMoreActivityViewController.h"
 
 @interface XBCityViewController () <UITableViewDelegate,UITableViewDataSource,XBHomeActivityCellDelegate,UIViewControllerTransitioningDelegate>
 /** 数据列表 */
@@ -39,6 +42,8 @@
 @property (strong, nonatomic) NSMutableArray                *sectionHeaderViews;
 /** 分组数据 */
 @property (strong, nonatomic) NSMutableDictionary           *groupDic;
+/** 存放登录前的收藏信息 */
+@property (strong, nonatomic) XBFavoriteTemp                *favoriteTemp;
 /** 底部view */
 @property (strong, nonatomic) XBDesinationFooterView        *footerView;
 /** 处理封面拉伸 */
@@ -55,6 +60,8 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     
     [self buildView];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:kUserLoginSuccessNotificaton object:nil];
+    
     //如果为普通类型则默认加载数据 
     if (self.type == XBCityViewControllerTypeNormal) {
         [self reloadData];
@@ -68,6 +75,8 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     [[UIApplication sharedApplication] setStatusBarStyle:[[self.navigationController.navigationBar subviews] objectAtIndex:0].alpha == 1 ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent];
 
     [self setNavigationAlphaWithScrollView:self.tableView];
+    
+    self.backButton = self.navigationItem.leftBarButtonItem.customView;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -82,7 +91,10 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 - (void)reloadData
 {
     [XBLoadingView showInView:self.view];
-    [[XBHttpClient shareInstance] getCitiesWithCityId:[self.groupItem.modelId integerValue] success:^(XBCity *city) {
+    
+    [[XBHttpClient shareInstance] getCitiesWithCityId:self.cityId success:^(XBCity *city) {
+        
+        [XBLoadingView hide];
         
         self.city = city;
         
@@ -90,29 +102,31 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
         
         self.navigationItem.rightBarButtonItem.enabled = YES;
         
-        [XBLoadingView hide];
-        
         self.title = city.name;
         
         self.stretchHeaderView.title = city.name;
         
         self.stretchHeaderView.levelOnes = self.city.levelOnes;
         
+        self.view.userInteractionEnabled = YES;
+        
         [self soreGroups];
         
         [self loadWeather];
         
-        self.tableView.tableFooterView = self.footerView;
-        
         [self startStretchableHeaderAnimation];
         
         [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.city.imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder_image"]];
+        
+        self.tableView.tableFooterView = self.footerView;
         
     } failure:^(NSError *error) {
     
         DDLogDebug(@"error:%@",error);
         
         [XBLoadingView hide];
+        
+        [self showNoSignalAlert];
    
     }];
 }
@@ -120,7 +134,7 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 //获取城市天气信息
 - (void)loadWeather
 {
-    [[XBHttpClient shareInstance] getWeatherWithCityId:[self.groupItem.modelId integerValue] success:^(XBWeather *weather) {
+    [[XBHttpClient shareInstance] getWeatherWithCityId:self.cityId success:^(XBWeather *weather) {
         
         self.stretchHeaderView.temperatureLabel.text = [NSString stringWithFormat:@"%@ °C",[NSIntegerFormatter formatToNSString:weather.temperature]];
         
@@ -173,6 +187,7 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     self.city.groups = [self.city.groups sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
     
     for (XBGroup  *group in self.city.groups) {
+        
         if ([self.groupDic objectForKey:group.type]) {
             
             NSMutableArray *datas = [self.groupDic objectForKey:group.type];
@@ -215,7 +230,7 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     
     self.footerView = [[XBDesinationFooterView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 100) title:[XBLanguageControl localizedStringForKey:@"destination-browse-all"] didSelectedBlock:^{
         
-        XBMoreActivityViewController *moreActivityVC = [[XBMoreActivityViewController alloc] initWithCityId:[self.groupItem.modelId integerValue]];
+        XBMoreActivityViewController *moreActivityVC = [[XBMoreActivityViewController alloc] initWithCityId:self.cityId];
         
         moreActivityVC.view.backgroundColor = [UIColor whiteColor];
     
@@ -224,15 +239,7 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     }];
     
     self.navigationItem.hidesBackButton = YES;
-
-    self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.backButton.frame = CGRectMake(0, 0, 30, 30);
-    self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [self.backButton setImage:[UIImage imageNamed:@"Back_Arrow"] forState:UIControlStateNormal];
-    [self.backButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
-    self.backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.backButton];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor colorWithRed:28.f/255.f green:28.f/255.f blue:28.f/255.f alpha:0]};
     
     self.searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -242,6 +249,8 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     [self.searchButton setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
     [self.searchButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
+    
+    self.view.userInteractionEnabled = NO;
 }
 
 - (void)buttonAction:(UIButton *)sender
@@ -254,7 +263,7 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
         
         XBCitySearchViewController *citySearchVC = [[XBCitySearchViewController alloc] init];
         
-        citySearchVC.cityId = [self.groupItem.modelId integerValue];
+        citySearchVC.cityId = self.cityId;
         
         XBNavigationController *navigationController = [[XBNavigationController alloc] initWithRootViewController:citySearchVC];
         
@@ -279,7 +288,9 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSString *key  = [self.groupDic allKeys][section];
+    
     NSArray *datas = [self.groupDic objectForKey:key];
+    
     return datas.count;
 }
 
@@ -330,12 +341,12 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 }
 
 #pragma mark -- XBHomeActivityCellDelegate
-- (void)activityCell:(XBHomeActivityCell *)activityCell didSelectedWithGroupItem:(XBGroupItem *)groupItem
+- (void)homeActivityCell:(XBHomeActivityCell *)activityCell didSelectWithGroupItem:(XBGroupItem *)groupItem
 {
     
     if (groupItem.hotState.length <= 0) {
         
-        XBMoreActivityViewController *moreActivityVC = [[XBMoreActivityViewController alloc] initWithCityId:[self.groupItem.modelId integerValue]];
+        XBMoreActivityViewController *moreActivityVC = [[XBMoreActivityViewController alloc] initWithCityId:self.cityId];
         
         moreActivityVC.view.backgroundColor = [UIColor whiteColor];
         
@@ -348,6 +359,59 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
         activityVC.activityId = [groupItem.modelId integerValue];
         
         [self.navigationController pushViewController:activityVC animated:YES];
+        
+    }
+    
+}
+
+- (void)homeActivityCell:(XBHomeActivityCell *)activityCell homeActivityContentCell:(XBHomeActivityContentCell *)homeActivityContentCell didSelectFavoriteAtIndex:(NSInteger)index
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:activityCell];
+    
+    NSString *key  = [self.groupDic allKeys][indexPath.section];
+    
+    XBGroup *group = [[self.groupDic objectForKey:key] objectAtIndex:indexPath.row];
+    
+    XBGroupItem *groupItem = [group.items objectAtIndex:index];
+    
+    //取消收藏
+    if (groupItem.favorite) {
+        
+        [[XBHttpClient shareInstance] deleteWisheWithActivityId:[groupItem.modelId integerValue] success:^(BOOL success) {
+            
+            groupItem.favorite = NO;
+            
+            homeActivityContentCell.favorite = NO;
+            
+        } failure:^(NSError *error) {
+            
+            if (error.code == kUserUnLoginCode) {
+                
+                self.favoriteTemp = [XBFavoriteTemp favoriteTempWithHomeActivityCell:activityCell homeActivityContentCell:homeActivityContentCell index:index];
+                
+                [self presentToLoginVC];
+            }
+            
+        }];
+        
+    } else {
+        
+        [[XBHttpClient shareInstance] postWisheWithActivityId:[groupItem.modelId integerValue] success:^(BOOL success) {
+            
+            groupItem.favorite = YES;
+            
+            homeActivityContentCell.favorite = YES;
+            
+        } failure:^(NSError *error) {
+            
+            if (error.code == kUserUnLoginCode) {
+                
+                self.favoriteTemp = [XBFavoriteTemp favoriteTempWithHomeActivityCell:activityCell homeActivityContentCell:homeActivityContentCell index:index];
+                
+                [self presentToLoginVC];
+            }
+            
+        }];
         
     }
     
@@ -427,6 +491,24 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     [[[self.navigationController.navigationBar subviews] objectAtIndex:0] setAlpha:alpha/50];
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor colorWithRed:28.f/255.f green:28.f/255.f blue:28.f/255.f alpha:alpha/50]};
+}
+
+/** 跳转到登录界面 */
+- (void)presentToLoginVC
+{
+    XBWeChatLoginViewController *weChatLoginVC = [[XBWeChatLoginViewController alloc] init];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:weChatLoginVC];
+    
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+/** 登录成功后的操作 */
+- (void)loginSuccess
+{
+    [self.favoriteTemp.homeActivityContentCell startFavoriteAnimation];
+    
+    [self homeActivityCell:self.favoriteTemp.homeActivityCell homeActivityContentCell:self.favoriteTemp.homeActivityContentCell didSelectFavoriteAtIndex:self.favoriteTemp.index];
 }
 
 #pragma mark -- private method

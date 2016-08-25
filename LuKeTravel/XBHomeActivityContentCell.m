@@ -15,7 +15,7 @@
 @property (strong, nonatomic) IBOutlet UILabel       *instantSubTitleLabel;
 
 @property (strong, nonatomic) IBOutlet UIImageView   *coverImageView;
-@property (strong, nonatomic) IBOutlet UIImageView   *favoriteImageView;
+@property (strong, nonatomic) IBOutlet UIButton      *favoriteButton;
 @property (strong, nonatomic) IBOutlet UIView        *pirceView;
 @property (strong, nonatomic) IBOutlet UILabel       *marketPriceLabel;
 @property (strong, nonatomic) IBOutlet UILabel       *sellingPriceLabel;
@@ -67,7 +67,7 @@
         
         self.sellingPriceLabel.text = [NSString stringWithFormat:@"%@ %@",[XBUserDefaultsUtil currentCurrencySymbol],groupItem.sellingPrice];
         
-        self.favoriteImageView.image = [UIImage imageNamed:groupItem.favorite ? @"activityWishSelected" : @"activityWishNormal"];
+        [self.favoriteButton setImage:[UIImage imageNamed:groupItem.favorite ? @"activityWishSelected" : @"activityWishNormal"] forState:UIControlStateNormal];
         
         [self loadImageFromCacheWithImageView:self.coverImageView];
         
@@ -121,10 +121,17 @@
     
 }
 
+- (void)setFavorite:(BOOL)favorite
+{
+    _favorite = favorite;
+    
+    [self.favoriteButton setImage:[UIImage imageNamed:favorite ? @"activityWishSelected" : @"activityWishNormal"] forState:UIControlStateNormal];
+}
+
 - (void)loadImageFromCacheWithImageView:(UIImageView *)imageView
 {
     //查看是否有缓存
-    BOOL isCache  = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:self.groupItem.imageUrl] ||[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.groupItem.imageUrl];
+    BOOL isCache  = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:self.groupItem.imageUrl] || [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.groupItem.imageUrl];
     
     //没有缓存则 下载图片并进行缓存
     if (!isCache) {
@@ -168,7 +175,7 @@
     self.participantsLabel.hidden = !isInstant;
     self.marketPriceLabel.hidden = !isInstant;
     self.sellingPriceLabel.hidden = !isInstant;
-    self.favoriteImageView.hidden = !isInstant;
+    self.favoriteButton.hidden = !isInstant;
     self.coverImageView.hidden = !isInstant;
     self.pirceView.hidden = !isInstant;
     self.instantImageView.hidden = !isInstant;
@@ -176,6 +183,39 @@
     self.addressImageView.hidden = !isInstant;
     self.participantsLabel.hidden = !isInstant;
     self.participantsImageView.hidden = !isInstant;
+}
+
+- (IBAction)favoriteAction:(UIButton *)sender {
+    
+    [self startFavoriteAnimation];
+    
+    if ([self.delegate respondsToSelector:@selector(homeActivityContentCell:didSelectFavoriteWithGroupItem:)]) {
+        
+        [self.delegate homeActivityContentCell:self didSelectFavoriteWithGroupItem:self.groupItem];
+    }
+
+}
+
+- (void)startFavoriteAnimation
+{
+    CASpringAnimation *springAnimation = [CASpringAnimation animationWithKeyPath:@"transform.scale"];
+    
+    springAnimation.damping = 5.f;
+    
+    springAnimation.stiffness = 2000.f;
+    
+    springAnimation.mass = 5;
+    
+    springAnimation.initialVelocity = 10;
+    
+    springAnimation.fromValue = @(1);
+    
+    springAnimation.toValue = @(1.165);
+    
+    springAnimation.duration = 0.7;
+    
+    [self.favoriteButton.layer addAnimation:springAnimation forKey:@"SpringAnimation"];
+
 }
 
 - (void)layoutSubviews

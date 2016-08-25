@@ -18,18 +18,22 @@
 #import "XBGroupItem.h"
 #import "XBInviation.h"
 #import "XBGuideView.h"
+#import "XBFavoriteTemp.h"
+#import "XBHomeHeaderCell.h"
 #import "XBHomeHeaderView.h"
 #import "XBHomeActivityCell.h"
 #import "XBHomeInviationCell.h"
-#import "XBActivityViewController.h"
 #import "XBCityViewController.h"
+#import "XBNavigationController.h"
+#import "XBActivityViewController.h"
+#import "XBHomeActivityContentCell.h"
 #import "XBPromotionsViewController.h"
 #import "XBHomeSearchViewController.h"
 #import "XBWeChatLoginViewController.h"
 #import "XBStretchableTableHeaderView.h"
 #import "XBMoreActivityViewController.h"
 
-@interface XBHomeViewController () <UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,XBHomeInviationCellDelegate,XBHomeActivityCellDelegate>
+@interface XBHomeViewController () <UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,XBHomeInviationCellDelegate,XBHomeActivityCellDelegate,XBHomeHeaderCellDelegate>
 /** 数据列表 */
 @property (strong, nonatomic) UITableView   *tableView;
 /** 横幅图片 */
@@ -46,6 +50,10 @@
 @property (strong, nonatomic) UIImageView   *logoImageView;
 /** 定时器 */
 @property (strong, nonatomic) NSTimer       *timer;
+/** 存放登录前的收藏信息 */
+@property (strong, nonatomic) XBFavoriteTemp *favoriteTemp;
+/** 未登陆前的操作 YES:收藏  NO:优惠码 */
+@property (assign, nonatomic) BOOL  loginState;
 /** 处理横幅图片拉伸 */
 @property (strong, nonatomic) XBStretchableTableHeaderView  *stretchHeaderView;
 @end
@@ -53,6 +61,7 @@
 static NSInteger bannerIndex;
 static NSString *activityReuseIdentifier = @"XBHomeActivityCell";
 static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
+static NSString *headerReuseIdentifier = @"XBHomeHeaderCell";
 @implementation XBHomeViewController
 
 - (void)viewDidLoad {
@@ -102,6 +111,10 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
         
         self.home = home;
         
+        self.stretchHeaderView.titleLabel.hidden = NO;
+
+        self.stretchHeaderView.subTitleLabel.hidden = NO;
+
         self.stretchHeaderView.titleLabel.text = self.home.name;
         
         self.stretchHeaderView.subTitleLabel.text = self.home.subName;
@@ -146,17 +159,19 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     self.tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeActivityCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:activityReuseIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeInviationCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:inviationReuseIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([XBHomeHeaderCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:headerReuseIdentifier];
     [self.view addSubview:self.tableView];
     
     
     CGFloat height = CGRectGetHeight(self.view.frame) - kTabbarHeight;
     self.bannerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), height * 0.605)];
-    self.bannerImageView.image = [UIImage imageNamed:@"placeholder_image"];
     self.bannerImageView.contentMode = UIViewContentModeScaleAspectFill ;
     self.bannerImageView.clipsToBounds = YES;
     
     
     self.stretchHeaderView = [XBStretchableTableHeaderView new];
+    self.stretchHeaderView.titleLabel.hidden = YES;
+    self.stretchHeaderView.subTitleLabel.hidden = YES;
     [self.stretchHeaderView stretchHeaderForTableView:self.tableView withView:self.bannerImageView];
     
     self.statusView = [UIView new];
@@ -255,26 +270,45 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     if (section < self.home.groups.count) {
         
-        return 1;
+        return 2;
     }
+    
     return self.home.inviation ? 1 : 0;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (indexPath.section < self.home.groups.count) {
         
-        XBGroup *group = self.home.groups[indexPath.section];
+        if (indexPath.row <= 0) {
+            
+            XBHomeHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:headerReuseIdentifier forIndexPath:indexPath];
+            
+            cell.group = self.home.groups[indexPath.section];
+            
+            cell.delegate = self;
+            
+            return cell;
+            
+        } else {
+            
+            XBGroup *group = self.home.groups[indexPath.section];
+            
+            XBHomeActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:activityReuseIdentifier forIndexPath:indexPath];
+            
+            cell.groupItems = group.items;
+            
+            cell.delegate = self;
+            
+            return cell;
+
+        }
         
-        XBHomeActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:activityReuseIdentifier forIndexPath:indexPath];
         
-        cell.groupItems = group.items;
-        
-        cell.delegate = self;
-        
-        return cell;
     }
     
     XBHomeInviationCell *cell = [tableView dequeueReusableCellWithIdentifier:inviationReuseIdentifier forIndexPath:indexPath];
@@ -296,11 +330,11 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
         
         if (![group.type isEqualToString:@"4"]) {
             
-            height = 275.f;
+            height = indexPath.row == 0 ? kHeaderHeight : 275.f;
             
         } else {
             
-            height = 210.f;
+            height = indexPath.row == 0 ? kHeaderHeight : 210.f;
             
         }
         
@@ -311,25 +345,6 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     return height;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return section < self.home.groups.count ? kHeaderHeight : 0;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    
-    XBGroup *group = self.home.groups[section];
-    
-    XBHomeHeaderView *headerView = [[XBHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 50.f)];
-    
-    headerView.leftLabel.text = group.className;
-    
-    headerView.rightLabel.text = group.displayText;
-    
-    return headerView;
-}
-
 #pragma mark -- Table view data delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -337,7 +352,7 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 }
 
 #pragma mark -- XBHomeActivityCellDelegate
-- (void)activityCell:(XBHomeActivityCell *)activityCell didSelectedWithGroupItem:(XBGroupItem *)groupItem
+- (void)homeActivityCell:(XBHomeActivityCell *)activityCell didSelectWithGroupItem:(XBGroupItem *)groupItem
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:activityCell];
     
@@ -345,15 +360,7 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     
     if ([group.type isEqualToString:@"4"]) {
         
-        XBCityViewController *desinationVC = [[XBCityViewController alloc] init];
-        
-        desinationVC.groupItem = groupItem;
-        
-        desinationVC.hidesBottomBarWhenPushed  = YES;
-        
-        desinationVC.view.backgroundColor = [UIColor whiteColor];
-    
-        [self.navigationController pushViewController:desinationVC animated:YES];
+        [self pushToCityVCWithCityId:[groupItem.modelId integerValue]];
     
     } else {
         
@@ -367,6 +374,67 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
         
     }
 
+}
+
+- (void)homeActivityCell:(XBHomeActivityCell *)activityCell homeActivityContentCell:(XBHomeActivityContentCell *)homeActivityContentCell didSelectFavoriteAtIndex:(NSInteger)index {
+    
+    self.loginState = YES;
+    
+    if (![XBUserDefaultsUtil userInfo]) {
+        
+        self.favoriteTemp = [XBFavoriteTemp favoriteTempWithHomeActivityCell:activityCell homeActivityContentCell:homeActivityContentCell index:index];
+        
+        [self presentToLoginVC];
+        
+        return;
+    }
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:activityCell];
+    
+    XBGroup *group = self.home.groups[indexPath.section];
+    
+    XBGroupItem *groupItem = group.items[index];
+    
+    //取消收藏
+    if (groupItem.favorite) {
+        
+        [[XBHttpClient shareInstance] deleteWisheWithActivityId:[groupItem.modelId integerValue] success:^(BOOL success) {
+            
+            groupItem.favorite = NO;
+            
+            homeActivityContentCell.favorite = NO;
+            
+        } failure:^(NSError *error) {
+            
+            self.favoriteTemp = [XBFavoriteTemp favoriteTempWithHomeActivityCell:activityCell homeActivityContentCell:homeActivityContentCell index:index];
+            
+            if (error.code == kUserUnLoginCode) {
+                
+                [self presentToLoginVC];
+            }
+            
+        }];
+        
+    } else {
+        
+        [[XBHttpClient shareInstance] postWisheWithActivityId:[groupItem.modelId integerValue] success:^(BOOL success) {
+            
+            groupItem.favorite = YES;
+            
+            homeActivityContentCell.favorite = YES;
+            
+        } failure:^(NSError *error) {
+            
+            self.favoriteTemp = [XBFavoriteTemp favoriteTempWithHomeActivityCell:activityCell homeActivityContentCell:homeActivityContentCell index:index];
+            
+            if (error.code == kUserUnLoginCode) {
+                
+                [self presentToLoginVC];
+            }
+            
+        }];
+        
+    }
 }
 
 #pragma mark -- UIScrollViewDelegate
@@ -403,23 +471,11 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     //显示底部logo
     BOOL isShowLogo = (scrollView.contentOffset.y + CGRectGetHeight(scrollView.frame)) > (scrollView.contentSize.height + kSpace);
     
+//    DDLogDebug(@"contentOffsetY:%f    logoY:%f",scrollView.contentOffset.y,self.logoImageView.xb_maxY);
+    
     self.logoImageView.hidden = !isShowLogo;
     
     self.logoLabel.hidden  = !isShowLogo;
-    
-    
-//    //section header 不悬浮
-//    CGFloat sectionHeaderHeight = kHeaderHeight;
-//    
-//    if (scrollView.contentOffset.y <= sectionHeaderHeight&&scrollView.contentOffset.y >= 0) {
-//        
-//        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
-//        
-//    } else if (scrollView.contentOffset.y >= sectionHeaderHeight) {
-//        
-//        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
-//        
-//    }
     
 }
 
@@ -458,9 +514,18 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
         
     } else {
         
+        self.loginState = NO;
+        
         [self presentToLoginVC];
     }
 }
+
+#pragma mark -- XBHomeHeaderCellDelegate
+- (void)homeHeaderCell:(XBHomeHeaderCell *)homeHeaderCell didSelectCityWithCityId:(NSInteger)cityId
+{
+    [self pushToCityVCWithCityId:cityId];
+}
+
 
 #pragma mark -- public method
 - (void)searchAction:(UIButton *)sender
@@ -478,7 +543,16 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
 /** 用户未登录跳转到登录页 登录后进行的操作 */
 - (void)loginSuccess
 {
-    [self inviationCellDidSelectedGo];
+    if (!self.loginState) {
+        
+        [self inviationCellDidSelectedGo];
+    
+    } else {
+        
+        [self homeActivityCell:self.favoriteTemp.homeActivityCell homeActivityContentCell:self.favoriteTemp.homeActivityContentCell didSelectFavoriteAtIndex:self.favoriteTemp.index];
+        
+        [self.favoriteTemp.homeActivityContentCell startFavoriteAnimation];
+    }
 }
 
 - (void)presentToLoginVC
@@ -488,6 +562,23 @@ static NSString *inviationReuseIdentifier = @"XBHomeInviationCell";
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:weChatLoginVC];
     
     [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)pushToCityVCWithCityId:(NSInteger)cityId
+{
+    XBCityViewController *cityVC = [[XBCityViewController alloc] init];
+    
+    cityVC.cityId = cityId;
+    
+    cityVC.hidesBottomBarWhenPushed  = YES;
+    
+    cityVC.view.backgroundColor = [UIColor whiteColor];
+    
+    XBNavigationController *navigationController = (XBNavigationController *)self.navigationController;
+    
+    navigationController.backStateNormal = YES;
+    
+    [self.navigationController pushViewController:cityVC animated:YES];
 }
 
 - (void)setNavigationBarTranslucent

@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface XBNavigationController : UINavigationController
+/** 返回按钮是否为高亮状态 */
+@property (assign, nonatomic, getter=isBackStateNormal) BOOL  backStateNormal;
 
 @end
