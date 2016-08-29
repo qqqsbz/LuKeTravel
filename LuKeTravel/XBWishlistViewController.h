@@ -10,4 +10,8 @@
 
 @interface XBWishlistViewController : UIViewController
 
+/** 数据列表 */
+@property (strong, nonatomic) UITableView  *tableView;
+/** 数据集合 */
+@property (strong, nonatomic) NSArray<XBWishlist *> *datas;
 @end

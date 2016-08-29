@@ -15,10 +15,6 @@
 @interface XBWishlistViewController () <UITableViewDelegate,UITableViewDataSource,UINavigationBarDelegate,XBHomeSearchActivityClickCellDelegate>
 /** 没有数据显示的界面 */
 @property (strong, nonatomic) XBNoDataView *noDataView;
-/** 数据列表 */
-@property (strong, nonatomic) UITableView  *tableView;
-/** 数据集合 */
-@property (strong, nonatomic) NSArray<XBWishlist *> *datas;
 @end
 
 static NSString *const reuseIdentifier = @"XBHomeSearchActivityClickCell";

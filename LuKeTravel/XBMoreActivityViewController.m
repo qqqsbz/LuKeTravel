@@ -231,7 +231,7 @@ static NSString *const reuseIdentifier = @"XBHomeSearchActivityClickCell";
 #pragma mark -- UITabelViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 240.f;
+    return 265;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

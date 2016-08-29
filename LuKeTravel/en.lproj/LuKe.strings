@@ -32,6 +32,8 @@
 "search-placeholder" = "Search Destinations or Activities";
 "search-cancel" = "Cancel";
 "search-noresult" = "暫無相關搜索結果哦";
+"search-history-title" = "Search History";
+"search-history-clear" = "Clear History";
 
 //目的地
 "destination-title" = "Destinations";

@@ -31,6 +31,8 @@
 "search-placeholder" = "搜索亞洲城市、活動";
 "search-cancel" = "取消";
 "search-noresult" = "暫無相關搜索結果哦";
+"search-history-title" = "搜索歷史";
+"search-history-clear" = "清除";
 
 //目的地
 "destination-title" = "目的地";

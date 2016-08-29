@@ -235,7 +235,7 @@ static NSString *const homeSearchActivityClickReuseIdentifier = @"XBHomeSearchAc
         
         if (self.isSearchClicked && [firstItem.type isEqualToString:kTypeOfActivity]) {
             
-            height = 240;
+            height = 265;
             
         } else {
             

@@ -38,13 +38,13 @@
 - (void)initialization
 {
     self.titleLabel = [UILabel new];
-    self.titleLabel.text = NSLocalizedString(@"search-history-title", @"search-history-title");
+    self.titleLabel.text = [XBLanguageControl localizedStringForKey:@"search-history-title"];
     self.titleLabel.font = [UIFont systemFontOfSize:14.f];
     self.titleLabel.textColor = [UIColor colorWithHexString:@"#A1A1A1"];
     [self addSubview:self.titleLabel];
     
     self.clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.clearButton setTitle:NSLocalizedString(@"search-history-clear", @"search-history-clear") forState:UIControlStateNormal];
+    [self.clearButton setTitle:[XBLanguageControl localizedStringForKey:@"search-history-clear"] forState:UIControlStateNormal];
     [self.clearButton.titleLabel setFont:[UIFont systemFontOfSize:14.f]];
     [self.clearButton setTitleColor:[UIColor colorWithHexString:@"#A1A1A1"] forState:UIControlStateNormal];
     [self.clearButton addTarget:self action:@selector(clearAction) forControlEvents:UIControlEventTouchUpInside];

@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface XBHomeSearchViewController : UIViewController
-
+/** 列表 */
+@property (strong, nonatomic) UITableView       *tableView;
+/** 搜索结果 */
+@property (strong, nonatomic) NSArray<XBSearchItem *>       *searchItems;
 @end

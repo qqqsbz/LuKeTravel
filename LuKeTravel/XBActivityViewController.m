@@ -11,10 +11,12 @@
 #import "XBHome.h"
 #import "XBCity.h"
 #import "XBGroup.h"
-#import "XBGroupItem.h"
-#import "XBGroupItem.h"
 #import "XBActivity.h"
+#import "XBWishlist.h"
+#import "XBGroupItem.h"
+#import "XBGroupItem.h"
 #import "XBShareView.h"
+#import "XBSearchItem.h"
 #import "SDCycleScrollView.h"
 #import "XBWebViewController.h"
 #import "XBHomeViewController.h"
@@ -22,8 +24,10 @@
 #import "XBBookOrderTransition.h"
 #import "XBActivityPackageView.h"
 #import "XBActivityNavigationBar.h"
+#import "XBWishlistViewController.h"
 #import "XBActivityReviewMaskView.h"
 #import "XBStretchableActivityView.h"
+#import "XBHomeSearchViewController.h"
 #import "XBOrderNavigationController.h"
 #import "XBActivityRecommendMaskView.h"
 #import "XBWeChatLoginViewController.h"
@@ -493,6 +497,55 @@ static NSString *const reuseIdentifier = @"cell";
         XBCityViewController *cityVC = (XBCityViewController *)vc;
         
         [self replactGroupItemWithGroups:cityVC.city.groups tableView:cityVC.tableView isFavorite:isFavorite];
+    
+    } else if ([vc isKindOfClass:[XBWishlistViewController class]]) {
+        
+        XBWishlistViewController *wishlistVC = (XBWishlistViewController *)vc;
+        
+        XBWishlist *wishlist;
+        
+        NSMutableArray<XBWishlist *> *wishlists = [NSMutableArray arrayWithArray:wishlistVC.datas];
+        
+        for (NSInteger i = 0; i < wishlists.count; i ++ ) {
+            
+            wishlist = wishlists[i];
+            
+            if ([wishlist.modelId integerValue] == self.activityId) {
+                
+                wishlist.isFavourite = isFavorite;
+                
+                [wishlistVC.tableView reloadData];
+                
+                break;
+                
+            }
+            
+        }
+        
+    } else if ([vc isKindOfClass:[XBHomeSearchViewController class]]) {
+        
+        XBHomeSearchViewController *homeSearchVC = (XBHomeSearchViewController *)vc;
+        
+        XBSearchItem *searchItem;
+        
+        NSMutableArray<XBSearchItem *> *searchItems = [NSMutableArray arrayWithArray:homeSearchVC.searchItems];
+        
+        for (NSInteger i = 0; i < searchItems.count; i ++ ) {
+            
+            searchItem = searchItems[i];
+            
+            if ([searchItem.modelId integerValue] == self.activityId) {
+                
+                searchItem.favorite = isFavorite;
+                
+                [homeSearchVC.tableView reloadData];
+                
+                break;
+                
+            }
+            
+        }
+
     }
     
 }

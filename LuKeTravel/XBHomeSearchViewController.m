@@ -30,12 +30,8 @@
 @property (assign, nonatomic) NSInteger     page;
 /** 热门搜索 */
 @property (strong, nonatomic) XBSearchHot   *searchHot;
-/** 列表 */
-@property (strong, nonatomic) UITableView       *tableView;
 /**  */
 @property (strong, nonatomic) UICollectionView  *collectionView;
-/** 搜索结果 */
-@property (strong, nonatomic) NSArray<XBSearchItem *>       *searchItems;
 /** 搜索历史 */
 @property (strong, nonatomic) NSArray<XBSearchHistory *>    *searchHistorys;
 /** 是否点击 “搜索” */
@@ -525,7 +521,7 @@ static NSString *const homeSearchHistoryReuseIdentifier = @"XBHomeSearchHistoryC
         
         if (self.isSearchClicked && [firstItem.type isEqualToString:kTypeOfActivity]) {
            
-            height = 240;
+            height = 265;
         
         } else {
             
