@@ -112,21 +112,19 @@
     
     UIView *containerView = [transitionContext containerView];
     
-    toVC.navigationController.view.xb_y = containerView.xb_height - toVC.navigationController.view.xb_y;
-    
-    [containerView addSubview:toVC.view];
+    orderNavigationController.view.xb_y = containerView.xb_height;
     
     [containerView addSubview:fromVC.view];
     
+    [containerView addSubview:toVC.view];
+    
     [UIView animateWithDuration:0.35 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
-        toVC.navigationController.view.xb_y = kTopSpace;
+        orderNavigationController.view.xb_y = kTopSpace;
         
         fromVC.view.alpha = 0;
         
     } completion:^(BOOL finished) {
-        
-        [transitionContext completeTransition:YES];
         
         [fromVC.view removeFromSuperview];
         
@@ -137,7 +135,9 @@
             orderNavigationController.orderEffectView.subNameLabel.alpha = 1;
             
         } completion:^(BOOL finished) {
-        
+
+            
+            [transitionContext completeTransition:YES];
         }];
         
     }];

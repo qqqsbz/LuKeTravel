@@ -10,6 +10,7 @@
 "commom-complete" = "完成";
 "commom-alert-confirm" = "确定";
 "commom-error-phone" = "请输入正确的手机号码";
+"common-logo-title" = "前往目的地，探索无限!";
 
 "loading-fail" = "加载失败";
 "error-no-network-signal" = "暂无网络信号？可在你的账户中查看离线凭证";

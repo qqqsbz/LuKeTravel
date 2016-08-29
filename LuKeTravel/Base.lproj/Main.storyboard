@@ -1822,8 +1822,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8MO-Ah-HoW">
                                                     <rect key="frame" x="0.0" y="11" width="320" height="127"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="烟花表演自助餐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcO-HR-gfp" userLabel="orderTitle">
-                                                            <rect key="frame" x="17" y="30" width="126" height="22"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="烟花表演自助餐" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcO-HR-gfp" userLabel="orderTitle">
+                                                            <rect key="frame" x="17" y="30" width="286" height="22"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1846,6 +1846,7 @@
                                                         <constraint firstItem="X9v-rr-lxY" firstAttribute="leading" secondItem="PcO-HR-gfp" secondAttribute="leading" id="C6d-lu-4YP"/>
                                                         <constraint firstItem="PcO-HR-gfp" firstAttribute="leading" secondItem="8MO-Ah-HoW" secondAttribute="leading" constant="17" id="DO6-Ri-j54"/>
                                                         <constraint firstItem="PcO-HR-gfp" firstAttribute="top" secondItem="8MO-Ah-HoW" secondAttribute="top" constant="30" id="IoI-lE-lJZ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="PcO-HR-gfp" secondAttribute="trailing" constant="17" id="Nc8-PQ-VEn"/>
                                                         <constraint firstAttribute="bottom" secondItem="tsF-px-SLe" secondAttribute="bottom" constant="10" id="R6u-9N-olO"/>
                                                         <constraint firstItem="tsF-px-SLe" firstAttribute="leading" secondItem="PcO-HR-gfp" secondAttribute="leading" id="anp-yl-rJQ"/>
                                                         <constraint firstItem="tsF-px-SLe" firstAttribute="top" secondItem="X9v-rr-lxY" secondAttribute="bottom" constant="5" id="rFi-9E-bRp"/>

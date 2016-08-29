@@ -121,6 +121,8 @@
             
             self.verifityLabel.hidden = NO;
             
+            self.verifityLabel.text = [XBLanguageControl localizedStringForKey:@"user-info-code-verified"];
+            
             self.textFieldRightConstraints.constant = self.xb_width - self.verifityLabel.xb_x;
         }
             break;

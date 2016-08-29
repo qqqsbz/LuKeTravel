@@ -94,11 +94,11 @@
     
     UIView *containerView = [transitionContext containerView];
 
-    toNavigationBar.view.xb_y = kTopSpace;
+    toVC.view.xb_y = kTopSpace;
     
     toVC.tableView.contentInset = UIEdgeInsetsMake(kTopSpace + 44, 0, 0, 0);
     
-    [containerView addSubview:toVC.view];
+    [containerView addSubview:toNavigationBar.view];
     
     [containerView addSubview:fromVC.view];
     
@@ -110,12 +110,11 @@
         
         [transitionContext completeTransition:YES];
         
-        [fromVC.view removeFromSuperview];
-        
-        //修复  navigationBar高度变长的bug  具体原因不明
-        toNavigationBar.navigationBar.xb_height = 25;
-        
         toNavigationBar.view.xb_y = kTopSpace;
+        
+        toNavigationBar.navigationBar.xb_y = 0;
+        
+        [fromVC.view removeFromSuperview];
     
     }];
     

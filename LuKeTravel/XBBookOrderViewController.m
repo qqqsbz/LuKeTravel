@@ -37,7 +37,9 @@
     self.title = [XBLanguageControl localizedStringForKey:@"activity-order-book-title"];
     
     self.orderBookView = [XBOrderBookView new];
+    
     self.orderBookView.delegate = self;
+    
     [self.view addSubview:self.orderBookView];
 }
 

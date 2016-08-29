@@ -124,6 +124,8 @@ static NSString *destinationReuseIdentifier = @"XBHomeDestinationCell";
         
         self.stretchHeaderView.subTitleLabel.text = self.home.subName;
         
+        self.logoLabel.text   = [XBLanguageControl localizedStringForKey:@"common-logo-title"];
+        
         //对结果进行倒序排序
         
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"_type"ascending:YES];
@@ -189,8 +191,8 @@ static NSString *destinationReuseIdentifier = @"XBHomeDestinationCell";
     
     self.logoLabel = [UILabel new];
     self.logoLabel.hidden = YES;
+    self.logoLabel.text   = [XBLanguageControl localizedStringForKey:@"common-logo-title"];
     self.logoLabel.font   = [UIFont systemFontOfSize:14.f];
-    self.logoLabel.text   = NSLocalizedString(@"logo-title", @"logo-title");
     self.logoLabel.textColor = [UIColor colorWithHexString:@"#C0C2C2"];
     [self.tableView insertSubview:self.logoLabel atIndex:0];
     

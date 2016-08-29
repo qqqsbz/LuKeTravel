@@ -141,6 +141,11 @@
 		DC46F8211D6EDA900095A1F6 /* XBHomeDestinationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC46F8201D6EDA900095A1F6 /* XBHomeDestinationCell.m */; };
 		DC46F8231D6EDF180095A1F6 /* XBHomeDestinationContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC46F8221D6EDF180095A1F6 /* XBHomeDestinationContentCell.xib */; };
 		DC46F8261D6EDFB00095A1F6 /* XBHomeDestinationContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC46F8251D6EDFB00095A1F6 /* XBHomeDestinationContentCell.m */; };
+		DC46F82C1D73C8890095A1F6 /* discover01.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC46F8281D73C8890095A1F6 /* discover01.gif */; };
+		DC46F82D1D73C8890095A1F6 /* discover02.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC46F8291D73C8890095A1F6 /* discover02.gif */; };
+		DC46F82E1D73C8890095A1F6 /* discover03.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC46F82A1D73C8890095A1F6 /* discover03.gif */; };
+		DC46F82F1D73C8890095A1F6 /* discover04.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC46F82B1D73C8890095A1F6 /* discover04.gif */; };
+		DC46F8311D73C9480095A1F6 /* discover05.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC46F8301D73C9480095A1F6 /* discover05.gif */; };
 		DC4DCCFC1D45B99C00DFBA97 /* XBActivityNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCCFB1D45B99C00DFBA97 /* XBActivityNavigationBar.m */; };
 		DC4DCCFF1D45C14900DFBA97 /* XBActivityRecommendMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCCFE1D45C14900DFBA97 /* XBActivityRecommendMaskView.m */; };
 		DC4DCD021D45E16600DFBA97 /* XBActivityStrengthsView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCD011D45E16600DFBA97 /* XBActivityStrengthsView.m */; };
@@ -207,7 +212,6 @@
 		DC8A7AA51D2B582C0032BC48 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7AA41D2B582C0032BC48 /* Podfile */; };
 		DC8A7AA81D2B594E0032BC48 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8A7AA71D2B594E0032BC48 /* CoreData.framework */; };
 		DC8A7AAB1D2B59D30032BC48 /* XBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7AAA1D2B59D30032BC48 /* XBModel.m */; };
-		DC8A7AEB1D2B5F9C0032BC48 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC8A7AEA1D2B5F9C0032BC48 /* Localizable.strings */; };
 		DC8A7AEE1D2B60BD0032BC48 /* XBAppRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7AED1D2B60BD0032BC48 /* XBAppRootViewController.m */; };
 		DC8A7AF51D2B623B0032BC48 /* XBHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7AF41D2B623B0032BC48 /* XBHomeViewController.m */; };
 		DC8A7AFA1D2B83110032BC48 /* XBHome.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8A7AF91D2B83110032BC48 /* XBHome.m */; };
@@ -543,6 +547,11 @@
 		DC46F8221D6EDF180095A1F6 /* XBHomeDestinationContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBHomeDestinationContentCell.xib; sourceTree = "<group>"; };
 		DC46F8241D6EDFB00095A1F6 /* XBHomeDestinationContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeDestinationContentCell.h; sourceTree = "<group>"; };
 		DC46F8251D6EDFB00095A1F6 /* XBHomeDestinationContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHomeDestinationContentCell.m; sourceTree = "<group>"; };
+		DC46F8281D73C8890095A1F6 /* discover01.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = discover01.gif; sourceTree = "<group>"; };
+		DC46F8291D73C8890095A1F6 /* discover02.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = discover02.gif; sourceTree = "<group>"; };
+		DC46F82A1D73C8890095A1F6 /* discover03.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = discover03.gif; sourceTree = "<group>"; };
+		DC46F82B1D73C8890095A1F6 /* discover04.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = discover04.gif; sourceTree = "<group>"; };
+		DC46F8301D73C9480095A1F6 /* discover05.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = discover05.gif; sourceTree = "<group>"; };
 		DC4DCCFA1D45B99C00DFBA97 /* XBActivityNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityNavigationBar.h; sourceTree = "<group>"; };
 		DC4DCCFB1D45B99C00DFBA97 /* XBActivityNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityNavigationBar.m; sourceTree = "<group>"; };
 		DC4DCCFD1D45C14900DFBA97 /* XBActivityRecommendMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityRecommendMaskView.h; sourceTree = "<group>"; };
@@ -659,7 +668,6 @@
 		DC8A7AA71D2B594E0032BC48 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DC8A7AA91D2B59D30032BC48 /* XBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBModel.h; sourceTree = "<group>"; };
 		DC8A7AAA1D2B59D30032BC48 /* XBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBModel.m; sourceTree = "<group>"; };
-		DC8A7AEA1D2B5F9C0032BC48 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		DC8A7AEC1D2B60BD0032BC48 /* XBAppRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBAppRootViewController.h; sourceTree = "<group>"; };
 		DC8A7AED1D2B60BD0032BC48 /* XBAppRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBAppRootViewController.m; sourceTree = "<group>"; };
 		DC8A7AF31D2B623B0032BC48 /* XBHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHomeViewController.h; sourceTree = "<group>"; };
@@ -1233,6 +1241,18 @@
 			name = Search;
 			sourceTree = "<group>";
 		};
+		DC46F8271D73C8130095A1F6 /* ScreenShot */ = {
+			isa = PBXGroup;
+			children = (
+				DC46F8281D73C8890095A1F6 /* discover01.gif */,
+				DC46F8291D73C8890095A1F6 /* discover02.gif */,
+				DC46F82A1D73C8890095A1F6 /* discover03.gif */,
+				DC46F82B1D73C8890095A1F6 /* discover04.gif */,
+				DC46F8301D73C9480095A1F6 /* discover05.gif */,
+			);
+			name = ScreenShot;
+			sourceTree = "<group>";
+		};
 		DC4DCD1C1D47479200DFBA97 /* Basic */ = {
 			isa = PBXGroup;
 			children = (
@@ -1311,7 +1331,6 @@
 			children = (
 				DC8A7A741D2B57730032BC48 /* Main.storyboard */,
 				DCC23ADD1D6AA1B400B88E89 /* LaunchScreen.storyboard */,
-				DC8A7AEA1D2B5F9C0032BC48 /* Localizable.strings */,
 				DC8A7C001D3723270032BC48 /* CoreData */,
 				DC4DCD1C1D47479200DFBA97 /* Basic */,
 				DC8A7AEF1D2B618B0032BC48 /* Home */,
@@ -1325,6 +1344,7 @@
 				DC8A7A821D2B57880032BC48 /* App */,
 				DC1333011D3F6722005F4B3A /* Kits */,
 				DC8A7A6B1D2B57730032BC48 /* Supporting Files */,
+				DC46F8271D73C8130095A1F6 /* ScreenShot */,
 			);
 			path = LuKeTravel;
 			sourceTree = "<group>";
@@ -1823,7 +1843,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC8A7AEB1D2B5F9C0032BC48 /* Localizable.strings in Resources */,
 				DC2628131D484454002795C3 /* ios-social-sdk-like.html in Resources */,
 				DC0652E21D6447F000755471 /* XBOrderOtherInfoCell.xib in Resources */,
 				DC2628031D484454002795C3 /* UMShareEditViewController.xib in Resources */,
@@ -1832,6 +1851,7 @@
 				DC2628161D484454002795C3 /* ios-social-sdk-shake.html in Resources */,
 				DC2628111D484454002795C3 /* ios-social-sdk-comment-detail.html in Resources */,
 				DC8A7C081D3775A90032BC48 /* XBHomeSearchActivityCell.xib in Resources */,
+				DC46F82F1D73C8890095A1F6 /* discover04.gif in Resources */,
 				DC0652B51D61BC3E00755471 /* XBBookOrderMoneyCell.xib in Resources */,
 				DC2628121D484454002795C3 /* ios-social-sdk-comment-quick.html in Resources */,
 				DC2628051D484454002795C3 /* UMSLoginViewController.xib in Resources */,
@@ -1859,6 +1879,8 @@
 				DC8A7BE11D34CC5E0032BC48 /* XBDestinationAllCell.xib in Resources */,
 				DC5C557C1D54866900DCD14E /* XBCouponsCell.xib in Resources */,
 				DC06525B1D5DAB6800755471 /* XBOrderBookCell.xib in Resources */,
+				DC46F82E1D73C8890095A1F6 /* discover03.gif in Resources */,
+				DC46F82C1D73C8890095A1F6 /* discover01.gif in Resources */,
 				DC2628101D484454002795C3 /* iOS-social-releasenote.html in Resources */,
 				DC4DCD241D475E5700DFBA97 /* XBShareCell.xib in Resources */,
 				DC8A7C0D1D3776AE0032BC48 /* XBHomeSearchCityCell.xib in Resources */,
@@ -1873,7 +1895,9 @@
 				DC725CCB1D4EFFFA00A89B70 /* Language.plist in Resources */,
 				DC0653191D66944D00755471 /* XBPayUseCouponCell.xib in Resources */,
 				DC8A7A761D2B57730032BC48 /* Main.storyboard in Resources */,
+				DC46F82D1D73C8890095A1F6 /* discover02.gif in Resources */,
 				DC8A7BCF1D3495BF0032BC48 /* XBDestinationHotCell.xib in Resources */,
+				DC46F8311D73C9480095A1F6 /* discover05.gif in Resources */,
 				DC46F81E1D6EDA1A0095A1F6 /* XBHomeDestinationCell.xib in Resources */,
 				DC2628181D484454002795C3 /* ios-social-sdk-share-quick.html in Resources */,
 				DC26280F1D484454002795C3 /* iOS-social-analytics-releasenote.html in Resources */,

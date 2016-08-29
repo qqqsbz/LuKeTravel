@@ -12,6 +12,7 @@
 "commom-complete" = "完成";
 "commom-alert-confirm" = "確定";
 "commom-error-phone" = "請輸入正確的手機號碼";
+"common-logo-title" = "前往目的地，探索無限!";
 
 "loading-fail" = "加載失敗";
 "error-no-network-signal" = "暫無網絡信號？可在妳的賬戶中查看離線憑證";

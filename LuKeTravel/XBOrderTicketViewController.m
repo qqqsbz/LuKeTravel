@@ -28,6 +28,7 @@
 #import "XBOrderTicketNavigationBar.h"
 #import "XBOrderPrePayViewController.h"
 #import "XBOrderCalendarViewController.h"
+#import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
 @interface XBOrderTicketViewController ()<XBPickerViewDatasource,XBPickerViewDelegate,XBOrderTicketCellDelegate,XBDatePickerViewDelegate>
 
 /** 选择框 */
@@ -68,6 +69,9 @@ static NSString *const headerReuseIdentifier = @"XBOrderTicketHeaderCell";
     [self buildView];
     
     [self fillOrderTicketNavigationBar];
+    
+    //禁用返回手势
+    self.fd_interactivePopDisabled = YES;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
 }
@@ -200,7 +204,21 @@ static NSString *const headerReuseIdentifier = @"XBOrderTicketHeaderCell";
     
     [[XBHttpClient shareInstance] payTypeWithPayContact:payContact ticketId:ticketId otherInfo:otherInfoString success:^(XBBook *book) {
         
-        XBOrderPrePayViewController *prePayVC = [[XBOrderPrePayViewController alloc] init];
+        XBOrderPrePayViewController *prePayVC;
+        
+        for (UIViewController *vc in [self.navigationController childViewControllers]) {
+            
+            if ([vc isKindOfClass:[XBOrderPrePayViewController class]]) {
+                
+                prePayVC = (XBOrderPrePayViewController *)vc;
+            }
+            
+        }
+        
+        if (!prePayVC) {
+            
+            prePayVC = [[XBOrderPrePayViewController alloc] init];
+        }
         
         book.payContact = payContact;
         
@@ -648,7 +666,7 @@ static NSString *const headerReuseIdentifier = @"XBOrderTicketHeaderCell";
     
     if (([fromVCString isEqualToString:NSStringFromClass([XBBookOrderViewController class])] && [toVCString isEqualToString:NSStringFromClass([XBOrderTicketViewController class])]) || ([fromVCString isEqualToString:NSStringFromClass([XBOrderTicketViewController class])] && [toVCString isEqualToString:NSStringFromClass([XBBookOrderViewController class])])) {
         
-        self.forPrePay = YES;
+        self.forPrePay = operation == UINavigationControllerOperationPush;
         
         return [XBOrderTicketTransition transitionWithTransitionType:operation == UINavigationControllerOperationPush ? XBOrderTicketTransitionTypePush : XBOrderTicketTransitionTypePop];
         

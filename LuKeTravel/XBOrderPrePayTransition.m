@@ -117,6 +117,8 @@
 
 - (void)popAnimation:(id <UIViewControllerContextTransitioning>)transitionContext
 {
+    XBOrderPrePayViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    
     XBOrderTicketViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
     UIView *containerView = [transitionContext containerView];
@@ -141,7 +143,10 @@
            
             toVC.tableView.contentSize = CGSizeMake(toVC.tableView.contentSize.width, toVC.tableView.contentSize.height + kTopSpace);
             
+            fromVC.navigationController.navigationBar.frame = CGRectMake(0, 0, containerView.xb_width, 44.f);
+            
             [transitionContext completeTransition:YES];
+            
             
         });
     }];
