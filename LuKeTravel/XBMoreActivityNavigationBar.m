@@ -121,6 +121,7 @@ static NSString *const subNameReuseIdentifier  = @"XBMoreActivitySubNameCell";
     [self.navigationView addSubview:self.backButton];
     
     self.nameButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.nameButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.nameButton.titleLabel.font = [UIFont systemFontOfSize:16.f];
     [self.nameButton setTitleColor:[UIColor colorWithHexString:@"#434343"] forState:UIControlStateNormal];
     [self.nameButton setTitle:[XBLanguageControl localizedStringForKey:@"activity-more-all"] forState:UIControlStateNormal];

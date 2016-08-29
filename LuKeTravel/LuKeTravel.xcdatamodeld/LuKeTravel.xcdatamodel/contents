@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15B42" minimumToolsVersion="Xcode 7.0">
     <entity name="XBSearch" syncable="YES">
+        <attribute name="modelCurrency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modelId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modelLanguage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -9,12 +10,14 @@
     </entity>
     <entity name="XBSearchHistory" syncable="YES">
         <attribute name="createdDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="modelCurrency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modelId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modelLanguage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="XBSearchHot" syncable="YES">
         <attribute name="cityCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="modelCurrency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modelId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modelLanguage" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="XBSearch" syncable="YES"/>
@@ -28,6 +31,7 @@
         <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="instant" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="marketPrice" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="modelCurrency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modelId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modelLanguage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -39,9 +43,9 @@
         <attribute name="video" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <elements>
-        <element name="XBSearch" positionX="-54" positionY="0" width="128" height="120"/>
-        <element name="XBSearchHistory" positionX="-18" positionY="108" width="128" height="105"/>
-        <element name="XBSearchHot" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="XBSearchItem" positionX="-36" positionY="18" width="128" height="300"/>
+        <element name="XBSearch" positionX="-54" positionY="0" width="128" height="135"/>
+        <element name="XBSearchHistory" positionX="-18" positionY="108" width="128" height="120"/>
+        <element name="XBSearchHot" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="XBSearchItem" positionX="-36" positionY="18" width="128" height="315"/>
     </elements>
 </model>

@@ -1,4 +1,4 @@
-<h2>高仿客路旅行 OC版</h2>
+<h2>高仿客路旅行 OC----2.0.5版</h2>
 <ul>
 <li>用到的第三方库
 
@@ -39,9 +39,10 @@
 </ul>
 
 <h4>附图</h4>
-![image](https://github.com/qqqsbz/MostBeautifulApp/blob/master/MostBeautifulApp/home.gif)
-![image](https://github.com/qqqsbz/MostBeautifulApp/blob/master/MostBeautifulApp/daily01.gif)
-![image](https://github.com/qqqsbz/MostBeautifulApp/blob/master/MostBeautifulApp/daily02.gif)
-![image](https://github.com/qqqsbz/MostBeautifulApp/blob/master/MostBeautifulApp/discover01.gif)
+![image](https://github.com/qqqsbz/LuKeTravel/blob/master/LuKeTravel/discover01.gif)
+![image](https://github.com/qqqsbz/LuKeTravel/blob/master/LuKeTravel/discover02.gif)
+![image](https://github.com/qqqsbz/LuKeTravel/blob/master/LuKeTravel/discover03.gif)
+![image](https://github.com/qqqsbz/LuKeTravel/blob/master/LuKeTravel/discover04.gif)
+![image](https://github.com/qqqsbz/LuKeTravel/blob/master/LuKeTravel/discover05.gif)
 
 

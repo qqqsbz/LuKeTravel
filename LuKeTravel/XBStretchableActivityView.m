@@ -22,7 +22,6 @@
 @property (assign, nonatomic) CGRect   initialFrame;
 @property (assign, nonatomic) CGFloat  defaultViewHeight;
 
-
 @property (strong, nonatomic) UIView        *contentView;
 @property (strong, nonatomic) UILabel       *titleLabel;
 @property (strong, nonatomic) UILabel       *subTitleLabel;
@@ -155,6 +154,18 @@
     
     self.favorite = activity.isFavourite;
     
+    self.favoriteButton.enabled = YES;
+    
+    self.readMoreButton.enabled = YES;
+    
+    self.recommendButton.enabled = YES;
+    
+    self.directionReadMoreButton.enabled = YES;
+    
+    self.reviewsReadMoreButton.enabled = YES;
+    
+    self.tagLabel.text = [self.tagLabel.text stringByAppendingString:self.activity.modelId];
+    
     [self addStar];
     
     [self addNotify];
@@ -183,12 +194,13 @@
     self.backgroundColor = [UIColor colorWithHexString:@"#F6F5F2"];
     
     self.favoriteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.favoriteButton.enabled = NO;
     [self.favoriteButton setImage:[UIImage imageNamed:@"heart-o"] forState:UIControlStateNormal];
     [self.favoriteButton addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.headerView addSubview:self.favoriteButton];
     
     self.tagLabel = [UILabel new];
-    self.tagLabel.text = @"Activity #@";
+    self.tagLabel.text = @"Activity #";
     self.tagLabel.font = [UIFont systemFontOfSize:14.5f];
     self.tagLabel.textColor = [UIColor colorWithHexString:@"#AFAEAD"];
     [self.scrollView addSubview:self.tagLabel];
@@ -272,6 +284,7 @@
     [self.contentView addSubview:self.detailItemView];
     
     self.readMoreButton = [UIButton new];
+    self.readMoreButton.enabled = NO;
     self.readMoreButton.layer.borderWidth = 1.f;
     self.readMoreButton.layer.borderColor = defaultColor.CGColor;
     self.readMoreButton.layer.masksToBounds = YES;
@@ -284,6 +297,7 @@
     [self.contentView addSubview:self.readMoreButton];
     
     self.recommendButton = [UIButton new];
+    self.recommendButton.enabled = NO;
     self.recommendButton.layer.borderWidth = 1.f;
     self.recommendButton.layer.borderColor = defaultColor.CGColor;
     self.recommendButton.layer.masksToBounds = YES;
@@ -368,6 +382,7 @@
     [self.starImageViews addObject:self.starImageView5];
     
     self.reviewsReadMoreButton = [UIButton new];
+    self.reviewsReadMoreButton.enabled = NO;
     self.reviewsReadMoreButton.layer.borderWidth = 1.f;
     self.reviewsReadMoreButton.layer.borderColor = defaultColor.CGColor;
     self.reviewsReadMoreButton.layer.masksToBounds = YES;
@@ -408,6 +423,7 @@
     [self.contentView addSubview:self.packageTitleLabel];
     
     self.directionReadMoreButton = [UIButton new];
+    self.directionReadMoreButton.enabled = NO;
     self.directionReadMoreButton.layer.borderWidth = 1.f;
     self.directionReadMoreButton.layer.borderColor = defaultColor.CGColor;
     self.directionReadMoreButton.layer.masksToBounds = YES;
@@ -469,7 +485,7 @@
         make.right.equalTo(self.contentView).offset(-kSpace);
         make.centerY.equalTo(self.titleLabel);
         make.left.equalTo(self.titleLabel.right).offset(kSpace);
-//        make.width.mas_greaterThanOrEqualTo(50.f);
+        make.width.mas_greaterThanOrEqualTo(50.f);
     }];
     
     [self.subTitleLabel makeConstraints:^(MASConstraintMaker *make) {

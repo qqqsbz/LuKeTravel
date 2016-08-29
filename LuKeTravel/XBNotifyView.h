@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface XBNotifyView : UIView
+/** 图标 */
 @property (strong, nonatomic) UIImageView   *imageView;
+/** 标题 */
 @property (strong, nonatomic) UILabel       *titleLabel;
+/** 子标题 */
 @property (strong, nonatomic) UILabel       *subTitleLabel;
 @end

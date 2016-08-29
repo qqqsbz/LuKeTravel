@@ -8,11 +8,17 @@
 #define kBannerHeight CGRectGetHeight(self.view.frame) * 0.457
 
 #import "XBActivityViewController.h"
+#import "XBHome.h"
+#import "XBCity.h"
+#import "XBGroup.h"
+#import "XBGroupItem.h"
 #import "XBGroupItem.h"
 #import "XBActivity.h"
 #import "XBShareView.h"
 #import "SDCycleScrollView.h"
 #import "XBWebViewController.h"
+#import "XBHomeViewController.h"
+#import "XBCityViewController.h"
 #import "XBBookOrderTransition.h"
 #import "XBActivityPackageView.h"
 #import "XBActivityNavigationBar.h"
@@ -311,6 +317,13 @@ static NSString *const reuseIdentifier = @"cell";
                 }
                 
             }];
+            
+        } else {
+            
+            if (complete) {
+                
+                complete();
+            }
         }
         
     } else {
@@ -334,8 +347,13 @@ static NSString *const reuseIdentifier = @"cell";
                 
             }];
             
+        } else {
+            
+            if (complete) {
+                
+                complete();
+            }
         }
-    
     }
 }
 
@@ -422,6 +440,8 @@ static NSString *const reuseIdentifier = @"cell";
             
             self.stretchHeaderView.favorite = NO;
             
+            [self fillParentData:NO];
+            
         } failure:^(NSError *error) {
             
             if (error.code == kUserUnLoginCode) {
@@ -437,6 +457,8 @@ static NSString *const reuseIdentifier = @"cell";
             
             self.stretchHeaderView.favorite = YES;
             
+            [self fillParentData:YES];
+            
         } failure:^(NSError *error) {
             
             if (error.code == kUserUnLoginCode) {
@@ -448,6 +470,64 @@ static NSString *const reuseIdentifier = @"cell";
         
     }
 
+}
+
+/** 更新首页收藏状态 */
+- (void)fillParentData:(BOOL)isFavorite
+{
+    NSMutableArray<UIViewController *> *childViewControllers = [NSMutableArray arrayWithArray:self.navigationController.childViewControllers];
+    
+    [childViewControllers removeLastObject];
+    
+    UIViewController *vc = [childViewControllers lastObject];
+    
+    if ([vc isKindOfClass:[XBHomeViewController class]]) {
+        
+        XBHomeViewController *homeVC = (XBHomeViewController *)vc;
+        
+        
+        [self replactGroupItemWithGroups:homeVC.home.groups tableView:homeVC.tableView isFavorite:isFavorite];
+        
+    } else if ([vc isKindOfClass:[XBCityViewController class]]) {
+    
+        XBCityViewController *cityVC = (XBCityViewController *)vc;
+        
+        [self replactGroupItemWithGroups:cityVC.city.groups tableView:cityVC.tableView isFavorite:isFavorite];
+    }
+    
+}
+
+- (void)replactGroupItemWithGroups:(NSArray<XBGroup *> *)groups tableView:(UITableView *)tableView isFavorite:(BOOL)isFavorite
+{
+    XBGroup *group;
+    
+    XBGroupItem *groupItem;
+    
+    for (NSInteger i = 0; i < groups.count; i ++) {
+        
+        group = groups[i];
+        
+        for (NSInteger j = 0; j < group.items.count; j ++) {
+            
+            groupItem = group.items[j];
+            
+            if ([groupItem.modelId integerValue] == self.activityId) {
+                
+                groupItem.favorite = isFavorite;
+                
+                NSMutableArray<XBGroupItem *> *items = [NSMutableArray arrayWithArray:group.items];
+                
+                [items replaceObjectAtIndex:j withObject:groupItem];
+                
+                group.items = items;
+                
+                [tableView reloadData];
+                
+                break;
+                
+            }
+        }
+    }
 }
 
 #pragma mark --  XBShareView

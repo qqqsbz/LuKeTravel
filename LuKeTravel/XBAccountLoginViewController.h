@@ -7,6 +7,8 @@
 //
 
 @interface XBAccountLoginViewController : UIViewController
+/** 用户名 */
 @property (strong, nonatomic) NSString *userName;
+/** 用户是否存在 */
 @property (assign, nonatomic) BOOL  userExist;
 @end

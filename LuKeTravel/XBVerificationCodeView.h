@@ -22,6 +22,7 @@
 /** 号码 */
 @property (strong, nonatomic) NSString *phoneNumber;
 
+/** 代理 */
 @property (weak, nonatomic) id<XBVerificationCodeViewDelegate> delegate;
 
 

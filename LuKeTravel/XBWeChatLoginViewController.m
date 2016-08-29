@@ -14,18 +14,31 @@
 #import "XBAccountLoginViewController.h"
 
 @interface XBWeChatLoginViewController () <UITextFieldDelegate>
+/** 背景图片 */
 @property (strong, nonatomic) UIImageView   *coverImageView;
+/** facebook */
 @property (strong, nonatomic) UIView        *facebookView;
+/** facebook icon */
 @property (strong, nonatomic) UIImageView   *facebookImageView;
+/** facebook 文字 */
 @property (strong, nonatomic) UILabel       *facebookTitleLabel;
+/** 微信view */
 @property (strong, nonatomic) UIView        *weChatView;
+/** 微信icon */
 @property (strong, nonatomic) UIImageView   *weChatImageView;
+/** 微信 文字 */
 @property (strong, nonatomic) UILabel       *weChatTitleLabel;
+/** 登录提醒文字 */
 @property (strong, nonatomic) UILabel       *loginTitleLabel;
+/** 登录主控件view */
 @property (strong, nonatomic) UIView        *textView;
+/** 输入手机号码或邮箱 */
 @property (strong, nonatomic) UITextField   *textField;
+/** 登录按钮 */
 @property (strong, nonatomic) UIButton      *loginButton;
+/** 协议按钮 */
 @property (strong, nonatomic) UIButton      *loginTipButton;
+/** 回调 */
 @property (copy  , nonatomic) dispatch_block_t  dismissBlock;
 @end
 

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface XBActivityRecommendMaskView : UIView
+/** 内容 */
 @property (strong, nonatomic) TTTAttributedLabel  *textLabel;
 @end

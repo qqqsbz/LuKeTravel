@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface XBActivityReviewMaskView : UIView
+/** 活动id */
 @property (assign, nonatomic) NSInteger  activityId;
 @end

@@ -38,6 +38,10 @@
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activityFast" translatesAutoresizingMaskIntoConstraints="NO" id="eQG-vE-WVG" userLabel="fast">
                                 <rect key="frame" x="52" y="17" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="4cf-zc-AaS"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="16" id="JUw-UM-41m"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJO-ov-Yhz" userLabel="subTitle">
                                 <rect key="frame" x="9" y="43" width="281" height="17"/>
@@ -77,6 +81,7 @@
                             <constraint firstItem="WTG-Rp-kPE" firstAttribute="leading" secondItem="JEP-JP-awC" secondAttribute="leading" constant="9" id="fZZ-Sq-uMK"/>
                             <constraint firstAttribute="trailing" secondItem="lJO-ov-Yhz" secondAttribute="trailing" constant="10" id="g7L-uY-0zl"/>
                             <constraint firstItem="spJ-mV-9fQ" firstAttribute="top" secondItem="lJO-ov-Yhz" secondAttribute="bottom" constant="8" id="h5h-Vj-o7e"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eQG-vE-WVG" secondAttribute="trailing" constant="3" id="hPO-95-UVP"/>
                             <constraint firstItem="lJO-ov-Yhz" firstAttribute="top" secondItem="WTG-Rp-kPE" secondAttribute="bottom" constant="8" id="iWR-Lb-ic3"/>
                             <constraint firstItem="n6c-p0-PLt" firstAttribute="leading" secondItem="lXV-NS-gkf" secondAttribute="trailing" constant="5" id="yfJ-hD-ecu"/>
                             <constraint firstItem="hLG-HW-Eci" firstAttribute="leading" secondItem="spJ-mV-9fQ" secondAttribute="trailing" constant="5" id="ypf-R9-8iO"/>

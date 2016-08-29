@@ -30,10 +30,6 @@
 #import "XBMoreActivityViewController.h"
 
 @interface XBCityViewController () <UITableViewDelegate,UITableViewDataSource,XBHomeActivityCellDelegate,UIViewControllerTransitioningDelegate>
-/** 数据列表 */
-@property (strong, nonatomic) UITableView   *tableView;
-/** 城市数据 */
-@property (strong, nonatomic) XBCity        *city;
 /** 返回按钮 */
 @property (strong, nonatomic) UIButton      *backButton;
 /** 搜索按钮 */
@@ -72,15 +68,15 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
 {
     [super viewWillAppear:animated];
     
-    BOOL isAlpha = [[self.navigationController.navigationBar subviews] objectAtIndex:0].alpha == 1;
+    BOOL isAlpha = (self.tableView.contentOffset.y - kThreshold) / 50 <= 0;
     
-    [[UIApplication sharedApplication] setStatusBarStyle:isAlpha ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent];
-
+    [[UIApplication sharedApplication] setStatusBarStyle:isAlpha ? UIStatusBarStyleLightContent : UIStatusBarStyleDefault];
+    
     [self setNavigationAlphaWithScrollView:self.tableView];
     
     self.backButton = self.navigationItem.leftBarButtonItem.customView;
     
-    [self.backButton setImage:[UIImage imageNamed:isAlpha ? @"backArrow" : @"Back_Arrow"] forState:UIControlStateNormal];
+    [self.backButton setImage:[UIImage imageNamed:isAlpha ?  @"Back_Arrow" : @"backArrow"] forState:UIControlStateNormal];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

@@ -13,10 +13,14 @@ typedef NS_ENUM(NSInteger,XBCityViewControllerType){
     XBCityViewControllerTypeHot
 };
 @interface XBCityViewController : UIViewController <UINavigationControllerDelegate>
+/** 数据列表 */
+@property (strong, nonatomic) UITableView   *tableView;
 /** 封面图片 */
 @property (strong, nonatomic) UIImageView  *coverImageView;
 /** 城市id */
 @property (assign, nonatomic) NSInteger  cityId;
+/** 城市数据 */
+@property (strong, nonatomic) XBCity        *city;
 /** 类型 */
 @property (assign, nonatomic) XBCityViewControllerType  type;
 

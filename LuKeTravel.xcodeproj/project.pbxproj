@@ -148,7 +148,6 @@
 		DC46F8311D73C9480095A1F6 /* discover05.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC46F8301D73C9480095A1F6 /* discover05.gif */; };
 		DC4DCCFC1D45B99C00DFBA97 /* XBActivityNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCCFB1D45B99C00DFBA97 /* XBActivityNavigationBar.m */; };
 		DC4DCCFF1D45C14900DFBA97 /* XBActivityRecommendMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCCFE1D45C14900DFBA97 /* XBActivityRecommendMaskView.m */; };
-		DC4DCD021D45E16600DFBA97 /* XBActivityStrengthsView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCD011D45E16600DFBA97 /* XBActivityStrengthsView.m */; };
 		DC4DCD081D45EB5700DFBA97 /* XBActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCD071D45EB5700DFBA97 /* XBActivityDetailViewController.m */; };
 		DC4DCD0B1D45FF7900DFBA97 /* XBActivityReviewMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4DCD0A1D45FF7900DFBA97 /* XBActivityReviewMaskView.m */; };
 		DC4DCD0D1D4602E200DFBA97 /* XBActivityReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC4DCD0C1D4602E200DFBA97 /* XBActivityReviewCell.xib */; };
@@ -556,8 +555,6 @@
 		DC4DCCFB1D45B99C00DFBA97 /* XBActivityNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityNavigationBar.m; sourceTree = "<group>"; };
 		DC4DCCFD1D45C14900DFBA97 /* XBActivityRecommendMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityRecommendMaskView.h; sourceTree = "<group>"; };
 		DC4DCCFE1D45C14900DFBA97 /* XBActivityRecommendMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityRecommendMaskView.m; sourceTree = "<group>"; };
-		DC4DCD001D45E16600DFBA97 /* XBActivityStrengthsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityStrengthsView.h; sourceTree = "<group>"; };
-		DC4DCD011D45E16600DFBA97 /* XBActivityStrengthsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityStrengthsView.m; sourceTree = "<group>"; };
 		DC4DCD061D45EB5700DFBA97 /* XBActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityDetailViewController.h; sourceTree = "<group>"; };
 		DC4DCD071D45EB5700DFBA97 /* XBActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBActivityDetailViewController.m; sourceTree = "<group>"; };
 		DC4DCD091D45FF7900DFBA97 /* XBActivityReviewMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBActivityReviewMaskView.h; sourceTree = "<group>"; };
@@ -1063,8 +1060,6 @@
 				DC4DCCFB1D45B99C00DFBA97 /* XBActivityNavigationBar.m */,
 				DC4DCCFD1D45C14900DFBA97 /* XBActivityRecommendMaskView.h */,
 				DC4DCCFE1D45C14900DFBA97 /* XBActivityRecommendMaskView.m */,
-				DC4DCD001D45E16600DFBA97 /* XBActivityStrengthsView.h */,
-				DC4DCD011D45E16600DFBA97 /* XBActivityStrengthsView.m */,
 				DC4DCD061D45EB5700DFBA97 /* XBActivityDetailViewController.h */,
 				DC4DCD071D45EB5700DFBA97 /* XBActivityDetailViewController.m */,
 				DC4DCD091D45FF7900DFBA97 /* XBActivityReviewMaskView.h */,
@@ -1604,12 +1599,6 @@
 				DC8A7B6B1D2E56640032BC48 /* XBLevelOneCell.m */,
 				DC8A7B651D2E4CC70032BC48 /* XBStretchableCityHeaderView.h */,
 				DC8A7B661D2E4CC70032BC48 /* XBStretchableCityHeaderView.m */,
-				DC8A7B741D2F52C30032BC48 /* XBHomeActivityCell.h */,
-				DC8A7B751D2F52C40032BC48 /* XBHomeActivityCell.m */,
-				DC8A7B701D2F520A0032BC48 /* XBHomeActivityCell.xib */,
-				DC8A7B721D2F52950032BC48 /* XBHomeActivityContentCell.xib */,
-				DC8A7B771D2F53920032BC48 /* XBHomeActivityContentCell.h */,
-				DC8A7B781D2F53920032BC48 /* XBHomeActivityContentCell.m */,
 				DC8A7BB81D3347020032BC48 /* XBHomeHeaderView.h */,
 				DC8A7BB91D3347020032BC48 /* XBHomeHeaderView.m */,
 				DC8A7BC11D3378900032BC48 /* XBDesinationFooterView.h */,
@@ -1699,6 +1688,12 @@
 		DC8A7C251D38C2D90032BC48 /* home */ = {
 			isa = PBXGroup;
 			children = (
+				DC8A7B741D2F52C30032BC48 /* XBHomeActivityCell.h */,
+				DC8A7B751D2F52C40032BC48 /* XBHomeActivityCell.m */,
+				DC8A7B701D2F520A0032BC48 /* XBHomeActivityCell.xib */,
+				DC8A7B721D2F52950032BC48 /* XBHomeActivityContentCell.xib */,
+				DC8A7B771D2F53920032BC48 /* XBHomeActivityContentCell.h */,
+				DC8A7B781D2F53920032BC48 /* XBHomeActivityContentCell.m */,
 				DC8A7AF31D2B623B0032BC48 /* XBHomeViewController.h */,
 				DC8A7AF41D2B623B0032BC48 /* XBHomeViewController.m */,
 				DC8A7B3A1D2CD6450032BC48 /* XBHomeInviationCell.h */,
@@ -2128,7 +2123,6 @@
 				DCDB6EAA1D4B0AF200E31B07 /* XBDoneView.m in Sources */,
 				DC5C55591D51C1D900DCD14E /* XBUserInfoViewController.m in Sources */,
 				DC8A7BCA1D348B180032BC48 /* XBDestinationViewController.m in Sources */,
-				DC4DCD021D45E16600DFBA97 /* XBActivityStrengthsView.m in Sources */,
 				DC0652D21D63059E00755471 /* XBOrderTicketNavigationBar.m in Sources */,
 				DC5C55791D54801D00DCD14E /* XBCouponHeaderView.m in Sources */,
 				DC0653141D65B04C00755471 /* XBPayWay.m in Sources */,

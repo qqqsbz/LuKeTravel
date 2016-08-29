@@ -34,12 +34,8 @@
 #import "XBMoreActivityViewController.h"
 
 @interface XBHomeViewController () <UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,XBHomeInviationCellDelegate,XBHomeActivityCellDelegate,XBHomeHeaderCellDelegate,XBHomeDestinationCellDelegate>
-/** 数据列表 */
-@property (strong, nonatomic) UITableView   *tableView;
 /** 横幅图片 */
 @property (strong, nonatomic) UIImageView   *bannerImageView;
-/** 数据 */
-@property (strong, nonatomic) XBHome        *home;
 /** 状态栏view */
 @property (strong, nonatomic) UIView        *statusView;
 /** 搜索按钮 */
@@ -89,8 +85,8 @@ static NSString *destinationReuseIdentifier = @"XBHomeDestinationCell";
     
     [self scrollViewDidScroll:self.tableView];
     
-    //如果切换过语言 则重新加载数据
-    if (self.home && ![self.home.modelLanguage isEqualToString:[XBUserDefaultsUtil currentLanguage]]) {
+    //如果切换过语言、货币 则重新加载数据
+    if (self.home && (![self.home.modelLanguage isEqualToString:[XBUserDefaultsUtil currentLanguage]] || ![self.home.modelCurrency isEqualToString:[XBUserDefaultsUtil currentCurrency]])) {
         
         [self reloadData];
         
@@ -107,6 +103,7 @@ static NSString *destinationReuseIdentifier = @"XBHomeDestinationCell";
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kUserLoginSuccessNotificaton object:nil];
 }
 
+/** 加载数据 */
 - (void)reloadData
 {
     
@@ -155,6 +152,7 @@ static NSString *destinationReuseIdentifier = @"XBHomeDestinationCell";
     }];
 }
 
+/** 创建view */
 - (void)buildView
 {
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - kTabbarHeight)];
@@ -203,12 +201,15 @@ static NSString *destinationReuseIdentifier = @"XBHomeDestinationCell";
     
     //创建定时器
     self.timer = [NSTimer scheduledTimerWithTimeInterval:kDuration * 7 target:self selector:@selector(bannerStartAnimation) userInfo:nil repeats:YES];
+    
     [self.timer setFireDate:[NSDate distantFuture]];
+    
     
     [self addConstraint];
 
 }
 
+/** 添加约束 */
 - (void)addConstraint
 {
     [self.statusView makeConstraints:^(MASConstraintMaker *make) {
@@ -235,6 +236,7 @@ static NSString *destinationReuseIdentifier = @"XBHomeDestinationCell";
     
 }
 
+/** banner添加动画 */
 - (void)bannerStartAnimation
 {
     CATransition *animation = [CATransition animation];
@@ -258,7 +260,19 @@ static NSString *destinationReuseIdentifier = @"XBHomeDestinationCell";
         bannerIndex = 0;
     }
     
-    [self.bannerImageView sd_setImageWithURL:[NSURL URLWithString:self.home.bannerImages[bannerIndex]] placeholderImage:[UIImage imageNamed:@"placeholder_image"]];
+    [self.bannerImageView sd_setImageWithURL:[NSURL URLWithString:self.home.bannerImages[bannerIndex]] placeholderImage:[UIImage imageNamed:@"placeholder_image"] options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+        if (error) {
+            
+            NSMutableArray *banners = [NSMutableArray arrayWithArray:self.home.bannerImages];
+            
+            [banners removeObject:imageURL.absoluteString];
+            
+            self.home.bannerImages = banners;
+            
+        }
+        
+    }];
 }
 
 
@@ -354,7 +368,6 @@ static NSString *destinationReuseIdentifier = @"XBHomeDestinationCell";
             height = indexPath.row == 0 ? kHeaderHeight : 200.f;
             
         }
-        
     }
     
     height *= [XBApplication isPlus] ? 1.2 : 1;

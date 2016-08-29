@@ -10,7 +10,9 @@
 
 #import "XBNoActivityView.h"
 @interface XBNoActivityView()
+/** 图片 */
 @property (strong, nonatomic) UIImageView   *imageView;
+/** 标题 */
 @property (strong, nonatomic) UILabel       *titleLabel;
 @end
 @implementation XBNoActivityView

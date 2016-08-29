@@ -8,11 +8,17 @@
 
 #import "XBCouponHeaderView.h"
 @interface XBCouponHeaderView() <UITextFieldDelegate>
+/** 可用 */
 @property (strong, nonatomic) UILabel       *availableLabel;
+/** 不可用 */
 @property (strong, nonatomic) UILabel       *unavailableLable;
+/** 内容view */
 @property (strong, nonatomic) UIView        *contentView;
+/** 优惠券输入框 */
 @property (strong, nonatomic) UITextField   *textField;
+/** 兑换按钮 */
 @property (strong, nonatomic) UIButton      *exchangeButton;
+/** 回调 */
 @property (copy  , nonatomic) ExchangeBlock exchangeBlock;
 @end
 @implementation XBCouponHeaderView

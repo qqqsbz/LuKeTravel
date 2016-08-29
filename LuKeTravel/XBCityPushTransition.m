@@ -49,7 +49,9 @@
 - (void)pushAnimation:(id <UIViewControllerContextTransitioning>)transitionContext
 {
     XBDestinationViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    
     XBCityViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    
     UIView *containerView = [transitionContext containerView];
     
     [toVC.coverImageView layoutIfNeeded];
@@ -90,16 +92,23 @@
 - (void)popAnimation:(id <UIViewControllerContextTransitioning>)transitionContext
 {
     XBCityViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    
     XBDestinationViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    
     UIView *containerView = [transitionContext containerView];
     
     XBDestinationHotCell *cell = [toVC.hotTableView cellForRowAtIndexPath:toVC.currentIndexPath];
     
     UIImageView *tempView = [[UIImageView alloc] initWithFrame:cell.coverImageView.frame];
+    
     tempView.contentMode  = UIViewContentModeScaleAspectFill;
+    
     tempView.clipsToBounds = YES;
+    
     tempView.xb_y  = fromVC.coverImageView.xb_y;
+    
     tempView.xb_x  = fromVC.coverImageView.xb_x;
+    
     tempView.image = cell.coverImageView.image;
     
     [containerView addSubview:toVC.view];

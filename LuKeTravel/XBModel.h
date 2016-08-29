@@ -15,4 +15,7 @@
 
 /** 获取数据时的语言 */
 @property (strong, nonatomic) NSString *modelLanguage;
+
+/** 获取数据时的货币 */
+@property (strong, nonatomic) NSString *modelCurrency;
 @end

@@ -9,9 +9,9 @@
 
 #import <UIKit/UIKit.h>
 @interface XBActivityNavigationBar : UIView
-
+/** 标题 */
 @property (strong, nonatomic) UILabel  *titleLabel;
-
+/** 分割线 */
 @property (strong, nonatomic) UIView   *separatorView;
 
 /** 是否在进行动画 */

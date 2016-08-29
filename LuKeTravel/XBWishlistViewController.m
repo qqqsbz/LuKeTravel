@@ -17,7 +17,7 @@
 @property (strong, nonatomic) XBNoDataView *noDataView;
 /** 数据列表 */
 @property (strong, nonatomic) UITableView  *tableView;
-/** */
+/** 数据集合 */
 @property (strong, nonatomic) NSArray<XBWishlist *> *datas;
 @end
 
@@ -129,7 +129,7 @@ static NSString *const reuseIdentifier = @"XBHomeSearchActivityClickCell";
 #pragma mark -- UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 240.f;
+    return 265.f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

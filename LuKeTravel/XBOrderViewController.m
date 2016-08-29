@@ -11,7 +11,9 @@
 #import "XBNoDataView.h"
 #import "XBWeChatLoginViewController.h"
 @interface XBOrderViewController ()
+/** 未登录时登录提醒  */
 @property (strong, nonatomic) XBLoginTipView    *loginView;
+/** 没有数据时显示 */
 @property (strong, nonatomic) XBNoDataView      *noOrderView;
 @end
 

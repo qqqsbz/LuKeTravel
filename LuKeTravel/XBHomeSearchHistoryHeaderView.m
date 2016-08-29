@@ -8,8 +8,11 @@
 
 #import "XBHomeSearchHistoryHeaderView.h"
 @interface XBHomeSearchHistoryHeaderView()
+/** 标题 */
 @property (strong, nonatomic) UILabel  *titleLabel;
+/** 清除 */
 @property (strong, nonatomic) UIButton *clearButton;
+/** 回调 */
 @property (copy  , nonatomic) dispatch_block_t  clearBlock;
 @end
 @implementation XBHomeSearchHistoryHeaderView

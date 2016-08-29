@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface XBHomeViewController : UIViewController
+/** 数据 */
+@property (strong, nonatomic) XBHome        *home;
 
+/** 数据列表 */
+@property (strong, nonatomic) UITableView   *tableView;
 @end

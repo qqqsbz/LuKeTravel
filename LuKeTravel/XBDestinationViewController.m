@@ -83,7 +83,7 @@ static NSString *const destinationAllFooterReuseIdentifier = @"XBDestinationAllF
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 
     //如果用户切换过语言 则重新创建页面加载数据
-    if (self.destination && ![self.destination.modelLanguage isEqualToString:[XBUserDefaultsUtil currentLanguage]]) {
+    if (self.destination && (![self.destination.modelLanguage isEqualToString:[XBUserDefaultsUtil currentLanguage]] || ![self.destination.modelCurrency isEqualToString:[XBUserDefaultsUtil currentCurrency]])) {
         
         [self.tstView removeFromSuperview];
         
