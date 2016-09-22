@@ -10,5 +10,11 @@
 
 @interface XBHomeHeaderView : UIView
 @property (strong, nonatomic) UILabel  *leftLabel;
+
 @property (strong, nonatomic) UILabel  *rightLabel;
+
+- (instancetype)initWithViewAllBlock:(dispatch_block_t)block;
+
+- (instancetype)initWithFrame:(CGRect)frame viewAllBlock:(dispatch_block_t)block;
+
 @end

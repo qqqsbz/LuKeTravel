@@ -230,12 +230,8 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     
     self.footerView = [[XBDesinationFooterView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 100) title:[XBLanguageControl localizedStringForKey:@"destination-browse-all"] didSelectedBlock:^{
         
-        XBMoreActivityViewController *moreActivityVC = [[XBMoreActivityViewController alloc] initWithCityId:self.cityId];
+        [self pushToMoreActivities];
         
-        moreActivityVC.view.backgroundColor = [UIColor whiteColor];
-    
-        [self.navigationController pushViewController:moreActivityVC animated:YES];
-    
     }];
     
     self.navigationItem.hidesBackButton = YES;
@@ -329,7 +325,13 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     
     XBGroup *group = [datas firstObject];
     
-    XBHomeHeaderView *headerView = [[XBHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 50.f)];
+    XBHomeHeaderView *headerView = [[XBHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 50.f) viewAllBlock:^{
+        
+        [self pushToMoreActivities];
+        
+    }];
+    
+    headerView.userInteractionEnabled = YES;
     
     headerView.leftLabel.text = group.className;
     
@@ -509,6 +511,17 @@ static NSString *const reuseIdentifier = @"XBHomeActivityCell";
     [self.favoriteTemp.homeActivityContentCell startFavoriteAnimation];
     
     [self homeActivityCell:self.favoriteTemp.homeActivityCell homeActivityContentCell:self.favoriteTemp.homeActivityContentCell didSelectFavoriteAtIndex:self.favoriteTemp.index];
+}
+
+/** 跳转到更多活动 */
+- (void)pushToMoreActivities {
+    
+    XBMoreActivityViewController *moreActivityVC = [[XBMoreActivityViewController alloc] initWithCityId:self.cityId];
+    
+    moreActivityVC.view.backgroundColor = [UIColor whiteColor];
+    
+    [self.navigationController pushViewController:moreActivityVC animated:YES];
+    
 }
 
 #pragma mark -- private method

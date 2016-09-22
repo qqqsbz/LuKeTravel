@@ -70,6 +70,8 @@
             complete();
         }
         
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
+        
         [XBUserDefaultsUtil updateAlreadyFirstStart:YES];
     }];
     

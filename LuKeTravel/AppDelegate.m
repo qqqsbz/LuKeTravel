@@ -35,15 +35,7 @@
     
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor clearColor]} forState:UIControlStateSelected];
     
-    //默认语言为 简体中文 货币为 人民币
-    if (![XBUserDefaultsUtil currentLanguage]) {
-        
-        [XBUserDefaultsUtil updateCurrentLanguage:kLanguageZHCN];
-        
-        [XBUserDefaultsUtil updateCurrentCurrency:@"CNY"];
-        
-        [XBUserDefaultsUtil updateCurrentCurrencySymbol:@"￥"];
-    }
+    [self setLanguage];
     
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
@@ -70,6 +62,7 @@
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
+    
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -82,6 +75,56 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+}
+
+/** 设置语言环境 */
+- (void)setLanguage {
+    
+    //如果没有设置过语言
+    if (![XBUserDefaultsUtil currentLanguage]) {
+        
+        NSString *systemLanguage = [[NSLocale preferredLanguages] firstObject];
+
+        NSString *currentLanguage = @"";
+        
+        NSString *currentCurrency = @"";
+        
+        NSString *currentSymbol = @"";
+        
+        if ([systemLanguage isEqualToString:@"zh-Hans-CN"]) {
+            
+            currentLanguage = kLanguageZHCN;
+            
+            currentCurrency = @"CNY";
+            
+            currentSymbol = @"￥";
+            
+        } else if ([systemLanguage isEqualToString:@"zh-Hant-CN"]) {
+            
+            currentLanguage = kLanguageTW;
+            
+            currentCurrency = @"TWD";
+            
+            currentSymbol = @"NT$";
+            
+        } else if ([systemLanguage isEqualToString:@"en-CN"]) {
+            
+            currentLanguage = kLanguageENUS;
+            
+            currentCurrency = @"USD";
+            
+            currentSymbol = @"$";
+        }
+        
+        
+        [XBUserDefaultsUtil updateCurrentLanguage:currentLanguage];
+        
+        [XBUserDefaultsUtil updateCurrentCurrency:currentCurrency];
+        
+        [XBUserDefaultsUtil updateCurrentCurrencySymbol:currentSymbol];
+    }
+
+    
 }
 
 @end

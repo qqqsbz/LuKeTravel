@@ -19,19 +19,19 @@
 "error-no-network-signal" = "No Wi-Fi signal? No worries - view Klook vouchers offline in your account";
 
 //引导页
-"guide-first-title" = "體驗師精選活動";
-"guide-first-content" = "路客旅行體驗師深入目的地，收集特色優質的旅行體驗活動";
-"guide-second-title" = "輕松的預訂方式";
-"guide-second-content" = "簡捷預訂流程，預訂後立即出票，收集電子憑證，還可享受經典快捷通道";
-"guide-third-title" = "專享優惠";
-"guide-third-content" = "路客攜手合作夥伴，打造旅途中的專屬優惠，更可享受低至5折的超值價格";
-"guide-jump" = "跳過";
-"guide-start" = "開始";
+"guide-first-title" = "Handpicked Experiences";
+"guide-first-content" = "Choose from a curated selection of tours,ractivities,transfers and attractions";
+"guide-second-title" = "Hassle-free Booking";
+"guide-second-content" = "Book seamlessly with instant ticketing skip-the-line entry and mobile passbook vouchers";
+"guide-third-title" = "Best Pirce Guarantee";
+"guide-third-content" = "Access special deals and exclusive discounts at up to 60% off retail prices";
+"guide-jump" = "Skip";
+"guide-start" = "Start";
 
 //首页
 "search-placeholder" = "Search Destinations or Activities";
 "search-cancel" = "Cancel";
-"search-noresult" = "暫無相關搜索結果哦";
+"search-noresult" = "No results found";
 "search-history-title" = "Search History";
 "search-history-clear" = "Clear History";
 

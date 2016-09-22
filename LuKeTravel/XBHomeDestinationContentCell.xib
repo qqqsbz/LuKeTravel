@@ -17,8 +17,8 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xBl-l7-ss5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="190"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDR-HN-WiT">
-                        <rect key="frame" x="129" y="81" width="63" height="29"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDR-HN-WiT">
+                        <rect key="frame" x="10" y="81" width="300" height="29"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -30,7 +30,9 @@
             <constraints>
                 <constraint firstItem="xDR-HN-WiT" firstAttribute="centerY" secondItem="hcU-R0-6ko" secondAttribute="centerY" id="2OB-i9-ENX"/>
                 <constraint firstItem="xBl-l7-ss5" firstAttribute="top" secondItem="hcU-R0-6ko" secondAttribute="top" id="CBt-ff-rCg"/>
+                <constraint firstAttribute="trailing" secondItem="xDR-HN-WiT" secondAttribute="trailing" constant="10" id="E3r-Q2-ry2"/>
                 <constraint firstAttribute="trailing" secondItem="xBl-l7-ss5" secondAttribute="trailing" id="afp-BM-GZc"/>
+                <constraint firstItem="xDR-HN-WiT" firstAttribute="leading" secondItem="hcU-R0-6ko" secondAttribute="leading" constant="10" id="c7t-aE-4eT"/>
                 <constraint firstAttribute="bottom" secondItem="xBl-l7-ss5" secondAttribute="bottom" id="cFf-cB-JlW"/>
                 <constraint firstItem="xBl-l7-ss5" firstAttribute="leading" secondItem="hcU-R0-6ko" secondAttribute="leading" id="hwx-Ce-pZt"/>
                 <constraint firstItem="xDR-HN-WiT" firstAttribute="centerX" secondItem="hcU-R0-6ko" secondAttribute="centerX" id="id3-hZ-fi6"/>
